@@ -1,0 +1,7 @@
+Matrees/
+# Obsidian 本地工作区配置，因设备而异
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/plugins/obsidian-git/data.json
+.trash/
+.DS_Store
