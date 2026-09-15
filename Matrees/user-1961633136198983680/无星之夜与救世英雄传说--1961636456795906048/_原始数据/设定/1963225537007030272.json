@@ -1,0 +1,78 @@
+{
+  "children": [
+    {
+      "children": [],
+      "definitionId": "2085343530360197120",
+      "isSystem": false,
+      "title": "勇者小队"
+    }
+  ],
+  "definitionId": "1963225537007030272",
+  "isSystem": false,
+  "title": "希伦特帝国",
+  "definitionSet": true,
+  "father": "1",
+  "proposalId": "1963225537007030272",
+  "worldId": "1961636456795906048",
+  "description": "来自希伦特帝国的英雄们",
+  "fatherSet": {
+    "definitionId": "1",
+    "title": ""
+  },
+  "belong": [],
+  "status": "已发布",
+  "createAt": "2025-09-03T21:00:18",
+  "updateAt": "2025-09-03T21:00:19",
+  "auditAt": "2025-09-03T21:00:19",
+  "createUser": {
+    "avatar": "1998296453114822656",
+    "avatarUrl": "https://oss.matrees.cn/prod/avatar/1998296453114822656.png",
+    "memberLevel": "FREE",
+    "nickname": "帝国外务部大主教",
+    "userId": "1961633136198983680",
+    "username": "dazhujiao"
+  },
+  "updateUser": {
+    "avatar": "1998296453114822656",
+    "avatarUrl": "https://oss.matrees.cn/prod/avatar/1998296453114822656.png",
+    "memberLevel": "FREE",
+    "nickname": "帝国外务部大主教",
+    "userId": "1961633136198983680",
+    "username": "dazhujiao"
+  },
+  "auditUser": {
+    "avatar": "1998296453114822656",
+    "avatarUrl": "https://oss.matrees.cn/prod/avatar/1998296453114822656.png",
+    "memberLevel": "FREE",
+    "nickname": "帝国外务部大主教",
+    "userId": "1961633136198983680",
+    "username": "dazhujiao"
+  },
+  "hasProposal": false,
+  "hasRelationProposal": false,
+  "showInList": true,
+  "relationCount": {
+    "definitionCount": 0,
+    "eventCount": 0,
+    "illustrationCount": 0
+  },
+  "interaction": {
+    "commentCount": "0",
+    "followCount": "0",
+    "followed": false,
+    "likeCount": "0",
+    "liked": false,
+    "matterCount": "0",
+    "todayViewCount": 1,
+    "viewCount": 53
+  },
+  "isPinned": false,
+  "isHidden": false,
+  "hideUnlocked": true,
+  "alias": [
+    "人物"
+  ],
+  "content": "",
+  "galleryImageIds": [],
+  "galleryFolderIds": []
+}

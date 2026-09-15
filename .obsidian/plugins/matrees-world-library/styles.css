@@ -1,0 +1,33 @@
+.matrees-library{padding:28px 30px 36px!important;overflow:auto;background:var(--background-primary);container-type:inline-size}.matrees-header{max-width:900px;margin-bottom:22px}.matrees-eyebrow{color:var(--text-accent);font-size:11px;letter-spacing:2px;font-weight:650}.matrees-header h2{font-size:28px;margin:10px 0}.matrees-description{color:var(--text-muted);font-size:14px}.matrees-tabs{display:flex;gap:8px;margin:20px 0 10px}.matrees-tabs button{border-radius:20px;padding:8px 16px;height:auto;box-shadow:none;background:var(--background-secondary);color:var(--text-muted)}.matrees-tabs .is-active{background:var(--interactive-accent);color:var(--text-on-accent)}.matrees-admin-note{padding:12px;border-left:3px solid var(--text-accent);font-size:13px;background:var(--background-secondary);border-radius:4px}.matrees-toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.matrees-toolbar input{flex:1;min-width:160px}.matrees-status{color:var(--text-muted);font-size:12px;margin:10px 0 18px;overflow-wrap:anywhere}.matrees-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:20px}.matrees-card{border:1px solid var(--background-modifier-border);border-radius:12px;overflow:hidden;background:var(--background-secondary);display:flex;flex-direction:column;transition:box-shadow .2s,border-color .2s}.matrees-card:hover{border-color:var(--text-accent);box-shadow:0 6px 18px #00000012}.matrees-cover{aspect-ratio:16/10;position:relative;overflow:hidden;background:var(--background-secondary-alt)}.matrees-cover img,.matrees-cover video{width:100%;height:100%;object-fit:cover;display:block}.matrees-cover-placeholder{height:100%;display:flex;align-items:center;justify-content:center;color:var(--text-faint);font:70px Georgia,serif;background:linear-gradient(140deg,var(--background-secondary),var(--background-modifier-border))}.matrees-media-badge{position:absolute;top:10px;right:10px;font-size:9px;letter-spacing:1px;background:#0009;color:white;border-radius:5px;padding:4px 7px;pointer-events:none}.matrees-card-body{padding:18px;display:flex;flex:1;flex-direction:column}.matrees-card h3{font-size:19px;margin:0 0 7px;line-height:1.4}.matrees-subtitle{font-size:12px;color:var(--text-muted);margin-bottom:8px}.matrees-author{font-size:12px;color:var(--text-accent)}.matrees-card-description{color:var(--text-muted);font-size:13px;line-height:1.7;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;min-height:3.3em}.matrees-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px}.matrees-tag{font-size:10px;padding:3px 7px;border-radius:5px;color:var(--text-muted);background:var(--background-primary)}.matrees-card-actions{display:flex;gap:8px;margin-top:auto}.matrees-card-actions button{font-size:12px;flex:1}.matrees-pager{display:flex;justify-content:center;align-items:center;gap:15px;margin:30px 0;font-size:12px;color:var(--text-muted)}.matrees-empty{padding:50px 20px;text-align:center;grid-column:1/-1;color:var(--text-muted);border:1px dashed var(--background-modifier-border);border-radius:10px}.matrees-upload-modal{width:min(850px,90vw)}.matrees-upload-preview{padding:18px;border:1px solid var(--background-modifier-border);border-radius:8px;max-height:45vh;overflow:auto}.matrees-upload-modal pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:30vh;overflow:auto}.matrees-note [align=center]{text-align:center}.matrees-note [align=right]{text-align:right}.matrees-note video{max-width:100%}@container(max-width:580px){.matrees-cards{grid-template-columns:1fr}.matrees-header h2{font-size:24px}}@media(prefers-reduced-motion:reduce){.matrees-card{transition:none}}
+
+.matrees-world-relation { margin-top: 6px; color: var(--text-accent); font-size: var(--font-smallest); }
+
+/* Portrait world covers retain their original downloadable media. */
+.matrees-cards {grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),300px));justify-content:start;align-items:start;}
+.matrees-card {width:300px;max-width:100%;}
+.matrees-cover {width:100%;height:444px;aspect-ratio:300/444;position:relative;}
+.matrees-cover img,.matrees-cover video {width:100%;height:100%;object-fit:cover;}
+.matrees-card-actions {flex-wrap:wrap;}
+.matrees-cover-error {position:absolute;inset:auto 0 0;padding:10px;background:var(--background-secondary);font-size:12px;}
+.matrees-cover-warning {color:var(--text-warning);font-size:12px;overflow-wrap:anywhere;}
+.matrees-progress-page {padding:28px;max-width:1100px;margin:0 auto;}
+.matrees-progress-panel {border:1px solid var(--background-modifier-border);border-radius:16px;padding:20px;margin:20px 0;}
+.matrees-progress-message {overflow-wrap:anywhere;line-height:1.7;}
+.matrees-progress-panel progress {width:100%;height:16px;margin-top:20px;accent-color:var(--interactive-accent);}
+.matrees-progress-log {max-height:50vh;overflow:auto;padding-left:24px;line-height:1.8;font-family:var(--font-monospace);font-size:12px;overflow-wrap:anywhere;}
+/* Obsidian Markdown callouts supply alignment; their body still uses native Markdown. */
+.callout[data-callout="matrees-center"],.callout[data-callout="matrees-right"],.callout[data-callout="matrees-justify"] {background:transparent;border:0;padding:0;margin:1em 0;box-shadow:none;}
+.callout[data-callout^="matrees-"] > .callout-title {display:none;}
+.callout[data-callout="matrees-center"] > .callout-content {text-align:center;}
+.callout[data-callout="matrees-right"] > .callout-content {text-align:right;}
+.callout[data-callout="matrees-justify"] > .callout-content {text-align:justify;}
+.callout[data-callout="matrees-center"] img,.callout[data-callout="matrees-center"] video {margin-inline:auto;}
+.matrees-note video[width="300"],.matrees-note img[width="300"] {width:300px;height:444px;max-width:100%;object-fit:cover;}
+@media(max-width:360px){.matrees-cover {height:auto;aspect-ratio:300/444;}.matrees-progress-page {padding:16px;}}
+
+.matrees-error-list {max-height:45vh;overflow:auto;margin-bottom:16px;}
+.matrees-error-row {padding:12px 0;border-bottom:1px solid var(--background-modifier-border);overflow-wrap:anywhere;}
+.matrees-error-row p {white-space:pre-wrap;margin:6px 0;}
+.matrees-local-path {font-family:var(--font-monospace);font-size:12px;overflow-wrap:anywhere;user-select:text;}
+.matrees-cover-placeholder {font-size:20px;text-align:center;padding:20px;}
+.matrees-cover-error {max-height:75%;overflow:auto;overflow-wrap:anywhere;}

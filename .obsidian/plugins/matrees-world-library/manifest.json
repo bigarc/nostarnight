@@ -1,0 +1,9 @@
+{
+  "id": "matrees-world-library",
+  "name": "Matrees World Library",
+  "version": "1.0.0",
+  "minAppVersion": "1.6.0",
+  "description": "用 Token 浏览 Matrees 世界观，保留设定层级、插画与本地修改，并预览上传提案。",
+  "author": "Matrees World Library Contributors",
+  "isDesktopOnly": false
+}

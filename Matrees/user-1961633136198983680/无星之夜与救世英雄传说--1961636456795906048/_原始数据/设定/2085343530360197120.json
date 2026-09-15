@@ -1,0 +1,70 @@
+{
+  "children": [],
+  "definitionId": "2085343530360197120",
+  "isSystem": false,
+  "title": "勇者小队",
+  "definitionSet": true,
+  "father": "1963225537007030272",
+  "proposalId": "2085344594942558208",
+  "worldId": "1961636456795906048",
+  "description": "现今的勇者以及其伙伴们",
+  "fatherSet": {
+    "definitionId": "1963225537007030272",
+    "title": "希伦特帝国"
+  },
+  "belong": [],
+  "status": "已发布",
+  "createAt": "2026-08-06T20:33:36",
+  "updateAt": "2026-08-06T20:37:50",
+  "auditAt": "2026-08-06T20:37:51",
+  "createUser": {
+    "avatar": "1998296453114822656",
+    "avatarUrl": "https://oss.matrees.cn/prod/avatar/1998296453114822656.png",
+    "memberLevel": "FREE",
+    "nickname": "帝国外务部大主教",
+    "userId": "1961633136198983680",
+    "username": "dazhujiao"
+  },
+  "updateUser": {
+    "avatar": "1998296453114822656",
+    "avatarUrl": "https://oss.matrees.cn/prod/avatar/1998296453114822656.png",
+    "memberLevel": "FREE",
+    "nickname": "帝国外务部大主教",
+    "userId": "1961633136198983680",
+    "username": "dazhujiao"
+  },
+  "auditUser": {
+    "avatar": "1998296453114822656",
+    "avatarUrl": "https://oss.matrees.cn/prod/avatar/1998296453114822656.png",
+    "memberLevel": "FREE",
+    "nickname": "帝国外务部大主教",
+    "userId": "1961633136198983680",
+    "username": "dazhujiao"
+  },
+  "hasProposal": false,
+  "hasRelationProposal": false,
+  "showInList": true,
+  "contentWordCount": 11,
+  "relationCount": {
+    "definitionCount": 0,
+    "eventCount": 0,
+    "illustrationCount": 0
+  },
+  "interaction": {
+    "commentCount": "0",
+    "followCount": "0",
+    "followed": false,
+    "likeCount": "0",
+    "liked": false,
+    "matterCount": "0",
+    "todayViewCount": 1,
+    "viewCount": 11
+  },
+  "isPinned": false,
+  "isHidden": false,
+  "hideUnlocked": true,
+  "alias": [],
+  "content": "{\"type\":\"doc\",\"content\":[{\"type\":\"paragraph\",\"attrs\":{\"textAlign\":null,\"indent\":0,\"textIndent\":null,\"id\":\"b-rd8xVTxo\"}}]}",
+  "galleryImageIds": [],
+  "galleryFolderIds": []
+}
