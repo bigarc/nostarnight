@@ -1,377 +1,3106 @@
-/* Matrees World Library — no embedded credentials. */
-"use strict";var Ii=Object.create;var Ft=Object.defineProperty;var Ri=Object.getOwnPropertyDescriptor;var Mi=Object.getOwnPropertyNames;var Oi=Object.getPrototypeOf,Ni=Object.prototype.hasOwnProperty;var It=(e,t)=>()=>{try{return t||e((t={exports:{}}).exports,t),t.exports}catch(u){throw t=0,u}},gt=(e,t)=>{for(var u in t)Ft(e,u,{get:t[u],enumerable:!0})},Nr=(e,t,u,r)=>{if(t&&typeof t=="object"||typeof t=="function")for(let i of Mi(t))!Ni.call(e,i)&&i!==u&&Ft(e,i,{get:()=>t[i],enumerable:!(r=Ri(t,i))||r.enumerable});return e};var Lr=(e,t,u)=>(u=e!=null?Ii(Oi(e)):{},Nr(t||!e||!e.__esModule?Ft(u,"default",{value:e,enumerable:!0}):u,e)),Li=e=>Nr(Ft({},"__esModule",{value:!0}),e);var hu=It((jr,Ot)=>{(function(e){"use strict";var t,u=/^-?(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?$/i,r=Math.ceil,i=Math.floor,n="[BigNumber Error] ",o=n+"Number primitive has more than 15 significant digits: ",s=1e14,a=14,c=9007199254740991,p=[1,10,100,1e3,1e4,1e5,1e6,1e7,1e8,1e9,1e10,1e11,1e12,1e13],f=1e7,m=1e9;function k(A){var T,P,L,F=y.prototype={constructor:y,toString:null,valueOf:null},Z=new y(1),W=20,J=4,ne=-7,Y=21,oe=-1e7,ae=1e7,ve=!1,Ze=1,Te=0,ht={prefix:"",groupSize:3,secondaryGroupSize:0,groupSeparator:",",decimalSeparator:".",fractionGroupSize:0,fractionGroupSeparator:"\xA0",suffix:""},Le="0123456789abcdefghijklmnopqrstuvwxyz",I=!0;function y(l,d){var h,_,x,E,D,b,w,C,v=this;if(!(v instanceof y))return new y(l,d);if(d==null){if(l&&l._isBigNumber===!0){v.s=l.s,!l.c||l.e>ae?v.c=v.e=null:l.e<oe?v.c=[v.e=0]:(v.e=l.e,v.c=l.c.slice());return}if((b=typeof l=="number")&&l*0==0){if(v.s=1/l<0?(l=-l,-1):1,l===~~l){for(E=0,D=l;D>=10;D/=10,E++);E>ae?v.c=v.e=null:(v.e=E,v.c=[l]);return}C=String(l)}else{if(!u.test(C=String(l)))return L(v,C,b);v.s=C.charCodeAt(0)==45?(C=C.slice(1),-1):1}(E=C.indexOf("."))>-1&&(C=C.replace(".","")),(D=C.search(/e/i))>0?(E<0&&(E=D),E+=+C.slice(D+1),C=C.substring(0,D)):E<0&&(E=C.length)}else{if(R(d,2,Le.length,"Base"),d==10&&I)return v=new y(l),U(v,W+v.e+1,J);if(C=String(l),b=typeof l=="number"){if(l*0!=0)return L(v,C,b,d);if(v.s=1/l<0?(C=C.slice(1),-1):1,y.DEBUG&&C.replace(/^0\.0*|\./,"").length>15)throw Error(o+l)}else v.s=C.charCodeAt(0)===45?(C=C.slice(1),-1):1;for(h=Le.slice(0,d),E=D=0,w=C.length;D<w;D++)if(h.indexOf(_=C.charAt(D))<0){if(_=="."){if(D>E){E=w;continue}}else if(!x&&(C==C.toUpperCase()&&(C=C.toLowerCase())||C==C.toLowerCase()&&(C=C.toUpperCase()))){x=!0,D=-1,E=0;continue}return L(v,String(l),b,d)}b=!1,C=P(C,d,10,v.s),(E=C.indexOf("."))>-1?C=C.replace(".",""):E=C.length}for(D=0;C.charCodeAt(D)===48;D++);for(w=C.length;C.charCodeAt(--w)===48;);if(C=C.slice(D,++w)){if(w-=D,b&&y.DEBUG&&w>15&&(l>c||l!==i(l)))throw Error(o+v.s*l);if((E=E-D-1)>ae)v.c=v.e=null;else if(E<oe)v.c=[v.e=0];else{if(v.e=E,v.c=[],D=(E+1)%a,E<0&&(D+=a),D<w){for(D&&v.c.push(+C.slice(0,D)),w-=a;D<w;)v.c.push(+C.slice(D,D+=a));D=a-(C=C.slice(D)).length}else D-=w;for(;D--;C+="0");v.c.push(+C)}}else v.c=[v.e=0]}y.clone=k,y.ROUND_UP=0,y.ROUND_DOWN=1,y.ROUND_CEIL=2,y.ROUND_FLOOR=3,y.ROUND_HALF_UP=4,y.ROUND_HALF_DOWN=5,y.ROUND_HALF_EVEN=6,y.ROUND_HALF_CEIL=7,y.ROUND_HALF_FLOOR=8,y.EUCLID=9,y.config=y.set=function(l){var d,h;if(l!=null)if(typeof l=="object"){if(l.hasOwnProperty(d="DECIMAL_PLACES")&&(h=l[d],R(h,0,m,d),W=h),l.hasOwnProperty(d="ROUNDING_MODE")&&(h=l[d],R(h,0,8,d),J=h),l.hasOwnProperty(d="EXPONENTIAL_AT")&&(h=l[d],h&&h.pop?(R(h[0],-m,0,d),R(h[1],0,m,d),ne=h[0],Y=h[1]):(R(h,-m,m,d),ne=-(Y=h<0?-h:h))),l.hasOwnProperty(d="RANGE"))if(h=l[d],h&&h.pop)R(h[0],-m,-1,d),R(h[1],1,m,d),oe=h[0],ae=h[1];else if(R(h,-m,m,d),h)oe=-(ae=h<0?-h:h);else throw Error(n+d+" cannot be zero: "+h);if(l.hasOwnProperty(d="CRYPTO"))if(h=l[d],h===!!h)if(h)if(typeof crypto<"u"&&crypto&&(crypto.getRandomValues||crypto.randomBytes))ve=h;else throw ve=!h,Error(n+"crypto unavailable");else ve=h;else throw Error(n+d+" not true or false: "+h);if(l.hasOwnProperty(d="MODULO_MODE")&&(h=l[d],R(h,0,9,d),Ze=h),l.hasOwnProperty(d="POW_PRECISION")&&(h=l[d],R(h,0,m,d),Te=h),l.hasOwnProperty(d="FORMAT"))if(h=l[d],typeof h=="object")ht=h;else throw Error(n+d+" not an object: "+h);if(l.hasOwnProperty(d="ALPHABET"))if(h=l[d],typeof h=="string"&&!/^.?$|[+\-.\s]|(.).*\1/.test(h))I=h.slice(0,10)=="0123456789",Le=h;else throw Error(n+d+" invalid: "+h)}else throw Error(n+"Object expected: "+l);return{DECIMAL_PLACES:W,ROUNDING_MODE:J,EXPONENTIAL_AT:[ne,Y],RANGE:[oe,ae],CRYPTO:ve,MODULO_MODE:Ze,POW_PRECISION:Te,FORMAT:ht,ALPHABET:Le}},y.isBigNumber=function(l){if(!l||l._isBigNumber!==!0)return!1;if(!y.DEBUG)return!0;var d,h,_=l.c,x=l.e,E=l.s;e:if({}.toString.call(_)=="[object Array]"){if((E===1||E===-1)&&x>=-m&&x<=m&&x===i(x)){if(_[0]===0){if(x===0&&_.length===1)return!0;break e}if(d=(x+1)%a,d<1&&(d+=a),String(_[0]).length==d){for(d=0;d<_.length;d++)if(h=_[d],h<0||h>=s||h!==i(h))break e;if(h!==0)return!0}}}else if(_===null&&x===null&&(E===null||E===1||E===-1))return!0;throw Error(n+"Invalid BigNumber: "+l)},y.maximum=y.max=function(){return X(arguments,-1)},y.minimum=y.min=function(){return X(arguments,1)},y.random=(function(){var l=9007199254740992,d=Math.random()*l&2097151?function(){return i(Math.random()*l)}:function(){return(Math.random()*1073741824|0)*8388608+(Math.random()*8388608|0)};return function(h){var _,x,E,D,b,w=0,C=[],v=new y(Z);if(h==null?h=W:R(h,0,m),D=r(h/a),ve)if(crypto.getRandomValues){for(_=crypto.getRandomValues(new Uint32Array(D*=2));w<D;)b=_[w]*131072+(_[w+1]>>>11),b>=9e15?(x=crypto.getRandomValues(new Uint32Array(2)),_[w]=x[0],_[w+1]=x[1]):(C.push(b%1e14),w+=2);w=D/2}else if(crypto.randomBytes){for(_=crypto.randomBytes(D*=7);w<D;)b=(_[w]&31)*281474976710656+_[w+1]*1099511627776+_[w+2]*4294967296+_[w+3]*16777216+(_[w+4]<<16)+(_[w+5]<<8)+_[w+6],b>=9e15?crypto.randomBytes(7).copy(_,w):(C.push(b%1e14),w+=7);w=D/7}else throw ve=!1,Error(n+"crypto unavailable");if(!ve)for(;w<D;)b=d(),b<9e15&&(C[w++]=b%1e14);for(D=C[--w],h%=a,D&&h&&(b=p[a-h],C[w]=i(D/b)*b);C[w]===0;C.pop(),w--);if(w<0)C=[E=0];else{for(E=-1;C[0]===0;C.splice(0,1),E-=a);for(w=1,b=C[0];b>=10;b/=10,w++);w<a&&(E-=a-w)}return v.e=E,v.c=C,v}})(),y.sum=function(){for(var l=1,d=arguments,h=new y(d[0]);l<d.length;)h=h.plus(d[l++]);return h},P=(function(){var l="0123456789";function d(h,_,x,E){for(var D,b=[0],w,C=0,v=h.length;C<v;){for(w=b.length;w--;b[w]*=_);for(b[0]+=E.indexOf(h.charAt(C++)),D=0;D<b.length;D++)b[D]>x-1&&(b[D+1]==null&&(b[D+1]=0),b[D+1]+=b[D]/x|0,b[D]%=x)}return b.reverse()}return function(h,_,x,E,D){var b,w,C,v,M,z,V,te,ce=h.indexOf("."),de=W,ee=J;for(ce>=0&&(v=Te,Te=0,h=h.replace(".",""),te=new y(_),z=te.pow(h.length-ce),Te=v,te.c=d(N(S(z.c),z.e,"0"),10,x,l),te.e=te.c.length),V=d(h,_,x,D?(b=Le,l):(b=l,Le)),C=v=V.length;V[--v]==0;V.pop());if(!V[0])return b.charAt(0);if(ce<0?--C:(z.c=V,z.e=C,z.s=E,z=T(z,te,de,ee,x),V=z.c,M=z.r,C=z.e),w=C+de+1,ce=V[w],v=x/2,M=M||w<0||V[w+1]!=null,M=ee<4?(ce!=null||M)&&(ee==0||ee==(z.s<0?3:2)):ce>v||ce==v&&(ee==4||M||ee==6&&V[w-1]&1||ee==(z.s<0?8:7)),w<1||!V[0])h=M?N(b.charAt(1),-de,b.charAt(0)):b.charAt(0);else{if(V.length=w,M)for(--x;++V[--w]>x;)V[w]=0,w||(++C,V=[1].concat(V));for(v=V.length;!V[--v];);for(ce=0,h="";ce<=v;h+=b.charAt(V[ce++]));h=N(h,C,b.charAt(0))}return h}})(),T=(function(){function l(_,x,E){var D,b,w,C,v=0,M=_.length,z=x%f,V=x/f|0;for(_=_.slice();M--;)w=_[M]%f,C=_[M]/f|0,D=V*w+C*z,b=z*w+D%f*f+v,v=(b/E|0)+(D/f|0)+V*C,_[M]=b%E;return v&&(_=[v].concat(_)),_}function d(_,x,E,D){var b,w;if(E!=D)w=E>D?1:-1;else for(b=w=0;b<E;b++)if(_[b]!=x[b]){w=_[b]>x[b]?1:-1;break}return w}function h(_,x,E,D){for(var b=0;E--;)_[E]-=b,b=_[E]<x[E]?1:0,_[E]=b*D+_[E]-x[E];for(;!_[0]&&_.length>1;_.splice(0,1));}return function(_,x,E,D,b){var w,C,v,M,z,V,te,ce,de,ee,ue,xe,St,du,pu,Ie,mt,Ae=_.s==x.s?1:-1,ke=_.c,le=x.c;if(!ke||!ke[0]||!le||!le[0])return new y(!_.s||!x.s||(ke?le&&ke[0]==le[0]:!le)?NaN:ke&&ke[0]==0||!le?Ae*0:Ae/0);for(ce=new y(Ae),de=ce.c=[],C=_.e-x.e,Ae=E+C+1,b||(b=s,C=g(_.e/a)-g(x.e/a),Ae=Ae/a|0),v=0;le[v]==(ke[v]||0);v++);if(le[v]>(ke[v]||0)&&C--,Ae<0)de.push(1),M=!0;else{for(du=ke.length,Ie=le.length,v=0,Ae+=2,z=i(b/(le[0]+1)),z>1&&(le=l(le,z,b),ke=l(ke,z,b),Ie=le.length,du=ke.length),St=Ie,ee=ke.slice(0,Ie),ue=ee.length;ue<Ie;ee[ue++]=0);mt=le.slice(),mt=[0].concat(mt),pu=le[0],le[1]>=b/2&&pu++;do{if(z=0,w=d(le,ee,Ie,ue),w<0){if(xe=ee[0],Ie!=ue&&(xe=xe*b+(ee[1]||0)),z=i(xe/pu),z>1)for(z>=b&&(z=b-1),V=l(le,z,b),te=V.length,ue=ee.length;d(V,ee,te,ue)==1;)z--,h(V,Ie<te?mt:le,te,b),te=V.length,w=1;else z==0&&(w=z=1),V=le.slice(),te=V.length;if(te<ue&&(V=[0].concat(V)),h(ee,V,ue,b),ue=ee.length,w==-1)for(;d(le,ee,Ie,ue)<1;)z++,h(ee,Ie<ue?mt:le,ue,b),ue=ee.length}else w===0&&(z++,ee=[0]);de[v++]=z,ee[0]?ee[ue++]=ke[St]||0:(ee=[ke[St]],ue=1)}while((St++<du||ee[0]!=null)&&Ae--);M=ee[0]!=null,de[0]||de.splice(0,1)}if(b==s){for(v=1,Ae=de[0];Ae>=10;Ae/=10,v++);U(ce,E+(ce.e=v+C*a-1)+1,D,M)}else ce.e=C,ce.r=+M;return ce}})();function G(l,d,h,_){var x,E,D,b,w;if(h==null?h=J:R(h,0,8),!l.c)return l.toString();if(x=l.c[0],D=l.e,d==null)w=S(l.c),w=_==1||_==2&&(D<=ne||D>=Y)?q(w,D):N(w,D,"0");else if(l=U(new y(l),d,h),E=l.e,w=S(l.c),b=w.length,_==1||_==2&&(d<=E||E<=ne)){for(;b<d;w+="0",b++);w=q(w,E)}else if(d-=D+(_===2&&E>D),w=N(w,E,"0"),E+1>b){if(--d>0)for(w+=".";d--;w+="0");}else if(d+=E-b,d>0)for(E+1==b&&(w+=".");d--;w+="0");return l.s<0&&x?"-"+w:w}function X(l,d){for(var h,_,x=1,E=new y(l[0]);x<l.length;x++)_=new y(l[x]),(!_.s||(h=O(E,_))===d||h===0&&E.s===d)&&(E=_);return E}function H(l,d,h){for(var _=1,x=d.length;!d[--x];d.pop());for(x=d[0];x>=10;x/=10,_++);return(h=_+h*a-1)>ae?l.c=l.e=null:h<oe?l.c=[l.e=0]:(l.e=h,l.c=d),l}L=(function(){var l=/^(-?)0([xbo])(?=\w[\w.]*$)/i,d=/^([^.]+)\.$/,h=/^\.([^.]+)$/,_=/^-?(Infinity|NaN)$/,x=/^\s*\+(?=[\w.])|^\s+|\s+$/g;return function(E,D,b,w){var C,v=b?D:D.replace(x,"");if(_.test(v))E.s=isNaN(v)?null:v<0?-1:1;else{if(!b&&(v=v.replace(l,function(M,z,V){return C=(V=V.toLowerCase())=="x"?16:V=="b"?2:8,!w||w==C?z:M}),w&&(C=w,v=v.replace(d,"$1").replace(h,"0.$1")),D!=v))return new y(v,C);if(y.DEBUG)throw Error(n+"Not a"+(w?" base "+w:"")+" number: "+D);E.s=null}E.c=E.e=null}})();function U(l,d,h,_){var x,E,D,b,w,C,v,M=l.c,z=p;if(M){e:{for(x=1,b=M[0];b>=10;b/=10,x++);if(E=d-x,E<0)E+=a,D=d,w=M[C=0],v=i(w/z[x-D-1]%10);else if(C=r((E+1)/a),C>=M.length)if(_){for(;M.length<=C;M.push(0));w=v=0,x=1,E%=a,D=E-a+1}else break e;else{for(w=b=M[C],x=1;b>=10;b/=10,x++);E%=a,D=E-a+x,v=D<0?0:i(w/z[x-D-1]%10)}if(_=_||d<0||M[C+1]!=null||(D<0?w:w%z[x-D-1]),_=h<4?(v||_)&&(h==0||h==(l.s<0?3:2)):v>5||v==5&&(h==4||_||h==6&&(E>0?D>0?w/z[x-D]:0:M[C-1])%10&1||h==(l.s<0?8:7)),d<1||!M[0])return M.length=0,_?(d-=l.e+1,M[0]=z[(a-d%a)%a],l.e=-d||0):M[0]=l.e=0,l;if(E==0?(M.length=C,b=1,C--):(M.length=C+1,b=z[a-E],M[C]=D>0?i(w/z[x-D]%z[D])*b:0),_)for(;;)if(C==0){for(E=1,D=M[0];D>=10;D/=10,E++);for(D=M[0]+=b,b=1;D>=10;D/=10,b++);E!=b&&(l.e++,M[0]==s&&(M[0]=1));break}else{if(M[C]+=b,M[C]!=s)break;M[C--]=0,b=1}for(E=M.length;M[--E]===0;M.pop());}l.e>ae?l.c=l.e=null:l.e<oe&&(l.c=[l.e=0])}return l}function ie(l){var d,h=l.e;return h===null?l.toString():(d=S(l.c),d=h<=ne||h>=Y?q(d,h):N(d,h,"0"),l.s<0?"-"+d:d)}return F.absoluteValue=F.abs=function(){var l=new y(this);return l.s<0&&(l.s=1),l},F.comparedTo=function(l,d){return O(this,new y(l,d))},F.decimalPlaces=F.dp=function(l,d){var h,_,x,E=this;if(l!=null)return R(l,0,m),d==null?d=J:R(d,0,8),U(new y(E),l+E.e+1,d);if(!(h=E.c))return null;if(_=((x=h.length-1)-g(this.e/a))*a,x=h[x])for(;x%10==0;x/=10,_--);return _<0&&(_=0),_},F.dividedBy=F.div=function(l,d){return T(this,new y(l,d),W,J)},F.dividedToIntegerBy=F.idiv=function(l,d){return T(this,new y(l,d),0,1)},F.exponentiatedBy=F.pow=function(l,d){var h,_,x,E,D,b,w,C,v,M=this;if(l=new y(l),l.c&&!l.isInteger())throw Error(n+"Exponent not an integer: "+ie(l));if(d!=null&&(d=new y(d)),b=l.e>14,!M.c||!M.c[0]||M.c[0]==1&&!M.e&&M.c.length==1||!l.c||!l.c[0])return v=new y(Math.pow(+ie(M),b?l.s*(2-B(l)):+ie(l))),d?v.mod(d):v;if(w=l.s<0,d){if(d.c?!d.c[0]:!d.s)return new y(NaN);_=!w&&M.isInteger()&&d.isInteger(),_&&(M=M.mod(d))}else{if(l.e>9&&(M.e>0||M.e<-1||(M.e==0?M.c[0]>1||b&&M.c[1]>=24e7:M.c[0]<8e13||b&&M.c[0]<=9999975e7)))return E=M.s<0&&B(l)?-0:0,M.e>-1&&(E=1/E),new y(w?1/E:E);Te&&(E=r(Te/a+2))}for(b?(h=new y(.5),w&&(l.s=1),C=B(l)):(x=Math.abs(+ie(l)),C=x%2),v=new y(Z);;){if(C){if(v=v.times(M),!v.c)break;E?v.c.length>E&&(v.c.length=E):_&&(v=v.mod(d))}if(x){if(x=i(x/2),x===0)break;C=x%2}else if(l=l.times(h),U(l,l.e+1,1),l.e>14)C=B(l);else{if(x=+ie(l),x===0)break;C=x%2}M=M.times(M),E?M.c&&M.c.length>E&&(M.c.length=E):_&&(M=M.mod(d))}return _?v:(w&&(v=Z.div(v)),d?v.mod(d):E?U(v,Te,J,D):v)},F.integerValue=function(l){var d=new y(this);return l==null?l=J:R(l,0,8),U(d,d.e+1,l)},F.isEqualTo=F.eq=function(l,d){return O(this,new y(l,d))===0},F.isFinite=function(){return!!this.c},F.isGreaterThan=F.gt=function(l,d){return O(this,new y(l,d))>0},F.isGreaterThanOrEqualTo=F.gte=function(l,d){return(d=O(this,new y(l,d)))===1||d===0},F.isInteger=function(){return!!this.c&&g(this.e/a)>this.c.length-2},F.isLessThan=F.lt=function(l,d){return O(this,new y(l,d))<0},F.isLessThanOrEqualTo=F.lte=function(l,d){return(d=O(this,new y(l,d)))===-1||d===0},F.isNaN=function(){return!this.s},F.isNegative=function(){return this.s<0},F.isPositive=function(){return this.s>0},F.isZero=function(){return!!this.c&&this.c[0]==0},F.minus=function(l,d){var h,_,x,E,D=this,b=D.s;if(l=new y(l,d),d=l.s,!b||!d)return new y(NaN);if(b!=d)return l.s=-d,D.plus(l);var w=D.e/a,C=l.e/a,v=D.c,M=l.c;if(!w||!C){if(!v||!M)return v?(l.s=-d,l):new y(M?D:NaN);if(!v[0]||!M[0])return M[0]?(l.s=-d,l):new y(v[0]?D:J==3?-0:0)}if(w=g(w),C=g(C),v=v.slice(),b=w-C){for((E=b<0)?(b=-b,x=v):(C=w,x=M),x.reverse(),d=b;d--;x.push(0));x.reverse()}else for(_=(E=(b=v.length)<(d=M.length))?b:d,b=d=0;d<_;d++)if(v[d]!=M[d]){E=v[d]<M[d];break}if(E&&(x=v,v=M,M=x,l.s=-l.s),d=(_=M.length)-(h=v.length),d>0)for(;d--;v[h++]=0);for(d=s-1;_>b;){if(v[--_]<M[_]){for(h=_;h&&!v[--h];v[h]=d);--v[h],v[_]+=s}v[_]-=M[_]}for(;v[0]==0;v.splice(0,1),--C);return v[0]?H(l,v,C):(l.s=J==3?-1:1,l.c=[l.e=0],l)},F.modulo=F.mod=function(l,d){var h,_,x=this;return l=new y(l,d),!x.c||!l.s||l.c&&!l.c[0]?new y(NaN):!l.c||x.c&&!x.c[0]?new y(x):(Ze==9?(_=l.s,l.s=1,h=T(x,l,0,3),l.s=_,h.s*=_):h=T(x,l,0,Ze),l=x.minus(h.times(l)),!l.c[0]&&Ze==1&&(l.s=x.s),l)},F.multipliedBy=F.times=function(l,d){var h,_,x,E,D,b,w,C,v,M,z,V,te,ce,de,ee=this,ue=ee.c,xe=(l=new y(l,d)).c;if(!ue||!xe||!ue[0]||!xe[0])return!ee.s||!l.s||ue&&!ue[0]&&!xe||xe&&!xe[0]&&!ue?l.c=l.e=l.s=null:(l.s*=ee.s,!ue||!xe?l.c=l.e=null:(l.c=[0],l.e=0)),l;for(_=g(ee.e/a)+g(l.e/a),l.s*=ee.s,w=ue.length,M=xe.length,w<M&&(te=ue,ue=xe,xe=te,x=w,w=M,M=x),x=w+M,te=[];x--;te.push(0));for(ce=s,de=f,x=M;--x>=0;){for(h=0,z=xe[x]%de,V=xe[x]/de|0,D=w,E=x+D;E>x;)C=ue[--D]%de,v=ue[D]/de|0,b=V*C+v*z,C=z*C+b%de*de+te[E]+h,h=(C/ce|0)+(b/de|0)+V*v,te[E--]=C%ce;te[E]=h}return h?++_:te.splice(0,1),H(l,te,_)},F.negated=function(){var l=new y(this);return l.s=-l.s||null,l},F.plus=function(l,d){var h,_=this,x=_.s;if(l=new y(l,d),d=l.s,!x||!d)return new y(NaN);if(x!=d)return l.s=-d,_.minus(l);var E=_.e/a,D=l.e/a,b=_.c,w=l.c;if(!E||!D){if(!b||!w)return new y(x/0);if(!b[0]||!w[0])return w[0]?l:new y(b[0]?_:x*0)}if(E=g(E),D=g(D),b=b.slice(),x=E-D){for(x>0?(D=E,h=w):(x=-x,h=b),h.reverse();x--;h.push(0));h.reverse()}for(x=b.length,d=w.length,x-d<0&&(h=w,w=b,b=h,d=x),x=0;d;)x=(b[--d]=b[d]+w[d]+x)/s|0,b[d]=s===b[d]?0:b[d]%s;return x&&(b=[x].concat(b),++D),H(l,b,D)},F.precision=F.sd=function(l,d){var h,_,x,E=this;if(l!=null&&l!==!!l)return R(l,1,m),d==null?d=J:R(d,0,8),U(new y(E),l,d);if(!(h=E.c))return null;if(x=h.length-1,_=x*a+1,x=h[x]){for(;x%10==0;x/=10,_--);for(x=h[0];x>=10;x/=10,_++);}return l&&E.e+1>_&&(_=E.e+1),_},F.shiftedBy=function(l){return R(l,-c,c),this.times("1e"+l)},F.squareRoot=F.sqrt=function(){var l,d,h,_,x,E=this,D=E.c,b=E.s,w=E.e,C=W+4,v=new y("0.5");if(b!==1||!D||!D[0])return new y(!b||b<0&&(!D||D[0])?NaN:D?E:1/0);if(b=Math.sqrt(+ie(E)),b==0||b==1/0?(d=S(D),(d.length+w)%2==0&&(d+="0"),b=Math.sqrt(+d),w=g((w+1)/2)-(w<0||w%2),b==1/0?d="5e"+w:(d=b.toExponential(),d=d.slice(0,d.indexOf("e")+1)+w),h=new y(d)):h=new y(b+""),h.c[0]){for(w=h.e,b=w+C,b<3&&(b=0);;)if(x=h,h=v.times(x.plus(T(E,x,C,1))),S(x.c).slice(0,b)===(d=S(h.c)).slice(0,b))if(h.e<w&&--b,d=d.slice(b-3,b+1),d=="9999"||!_&&d=="4999"){if(!_&&(U(x,x.e+W+2,0),x.times(x).eq(E))){h=x;break}C+=4,b+=4,_=1}else{(!+d||!+d.slice(1)&&d.charAt(0)=="5")&&(U(h,h.e+W+2,1),l=!h.times(h).eq(E));break}}return U(h,h.e+W+1,J,l)},F.toExponential=function(l,d){return l!=null&&(R(l,0,m),l++),G(this,l,d,1)},F.toFixed=function(l,d){return l!=null&&(R(l,0,m),l=l+this.e+1),G(this,l,d)},F.toFormat=function(l,d,h){var _,x=this;if(h==null)l!=null&&d&&typeof d=="object"?(h=d,d=null):l&&typeof l=="object"?(h=l,l=d=null):h=ht;else if(typeof h!="object")throw Error(n+"Argument not an object: "+h);if(_=x.toFixed(l,d),x.c){var E,D=_.split("."),b=+h.groupSize,w=+h.secondaryGroupSize,C=h.groupSeparator||"",v=D[0],M=D[1],z=x.s<0,V=z?v.slice(1):v,te=V.length;if(w&&(E=b,b=w,w=E,te-=E),b>0&&te>0){for(E=te%b||b,v=V.substr(0,E);E<te;E+=b)v+=C+V.substr(E,b);w>0&&(v+=C+V.slice(E)),z&&(v="-"+v)}_=M?v+(h.decimalSeparator||"")+((w=+h.fractionGroupSize)?M.replace(new RegExp("\\d{"+w+"}\\B","g"),"$&"+(h.fractionGroupSeparator||"")):M):v}return(h.prefix||"")+_+(h.suffix||"")},F.toFraction=function(l){var d,h,_,x,E,D,b,w,C,v,M,z,V=this,te=V.c;if(l!=null&&(b=new y(l),!b.isInteger()&&(b.c||b.s!==1)||b.lt(Z)))throw Error(n+"Argument "+(b.isInteger()?"out of range: ":"not an integer: ")+ie(b));if(!te)return new y(V);for(d=new y(Z),C=h=new y(Z),_=w=new y(Z),z=S(te),E=d.e=z.length-V.e-1,d.c[0]=p[(D=E%a)<0?a+D:D],l=!l||b.comparedTo(d)>0?E>0?d:C:b,D=ae,ae=1/0,b=new y(z),w.c[0]=0;v=T(b,d,0,1),x=h.plus(v.times(_)),x.comparedTo(l)!=1;)h=_,_=x,C=w.plus(v.times(x=C)),w=x,d=b.minus(v.times(x=d)),b=x;return x=T(l.minus(h),_,0,1),w=w.plus(x.times(C)),h=h.plus(x.times(_)),w.s=C.s=V.s,E=E*2,M=T(C,_,E,J).minus(V).abs().comparedTo(T(w,h,E,J).minus(V).abs())<1?[C,_]:[w,h],ae=D,M},F.toNumber=function(){return+ie(this)},F.toPrecision=function(l,d){return l!=null&&R(l,1,m),G(this,l,d,2)},F.toString=function(l){var d,h=this,_=h.s,x=h.e;return x===null?_?(d="Infinity",_<0&&(d="-"+d)):d="NaN":(l==null?d=x<=ne||x>=Y?q(S(h.c),x):N(S(h.c),x,"0"):l===10&&I?(h=U(new y(h),W+x+1,J),d=N(S(h.c),h.e,"0")):(R(l,2,Le.length,"Base"),d=P(N(S(h.c),x,"0"),10,l,_,!0)),_<0&&h.c[0]&&(d="-"+d)),d},F.valueOf=F.toJSON=function(){return ie(this)},F._isBigNumber=!0,A!=null&&y.set(A),y}function g(A){var T=A|0;return A>0||A===T?T:T-1}function S(A){for(var T,P,L=1,F=A.length,Z=A[0]+"";L<F;){for(T=A[L++]+"",P=a-T.length;P--;T="0"+T);Z+=T}for(F=Z.length;Z.charCodeAt(--F)===48;);return Z.slice(0,F+1||1)}function O(A,T){var P,L,F=A.c,Z=T.c,W=A.s,J=T.s,ne=A.e,Y=T.e;if(!W||!J)return null;if(P=F&&!F[0],L=Z&&!Z[0],P||L)return P?L?0:-J:W;if(W!=J)return W;if(P=W<0,L=ne==Y,!F||!Z)return L?0:!F^P?1:-1;if(!L)return ne>Y^P?1:-1;for(J=(ne=F.length)<(Y=Z.length)?ne:Y,W=0;W<J;W++)if(F[W]!=Z[W])return F[W]>Z[W]^P?1:-1;return ne==Y?0:ne>Y^P?1:-1}function R(A,T,P,L){if(A<T||A>P||A!==i(A))throw Error(n+(L||"Argument")+(typeof A=="number"?A<T||A>P?" out of range: ":" not an integer: ":" not a primitive number: ")+String(A))}function B(A){var T=A.c.length-1;return g(A.e/a)==T&&A.c[T]%2!=0}function q(A,T){return(A.length>1?A.charAt(0)+"."+A.slice(1):A)+(T<0?"e":"e+")+T}function N(A,T,P){var L,F;if(T<0){for(F=P+".";++T;F+=P);A=F+A}else if(L=A.length,++T>L){for(F=P,T-=L;--T;F+=P);A+=F}else T<L&&(A=A.slice(0,T)+"."+A.slice(T));return A}t=k(),t.default=t.BigNumber=t,typeof define=="function"&&define.amd?define(function(){return t}):typeof Ot<"u"&&Ot.exports?Ot.exports=t:(e||(e=typeof self<"u"&&self?self:window),e.BigNumber=t)})(jr)});var Vr=It((As,Hr)=>{var zr=hu(),Ur=Hr.exports;(function(){"use strict";function e(c){return c<10?"0"+c:c}var t=/[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,u=/[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,r,i,n={"\b":"\\b","	":"\\t","\n":"\\n","\f":"\\f","\r":"\\r",'"':'\\"',"\\":"\\\\"},o;function s(c){return u.lastIndex=0,u.test(c)?'"'+c.replace(u,function(p){var f=n[p];return typeof f=="string"?f:"\\u"+("0000"+p.charCodeAt(0).toString(16)).slice(-4)})+'"':'"'+c+'"'}function a(c,p){var f,m,k,g,S=r,O,R=p[c],B=R!=null&&(R instanceof zr||zr.isBigNumber(R));switch(R&&typeof R=="object"&&typeof R.toJSON=="function"&&(R=R.toJSON(c)),typeof o=="function"&&(R=o.call(p,c,R)),typeof R){case"string":return B?R:s(R);case"number":return isFinite(R)?String(R):"null";case"boolean":case"null":case"bigint":return String(R);case"object":if(!R)return"null";if(r+=i,O=[],Object.prototype.toString.apply(R)==="[object Array]"){for(g=R.length,f=0;f<g;f+=1)O[f]=a(f,R)||"null";return k=O.length===0?"[]":r?`[
-`+r+O.join(`,
-`+r)+`
-`+S+"]":"["+O.join(",")+"]",r=S,k}if(o&&typeof o=="object")for(g=o.length,f=0;f<g;f+=1)typeof o[f]=="string"&&(m=o[f],k=a(m,R),k&&O.push(s(m)+(r?": ":":")+k));else Object.keys(R).forEach(function(q){var N=a(q,R);N&&O.push(s(q)+(r?": ":":")+N)});return k=O.length===0?"{}":r?`{
-`+r+O.join(`,
-`+r)+`
-`+S+"}":"{"+O.join(",")+"}",r=S,k}}typeof Ur.stringify!="function"&&(Ur.stringify=function(c,p,f){var m;if(r="",i="",typeof f=="number")for(m=0;m<f;m+=1)i+=" ";else typeof f=="string"&&(i=f);if(o=p,p&&typeof p!="function"&&(typeof p!="object"||typeof p.length!="number"))throw new Error("JSON.stringify");return a("",{"":c})})})()});var Wr=It((Cs,Gr)=>{var Nt=null,$i=/(?:_|\\u005[Ff])(?:_|\\u005[Ff])(?:p|\\u0070)(?:r|\\u0072)(?:o|\\u006[Ff])(?:t|\\u0074)(?:o|\\u006[Ff])(?:_|\\u005[Ff])(?:_|\\u005[Ff])/,qi=/(?:c|\\u0063)(?:o|\\u006[Ff])(?:n|\\u006[Ee])(?:s|\\u0073)(?:t|\\u0074)(?:r|\\u0072)(?:u|\\u0075)(?:c|\\u0063)(?:t|\\u0074)(?:o|\\u006[Ff])(?:r|\\u0072)/,ji=function(e){"use strict";var t={strict:!1,storeAsString:!1,alwaysParseAsBig:!1,useNativeBigInt:!1,protoAction:"error",constructorAction:"error"};if(e!=null){if(e.strict===!0&&(t.strict=!0),e.storeAsString===!0&&(t.storeAsString=!0),t.alwaysParseAsBig=e.alwaysParseAsBig===!0?e.alwaysParseAsBig:!1,t.useNativeBigInt=e.useNativeBigInt===!0?e.useNativeBigInt:!1,typeof e.constructorAction<"u")if(e.constructorAction==="error"||e.constructorAction==="ignore"||e.constructorAction==="preserve")t.constructorAction=e.constructorAction;else throw new Error(`Incorrect value for constructorAction option, must be "error", "ignore" or undefined but passed ${e.constructorAction}`);if(typeof e.protoAction<"u")if(e.protoAction==="error"||e.protoAction==="ignore"||e.protoAction==="preserve")t.protoAction=e.protoAction;else throw new Error(`Incorrect value for protoAction option, must be "error", "ignore" or undefined but passed ${e.protoAction}`)}var u,r,i={'"':'"',"\\":"\\","/":"/",b:"\b",f:"\f",n:`
-`,r:"\r",t:"	"},n,o=function(S){throw{name:"SyntaxError",message:S,at:u,text:n}},s=function(S){return S&&S!==r&&o("Expected '"+S+"' instead of '"+r+"'"),r=n.charAt(u),u+=1,r},a=function(){var S,O="";for(r==="-"&&(O="-",s("-"));r>="0"&&r<="9";)O+=r,s();if(r===".")for(O+=".";s()&&r>="0"&&r<="9";)O+=r;if(r==="e"||r==="E")for(O+=r,s(),(r==="-"||r==="+")&&(O+=r,s());r>="0"&&r<="9";)O+=r,s();if(S=+O,!isFinite(S))o("Bad number");else return Nt==null&&(Nt=hu()),O.length>15?t.storeAsString?O:t.useNativeBigInt?BigInt(O):new Nt(O):t.alwaysParseAsBig?t.useNativeBigInt?BigInt(S):new Nt(S):S},c=function(){var S,O,R="",B;if(r==='"')for(var q=u;s();){if(r==='"')return u-1>q&&(R+=n.substring(q,u-1)),s(),R;if(r==="\\"){if(u-1>q&&(R+=n.substring(q,u-1)),s(),r==="u"){for(B=0,O=0;O<4&&(S=parseInt(s(),16),!!isFinite(S));O+=1)B=B*16+S;R+=String.fromCharCode(B)}else if(typeof i[r]=="string")R+=i[r];else break;q=u}}o("Bad string")},p=function(){for(;r&&r<=" ";)s()},f=function(){switch(r){case"t":return s("t"),s("r"),s("u"),s("e"),!0;case"f":return s("f"),s("a"),s("l"),s("s"),s("e"),!1;case"n":return s("n"),s("u"),s("l"),s("l"),null}o("Unexpected '"+r+"'")},m,k=function(){var S=[];if(r==="["){if(s("["),p(),r==="]")return s("]"),S;for(;r;){if(S.push(m()),p(),r==="]")return s("]"),S;s(","),p()}}o("Bad array")},g=function(){var S,O=Object.create(null);if(r==="{"){if(s("{"),p(),r==="}")return s("}"),O;for(;r;){if(S=c(),p(),s(":"),t.strict===!0&&Object.hasOwnProperty.call(O,S)&&o('Duplicate key "'+S+'"'),$i.test(S)===!0?t.protoAction==="error"?o("Object contains forbidden prototype property"):t.protoAction==="ignore"?m():O[S]=m():qi.test(S)===!0?t.constructorAction==="error"?o("Object contains forbidden constructor property"):t.constructorAction==="ignore"?m():O[S]=m():O[S]=m(),p(),r==="}")return s("}"),O;s(","),p()}}o("Bad object")};return m=function(){switch(p(),r){case"{":return g();case"[":return k();case'"':return c();case"-":return a();default:return r>="0"&&r<="9"?a():f()}},function(S,O){var R;return n=S+"",u=0,r=" ",R=m(),p(),r&&o("Syntax error"),typeof O=="function"?(function B(q,N){var A,T,P=q[N];return P&&typeof P=="object"&&Object.keys(P).forEach(function(L){T=B(P,L),T!==void 0?P[L]=T:delete P[L]}),O.call(q,N,P)})({"":R},""):R}};Gr.exports=ji});var mu=It((Ds,Lt)=>{var Zr=Vr().stringify,Jr=Wr();Lt.exports=function(e){return{parse:Jr(e),stringify:Zr}};Lt.exports.parse=Jr();Lt.exports.stringify=Zr});var ws={};gt(ws,{default:()=>cu});module.exports=Li(ws);var tt=class{constructor(t=1,u=0){this.limit=t;this.gapMs=u;this.limit=Math.max(1,Math.min(8,Math.floor(t)||1)),this.gapMs=Math.max(0,Math.min(2e3,u||0))}limit;gapMs;waiting=[];active=0;writer=!1;nextStart=0;timer;stopped;run(t,u){return this.stopped?Promise.reject(this.stopped):new Promise((r,i)=>{this.waiting.push({read:t,run:u,resolve:r,reject:i}),this.pump()})}stop(t){this.stopped=t,clearTimeout(this.timer),this.timer=void 0;for(let u of this.waiting.splice(0))u.reject(t)}pump(){if(!(this.stopped||this.timer||this.writer))for(;this.waiting.length&&this.active<this.limit;){let t=this.waiting[0];if(!t.read&&this.active)return;let u=this.nextStart-Date.now();if(u>0){this.timer=setTimeout(()=>{this.timer=void 0,this.pump()},u);return}if(this.waiting.shift(),this.active++,this.writer=!t.read,this.nextStart=Date.now()+this.gapMs,Promise.resolve().then(t.run).then(t.resolve,t.reject).finally(()=>{this.active--,t.read||(this.writer=!1),this.pump()}),this.writer)return}}};var Rt=class{constructor(t,u,r,i=20*1024*1024){this.fetch=t;this.create=u;this.revoke=r;this.limit=i}fetch;create;revoke;limit;queue=new tt(2,100);pending=new Map;ready=new Map;disposed=!1;peek(t){return this.ready.get(t)?.source}load(t){if(this.disposed)return Promise.reject(Error("\u5C01\u9762\u7F13\u5B58\u5DF2\u5173\u95ED\u3002"));let u=this.peek(t);if(u)return Promise.resolve(u);let r=this.pending.get(t);if(r)return r;let i=this.queue.run(!0,async()=>{let n=await this.fetch(t);if(this.disposed)throw Error("\u5C01\u9762\u9875\u9762\u5DF2\u5173\u95ED\u3002");if(n.status===403)throw Error("HTTP 403\uFF1A\u5C01\u9762\u5A92\u4F53\u670D\u52A1\u5668\u62D2\u7EDD\u8BBF\u95EE\u3002\u6B64\u9519\u8BEF\u4E0D\u8868\u793A\u767B\u5F55 Token \u5931\u6548\u3002");if(n.status<200||n.status>=300)throw Error("\u5C01\u9762\u8BF7\u6C42\u5931\u8D25\uFF1AHTTP "+n.status);let o=n.contentType.split(";")[0].trim().toLowerCase();if(!/^(image\/(png|jpe?g|gif|webp|avif|bmp)|video\/(mp4|webm|quicktime))$/.test(o))throw Error("\u5C01\u9762\u54CD\u5E94\u4E0D\u662F\u652F\u6301\u7684\u56FE\u7247\u6216\u89C6\u9891\uFF08"+(o||"\u672A\u77E5\u7C7B\u578B")+"\uFF09\uFF0C\u672A\u5C06\u9519\u8BEF\u9875\u5F53\u4F5C\u5C01\u9762\u3002");if(!n.bytes.byteLength||n.bytes.byteLength>this.limit)throw Error("\u5C01\u9762\u9884\u89C8\u4E3A\u7A7A\u6216\u8D85\u8FC7 20 MB\uFF1B\u8F83\u5927\u89C6\u9891\u8BF7\u540C\u6B65\u540E\u4ECE\u672C\u5730\u67E5\u770B\u3002");for(;this.ready.size&&(this.ready.size>=24||[...this.ready.values()].reduce((a,c)=>a+c.bytes,0)+n.bytes.byteLength>64*1024*1024);){let a=this.ready.keys().next().value;this.revoke(this.ready.get(a).source),this.ready.delete(a)}let s=this.create(n.bytes,o);return this.ready.set(t,{source:s,bytes:n.bytes.byteLength}),s});return this.pending.set(t,i),i.then(()=>this.pending.delete(t),()=>this.pending.delete(t)),i}dispose(){this.disposed=!0,this.queue.stop(Error("\u5C01\u9762\u7F13\u5B58\u5DF2\u5173\u95ED\u3002"));for(let t of this.ready.values())this.revoke(t.source);this.ready.clear()}};var j=require("obsidian");function Pe(e){let t=e.trim();for(let u=0;u<3;u++)(t.startsWith('"')&&t.endsWith('"')||t.startsWith("'")&&t.endsWith("'"))&&(t=t.slice(1,-1).trim()),t=t.replace(/^(?:Authorization\s*[:：]\s*)/i,"").replace(/^Bearer\s+/i,"").trim();if(t=t.replace(/[\s\u200B-\u200D\u2060\uFEFF]/g,""),t&&/[^\x21-\x7e]/.test(t))throw Error("Token \u5305\u542B\u65E0\u6548\u5B57\u7B26\uFF0C\u8BF7\u53EA\u7C98\u8D34 Token \u672C\u8EAB\u3002");return t}function pe(e,t=[]){let u=e,r=typeof e=="string"?e:[u?.name,u?.code,u?.message,u?.cause?.code,u?.cause?.message].filter(Boolean).join(" \xB7 ")||"\u5E95\u5C42\u7F51\u7EDC\u7EC4\u4EF6\u672A\u63D0\u4F9B\u9519\u8BEF\u8BE6\u60C5";for(let i of t.filter(Boolean))r=r.split(i).join("[\u51ED\u8BC1\u5DF2\u9690\u85CF]");return r.replace(/eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+/g,"[Token \u5DF2\u9690\u85CF]").replace(/mtk_[A-Za-z0-9_-]+/g,"[\u5BC6\u94A5\u5DF2\u9690\u85CF]").replace(/(Authorization|flush-token)\s*[:=]\s*[^\s,;}]+/gi,"$1: [\u5DF2\u9690\u85CF]").replace(/https?:\/\/[^\s)]+/g,i=>{try{let n=new URL(i);return n.origin+n.pathname}catch{return"[\u5730\u5740\u5DF2\u9690\u85CF]"}}).slice(0,600)}function Br(e){return/ENOTFOUND|EAI_AGAIN|ERR_NAME_NOT_RESOLVED/i.test(e)?"\u57DF\u540D\u89E3\u6790\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5 DNS \u6216\u4EE3\u7406\u3002":/CERT|SSL|TLS|certificate/i.test(e)?"HTTPS \u8BC1\u4E66\u6821\u9A8C\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7CFB\u7EDF\u65F6\u95F4\u3001\u8BC1\u4E66\u6216 HTTPS \u4EE3\u7406\u3002":/TIMEOUT|TIMEDOUT|timed out/i.test(e)?"\u8FDE\u63A5\u8D85\u65F6\uFF0C\u8BF7\u68C0\u67E5\u5F53\u524D\u7F51\u7EDC\u6216\u4EE3\u7406\u3002":/ECONNREFUSED|ERR_PROXY|ERR_TUNNEL/i.test(e)?"\u8FDE\u63A5\u88AB\u62D2\u7EDD\u6216\u4EE3\u7406\u4E0D\u53EF\u7528\uFF0C\u8BF7\u68C0\u67E5\u4EE3\u7406\u8BBE\u7F6E\u3002":/header|character|ByteString/i.test(e)?"\u8BF7\u6C42\u5934\u683C\u5F0F\u9519\u8BEF\uFF0C\u8BF7\u91CD\u65B0\u7C98\u8D34 Token\u3002":"\u672A\u5B8C\u6210\u8BF7\u6C42\uFF0C\u8BF7\u68C0\u67E5 Obsidian \u7684\u7F51\u7EDC\u6743\u9650\u3001\u4EE3\u7406\u548C\u8FDE\u63A5\u3002"}function Pi(e,t,u,r){let i=t==="GET"||t==="HEAD",n={...u};for(let s of Object.keys(n))(i&&s.toLowerCase()==="content-type"||n[s]==null)&&delete n[s];let o={url:e,method:t,headers:n,throw:!1};return!i&&r!==void 0&&(o.body=r),o}function Bi(e){let t=e,u=Number(t?.status??t?.statusCode??t?.response?.status);return u>=400&&u<=599?u:0}function Mt(e,t){return new Promise((u,r)=>{let i=setTimeout(()=>r(Error("ETIMEDOUT\uFF1A\u8BF7\u6C42\u8D85\u65F6\uFF1B\u5982\u4E3A\u4E0A\u4F20\uFF0C\u8BF7\u5148\u6838\u5BF9\u4E91\u7AEF\u7ED3\u679C\uFF0C\u52FF\u76F4\u63A5\u91CD\u590D\u63D0\u4EA4\u3002")),t);e.then(n=>{clearTimeout(i),u(n)},n=>{clearTimeout(i),r(n)})})}function Pr(e,t){return async(u,r,i,n)=>{let o=Pi(u,r,i,n);try{return await Mt(e(o),45e3)}catch(s){let a=Bi(s);if(a)return{status:a,headers:{},text:JSON.stringify({code:a,msg:"HTTP \u8BF7\u6C42\u88AB\u62D2\u7EDD\uFF1A"+pe(s,Object.values(i))})};let c=Object.entries(i).filter(([f])=>/authorization|flush-token/i.test(f)).map(([,f])=>f),p=pe(s,c);if(t&&(r==="GET"||r==="HEAD")&&!/CERT|SSL|TLS|certificate/i.test(p))try{return await t(u,r,o.headers??{})}catch(f){throw Error("Obsidian \u8BF7\u6C42\uFF1A"+p+"\uFF1B\u517C\u5BB9\u8BF7\u6C42\uFF1A"+pe(f,c))}throw Error(p)}}}function $r(e,t,u="auto"){let r=Pr(e);if(u==="native")return r;if(u==="direct"&&!t)return async()=>{throw Error("\u6B64\u8BBE\u5907\u6CA1\u6709\u684C\u9762 HTTPS \u901A\u9053\uFF0C\u8BF7\u5728\u8BBE\u7F6E\u4E2D\u9009\u62E9\u201C\u81EA\u52A8\u201D\u6216\u201CObsidian \u539F\u751F\u201D\u3002")};if(!t)return r;let i=t,n=u==="direct"?i:Pr(o=>i(o.url,o.method??"GET",o.headers??{}),r);return(o,s,a,c)=>s==="GET"||s==="HEAD"?n(o,s,a,c):r(o,s,a,c)}var qr=async(e,t,u)=>{if(t!=="GET"&&t!=="HEAD")throw Error("\u517C\u5BB9\u901A\u9053\u4EC5\u652F\u6301\u53EA\u8BFB\u8BF7\u6C42\u3002");let r=require("node:https"),i=require("node:buffer").Buffer,n=new URL(e);if(n.protocol!=="https:")throw Error("\u53EA\u5141\u8BB8 HTTPS\u3002");function o(s,a){return new Promise((c,p)=>{let f=r.request(s,{method:t,headers:{...u,"Accept-Encoding":"identity"},timeout:3e4},k=>{let g=k.statusCode??0;if([301,302,303,307,308].includes(g)&&k.headers.location){k.resume();let R=new URL(k.headers.location,s);if(R.origin!==n.origin||R.protocol!=="https:"||R.username||R.password||a>=3){p(Error("\u517C\u5BB9\u901A\u9053\u62D2\u7EDD\u8DE8\u7AD9\u6216\u5FAA\u73AF\u91CD\u5B9A\u5411\u3002"));return}o(R,a+1).then(c,p);return}let S=[],O=0;k.on("data",R=>{if(O+=R.length,O>67108864){f.destroy(Error("\u54CD\u5E94\u8D85\u8FC7 64 MB\u3002"));return}S.push(R)}),k.on("error",p),k.on("end",()=>c({status:g,headers:Object.fromEntries(Object.entries(k.headers).map(([R,B])=>[R,Array.isArray(B)?B.join(","):String(B??"")])),text:i.concat(S).toString("utf8")}))}),m=setTimeout(()=>f.destroy(Error("ETIMEDOUT\uFF1AHTTPS \u8BF7\u6C42\u8D85\u8FC7 45 \u79D2")),45e3);f.on("close",()=>clearTimeout(m)),f.on("timeout",()=>f.destroy(Error("ETIMEDOUT\uFF1A\u517C\u5BB9\u8FDE\u63A5\u8D85\u65F6"))),f.on("error",p),f.end()})}return o(n,0)};var un=Lr(mu());var gu={networkMode:"auto",baseUrl:"https://www.matrees.cn",rootFolder:"Matrees",userSecret:"matrees-user-token",adminSecret:"matrees-admin-token",readConcurrency:3,requestIntervalMs:150,downloadMedia:!0,maxMediaMB:200,extras:!0},Q=e=>e&&typeof e=="object"&&!Array.isArray(e)?e:{},se=e=>Array.isArray(e)?e.filter(t=>t&&typeof t=="object"):[],$=e=>e==null?"":typeof e=="object"?$(Q(e).definitionId??Q(e).tagId??Q(e).id??Q(e).value??Q(e).key):String(e),we=e=>e===!0||e===1||e==="1"||e==="true";function ut(e){return[...new Set((Array.isArray(e)?e:typeof e=="string"?e.split(","):e?[e]:[]).map($).filter(t=>t&&t!=="0"))]}function Je(e){return $(e.ownerUser?.userId??e.ownerId??e.ownerUserId??e.createUser?.userId??e.createUserId)}function rt(e){let t=e.ownerUser??e.createUser??{};return String(t.nickname??t.username??"\u672A\u77E5\u4F5C\u8005")}function Kr(e,t){if(Je(e)===t)return"\u6211\u62E5\u6709";let u={manager:"\u7BA1\u7406\u5458",auditor:"\u5BA1\u6838\u8005",co_creator:"\u5171\u521B\u8005",coCreator:"\u5171\u521B\u8005",proposer:"\u53C2\u4E0E\u8005",guild_leader:"\u516C\u4F1A\u4F1A\u957F",guild_vice_leader:"\u516C\u4F1A\u526F\u4F1A\u957F"},r=[...new Set((Array.isArray(e.permissions)?e.permissions:[]).map(n=>u[n]).filter(Boolean))],i=se(e.matreesGuilds).map(n=>String(n.title));return(r.length?"\u6211\u53C2\u4E0E \xB7 "+r.join(" / "):"\u6211\u53C2\u4E0E")+(i.length?" \xB7 \u516C\u4F1A\uFF1A"+[...new Set(i)].join(" / "):"")}function be(e,t=36){let u=String(e??"\u672A\u547D\u540D").normalize("NFC").replace(/[\x00-\x1f\x7f/\\:*?"<>|#\[\]^]/g,"_").replace(/[. ]+$/g,"").trim();return u=Array.from(u).slice(0,t).join(""),(!u||u==="."||u==="..")&&(u="\u672A\u547D\u540D"),/^(con|prn|aux|nul|com[0-9]|lpt[0-9])(?:\.|$)/i.test(u)&&(u="_"+u),u}function bu(e){let t=e.replace(/\\/g,"/");if(!t||t.startsWith("/")||t.split("/").some(u=>!u||u==="."||u===".."||u.startsWith(".")||/[:*?"<>|\x00-\x1f]/.test(u)))throw Error("\u4FDD\u5B58\u76EE\u5F55\u5FC5\u987B\u662F\u4ED3\u5E93\u5185\u7684\u666E\u901A\u76F8\u5BF9\u76EE\u5F55\uFF0C\u4F8B\u5982 Matrees\u3002");return t.replace(/\/+$/,"")}function ze(e,t){try{if(!String(e??"").trim())return"";let u=new URL(String(e),t);return u.protocol==="https:"&&!u.username&&!u.password?u.href:""}catch{return""}}function bt(e){let t=new URL(e);if(t.protocol!=="https:"||t.username||t.password||t.search||t.hash||t.pathname!=="/")throw Error("API \u5730\u5740\u5FC5\u987B\u4E3A HTTPS \u6839\u57DF\u540D\u3002");return t.origin}var re=e=>String(e??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"),he=e=>String(e??"").replace(/[\\`*_[\]<>|]/g,"\\$&").replace(/[\r\n]/g," "),fe=(e,t)=>`[[${e.replace(/\.md$/,"")}${t?"|"+String(t).replace(/[\]|\r\n]/g," "):""}]]`;function xt(e){return/video/i.test(String(e.coverType??e.mediaType??""))||/\.(mp4|webm|mov|m4v)(?:[?#]|$)/i.test(String(e.coverUrl??e.mediaUrl??""))}async function Be(e){let t=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(e));return Array.from(new Uint8Array(t),u=>u.toString(16).padStart(2,"0")).join("")}function Ue(e){return String(e??"\u672A\u77E5\u9519\u8BEF").replace(/eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+/g,"[Token \u5DF2\u9690\u85CF]").replace(/mtk_[A-Za-z0-9_-]+/g,"[\u5BC6\u94A5\u5DF2\u9690\u85CF]")}function Pt(e){return Array.isArray(e)?e.map(Pt):e&&typeof e=="object"?Object.fromEntries(Object.entries(e).filter(([t])=>!/^(token|flushToken|authorization|password|phone|email|phoneRegionCode|energyBalance|matterBalance)$/i.test(t)).map(([t,u])=>[t,Pt(u)])):e}async function He(e,t,u=1){let r=new Array(e.length),i=0,n=!1,o;if(await Promise.all(Array.from({length:Math.min(Math.max(1,Math.floor(u)||1),e.length)},async()=>{for(;!n;){let s=i++;if(s>=e.length)break;try{r[s]=await t(e[s])}catch(a){n||(n=!0,o=a)}}})),n)throw o;return r}function Bt(e){let t=Number(e);return Number.isFinite(t)?Math.max(1,Math.min(8,Math.floor(t))):3}function Ce(e,t){let u=typeof e.cover=="object"?e.cover?.url??e.cover?.src:e.cover;for(let r of[e.coverUrl,e.cover_url,e.mediaUrl,u])if(typeof r=="string"&&/^(https:\/\/|\/)/.test(r)){let i=ze(r,t);if(i)return i}return""}var zi=(0,un.default)({storeAsString:!0,protoAction:"error",constructorAction:"error"});function Yr(e){return zi.parse(e)}var Ee=class extends Error{constructor(u,r,i,n){super(`${r}\uFF08${u}\uFF0C${i.split("?")[0]}\uFF09`);this.code=u;this.endpoint=i;this.diagnostic=n}code;endpoint;diagnostic};async function Qr(e){let t=Yr(e);if(t?.encrypted===!0&&typeof t.data=="string"){let u=Uint8Array.from(atob(t.data),o=>o.charCodeAt(0)),r=new TextEncoder().encode("MatreesEncryptionKey2024Secure32".padEnd(32,"\0").slice(0,32)),i=await crypto.subtle.importKey("raw",r,{name:"AES-GCM"},!1,["decrypt"]),n=await crypto.subtle.decrypt({name:"AES-GCM",iv:u.slice(0,12),tagLength:128},i,u.slice(12));t=Yr(new TextDecoder().decode(n))}return Q(t)}function en(e){if(Array.isArray(e))return{rows:se(e),pages:1};let t=Q(e),u=["contents","records","items","list"].find(r=>Array.isArray(t[r]));if(!u)throw Error("\u5217\u8868\u8FD4\u56DE\u7ED3\u6784\u4E0E\u5DF2\u6838\u5BF9\u63A5\u53E3\u4E0D\u7B26\uFF0C\u5DF2\u505C\u6B62\uFF0C\u907F\u514D\u9759\u9ED8\u6F0F\u5BFC\u3002");return{rows:se(t[u]),pages:t.pages==null?void 0:Number(t.pages),total:t.total==null?void 0:Number(t.total),current:t.curPage==null?void 0:Number(t.curPage)}}var $t=class{constructor(t,u,r,i,n,o={}){this.token=u;this.mode=r;this.transport=i;this.onToken=n;if(this.scheduler=new tt(o.readConcurrency??1,o.requestIntervalMs??0),this.base=bt(t),this.token=Pe(u),!this.token)throw Error("\u8BF7\u5148\u586B\u5199 Token\u3002")}token;mode;transport;onToken;haltOnRefusal=!1;onError;get isClosed(){return this.closed}base;user=null;invalid=!1;refreshing=null;lastRefreshAt=0;allowed=new Set;closed=!1;scheduler;async call(t,u={},r,i="GET",n,o={}){return this.scheduler.run(i==="GET"||i==="HEAD",async()=>{try{return await this.performCall(t,u,r,i,n,o)}catch(s){throw this.onError?.(s),this.haltOnRefusal&&s instanceof Ee&&[403,429].includes(s.code)&&this.close(),s}})}close(){this.closed=!0,this.allowed.clear(),this.scheduler.stop(Error("\u8FDE\u63A5\u5DF2\u88AB\u5173\u95ED\uFF0C\u8BF7\u91CD\u65B0\u8FDE\u63A5\u3002"))}async performCall(t,u={},r,i="GET",n,o={},s=0){if(this.refreshing&&await this.refreshing,this.closed)throw Error("\u8FDE\u63A5\u5DF2\u88AB\u5207\u6362\u6216\u5173\u95ED\uFF0C\u8BF7\u91CD\u65B0\u8FDE\u63A5\u3002");if(this.invalid)throw Error("\u767B\u5F55\u5DF2\u5931\u6548\uFF0C\u8BF7\u91CD\u65B0\u586B\u5199 Token\u3002");if(!/^\/mt\/[a-zA-Z0-9_/?=&.%+-]+$/.test(t)||t.includes(".."))throw Error("\u65E0\u6548 API \u8DEF\u5F84\u3002");let a=new URL(t,this.base);for(let[N,A]of Object.entries({...u,...r?{worldId:r}:{}}))if(A!=null&&A!=="")for(let T of Array.isArray(A)?A:[A])a.searchParams.append(N,String(T));let c=this.token,p={Authorization:c,Accept:"application/json","X-Matrees-Platform":"web",...n===void 0?{}:{"Content-Type":"application/json"}};for(let[N,A]of Object.entries(o))["workId","novelId"].includes(N)&&(p[N]=A);r&&(p.WorldId=r);let f;try{f=await this.transport(a.href,i,p,n===void 0?void 0:JSON.stringify(n))}catch(N){let A=pe(N,[this.token,c]);throw new Ee(0,Br(A)+" \u8BE6\u60C5\uFF1A"+A,t,{at:new Date().toISOString(),method:i,origin:a.origin,endpoint:a.pathname,params:Object.fromEntries([...a.searchParams].filter(([T])=>["worldId","definitionSetId","page","size"].includes(T))),httpStatus:0,contentType:"",responseKind:"transport-error",message:A})}if(this.closed)throw Error("\u8FDE\u63A5\u5DF2\u88AB\u5207\u6362\u6216\u5173\u95ED\uFF0C\u5DF2\u5FFD\u7565\u65E7\u54CD\u5E94\u3002");let m=N=>Object.entries(f.headers).find(([A])=>A.toLowerCase()===N)?.[1]??"",k=N=>pe(N,[this.token,c]).replace(/[\r\n\t]/g," ").slice(0,240),g={at:new Date().toISOString(),method:i,origin:a.origin,endpoint:a.pathname,params:Object.fromEntries([...a.searchParams].filter(([N])=>["worldId","definitionSetId","page","size","folderId","workId","myGuilds","guildId"].includes(N)).map(([N,A])=>[N,k(A)])),httpStatus:f.status,contentType:k(m("content-type")),responseKind:f.text.trim()?/^\s*</.test(f.text)?"html/xml":"unknown":"empty",requestId:k(m("x-request-id")||m("x-trace-id")||m("cf-ray")),server:k(m("server")),retryAfter:k(m("retry-after"))};g.responseHint=/Invalid CORS request/i.test(f.text)?"\u54CD\u5E94\u5305\u542B Invalid CORS request\uFF08\u8DE8\u57DF\u8BF7\u6C42\u88AB\u62D2\u7EDD\uFF09":/Too Many Requests/i.test(f.text)?"\u54CD\u5E94\u5305\u542B Too Many Requests":/captcha|verify you are human|challenge-platform/i.test(f.text)?"\u54CD\u5E94\u5305\u542B\u7F51\u9875\u9A8C\u8BC1\u63D0\u793A":void 0;let S=N=>new Ee(f.status,N,t,g),O=async()=>s||!["GET","HEAD"].includes(i)||!(this.refreshing||c!==this.token)?!1:(this.refreshing&&await this.refreshing,c!==this.token);if(f.status===401&&await O())return this.performCall(t,u,r,i,n,o,1);if(f.status===401)throw this.invalid=!0,this.allowed.clear(),S("Token \u5DF2\u5931\u6548\u6216\u672A\u88AB\u63A5\u53D7\uFF0C\u8BF7\u91CD\u65B0\u586B\u5199");let R;try{R=await Qr(f.text),g.responseKind="json"}catch{throw f.status===403?S("HTTP 403\uFF1A\u8BBE\u5B9A\u6216\u8D44\u6599\u8BF7\u6C42\u88AB\u62D2\u7EDD\uFF0C\u8FD4\u56DE\u5185\u5BB9\u4E0D\u662F Matrees JSON\u3002\u53EF\u80FD\u6765\u81EA\u8BBF\u95EE\u6743\u9650\u3001\u7F51\u7AD9\u7F51\u5173\u6216\u4EE3\u7406\uFF1B\u8BF7\u67E5\u770B\u9519\u8BEF\u8BE6\u60C5\uFF0C\u4E0D\u80FD\u636E\u6B64\u5224\u65AD Token \u5931\u6548"):f.status===429?S("HTTP 429\uFF1A\u8BF7\u6C42\u8FC7\u4E8E\u9891\u7E41\uFF0C\u5DF2\u505C\u6B62\u540C\u6B65\u3002\u8BF7\u7A0D\u540E\u91CD\u8BD5"+(g.retryAfter?"\uFF1BRetry-After\uFF1A"+g.retryAfter:"")):S(f.status>=400?"HTTP "+f.status+"\uFF1A\u670D\u52A1\u5668\u8FD4\u56DE\u975E JSON \u9519\u8BEF\u54CD\u5E94\uFF0C\u5DF2\u505C\u6B62":"\u54CD\u5E94\u4E0D\u662F\u53EF\u8BC6\u522B\u7684 Matrees JSON\uFF0C\u53EF\u80FD\u662F\u7F51\u7AD9\u9519\u8BEF\u9875\u6216\u4EE3\u7406\u8FD4\u56DE\u9875")}let B=Number(R.code??f.status);if(g.businessCode=B,g.message=k(String(R.msg??"")),f.status===403||f.status===429)throw S((f.status===403?"HTTP 403\uFF1A\u670D\u52A1\u7AEF\u62D2\u7EDD\u8BBF\u95EE\uFF0C\u5DF2\u505C\u6B62\u540C\u6B65\u3002":"HTTP 429\uFF1A\u8BF7\u6C42\u8FC7\u4E8E\u9891\u7E41\uFF0C\u5DF2\u505C\u6B62\u540C\u6B65\u3002")+g.message);if([401,402,415,416].includes(B)&&await O())return this.performCall(t,u,r,i,n,o,1);if([401,402,415,416].includes(B))throw this.invalid=!0,this.allowed.clear(),new Ee(B,"Token \u5DF2\u8FC7\u671F\u6216\u4F1A\u8BDD\u88AB\u64A4\u9500",t,g);if(f.status<200||f.status>=300||![0,200].includes(B))throw new Ee(B,g.message||"\u670D\u52A1\u7AEF\u62D2\u7EDD\u8BF7\u6C42",t,g);let q=Object.entries(f.headers).find(([N])=>N.toLowerCase()==="flush-token")?.[1];return q&&c===this.token&&!t.includes("/token/flush")?await this.refreshToken(q,c):this.refreshing&&await this.refreshing,R.data}async refreshToken(t,u){if(this.refreshing)return this.refreshing;if(u!==this.token||Date.now()-this.lastRefreshAt<2e3)return;this.lastRefreshAt=Date.now();let r=(async()=>{try{let i=await this.transport(this.base+"/mt/common/token/flush","POST",{Authorization:u,"flush-token":t,Accept:"application/json","X-Matrees-Platform":"web"}),n=await Qr(i.text);if(this.closed)throw Error("\u8FDE\u63A5\u5DF2\u5173\u95ED\uFF0C\u672A\u4FDD\u5B58\u65E7\u4F1A\u8BDD\u7684\u7EED\u671F\u7ED3\u679C\u3002");if(i.status<200||i.status>=300||Number(n.code)!==200)throw Error("\u670D\u52A1\u7AEF\u62D2\u7EDD\u767B\u5F55\u7EED\u671F\uFF08HTTP "+i.status+"\uFF09\u3002");let o=Pe(typeof n.data=="string"?n.data:n.data?.token??"");if(!o)throw Error("\u767B\u5F55\u7EED\u671F\u54CD\u5E94\u7F3A\u5C11\u6709\u6548 Token\u3002");this.token=o,await this.onToken?.(o)}catch(i){throw this.invalid=!0,this.allowed.clear(),new Ee(0,"\u767B\u5F55\u7EED\u671F\u6216\u65B0 Token \u4FDD\u5B58\u5931\u8D25\uFF1A"+pe(i,[this.token,u,t]),"/mt/common/token/flush")}})();this.refreshing=r;try{await r}finally{this.refreshing===r&&(this.refreshing=null)}}async login(){let t=Q(await this.call("/mt/user/getUserInfo"));if(!$(t.userId))throw Error("\u65E0\u6CD5\u4ECE\u670D\u52A1\u7AEF\u786E\u8BA4\u5F53\u524D\u7528\u6237\u3002");return this.user=t,t}async all(t,u={},r){let i=[],n=new Set,o="";for(let s=1;s<=1e4;s++){let a=await this.call(t,{...u,page:s,size:100},r),c=en(a);if(c.current!=null&&c.current!==s)throw Error(`\u5206\u9875\u672A\u524D\u8FDB\uFF1A${t}\u3002\u5DF2\u505C\u6B62\uFF0C\u907F\u514D\u6F0F\u5BFC\u3002`);let p=JSON.stringify(c.rows.map(f=>f.definitionId??f.worldId??f.mediaId??f.eventId??f.workId??f.id??f));if(s>1&&c.rows.length&&p===o)throw Error(`\u63A5\u53E3\u91CD\u590D\u8FD4\u56DE\u540C\u4E00\u9875\uFF1A${t}\u3002`);o=p;for(let f of c.rows){let m=JSON.stringify(f);n.has(m)||(n.add(m),i.push(f))}if(c.pages!=null&&s>=c.pages){if(c.total!=null&&i.length<c.total)throw Error(`\u5206\u9875\u6570\u91CF\u4E0D\u5B8C\u6574\uFF1A${t}\uFF08${i.length}/${c.total}\uFF09\u3002`);return i}if(!c.rows.length){if(c.total!=null&&i.length<c.total)throw Error(`\u5217\u8868\u63D0\u524D\u7ED3\u675F\uFF1A${t}\u3002`);return i}if(c.pages==null&&c.total!=null&&i.length>=c.total||c.pages==null&&c.total==null&&c.rows.length<100)return i}throw Error("\u5206\u9875\u8D85\u8FC7\u5B89\u5168\u4E0A\u9650\uFF0C\u672A\u6807\u8BB0\u4E3A\u540C\u6B65\u5B8C\u6210\u3002")}async userWorlds(){this.allowed.clear();let t=(await this.all("/mt/world/listMyWorlds")).filter(s=>Je(s)===$(this.user.userId)),u=await this.all("/mt/world/manager/list"),r=new Set(u.map(s=>$(s.worldId)).filter(Boolean)),i=new Map,n=s=>{let a=$(s.worldId);if(!a)throw Error("\u4E16\u754C\u5217\u8868\u7F3A\u5C11 worldId\uFF0C\u5DF2\u505C\u6B62\u8BFB\u53D6\u3002");let c=i.get(a)??{};i.set(a,{...c,...s,coverUrl:Ce(s,this.base)||Ce(c,this.base),permissions:[...new Set([...tn(c.permissions),...tn(s.permissions)])],matreesGuilds:[...se(c.matreesGuilds),...se(s.matreesGuilds)]})};for(let s of[...t,...u])n(s);let o=await this.all("/mt/guild/list",{myGuilds:!0});for(let s of o){let a=$(s.guildId);if(!a)throw Error("\u6211\u7684\u516C\u4F1A\u5217\u8868\u7F3A\u5C11 guildId\uFF0C\u5DF2\u505C\u6B62\u8BFB\u53D6\u3002");let c=s.myRole?s:Q(await this.call("/mt/guild/getInfo/"+encodeURIComponent(a)));if(!["LEADER","VICE_LEADER","MEMBER"].includes(String(c.myRole??"")))continue;let p=await this.all("/mt/guild/world/list/"+encodeURIComponent(a));for(let f of p){let m={...Q(f.world),...f},k=Q(m.guildWorld);if(k.guildId&&$(k.guildId)!==a)throw Error("\u516C\u4F1A\u4E16\u754C\u5173\u8054 ID \u4E0D\u4E00\u81F4\uFF0C\u5DF2\u505C\u6B62\u8BFB\u53D6\u3002");if(k.status!=="APPROVED")continue;let g=$(m.worldId??k.worldId);if(!g)throw Error("\u516C\u4F1A\u4E16\u754C\u7F3A\u5C11 worldId\u3002");r.add(g),n({...m,worldId:g,matreesGuilds:[{guildId:a,title:c.title??s.title??a,role:c.myRole}]})}}return{rows:[...i.values()],participating:r}}async worlds(t=1,u=""){if(this.user||await this.login(),this.mode==="user"){let{rows:i}=await this.userWorlds(),n=i.filter(o=>String(o.title??"").toLowerCase().includes(u.toLowerCase()));return this.allowed=new Set(i.map(o=>$(o.worldId))),await this.hydrateCovers(n),{rows:n,pages:1,total:n.length}}let r=en(await this.call("/mt/world/list",{page:t,size:24,...u?{title:u}:{}}));for(let i of r.rows)this.allowed.add($(i.worldId));return await this.hydrateCovers(r.rows),{rows:r.rows,pages:r.pages??1,total:r.total??r.rows.length}}async hydrateCovers(t){for(let u of t)if(!(Ce(u,this.base)&&u.title))try{let r=Q(await this.call("/mt/world/getWorldInfo",{},$(u.worldId)));if($(r.worldId)!==$(u.worldId))throw Error("\u4E16\u754C\u8BE6\u60C5 ID \u4E0D\u5339\u914D\u3002");for(let[i,n]of Object.entries(r))n!=null&&(u[i]=n)}catch(r){if(this.invalid||r instanceof Ee&&r.code===429)throw r;u.matreesCoverWarning="\u5C01\u9762\u8BE6\u60C5\u8BFB\u53D6\u5931\u8D25\uFF1A"+pe(r)}}async assertWorld(t){this.user||await this.login(),this.allowed.delete(t);let u=!1,r={};if(this.mode==="user"){let n=await this.userWorlds();if(r=n.rows.find(o=>$(o.worldId)===t)??{},u=n.participating.has(t),!n.rows.some(o=>$(o.worldId)===t))throw Error("\u666E\u901A\u5165\u53E3\u4EC5\u5141\u8BB8\u8BFB\u53D6\u5F53\u524D\u8D26\u53F7\u62E5\u6709\u6216\u53C2\u4E0E\u7684\u4E16\u754C\u89C2\uFF1B\u8BE5\u4E16\u754C\u4E0D\u5728\u6700\u65B0\u5217\u8868\u4E2D\u3002")}let i=Q(await this.call("/mt/world/getWorldInfo",{},t));if($(i.worldId)!==t)throw Error("\u4E16\u754C ID \u4E0E\u670D\u52A1\u7AEF\u8FD4\u56DE\u4E0D\u4E00\u81F4\u3002");if(this.mode==="user"&&!u&&Je(i)!==$(this.user.userId))throw Error("\u4E16\u754C\u89C2\u5F52\u5C5E\u5DF2\u53D8\u5316\uFF0C\u4E14\u5F53\u524D\u8D26\u53F7\u4E0D\u5728\u53C2\u4E0E\u5217\u8868\u4E2D\u3002");return this.allowed.add(t),{...r,...i,coverUrl:Ce(i,this.base)||Ce(r,this.base),matreesGuilds:r.matreesGuilds??[]}}async read(t,u,r){return this.allowed.has(r)||await this.assertWorld(r),this.call(t,u,r)}async createDefinitionProposal(t,u){let r=await this.assertWorld(t);if(Je(r)!==$(this.user.userId))throw Error("\u4E0A\u4F20\u547D\u4EE4\u53EA\u5141\u8BB8\u4FEE\u6539\u5F53\u524D\u8D26\u53F7\u81EA\u5DF1\u62E5\u6709\u7684\u4E16\u754C\u89C2\u3002");if(u.operateType!=="create"&&u.operateType!=="update")throw Error("\u4EC5\u652F\u6301\u521B\u5EFA\u6216\u66F4\u65B0\u63D0\u6848\u3002");return Q(await this.call("/mt/proposal/definition",{},t,"POST",{...u,worldId:t}))}};function tn(e){return Array.isArray(e)?e.filter(t=>typeof t=="string"):[]}async function rn(e,t,u,r,i={}){e.haltOnRefusal=!0;try{return await Ui(e,t,u,r,i)}finally{e.haltOnRefusal=!1}}async function Ui(e,t,u,r,i){let n=i.readConcurrency==null?1:Bt(i.readConcurrency);r("\u9A8C\u8BC1\u4E16\u754C\u89C2\u5F52\u5C5E\u4E0E\u516C\u4F1A\u5173\u7CFB\u2026",{phase:"\u6388\u6743"});let o=await e.assertWorld(t);await i.onWorld?.(o);let s=[],a={unavailable:{},world:o,concept:{},definitions:[],tree:[],memberships:{},illustrationTree:[],illustrations:[],galleries:{},extra:{},events:[],maps:[],works:[],chapters:[],warnings:s,fetchedAt:new Date().toISOString()};function c(A,T){s.push(A),r(A,{phase:"\u8BFB\u53D6\u8D44\u6599",issue:{category:"\u6B63\u6587/\u8D44\u6599",entityId:T}})}async function p(A,T,P){try{return await T()}catch(L){if(e.invalid||L instanceof Ee&&[403,429].includes(L.code))throw L;return c(A+"\uFF1A"+Ue(L instanceof Error?L.message:L)),P}}if(r("\u8BFB\u53D6\u4E16\u754C\u6982\u5FF5\u548C\u8BBE\u5B9A\u96C6\u76EE\u5F55\u2026",{phase:"\u4E16\u754C\u8D44\u6599"}),a.concept=Q(await e.read("/mt/concept/getInfo",{},t)),!Object.hasOwn(a.concept,"content")&&o.statistics?.conceptWordCount===0&&$(a.concept.worldId)===t&&(a.concept.content=""),a.concept.worldId&&$(a.concept.worldId)!==t)throw Error("\u4E16\u754C\u6982\u5FF5\u7684\u4E16\u754C ID \u4E0D\u5339\u914D\uFF0C\u5DF2\u505C\u6B62\u3002");a.concept.content==null&&(a.conceptIssue="\u4E16\u754C\u6982\u5FF5\u672A\u8FD4\u56DE\u6B63\u6587\uFF0C\u4FDD\u7559\u5DF2\u6709\u9875\u9762\uFF1B\u9996\u6B21\u540C\u6B65\u521B\u5EFA\u5360\u4F4D\u9875\u3002",c(a.conceptIssue)),a.tree=se(await e.read("/mt/definition/listRootTree",{},t));let f=new Map,m=new Set,k=new Set;function g(A,T,P=!1){for(let L of A){let F=$(L.definitionId);if(!F)throw Error("\u8BBE\u5B9A\u6761\u76EE\u7F3A\u5C11 definitionId\uFF0C\u505C\u6B62\u540C\u6B65\u3002");if(L.worldId&&$(L.worldId)!==t)throw Error("\u8FD4\u56DE\u4E86\u5176\u4ED6\u4E16\u754C\u89C2\u7684\u8BBE\u5B9A\uFF0C\u5DF2\u505C\u6B62\u3002");let Z=f.get(F)??{};f.set(F,{...Z,...L,...P?{definitionSet:!0,father:L.father??T??"0"}:{}}),(P||we(L.definitionSet))&&m.add(F),T&&(a.memberships[F]=[...new Set([...a.memberships[F]??[],T])]),se(L.children).length&&g(se(L.children),F,!0)}}for(g(a.tree,void 0,!0),g(await e.all("/mt/definition/listDefinitionAll",{},t));;){let A=[...m].filter(T=>!k.has(T));if(!A.length)break;await He(A,async T=>{k.add(T),r(`\u9010\u96C6\u8BFB\u53D6\u6302\u8F7D\u8BBE\u5B9A\uFF1A${f.get(T)?.title??T}`,{phase:"\u8BBE\u5B9A\u96C6\u76EE\u5F55",completed:k.size-1,total:m.size,entity:T}),g(await e.all("/mt/definition/listDefinitionAll",{definitionSetId:T},t),T)},n)}let S=new Set;for(;;){let A=[...f.keys()].filter(P=>!S.has(P));if(!A.length)break;await He(A,async P=>{r(`\u8BFB\u53D6\u8BBE\u5B9A\u6B63\u6587\uFF1A${f.get(P)?.title??P}`,{phase:"\u8BBE\u5B9A\u6B63\u6587",completed:S.size,total:f.size,entity:P});let L,F="";try{L=Q(await e.read("/mt/definition/getInfo/"+encodeURIComponent(P),{},t))}catch(Z){if(!(Z instanceof Ee&&Z.code===404))throw Z;L={...f.get(P),definitionId:P,worldId:t},F="\u8BBE\u5B9A\u8BE6\u60C5\u4E0D\u5B58\u5728\u6216\u5DF2\u5220\u9664\uFF08404\uFF09"}if($(L.definitionId)!==P||$(L.worldId)!==t)throw Error("\u8BBE\u5B9A\u8BE6\u60C5\u8EAB\u4EFD\u4E0D\u5339\u914D\u3002");if(we(L.isHidden)&&!we(L.hideUnlocked)&&(F="\u8BBE\u5B9A\u88AB\u9690\u85CF\u4E14\u5C1A\u672A\u6388\u6743\u8BFB\u53D6\u6B63\u6587"),!F&&L.content==null){let Z=[L.contentWordCount,L.wordCount,L.statistics?.wordCount];Z.some(W=>(typeof W=="number"||typeof W=="string"&&/^\d+$/.test(W))&&Number(W)===0)&&!Z.some(W=>Number(W)>0)?L.content="":F="\u8BBE\u5B9A\u8BE6\u60C5\u7F3A\u5C11\u6B63\u6587\uFF08\u4E0D\u80FD\u786E\u8BA4\u662F\u7A7A\u767D\u5185\u5BB9\uFF09"}g([L]),S.add(P),F&&(delete f.get(P).content,a.unavailable[P]=F,c(`${String(L.title??P)} [${P}]\uFF1A${F}\uFF1B\u4FDD\u7559\u65E7\u6B63\u6587\uFF0C\u9996\u6B21\u540C\u6B65\u521B\u5EFA\u5360\u4F4D\u9875\uFF0C\u7EE7\u7EED\u8BFB\u53D6\u5176\u4ED6\u8BBE\u5B9A\u3002`,P)),a.memberships[P]=[...new Set([...a.memberships[P]??[],...ut(L.belongIds??L.belongSets??L.belong)])],r(`\u8BBE\u5B9A\u6B63\u6587\u5DF2\u5904\u7406 ${S.size}/${f.size}`,{phase:"\u8BBE\u5B9A\u6B63\u6587",completed:S.size,total:f.size,entity:P})},n);let T=[...m].filter(P=>!k.has(P));await He(T,async P=>{k.add(P),g(await e.all("/mt/definition/listDefinitionAll",{definitionSetId:P},t),P)},n)}a.definitions=[...f.values()],r(`\u5DF2\u8BFB\u53D6 ${a.definitions.length} \u4E2A\u8BBE\u5B9A/\u8BBE\u5B9A\u96C6\uFF0C\u8BFB\u53D6\u63D2\u753B\u96C6\u2026`,{phase:"\u63D2\u753B\u96C6"});let O=await p("\u63D2\u753B\u76EE\u5F55",()=>e.read("/mt/illustration/tree",{},t),{});a.illustrationTree=se(Q(O).folders??O),a.illustrations=await p("\u63D2\u753B\u5217\u8868",()=>e.all("/mt/illustration/list",{},t),[]);let R=new Set;function B(A){for(let T of A)$(T.folderId)&&R.add($(T.folderId)),B(se(T.children))}B(a.illustrationTree);let q=new Map(a.illustrations.map(A=>[$(A.mediaId),A]));if(await He([...R],async A=>{for(let T of await p("\u63D2\u753B\u76EE\u5F55 "+A,()=>e.all("/mt/illustration/list",{folderId:A},t),[]))q.set($(T.mediaId),T)},n),a.illustrations=[...q.values()],await He(a.definitions,async A=>{(Number(A.relationCount?.illustrationCount)>0||ut(A.galleryImageIds).length||ut(A.galleryFolderIds).length)&&(a.galleries[$(A.definitionId)]=await p("\u8BBE\u5B9A\u63D2\u753B\u5173\u8054 "+String(A.title),()=>e.read("/mt/illustration/entityRefs",{itemType:"definition",itemId:$(A.definitionId)},t),{}))},n),u){r("\u8BFB\u53D6\u4E8B\u4EF6\u3001\u5386\u6CD5\u3001\u5173\u7CFB\u3001\u5730\u56FE\u548C\u4F5C\u54C1\u2026",{phase:"\u6269\u5C55\u8D44\u6599"}),a.extra.calendars=await p("\u5386\u6CD5",()=>e.read("/mt/calendar/list",{},t),null),a.extra.relations=await p("\u5173\u7CFB\u56FE\u8C31",()=>e.read("/mt/relation/graph/list",{},t),null),r("\u8BFB\u53D6\u4E8B\u4EF6\u2026",{phase:"\u6269\u5C55\u8D44\u6599"});let A=await p("\u4E8B\u4EF6\u5217\u8868",()=>e.all("/mt/event/list",{},t),[]);a.events=await He(A,L=>p("\u4E8B\u4EF6 "+String(L.title),async()=>({...L,...Q(await e.read("/mt/event/get/"+$(L.eventId),{},t))}),L),n);let T=new Set;async function P(L="0"){r("\u8BFB\u53D6\u5730\u56FE\u76EE\u5F55\uFF1A"+L,{phase:"\u6269\u5C55\u8D44\u6599"});let F=await p("\u5730\u56FE\u76EE\u5F55 "+L,()=>e.read("/mt/map/list/"+t+"/"+L,{},t),[]),Z=se(Array.isArray(F)?F:Q(F).contents??Q(F).maps);for(let W of Z){let J=$(W.mapId);if(!J||T.has(J))continue;T.add(J);let ne=await p("\u5730\u56FE "+J,async()=>({...W,...Q(await e.read("/mt/map/getInfo/"+J,{},t)),bindings:await e.read("/mt/map/bind/list/"+J,{},t)}),W);a.maps.push(ne),await P(J)}}await P(),r("\u8BFB\u53D6\u4F5C\u54C1\u5217\u8868\u2026",{phase:"\u6269\u5C55\u8D44\u6599"}),a.works=await p("\u4E16\u754C\u4F5C\u54C1",()=>e.all("/mt/work/worldList",{},t),[]);for(let L of a.works){let ne=function(Y){if(Array.isArray(Y)){Y.forEach(ne);return}let oe=Q(Y);oe.chapterId&&J.push(oe);for(let ae of["chapters","volumes","children","contents"])oe[ae]&&ne(oe[ae])};var N=ne;r("\u8BFB\u53D6\u4F5C\u54C1\uFF1A"+String(L.title??L.workId),{phase:"\u6269\u5C55\u8D44\u6599"});let F=$(L.workId);if(!F||L.type&&L.type!=="novel"){L.type&&L.type!=="novel"&&s.push(`\u4F5C\u54C1 ${L.title??F} \u4E3A ${L.type}\uFF0C\u5DF2\u4FDD\u5B58\u57FA\u7840\u6570\u636E\uFF1B\u5267\u672C\u5206\u573A/\u6F2B\u753B\u5206\u9875\u672A\u8F6C\u6362\u3002`);continue}let Z=await p("\u4F5C\u54C1\u8BE6\u60C5 "+F,()=>e.call("/mt/work/getWorkInfo",{},t,"GET",void 0,{workId:F}),{});if(Object.assign(L,Q(Z)),L.novelType==="short"){let Y=await p("\u77ED\u7BC7\u6B63\u6587 "+F,()=>e.call("/mt/novel/short/content",{},t,"GET",void 0,{novelId:F}),null);Y!=null&&a.chapters.push({...Q(Y),chapterId:F,workId:F,title:L.title,content:typeof Y=="string"?Y:Q(Y).content});continue}let W=await p("\u4F5C\u54C1\u7AE0\u8282 "+F,()=>e.read("/mt/novel/chapter/list",{workId:F},t),[]);a.extra["chapters-"+F]=W;let J=[];ne(W),await He(J,async Y=>{let oe=await p("\u7AE0\u8282 "+String(Y.title),()=>e.read("/mt/novel/chapter/getInfo/"+$(Y.chapterId),{},t),Y);a.chapters.push({...Q(oe),workId:F,volumeId:Y.volumeId??Q(oe).volumeId})},n)}}for(let A of[...a.definitions,...a.events,...a.illustrations,...a.maps,...a.works,...a.chapters])if(A.worldId&&$(A.worldId)!==t)throw Error("\u63A5\u53E3\u8FD4\u56DE\u5176\u4ED6\u4E16\u754C\u7684\u6570\u636E\uFF0C\u5DF2\u505C\u6B62\u4FDD\u5B58\u3002");return a}function nn(e,t,u){throw Error("运行时布局未初始化。")}function Hi(e){for(var t=1;t<arguments.length;t++){var u=arguments[t];for(var r in u)u.hasOwnProperty(r)&&(e[r]=u[r])}return e}function ku(e,t){return Array(t+1).join(e)}function Vi(e){return e.replace(/^\n*/,"")}function Gi(e){for(var t=e.length;t>0&&e[t-1]===`
-`;)t--;return e.substring(0,t)}var Wi=["ADDRESS","ARTICLE","ASIDE","AUDIO","BLOCKQUOTE","BODY","CANVAS","CENTER","DD","DIR","DIV","DL","DT","FIELDSET","FIGCAPTION","FIGURE","FOOTER","FORM","FRAMESET","H1","H2","H3","H4","H5","H6","HEADER","HGROUP","HR","HTML","ISINDEX","LI","MAIN","MENU","NAV","NOFRAMES","NOSCRIPT","OL","OUTPUT","P","PRE","SECTION","TABLE","TBODY","TD","TFOOT","TH","THEAD","TR","UL"];function Eu(e){return _u(e,Wi)}var an=["AREA","BASE","BR","COL","COMMAND","EMBED","HR","IMG","INPUT","KEYGEN","LINK","META","PARAM","SOURCE","TRACK","WBR"];function cn(e){return _u(e,an)}function Zi(e){return fn(e,an)}var ln=["A","TABLE","THEAD","TBODY","TFOOT","TH","TD","IFRAME","SCRIPT","AUDIO","VIDEO"];function Ji(e){return _u(e,ln)}function Xi(e){return fn(e,ln)}function _u(e,t){return t.indexOf(e.nodeName)>=0}function fn(e,t){return e.getElementsByTagName&&t.some(function(u){return e.getElementsByTagName(u).length})}var ye={};ye.paragraph={filter:"p",replacement:function(e){return`
-
-`+e+`
-
-`}};ye.lineBreak={filter:"br",replacement:function(e,t,u){return u.br+`
-`}};ye.heading={filter:["h1","h2","h3","h4","h5","h6"],replacement:function(e,t,u){var r=Number(t.nodeName.charAt(1));if(u.headingStyle==="setext"&&r<3){var i=ku(r===1?"=":"-",e.length);return`
-
-`+e+`
-`+i+`
-
-`}else return`
-
-`+ku("#",r)+" "+e+`
-
-`}};ye.blockquote={filter:"blockquote",replacement:function(e){return e=e.replace(/^\n+|\n+$/g,""),e=e.replace(/^/gm,"> "),`
-
-`+e+`
-
-`}};ye.list={filter:["ul","ol"],replacement:function(e,t){var u=t.parentNode;return u.nodeName==="LI"&&u.lastElementChild===t?`
-`+e:`
-
-`+e+`
-
-`}};ye.listItem={filter:"li",replacement:function(e,t,u){var r=u.bulletListMarker+"   ",i=t.parentNode;if(i.nodeName==="OL"){var n=i.getAttribute("start"),o=Array.prototype.indexOf.call(i.children,t);r=(n?Number(n)+o:o+1)+".  "}return e=e.replace(/^\n+/,"").replace(/\n+$/,`
-`).replace(/\n/gm,`
-`+" ".repeat(r.length)),r+e+(t.nextSibling&&!/\n$/.test(e)?`
-`:"")}};ye.indentedCodeBlock={filter:function(e,t){return t.codeBlockStyle==="indented"&&e.nodeName==="PRE"&&e.firstChild&&e.firstChild.nodeName==="CODE"},replacement:function(e,t,u){return`
-
-    `+t.firstChild.textContent.replace(/\n/g,`
-    `)+`
-
-`}};ye.fencedCodeBlock={filter:function(e,t){return t.codeBlockStyle==="fenced"&&e.nodeName==="PRE"&&e.firstChild&&e.firstChild.nodeName==="CODE"},replacement:function(e,t,u){for(var r=t.firstChild.getAttribute("class")||"",i=(r.match(/language-(\S+)/)||[null,""])[1],n=t.firstChild.textContent,o=u.fence.charAt(0),s=3,a=new RegExp("^"+o+"{3,}","gm"),c;c=a.exec(n);)c[0].length>=s&&(s=c[0].length+1);var p=ku(o,s);return`
-
-`+p+i+`
-`+n.replace(/\n$/,"")+`
-`+p+`
-
-`}};ye.horizontalRule={filter:"hr",replacement:function(e,t,u){return`
-
-`+u.hr+`
-
-`}};ye.inlineLink={filter:function(e,t){return t.linkStyle==="inlined"&&e.nodeName==="A"&&e.getAttribute("href")},replacement:function(e,t){var u=t.getAttribute("href");u&&(u=u.replace(/([()])/g,"\\$1"));var r=qt(t.getAttribute("title"));return r&&(r=' "'+r.replace(/"/g,'\\"')+'"'),"["+e+"]("+u+r+")"}};ye.referenceLink={filter:function(e,t){return t.linkStyle==="referenced"&&e.nodeName==="A"&&e.getAttribute("href")},replacement:function(e,t,u){var r=t.getAttribute("href"),i=qt(t.getAttribute("title"));i&&(i=' "'+i+'"');var n,o;switch(u.linkReferenceStyle){case"collapsed":n="["+e+"][]",o="["+e+"]: "+r+i;break;case"shortcut":n="["+e+"]",o="["+e+"]: "+r+i;break;default:var s=this.references.length+1;n="["+e+"]["+s+"]",o="["+s+"]: "+r+i}return this.references.push(o),n},references:[],append:function(e){var t="";return this.references.length&&(t=`
-
-`+this.references.join(`
-`)+`
-
-`,this.references=[]),t}};ye.emphasis={filter:["em","i"],replacement:function(e,t,u){return e.trim()?u.emDelimiter+e+u.emDelimiter:""}};ye.strong={filter:["strong","b"],replacement:function(e,t,u){return e.trim()?u.strongDelimiter+e+u.strongDelimiter:""}};ye.code={filter:function(e){var t=e.previousSibling||e.nextSibling,u=e.parentNode.nodeName==="PRE"&&!t;return e.nodeName==="CODE"&&!u},replacement:function(e){if(!e)return"";e=e.replace(/\r?\n|\r/g," ");for(var t=/^`|^ .*?[^ ].* $|`$/.test(e)?" ":"",u="`",r=e.match(/`+/gm)||[];r.indexOf(u)!==-1;)u=u+"`";return u+t+e+t+u}};ye.image={filter:"img",replacement:function(e,t){var u=qt(t.getAttribute("alt")),r=t.getAttribute("src")||"",i=qt(t.getAttribute("title")),n=i?' "'+i+'"':"";return r?"!["+u+"]("+r+n+")":""}};function qt(e){return e?e.replace(/(\n+\s*)+/g,`
-`):""}function dn(e){this.options=e,this._keep=[],this._remove=[],this.blankRule={replacement:e.blankReplacement},this.keepReplacement=e.keepReplacement,this.defaultRule={replacement:e.defaultReplacement},this.array=[];for(var t in e.rules)this.array.push(e.rules[t])}dn.prototype={add:function(e,t){this.array.unshift(t)},keep:function(e){this._keep.unshift({filter:e,replacement:this.keepReplacement})},remove:function(e){this._remove.unshift({filter:e,replacement:function(){return""}})},forNode:function(e){if(e.isBlank)return this.blankRule;var t;return(t=xu(this.array,e,this.options))||(t=xu(this._keep,e,this.options))||(t=xu(this._remove,e,this.options))?t:this.defaultRule},forEach:function(e){for(var t=0;t<this.array.length;t++)e(this.array[t],t)}};function xu(e,t,u){for(var r=0;r<e.length;r++){var i=e[r];if(Ki(i,t,u))return i}}function Ki(e,t,u){var r=e.filter;if(typeof r=="string"){if(r===t.nodeName.toLowerCase())return!0}else if(Array.isArray(r)){if(r.indexOf(t.nodeName.toLowerCase())>-1)return!0}else if(typeof r=="function"){if(r.call(e,t,u))return!0}else throw new TypeError("`filter` needs to be a string, array, or function")}function Yi(e){var t=e.element,u=e.isBlock,r=e.isVoid,i=e.isPre||function(f){return f.nodeName==="PRE"};if(!(!t.firstChild||i(t))){for(var n=null,o=!1,s=null,a=on(s,t,i);a!==t;){if(a.nodeType===3||a.nodeType===4){var c=a.data.replace(/[ \r\n\t]+/g," ");if((!n||/ $/.test(n.data))&&!o&&c[0]===" "&&(c=c.substr(1)),!c){a=wu(a);continue}a.data=c,n=a}else if(a.nodeType===1)u(a)||a.nodeName==="BR"?(n&&(n.data=n.data.replace(/ $/,"")),n=null,o=!1):r(a)||i(a)?(n=null,o=!0):n&&(o=!1);else{a=wu(a);continue}var p=on(s,a,i);s=a,a=p}n&&(n.data=n.data.replace(/ $/,""),n.data||wu(n))}}function wu(e){var t=e.nextSibling||e.parentNode;return e.parentNode.removeChild(e),t}function on(e,t,u){return e&&e.parentNode===t||u(t)?t.nextSibling||t.parentNode:t.firstChild||t.nextSibling||t.parentNode}var vu=typeof window<"u"?window:{};function Qi(){var e=vu.DOMParser,t=!1;try{new e().parseFromString("","text/html")&&(t=!0)}catch{}return t}function eo(){var e=function(){};return to()?e.prototype.parseFromString=function(t){var u=new window.ActiveXObject("htmlfile");return u.designMode="on",u.open(),u.write(t),u.close(),u}:e.prototype.parseFromString=function(t){var u=document.implementation.createHTMLDocument("");return u.open(),u.write(t),u.close(),u},e}function to(){var e=!1;try{document.implementation.createHTMLDocument("").open()}catch{vu.ActiveXObject&&(e=!0)}return e}var uo=Qi()?vu.DOMParser:eo();function ro(e,t){var u;if(typeof e=="string"){var r=no().parseFromString('<x-turndown id="turndown-root">'+e+"</x-turndown>","text/html");u=r.getElementById("turndown-root")}else u=e.cloneNode(!0);return Yi({element:u,isBlock:Eu,isVoid:cn,isPre:t.preformattedCode?io:null}),u}var yu;function no(){return yu=yu||new uo,yu}function io(e){return e.nodeName==="PRE"||e.nodeName==="CODE"}function oo(e,t){return e.isBlock=Eu(e),e.isCode=e.nodeName==="CODE"||e.parentNode.isCode,e.isBlank=so(e),e.flankingWhitespace=ao(e,t),e}function so(e){return!cn(e)&&!Ji(e)&&/^\s*$/i.test(e.textContent)&&!Zi(e)&&!Xi(e)}function ao(e,t){if(e.isBlock||t.preformattedCode&&e.isCode)return{leading:"",trailing:""};var u=co(e.textContent);return u.leadingAscii&&sn("left",e,t)&&(u.leading=u.leadingNonAscii),u.trailingAscii&&sn("right",e,t)&&(u.trailing=u.trailingNonAscii),{leading:u.leading,trailing:u.trailing}}function co(e){var t=e.match(/^(([ \t\r\n]*)(\s*))(?:(?=\S)[\s\S]*\S)?((\s*?)([ \t\r\n]*))$/);return{leading:t[1],leadingAscii:t[2],leadingNonAscii:t[3],trailing:t[4],trailingNonAscii:t[5],trailingAscii:t[6]}}function sn(e,t,u){var r,i,n;return e==="left"?(r=t.previousSibling,i=/ $/):(r=t.nextSibling,i=/^ /),r&&(r.nodeType===3?n=i.test(r.nodeValue):u.preformattedCode&&r.nodeName==="CODE"?n=!1:r.nodeType===1&&!Eu(r)&&(n=i.test(r.textContent))),n}var lo=Array.prototype.reduce,fo=[[/\\/g,"\\\\"],[/\*/g,"\\*"],[/^-/g,"\\-"],[/^\+ /g,"\\+ "],[/^(=+)/g,"\\$1"],[/^(#{1,6}) /g,"\\$1 "],[/`/g,"\\`"],[/^~~~/g,"\\~~~"],[/\[/g,"\\["],[/\]/g,"\\]"],[/^>/g,"\\>"],[/_/g,"\\_"],[/^(\d+)\. /g,"$1\\. "]];function jt(e){if(!(this instanceof jt))return new jt(e);var t={rules:ye,headingStyle:"setext",hr:"* * *",bulletListMarker:"*",codeBlockStyle:"indented",fence:"```",emDelimiter:"_",strongDelimiter:"**",linkStyle:"inlined",linkReferenceStyle:"full",br:"  ",preformattedCode:!1,blankReplacement:function(u,r){return r.isBlock?`
-
-`:""},keepReplacement:function(u,r){return r.isBlock?`
-
-`+r.outerHTML+`
-
-`:r.outerHTML},defaultReplacement:function(u,r){return r.isBlock?`
-
-`+u+`
-
-`:u}};this.options=Hi({},t,e),this.rules=new dn(this.options)}jt.prototype={turndown:function(e){if(!mo(e))throw new TypeError(e+" is not a string, or an element/document/fragment node.");if(e==="")return"";var t=pn.call(this,new ro(e,this.options));return po.call(this,t)},use:function(e){if(Array.isArray(e))for(var t=0;t<e.length;t++)this.use(e[t]);else if(typeof e=="function")e(this);else throw new TypeError("plugin must be a Function or an Array of Functions");return this},addRule:function(e,t){return this.rules.add(e,t),this},keep:function(e){return this.rules.keep(e),this},remove:function(e){return this.rules.remove(e),this},escape:function(e){return fo.reduce(function(t,u){return t.replace(u[0],u[1])},e)}};function pn(e){var t=this;return lo.call(e.childNodes,function(u,r){r=new oo(r,t.options);var i="";return r.nodeType===3?i=r.isCode?r.nodeValue:t.escape(r.nodeValue):r.nodeType===1&&(i=ho.call(t,r)),hn(u,i)},"")}function po(e){var t=this;return this.rules.forEach(function(u){typeof u.append=="function"&&(e=hn(e,u.append(t.options)))}),e.replace(/^[\t\r\n]+/,"").replace(/[\t\r\n\s]+$/,"")}function ho(e){var t=this.rules.forNode(e),u=pn.call(this,e),r=e.flankingWhitespace;return(r.leading||r.trailing)&&(u=u.trim()),r.leading+t.replacement(u,e,this.options)+r.trailing}function hn(e,t){var u=Gi(e),r=Vi(t),i=Math.max(e.length-u.length,t.length-r.length),n=`
-
-`.substring(0,i);return u+n+r}function mo(e){return e!=null&&(typeof e=="string"||e.nodeType&&(e.nodeType===1||e.nodeType===9||e.nodeType===11))}var mn=jt;var gn=/highlight-(?:text|source)-([a-z0-9]+)/;function go(e){e.addRule("highlightedCodeBlock",{filter:function(t){var u=t.firstChild;return t.nodeName==="DIV"&&gn.test(t.className)&&u&&u.nodeName==="PRE"},replacement:function(t,u,r){var i=u.className||"",n=(i.match(gn)||[null,""])[1];return`
-
-`+r.fence+n+`
-`+u.firstChild.textContent+`
-`+r.fence+`
-
-`}})}function bo(e){e.addRule("strikethrough",{filter:["del","s","strike"],replacement:function(t){return"~"+t+"~"}})}var xo=Array.prototype.indexOf,wo=Array.prototype.every,nt={};nt.tableCell={filter:["th","td"],replacement:function(e,t){return bn(e,t)}};nt.tableRow={filter:"tr",replacement:function(e,t){var u="",r={left:":--",right:"--:",center:":-:"};if(Au(t))for(var i=0;i<t.childNodes.length;i++){var n="---",o=(t.childNodes[i].getAttribute("align")||"").toLowerCase();o&&(n=r[o]||n),u+=bn(n,t.childNodes[i])}return`
-`+e+(u?`
-`+u:"")}};nt.table={filter:function(e){return e.nodeName==="TABLE"&&Au(e.rows[0])},replacement:function(e){return e=e.replace(`
-
-`,`
-`),`
-
-`+e+`
-
-`}};nt.tableSection={filter:["thead","tbody","tfoot"],replacement:function(e){return e}};function Au(e){var t=e.parentNode;return t.nodeName==="THEAD"||t.firstChild===e&&(t.nodeName==="TABLE"||yo(t))&&wo.call(e.childNodes,function(u){return u.nodeName==="TH"})}function yo(e){var t=e.previousSibling;return e.nodeName==="TBODY"&&(!t||t.nodeName==="THEAD"&&/^\s*$/i.test(t.textContent))}function bn(e,t){var u=xo.call(t.parentNode.childNodes,t),r=" ";return u===0&&(r="| "),r+e+" |"}function ko(e){e.keep(function(u){return u.nodeName==="TABLE"&&!Au(u.rows[0])});for(var t in nt)e.addRule(t,nt[t])}function Eo(e){e.addRule("taskListItems",{filter:function(t){return t.type==="checkbox"&&t.parentNode.nodeName==="LI"},replacement:function(t,u){return(u.checked?"[x]":"[ ]")+" "}})}function xn(e){e.use([go,bo,ko,Eo])}var Ou={};gt(Ou,{arrayReplaceAt:()=>Mu,assign:()=>st,escapeHtml:()=>qe,escapeRE:()=>i0,fromCodePoint:()=>kt,has:()=>Zo,isMdAsciiPunct:()=>Ye,isPunctChar:()=>Ke,isSpace:()=>K,isString:()=>Qt,isValidEntityCode:()=>eu,isWhiteSpace:()=>Xe,lib:()=>o0,normalizeReference:()=>Qe,unescapeAll:()=>$e,unescapeMd:()=>Qo});var Gt={};gt(Gt,{decode:()=>wt,encode:()=>Ht,format:()=>it,parse:()=>yt});var wn={};function _o(e){let t=wn[e];if(t)return t;t=wn[e]=[];for(let u=0;u<128;u++){let r=String.fromCharCode(u);t.push(r)}for(let u=0;u<e.length;u++){let r=e.charCodeAt(u);t[r]="%"+("0"+r.toString(16).toUpperCase()).slice(-2)}return t}function zt(e,t){typeof t!="string"&&(t=zt.defaultChars);let u=_o(t);return e.replace(/(%[a-f0-9]{2})+/gi,function(r){let i="";for(let n=0,o=r.length;n<o;n+=3){let s=parseInt(r.slice(n+1,n+3),16);if(s<128){i+=u[s];continue}if((s&224)===192&&n+3<o){let a=parseInt(r.slice(n+4,n+6),16);if((a&192)===128){let c=s<<6&1984|a&63;c<128?i+="\uFFFD\uFFFD":i+=String.fromCharCode(c),n+=3;continue}}if((s&240)===224&&n+6<o){let a=parseInt(r.slice(n+4,n+6),16),c=parseInt(r.slice(n+7,n+9),16);if((a&192)===128&&(c&192)===128){let p=s<<12&61440|a<<6&4032|c&63;p<2048||p>=55296&&p<=57343?i+="\uFFFD\uFFFD\uFFFD":i+=String.fromCharCode(p),n+=6;continue}}if((s&248)===240&&n+9<o){let a=parseInt(r.slice(n+4,n+6),16),c=parseInt(r.slice(n+7,n+9),16),p=parseInt(r.slice(n+10,n+12),16);if((a&192)===128&&(c&192)===128&&(p&192)===128){let f=s<<18&1835008|a<<12&258048|c<<6&4032|p&63;f<65536||f>1114111?i+="\uFFFD\uFFFD\uFFFD\uFFFD":(f-=65536,i+=String.fromCharCode(55296+(f>>10),56320+(f&1023))),n+=9;continue}}i+="\uFFFD"}return i})}zt.defaultChars=";/?:@&=+$,#";zt.componentChars="";var wt=zt;var yn={};function vo(e){let t=yn[e];if(t)return t;t=yn[e]=[];for(let u=0;u<128;u++){let r=String.fromCharCode(u);/^[0-9a-z]$/i.test(r)?t.push(r):t.push("%"+("0"+u.toString(16).toUpperCase()).slice(-2))}for(let u=0;u<e.length;u++)t[e.charCodeAt(u)]=e[u];return t}function Ut(e,t,u){typeof t!="string"&&(u=t,t=Ut.defaultChars),typeof u>"u"&&(u=!0);let r=vo(t),i="";for(let n=0,o=e.length;n<o;n++){let s=e.charCodeAt(n);if(u&&s===37&&n+2<o&&/^[0-9a-f]{2}$/i.test(e.slice(n+1,n+3))){i+=e.slice(n,n+3),n+=2;continue}if(s<128){i+=r[s];continue}if(s>=55296&&s<=57343){if(s>=55296&&s<=56319&&n+1<o){let a=e.charCodeAt(n+1);if(a>=56320&&a<=57343){i+=encodeURIComponent(e[n]+e[n+1]),n++;continue}}i+="%EF%BF%BD";continue}i+=encodeURIComponent(e[n])}return i}Ut.defaultChars=";/?:@&=+$,-_.!~*'()#";Ut.componentChars="-_.!~*'()";var Ht=Ut;function it(e){let t="";return t+=e.protocol||"",t+=e.slashes?"//":"",t+=e.auth?e.auth+"@":"",e.hostname&&e.hostname.indexOf(":")!==-1?t+="["+e.hostname+"]":t+=e.hostname||"",t+=e.port?":"+e.port:"",t+=e.pathname||"",t+=e.search||"",t+=e.hash||"",t}function Vt(){this.protocol=null,this.slashes=null,this.auth=null,this.port=null,this.hostname=null,this.hash=null,this.search=null,this.pathname=null}var Ao=/^([a-z0-9.+-]+:)/i,Co=/:[0-9]*$/,Do=/^(\/\/?(?!\/)[^\?\s]*)(\?[^\s]*)?$/,To=["<",">",'"',"`"," ","\r",`
-`,"	"],So=["{","}","|","\\","^","`"].concat(To),Fo=["'"].concat(So),kn=["%","/","?",";","#"].concat(Fo),En=["/","?","#"],Io=255,_n=/^[+a-z0-9A-Z_-]{0,63}$/,Ro=/^([+a-z0-9A-Z_-]{0,63})(.*)$/,vn={javascript:!0,"javascript:":!0},An={http:!0,https:!0,ftp:!0,gopher:!0,file:!0,"http:":!0,"https:":!0,"ftp:":!0,"gopher:":!0,"file:":!0};function Mo(e,t){if(e&&e instanceof Vt)return e;let u=new Vt;return u.parse(e,t),u}Vt.prototype.parse=function(e,t){let u,r,i,n=e;if(n=n.trim(),!t&&e.split("#").length===1){let c=Do.exec(n);if(c)return this.pathname=c[1],c[2]&&(this.search=c[2]),this}let o=Ao.exec(n);if(o&&(o=o[0],u=o.toLowerCase(),this.protocol=o,n=n.substr(o.length)),(t||o||n.match(/^\/\/[^@\/]+@[^@\/]+/))&&(i=n.substr(0,2)==="//",i&&!(o&&vn[o])&&(n=n.substr(2),this.slashes=!0)),!vn[o]&&(i||o&&!An[o])){let c=-1;for(let g=0;g<En.length;g++)r=n.indexOf(En[g]),r!==-1&&(c===-1||r<c)&&(c=r);let p,f;c===-1?f=n.lastIndexOf("@"):f=n.lastIndexOf("@",c),f!==-1&&(p=n.slice(0,f),n=n.slice(f+1),this.auth=p),c=-1;for(let g=0;g<kn.length;g++)r=n.indexOf(kn[g]),r!==-1&&(c===-1||r<c)&&(c=r);c===-1&&(c=n.length),n[c-1]===":"&&c--;let m=n.slice(0,c);n=n.slice(c),this.parseHost(m),this.hostname=this.hostname||"";let k=this.hostname[0]==="["&&this.hostname[this.hostname.length-1]==="]";if(!k){let g=this.hostname.split(/\./);for(let S=0,O=g.length;S<O;S++){let R=g[S];if(R&&!R.match(_n)){let B="";for(let q=0,N=R.length;q<N;q++)R.charCodeAt(q)>127?B+="x":B+=R[q];if(!B.match(_n)){let q=g.slice(0,S),N=g.slice(S+1),A=R.match(Ro);A&&(q.push(A[1]),N.unshift(A[2])),N.length&&(n=N.join(".")+n),this.hostname=q.join(".");break}}}}this.hostname.length>Io&&(this.hostname=""),k&&(this.hostname=this.hostname.substr(1,this.hostname.length-2))}let s=n.indexOf("#");s!==-1&&(this.hash=n.substr(s),n=n.slice(0,s));let a=n.indexOf("?");return a!==-1&&(this.search=n.substr(a),n=n.slice(0,a)),n&&(this.pathname=n),An[u]&&this.hostname&&!this.pathname&&(this.pathname=""),this};Vt.prototype.parseHost=function(e){let t=Co.exec(e);t&&(t=t[0],t!==":"&&(this.port=t.substr(1)),e=e.substr(0,e.length-t.length)),e&&(this.hostname=e)};var yt=Mo;var Cu={};gt(Cu,{Any:()=>Wt,Cc:()=>Zt,Cf:()=>Cn,P:()=>ot,S:()=>Jt,Z:()=>Xt});var Wt=/[\0-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/;var Zt=/[\0-\x1F\x7F-\x9F]/;var Cn=/[\xAD\u0600-\u0605\u061C\u06DD\u070F\u0890\u0891\u08E2\u180E\u200B-\u200F\u202A-\u202E\u2060-\u2064\u2066-\u206F\uFEFF\uFFF9-\uFFFB]|\uD804[\uDCBD\uDCCD]|\uD80D[\uDC30-\uDC3F]|\uD82F[\uDCA0-\uDCA3]|\uD834[\uDD73-\uDD7A]|\uDB40[\uDC01\uDC20-\uDC7F]/;var ot=/[!-#%-\*,-\/:;\?@\[-\]_\{\}\xA1\xA7\xAB\xB6\xB7\xBB\xBF\u037E\u0387\u055A-\u055F\u0589\u058A\u05BE\u05C0\u05C3\u05C6\u05F3\u05F4\u0609\u060A\u060C\u060D\u061B\u061D-\u061F\u066A-\u066D\u06D4\u0700-\u070D\u07F7-\u07F9\u0830-\u083E\u085E\u0964\u0965\u0970\u09FD\u0A76\u0AF0\u0C77\u0C84\u0DF4\u0E4F\u0E5A\u0E5B\u0F04-\u0F12\u0F14\u0F3A-\u0F3D\u0F85\u0FD0-\u0FD4\u0FD9\u0FDA\u104A-\u104F\u10FB\u1360-\u1368\u1400\u166E\u169B\u169C\u16EB-\u16ED\u1735\u1736\u17D4-\u17D6\u17D8-\u17DA\u1800-\u180A\u1944\u1945\u1A1E\u1A1F\u1AA0-\u1AA6\u1AA8-\u1AAD\u1B5A-\u1B60\u1B7D\u1B7E\u1BFC-\u1BFF\u1C3B-\u1C3F\u1C7E\u1C7F\u1CC0-\u1CC7\u1CD3\u2010-\u2027\u2030-\u2043\u2045-\u2051\u2053-\u205E\u207D\u207E\u208D\u208E\u2308-\u230B\u2329\u232A\u2768-\u2775\u27C5\u27C6\u27E6-\u27EF\u2983-\u2998\u29D8-\u29DB\u29FC\u29FD\u2CF9-\u2CFC\u2CFE\u2CFF\u2D70\u2E00-\u2E2E\u2E30-\u2E4F\u2E52-\u2E5D\u3001-\u3003\u3008-\u3011\u3014-\u301F\u3030\u303D\u30A0\u30FB\uA4FE\uA4FF\uA60D-\uA60F\uA673\uA67E\uA6F2-\uA6F7\uA874-\uA877\uA8CE\uA8CF\uA8F8-\uA8FA\uA8FC\uA92E\uA92F\uA95F\uA9C1-\uA9CD\uA9DE\uA9DF\uAA5C-\uAA5F\uAADE\uAADF\uAAF0\uAAF1\uABEB\uFD3E\uFD3F\uFE10-\uFE19\uFE30-\uFE52\uFE54-\uFE61\uFE63\uFE68\uFE6A\uFE6B\uFF01-\uFF03\uFF05-\uFF0A\uFF0C-\uFF0F\uFF1A\uFF1B\uFF1F\uFF20\uFF3B-\uFF3D\uFF3F\uFF5B\uFF5D\uFF5F-\uFF65]|\uD800[\uDD00-\uDD02\uDF9F\uDFD0]|\uD801\uDD6F|\uD802[\uDC57\uDD1F\uDD3F\uDE50-\uDE58\uDE7F\uDEF0-\uDEF6\uDF39-\uDF3F\uDF99-\uDF9C]|\uD803[\uDEAD\uDF55-\uDF59\uDF86-\uDF89]|\uD804[\uDC47-\uDC4D\uDCBB\uDCBC\uDCBE-\uDCC1\uDD40-\uDD43\uDD74\uDD75\uDDC5-\uDDC8\uDDCD\uDDDB\uDDDD-\uDDDF\uDE38-\uDE3D\uDEA9]|\uD805[\uDC4B-\uDC4F\uDC5A\uDC5B\uDC5D\uDCC6\uDDC1-\uDDD7\uDE41-\uDE43\uDE60-\uDE6C\uDEB9\uDF3C-\uDF3E]|\uD806[\uDC3B\uDD44-\uDD46\uDDE2\uDE3F-\uDE46\uDE9A-\uDE9C\uDE9E-\uDEA2\uDF00-\uDF09]|\uD807[\uDC41-\uDC45\uDC70\uDC71\uDEF7\uDEF8\uDF43-\uDF4F\uDFFF]|\uD809[\uDC70-\uDC74]|\uD80B[\uDFF1\uDFF2]|\uD81A[\uDE6E\uDE6F\uDEF5\uDF37-\uDF3B\uDF44]|\uD81B[\uDE97-\uDE9A\uDFE2]|\uD82F\uDC9F|\uD836[\uDE87-\uDE8B]|\uD83A[\uDD5E\uDD5F]/;var Jt=/[\$\+<->\^`\|~\xA2-\xA6\xA8\xA9\xAC\xAE-\xB1\xB4\xB8\xD7\xF7\u02C2-\u02C5\u02D2-\u02DF\u02E5-\u02EB\u02ED\u02EF-\u02FF\u0375\u0384\u0385\u03F6\u0482\u058D-\u058F\u0606-\u0608\u060B\u060E\u060F\u06DE\u06E9\u06FD\u06FE\u07F6\u07FE\u07FF\u0888\u09F2\u09F3\u09FA\u09FB\u0AF1\u0B70\u0BF3-\u0BFA\u0C7F\u0D4F\u0D79\u0E3F\u0F01-\u0F03\u0F13\u0F15-\u0F17\u0F1A-\u0F1F\u0F34\u0F36\u0F38\u0FBE-\u0FC5\u0FC7-\u0FCC\u0FCE\u0FCF\u0FD5-\u0FD8\u109E\u109F\u1390-\u1399\u166D\u17DB\u1940\u19DE-\u19FF\u1B61-\u1B6A\u1B74-\u1B7C\u1FBD\u1FBF-\u1FC1\u1FCD-\u1FCF\u1FDD-\u1FDF\u1FED-\u1FEF\u1FFD\u1FFE\u2044\u2052\u207A-\u207C\u208A-\u208C\u20A0-\u20C0\u2100\u2101\u2103-\u2106\u2108\u2109\u2114\u2116-\u2118\u211E-\u2123\u2125\u2127\u2129\u212E\u213A\u213B\u2140-\u2144\u214A-\u214D\u214F\u218A\u218B\u2190-\u2307\u230C-\u2328\u232B-\u2426\u2440-\u244A\u249C-\u24E9\u2500-\u2767\u2794-\u27C4\u27C7-\u27E5\u27F0-\u2982\u2999-\u29D7\u29DC-\u29FB\u29FE-\u2B73\u2B76-\u2B95\u2B97-\u2BFF\u2CE5-\u2CEA\u2E50\u2E51\u2E80-\u2E99\u2E9B-\u2EF3\u2F00-\u2FD5\u2FF0-\u2FFF\u3004\u3012\u3013\u3020\u3036\u3037\u303E\u303F\u309B\u309C\u3190\u3191\u3196-\u319F\u31C0-\u31E3\u31EF\u3200-\u321E\u322A-\u3247\u3250\u3260-\u327F\u328A-\u32B0\u32C0-\u33FF\u4DC0-\u4DFF\uA490-\uA4C6\uA700-\uA716\uA720\uA721\uA789\uA78A\uA828-\uA82B\uA836-\uA839\uAA77-\uAA79\uAB5B\uAB6A\uAB6B\uFB29\uFBB2-\uFBC2\uFD40-\uFD4F\uFDCF\uFDFC-\uFDFF\uFE62\uFE64-\uFE66\uFE69\uFF04\uFF0B\uFF1C-\uFF1E\uFF3E\uFF40\uFF5C\uFF5E\uFFE0-\uFFE6\uFFE8-\uFFEE\uFFFC\uFFFD]|\uD800[\uDD37-\uDD3F\uDD79-\uDD89\uDD8C-\uDD8E\uDD90-\uDD9C\uDDA0\uDDD0-\uDDFC]|\uD802[\uDC77\uDC78\uDEC8]|\uD805\uDF3F|\uD807[\uDFD5-\uDFF1]|\uD81A[\uDF3C-\uDF3F\uDF45]|\uD82F\uDC9C|\uD833[\uDF50-\uDFC3]|\uD834[\uDC00-\uDCF5\uDD00-\uDD26\uDD29-\uDD64\uDD6A-\uDD6C\uDD83\uDD84\uDD8C-\uDDA9\uDDAE-\uDDEA\uDE00-\uDE41\uDE45\uDF00-\uDF56]|\uD835[\uDEC1\uDEDB\uDEFB\uDF15\uDF35\uDF4F\uDF6F\uDF89\uDFA9\uDFC3]|\uD836[\uDC00-\uDDFF\uDE37-\uDE3A\uDE6D-\uDE74\uDE76-\uDE83\uDE85\uDE86]|\uD838[\uDD4F\uDEFF]|\uD83B[\uDCAC\uDCB0\uDD2E\uDEF0\uDEF1]|\uD83C[\uDC00-\uDC2B\uDC30-\uDC93\uDCA0-\uDCAE\uDCB1-\uDCBF\uDCC1-\uDCCF\uDCD1-\uDCF5\uDD0D-\uDDAD\uDDE6-\uDE02\uDE10-\uDE3B\uDE40-\uDE48\uDE50\uDE51\uDE60-\uDE65\uDF00-\uDFFF]|\uD83D[\uDC00-\uDED7\uDEDC-\uDEEC\uDEF0-\uDEFC\uDF00-\uDF76\uDF7B-\uDFD9\uDFE0-\uDFEB\uDFF0]|\uD83E[\uDC00-\uDC0B\uDC10-\uDC47\uDC50-\uDC59\uDC60-\uDC87\uDC90-\uDCAD\uDCB0\uDCB1\uDD00-\uDE53\uDE60-\uDE6D\uDE70-\uDE7C\uDE80-\uDE88\uDE90-\uDEBD\uDEBF-\uDEC5\uDECE-\uDEDB\uDEE0-\uDEE8\uDEF0-\uDEF8\uDF00-\uDF92\uDF94-\uDFCA]/;var Xt=/[ \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000]/;var Dn=new Uint16Array('\u1D41<\xD5\u0131\u028A\u049D\u057B\u05D0\u0675\u06DE\u07A2\u07D6\u080F\u0A4A\u0A91\u0DA1\u0E6D\u0F09\u0F26\u10CA\u1228\u12E1\u1415\u149D\u14C3\u14DF\u1525\0\0\0\0\0\0\u156B\u16CD\u198D\u1C12\u1DDD\u1F7E\u2060\u21B0\u228D\u23C0\u23FB\u2442\u2824\u2912\u2D08\u2E48\u2FCE\u3016\u32BA\u3639\u37AC\u38FE\u3A28\u3A71\u3AE0\u3B2E\u0800EMabcfglmnoprstu\\bfms\x7F\x84\x8B\x90\x95\x98\xA6\xB3\xB9\xC8\xCFlig\u803B\xC6\u40C6P\u803B&\u4026cute\u803B\xC1\u40C1reve;\u4102\u0100iyx}rc\u803B\xC2\u40C2;\u4410r;\uC000\u{1D504}rave\u803B\xC0\u40C0pha;\u4391acr;\u4100d;\u6A53\u0100gp\x9D\xA1on;\u4104f;\uC000\u{1D538}plyFunction;\u6061ing\u803B\xC5\u40C5\u0100cs\xBE\xC3r;\uC000\u{1D49C}ign;\u6254ilde\u803B\xC3\u40C3ml\u803B\xC4\u40C4\u0400aceforsu\xE5\xFB\xFE\u0117\u011C\u0122\u0127\u012A\u0100cr\xEA\xF2kslash;\u6216\u0176\xF6\xF8;\u6AE7ed;\u6306y;\u4411\u0180crt\u0105\u010B\u0114ause;\u6235noullis;\u612Ca;\u4392r;\uC000\u{1D505}pf;\uC000\u{1D539}eve;\u42D8c\xF2\u0113mpeq;\u624E\u0700HOacdefhilorsu\u014D\u0151\u0156\u0180\u019E\u01A2\u01B5\u01B7\u01BA\u01DC\u0215\u0273\u0278\u027Ecy;\u4427PY\u803B\xA9\u40A9\u0180cpy\u015D\u0162\u017Aute;\u4106\u0100;i\u0167\u0168\u62D2talDifferentialD;\u6145leys;\u612D\u0200aeio\u0189\u018E\u0194\u0198ron;\u410Cdil\u803B\xC7\u40C7rc;\u4108nint;\u6230ot;\u410A\u0100dn\u01A7\u01ADilla;\u40B8terDot;\u40B7\xF2\u017Fi;\u43A7rcle\u0200DMPT\u01C7\u01CB\u01D1\u01D6ot;\u6299inus;\u6296lus;\u6295imes;\u6297o\u0100cs\u01E2\u01F8kwiseContourIntegral;\u6232eCurly\u0100DQ\u0203\u020FoubleQuote;\u601Duote;\u6019\u0200lnpu\u021E\u0228\u0247\u0255on\u0100;e\u0225\u0226\u6237;\u6A74\u0180git\u022F\u0236\u023Aruent;\u6261nt;\u622FourIntegral;\u622E\u0100fr\u024C\u024E;\u6102oduct;\u6210nterClockwiseContourIntegral;\u6233oss;\u6A2Fcr;\uC000\u{1D49E}p\u0100;C\u0284\u0285\u62D3ap;\u624D\u0580DJSZacefios\u02A0\u02AC\u02B0\u02B4\u02B8\u02CB\u02D7\u02E1\u02E6\u0333\u048D\u0100;o\u0179\u02A5trahd;\u6911cy;\u4402cy;\u4405cy;\u440F\u0180grs\u02BF\u02C4\u02C7ger;\u6021r;\u61A1hv;\u6AE4\u0100ay\u02D0\u02D5ron;\u410E;\u4414l\u0100;t\u02DD\u02DE\u6207a;\u4394r;\uC000\u{1D507}\u0100af\u02EB\u0327\u0100cm\u02F0\u0322ritical\u0200ADGT\u0300\u0306\u0316\u031Ccute;\u40B4o\u0174\u030B\u030D;\u42D9bleAcute;\u42DDrave;\u4060ilde;\u42DCond;\u62C4ferentialD;\u6146\u0470\u033D\0\0\0\u0342\u0354\0\u0405f;\uC000\u{1D53B}\u0180;DE\u0348\u0349\u034D\u40A8ot;\u60DCqual;\u6250ble\u0300CDLRUV\u0363\u0372\u0382\u03CF\u03E2\u03F8ontourIntegra\xEC\u0239o\u0274\u0379\0\0\u037B\xBB\u0349nArrow;\u61D3\u0100eo\u0387\u03A4ft\u0180ART\u0390\u0396\u03A1rrow;\u61D0ightArrow;\u61D4e\xE5\u02CAng\u0100LR\u03AB\u03C4eft\u0100AR\u03B3\u03B9rrow;\u67F8ightArrow;\u67FAightArrow;\u67F9ight\u0100AT\u03D8\u03DErrow;\u61D2ee;\u62A8p\u0241\u03E9\0\0\u03EFrrow;\u61D1ownArrow;\u61D5erticalBar;\u6225n\u0300ABLRTa\u0412\u042A\u0430\u045E\u047F\u037Crrow\u0180;BU\u041D\u041E\u0422\u6193ar;\u6913pArrow;\u61F5reve;\u4311eft\u02D2\u043A\0\u0446\0\u0450ightVector;\u6950eeVector;\u695Eector\u0100;B\u0459\u045A\u61BDar;\u6956ight\u01D4\u0467\0\u0471eeVector;\u695Fector\u0100;B\u047A\u047B\u61C1ar;\u6957ee\u0100;A\u0486\u0487\u62A4rrow;\u61A7\u0100ct\u0492\u0497r;\uC000\u{1D49F}rok;\u4110\u0800NTacdfglmopqstux\u04BD\u04C0\u04C4\u04CB\u04DE\u04E2\u04E7\u04EE\u04F5\u0521\u052F\u0536\u0552\u055D\u0560\u0565G;\u414AH\u803B\xD0\u40D0cute\u803B\xC9\u40C9\u0180aiy\u04D2\u04D7\u04DCron;\u411Arc\u803B\xCA\u40CA;\u442Dot;\u4116r;\uC000\u{1D508}rave\u803B\xC8\u40C8ement;\u6208\u0100ap\u04FA\u04FEcr;\u4112ty\u0253\u0506\0\0\u0512mallSquare;\u65FBerySmallSquare;\u65AB\u0100gp\u0526\u052Aon;\u4118f;\uC000\u{1D53C}silon;\u4395u\u0100ai\u053C\u0549l\u0100;T\u0542\u0543\u6A75ilde;\u6242librium;\u61CC\u0100ci\u0557\u055Ar;\u6130m;\u6A73a;\u4397ml\u803B\xCB\u40CB\u0100ip\u056A\u056Fsts;\u6203onentialE;\u6147\u0280cfios\u0585\u0588\u058D\u05B2\u05CCy;\u4424r;\uC000\u{1D509}lled\u0253\u0597\0\0\u05A3mallSquare;\u65FCerySmallSquare;\u65AA\u0370\u05BA\0\u05BF\0\0\u05C4f;\uC000\u{1D53D}All;\u6200riertrf;\u6131c\xF2\u05CB\u0600JTabcdfgorst\u05E8\u05EC\u05EF\u05FA\u0600\u0612\u0616\u061B\u061D\u0623\u066C\u0672cy;\u4403\u803B>\u403Emma\u0100;d\u05F7\u05F8\u4393;\u43DCreve;\u411E\u0180eiy\u0607\u060C\u0610dil;\u4122rc;\u411C;\u4413ot;\u4120r;\uC000\u{1D50A};\u62D9pf;\uC000\u{1D53E}eater\u0300EFGLST\u0635\u0644\u064E\u0656\u065B\u0666qual\u0100;L\u063E\u063F\u6265ess;\u62DBullEqual;\u6267reater;\u6AA2ess;\u6277lantEqual;\u6A7Eilde;\u6273cr;\uC000\u{1D4A2};\u626B\u0400Aacfiosu\u0685\u068B\u0696\u069B\u069E\u06AA\u06BE\u06CARDcy;\u442A\u0100ct\u0690\u0694ek;\u42C7;\u405Eirc;\u4124r;\u610ClbertSpace;\u610B\u01F0\u06AF\0\u06B2f;\u610DizontalLine;\u6500\u0100ct\u06C3\u06C5\xF2\u06A9rok;\u4126mp\u0144\u06D0\u06D8ownHum\xF0\u012Fqual;\u624F\u0700EJOacdfgmnostu\u06FA\u06FE\u0703\u0707\u070E\u071A\u071E\u0721\u0728\u0744\u0778\u078B\u078F\u0795cy;\u4415lig;\u4132cy;\u4401cute\u803B\xCD\u40CD\u0100iy\u0713\u0718rc\u803B\xCE\u40CE;\u4418ot;\u4130r;\u6111rave\u803B\xCC\u40CC\u0180;ap\u0720\u072F\u073F\u0100cg\u0734\u0737r;\u412AinaryI;\u6148lie\xF3\u03DD\u01F4\u0749\0\u0762\u0100;e\u074D\u074E\u622C\u0100gr\u0753\u0758ral;\u622Bsection;\u62C2isible\u0100CT\u076C\u0772omma;\u6063imes;\u6062\u0180gpt\u077F\u0783\u0788on;\u412Ef;\uC000\u{1D540}a;\u4399cr;\u6110ilde;\u4128\u01EB\u079A\0\u079Ecy;\u4406l\u803B\xCF\u40CF\u0280cfosu\u07AC\u07B7\u07BC\u07C2\u07D0\u0100iy\u07B1\u07B5rc;\u4134;\u4419r;\uC000\u{1D50D}pf;\uC000\u{1D541}\u01E3\u07C7\0\u07CCr;\uC000\u{1D4A5}rcy;\u4408kcy;\u4404\u0380HJacfos\u07E4\u07E8\u07EC\u07F1\u07FD\u0802\u0808cy;\u4425cy;\u440Cppa;\u439A\u0100ey\u07F6\u07FBdil;\u4136;\u441Ar;\uC000\u{1D50E}pf;\uC000\u{1D542}cr;\uC000\u{1D4A6}\u0580JTaceflmost\u0825\u0829\u082C\u0850\u0863\u09B3\u09B8\u09C7\u09CD\u0A37\u0A47cy;\u4409\u803B<\u403C\u0280cmnpr\u0837\u083C\u0841\u0844\u084Dute;\u4139bda;\u439Bg;\u67EAlacetrf;\u6112r;\u619E\u0180aey\u0857\u085C\u0861ron;\u413Ddil;\u413B;\u441B\u0100fs\u0868\u0970t\u0500ACDFRTUVar\u087E\u08A9\u08B1\u08E0\u08E6\u08FC\u092F\u095B\u0390\u096A\u0100nr\u0883\u088FgleBracket;\u67E8row\u0180;BR\u0899\u089A\u089E\u6190ar;\u61E4ightArrow;\u61C6eiling;\u6308o\u01F5\u08B7\0\u08C3bleBracket;\u67E6n\u01D4\u08C8\0\u08D2eeVector;\u6961ector\u0100;B\u08DB\u08DC\u61C3ar;\u6959loor;\u630Aight\u0100AV\u08EF\u08F5rrow;\u6194ector;\u694E\u0100er\u0901\u0917e\u0180;AV\u0909\u090A\u0910\u62A3rrow;\u61A4ector;\u695Aiangle\u0180;BE\u0924\u0925\u0929\u62B2ar;\u69CFqual;\u62B4p\u0180DTV\u0937\u0942\u094CownVector;\u6951eeVector;\u6960ector\u0100;B\u0956\u0957\u61BFar;\u6958ector\u0100;B\u0965\u0966\u61BCar;\u6952ight\xE1\u039Cs\u0300EFGLST\u097E\u098B\u0995\u099D\u09A2\u09ADqualGreater;\u62DAullEqual;\u6266reater;\u6276ess;\u6AA1lantEqual;\u6A7Dilde;\u6272r;\uC000\u{1D50F}\u0100;e\u09BD\u09BE\u62D8ftarrow;\u61DAidot;\u413F\u0180npw\u09D4\u0A16\u0A1Bg\u0200LRlr\u09DE\u09F7\u0A02\u0A10eft\u0100AR\u09E6\u09ECrrow;\u67F5ightArrow;\u67F7ightArrow;\u67F6eft\u0100ar\u03B3\u0A0Aight\xE1\u03BFight\xE1\u03CAf;\uC000\u{1D543}er\u0100LR\u0A22\u0A2CeftArrow;\u6199ightArrow;\u6198\u0180cht\u0A3E\u0A40\u0A42\xF2\u084C;\u61B0rok;\u4141;\u626A\u0400acefiosu\u0A5A\u0A5D\u0A60\u0A77\u0A7C\u0A85\u0A8B\u0A8Ep;\u6905y;\u441C\u0100dl\u0A65\u0A6FiumSpace;\u605Flintrf;\u6133r;\uC000\u{1D510}nusPlus;\u6213pf;\uC000\u{1D544}c\xF2\u0A76;\u439C\u0480Jacefostu\u0AA3\u0AA7\u0AAD\u0AC0\u0B14\u0B19\u0D91\u0D97\u0D9Ecy;\u440Acute;\u4143\u0180aey\u0AB4\u0AB9\u0ABEron;\u4147dil;\u4145;\u441D\u0180gsw\u0AC7\u0AF0\u0B0Eative\u0180MTV\u0AD3\u0ADF\u0AE8ediumSpace;\u600Bhi\u0100cn\u0AE6\u0AD8\xEB\u0AD9eryThi\xEE\u0AD9ted\u0100GL\u0AF8\u0B06reaterGreate\xF2\u0673essLes\xF3\u0A48Line;\u400Ar;\uC000\u{1D511}\u0200Bnpt\u0B22\u0B28\u0B37\u0B3Areak;\u6060BreakingSpace;\u40A0f;\u6115\u0680;CDEGHLNPRSTV\u0B55\u0B56\u0B6A\u0B7C\u0BA1\u0BEB\u0C04\u0C5E\u0C84\u0CA6\u0CD8\u0D61\u0D85\u6AEC\u0100ou\u0B5B\u0B64ngruent;\u6262pCap;\u626DoubleVerticalBar;\u6226\u0180lqx\u0B83\u0B8A\u0B9Bement;\u6209ual\u0100;T\u0B92\u0B93\u6260ilde;\uC000\u2242\u0338ists;\u6204reater\u0380;EFGLST\u0BB6\u0BB7\u0BBD\u0BC9\u0BD3\u0BD8\u0BE5\u626Fqual;\u6271ullEqual;\uC000\u2267\u0338reater;\uC000\u226B\u0338ess;\u6279lantEqual;\uC000\u2A7E\u0338ilde;\u6275ump\u0144\u0BF2\u0BFDownHump;\uC000\u224E\u0338qual;\uC000\u224F\u0338e\u0100fs\u0C0A\u0C27tTriangle\u0180;BE\u0C1A\u0C1B\u0C21\u62EAar;\uC000\u29CF\u0338qual;\u62ECs\u0300;EGLST\u0C35\u0C36\u0C3C\u0C44\u0C4B\u0C58\u626Equal;\u6270reater;\u6278ess;\uC000\u226A\u0338lantEqual;\uC000\u2A7D\u0338ilde;\u6274ested\u0100GL\u0C68\u0C79reaterGreater;\uC000\u2AA2\u0338essLess;\uC000\u2AA1\u0338recedes\u0180;ES\u0C92\u0C93\u0C9B\u6280qual;\uC000\u2AAF\u0338lantEqual;\u62E0\u0100ei\u0CAB\u0CB9verseElement;\u620CghtTriangle\u0180;BE\u0CCB\u0CCC\u0CD2\u62EBar;\uC000\u29D0\u0338qual;\u62ED\u0100qu\u0CDD\u0D0CuareSu\u0100bp\u0CE8\u0CF9set\u0100;E\u0CF0\u0CF3\uC000\u228F\u0338qual;\u62E2erset\u0100;E\u0D03\u0D06\uC000\u2290\u0338qual;\u62E3\u0180bcp\u0D13\u0D24\u0D4Eset\u0100;E\u0D1B\u0D1E\uC000\u2282\u20D2qual;\u6288ceeds\u0200;EST\u0D32\u0D33\u0D3B\u0D46\u6281qual;\uC000\u2AB0\u0338lantEqual;\u62E1ilde;\uC000\u227F\u0338erset\u0100;E\u0D58\u0D5B\uC000\u2283\u20D2qual;\u6289ilde\u0200;EFT\u0D6E\u0D6F\u0D75\u0D7F\u6241qual;\u6244ullEqual;\u6247ilde;\u6249erticalBar;\u6224cr;\uC000\u{1D4A9}ilde\u803B\xD1\u40D1;\u439D\u0700Eacdfgmoprstuv\u0DBD\u0DC2\u0DC9\u0DD5\u0DDB\u0DE0\u0DE7\u0DFC\u0E02\u0E20\u0E22\u0E32\u0E3F\u0E44lig;\u4152cute\u803B\xD3\u40D3\u0100iy\u0DCE\u0DD3rc\u803B\xD4\u40D4;\u441Eblac;\u4150r;\uC000\u{1D512}rave\u803B\xD2\u40D2\u0180aei\u0DEE\u0DF2\u0DF6cr;\u414Cga;\u43A9cron;\u439Fpf;\uC000\u{1D546}enCurly\u0100DQ\u0E0E\u0E1AoubleQuote;\u601Cuote;\u6018;\u6A54\u0100cl\u0E27\u0E2Cr;\uC000\u{1D4AA}ash\u803B\xD8\u40D8i\u016C\u0E37\u0E3Cde\u803B\xD5\u40D5es;\u6A37ml\u803B\xD6\u40D6er\u0100BP\u0E4B\u0E60\u0100ar\u0E50\u0E53r;\u603Eac\u0100ek\u0E5A\u0E5C;\u63DEet;\u63B4arenthesis;\u63DC\u0480acfhilors\u0E7F\u0E87\u0E8A\u0E8F\u0E92\u0E94\u0E9D\u0EB0\u0EFCrtialD;\u6202y;\u441Fr;\uC000\u{1D513}i;\u43A6;\u43A0usMinus;\u40B1\u0100ip\u0EA2\u0EADncareplan\xE5\u069Df;\u6119\u0200;eio\u0EB9\u0EBA\u0EE0\u0EE4\u6ABBcedes\u0200;EST\u0EC8\u0EC9\u0ECF\u0EDA\u627Aqual;\u6AAFlantEqual;\u627Cilde;\u627Eme;\u6033\u0100dp\u0EE9\u0EEEuct;\u620Fortion\u0100;a\u0225\u0EF9l;\u621D\u0100ci\u0F01\u0F06r;\uC000\u{1D4AB};\u43A8\u0200Ufos\u0F11\u0F16\u0F1B\u0F1FOT\u803B"\u4022r;\uC000\u{1D514}pf;\u611Acr;\uC000\u{1D4AC}\u0600BEacefhiorsu\u0F3E\u0F43\u0F47\u0F60\u0F73\u0FA7\u0FAA\u0FAD\u1096\u10A9\u10B4\u10BEarr;\u6910G\u803B\xAE\u40AE\u0180cnr\u0F4E\u0F53\u0F56ute;\u4154g;\u67EBr\u0100;t\u0F5C\u0F5D\u61A0l;\u6916\u0180aey\u0F67\u0F6C\u0F71ron;\u4158dil;\u4156;\u4420\u0100;v\u0F78\u0F79\u611Cerse\u0100EU\u0F82\u0F99\u0100lq\u0F87\u0F8Eement;\u620Builibrium;\u61CBpEquilibrium;\u696Fr\xBB\u0F79o;\u43A1ght\u0400ACDFTUVa\u0FC1\u0FEB\u0FF3\u1022\u1028\u105B\u1087\u03D8\u0100nr\u0FC6\u0FD2gleBracket;\u67E9row\u0180;BL\u0FDC\u0FDD\u0FE1\u6192ar;\u61E5eftArrow;\u61C4eiling;\u6309o\u01F5\u0FF9\0\u1005bleBracket;\u67E7n\u01D4\u100A\0\u1014eeVector;\u695Dector\u0100;B\u101D\u101E\u61C2ar;\u6955loor;\u630B\u0100er\u102D\u1043e\u0180;AV\u1035\u1036\u103C\u62A2rrow;\u61A6ector;\u695Biangle\u0180;BE\u1050\u1051\u1055\u62B3ar;\u69D0qual;\u62B5p\u0180DTV\u1063\u106E\u1078ownVector;\u694FeeVector;\u695Cector\u0100;B\u1082\u1083\u61BEar;\u6954ector\u0100;B\u1091\u1092\u61C0ar;\u6953\u0100pu\u109B\u109Ef;\u611DndImplies;\u6970ightarrow;\u61DB\u0100ch\u10B9\u10BCr;\u611B;\u61B1leDelayed;\u69F4\u0680HOacfhimoqstu\u10E4\u10F1\u10F7\u10FD\u1119\u111E\u1151\u1156\u1161\u1167\u11B5\u11BB\u11BF\u0100Cc\u10E9\u10EEHcy;\u4429y;\u4428FTcy;\u442Ccute;\u415A\u0280;aeiy\u1108\u1109\u110E\u1113\u1117\u6ABCron;\u4160dil;\u415Erc;\u415C;\u4421r;\uC000\u{1D516}ort\u0200DLRU\u112A\u1134\u113E\u1149ownArrow\xBB\u041EeftArrow\xBB\u089AightArrow\xBB\u0FDDpArrow;\u6191gma;\u43A3allCircle;\u6218pf;\uC000\u{1D54A}\u0272\u116D\0\0\u1170t;\u621Aare\u0200;ISU\u117B\u117C\u1189\u11AF\u65A1ntersection;\u6293u\u0100bp\u118F\u119Eset\u0100;E\u1197\u1198\u628Fqual;\u6291erset\u0100;E\u11A8\u11A9\u6290qual;\u6292nion;\u6294cr;\uC000\u{1D4AE}ar;\u62C6\u0200bcmp\u11C8\u11DB\u1209\u120B\u0100;s\u11CD\u11CE\u62D0et\u0100;E\u11CD\u11D5qual;\u6286\u0100ch\u11E0\u1205eeds\u0200;EST\u11ED\u11EE\u11F4\u11FF\u627Bqual;\u6AB0lantEqual;\u627Dilde;\u627FTh\xE1\u0F8C;\u6211\u0180;es\u1212\u1213\u1223\u62D1rset\u0100;E\u121C\u121D\u6283qual;\u6287et\xBB\u1213\u0580HRSacfhiors\u123E\u1244\u1249\u1255\u125E\u1271\u1276\u129F\u12C2\u12C8\u12D1ORN\u803B\xDE\u40DEADE;\u6122\u0100Hc\u124E\u1252cy;\u440By;\u4426\u0100bu\u125A\u125C;\u4009;\u43A4\u0180aey\u1265\u126A\u126Fron;\u4164dil;\u4162;\u4422r;\uC000\u{1D517}\u0100ei\u127B\u1289\u01F2\u1280\0\u1287efore;\u6234a;\u4398\u0100cn\u128E\u1298kSpace;\uC000\u205F\u200ASpace;\u6009lde\u0200;EFT\u12AB\u12AC\u12B2\u12BC\u623Cqual;\u6243ullEqual;\u6245ilde;\u6248pf;\uC000\u{1D54B}ipleDot;\u60DB\u0100ct\u12D6\u12DBr;\uC000\u{1D4AF}rok;\u4166\u0AE1\u12F7\u130E\u131A\u1326\0\u132C\u1331\0\0\0\0\0\u1338\u133D\u1377\u1385\0\u13FF\u1404\u140A\u1410\u0100cr\u12FB\u1301ute\u803B\xDA\u40DAr\u0100;o\u1307\u1308\u619Fcir;\u6949r\u01E3\u1313\0\u1316y;\u440Eve;\u416C\u0100iy\u131E\u1323rc\u803B\xDB\u40DB;\u4423blac;\u4170r;\uC000\u{1D518}rave\u803B\xD9\u40D9acr;\u416A\u0100di\u1341\u1369er\u0100BP\u1348\u135D\u0100ar\u134D\u1350r;\u405Fac\u0100ek\u1357\u1359;\u63DFet;\u63B5arenthesis;\u63DDon\u0100;P\u1370\u1371\u62C3lus;\u628E\u0100gp\u137B\u137Fon;\u4172f;\uC000\u{1D54C}\u0400ADETadps\u1395\u13AE\u13B8\u13C4\u03E8\u13D2\u13D7\u13F3rrow\u0180;BD\u1150\u13A0\u13A4ar;\u6912ownArrow;\u61C5ownArrow;\u6195quilibrium;\u696Eee\u0100;A\u13CB\u13CC\u62A5rrow;\u61A5own\xE1\u03F3er\u0100LR\u13DE\u13E8eftArrow;\u6196ightArrow;\u6197i\u0100;l\u13F9\u13FA\u43D2on;\u43A5ing;\u416Ecr;\uC000\u{1D4B0}ilde;\u4168ml\u803B\xDC\u40DC\u0480Dbcdefosv\u1427\u142C\u1430\u1433\u143E\u1485\u148A\u1490\u1496ash;\u62ABar;\u6AEBy;\u4412ash\u0100;l\u143B\u143C\u62A9;\u6AE6\u0100er\u1443\u1445;\u62C1\u0180bty\u144C\u1450\u147Aar;\u6016\u0100;i\u144F\u1455cal\u0200BLST\u1461\u1465\u146A\u1474ar;\u6223ine;\u407Ceparator;\u6758ilde;\u6240ThinSpace;\u600Ar;\uC000\u{1D519}pf;\uC000\u{1D54D}cr;\uC000\u{1D4B1}dash;\u62AA\u0280cefos\u14A7\u14AC\u14B1\u14B6\u14BCirc;\u4174dge;\u62C0r;\uC000\u{1D51A}pf;\uC000\u{1D54E}cr;\uC000\u{1D4B2}\u0200fios\u14CB\u14D0\u14D2\u14D8r;\uC000\u{1D51B};\u439Epf;\uC000\u{1D54F}cr;\uC000\u{1D4B3}\u0480AIUacfosu\u14F1\u14F5\u14F9\u14FD\u1504\u150F\u1514\u151A\u1520cy;\u442Fcy;\u4407cy;\u442Ecute\u803B\xDD\u40DD\u0100iy\u1509\u150Drc;\u4176;\u442Br;\uC000\u{1D51C}pf;\uC000\u{1D550}cr;\uC000\u{1D4B4}ml;\u4178\u0400Hacdefos\u1535\u1539\u153F\u154B\u154F\u155D\u1560\u1564cy;\u4416cute;\u4179\u0100ay\u1544\u1549ron;\u417D;\u4417ot;\u417B\u01F2\u1554\0\u155BoWidt\xE8\u0AD9a;\u4396r;\u6128pf;\u6124cr;\uC000\u{1D4B5}\u0BE1\u1583\u158A\u1590\0\u15B0\u15B6\u15BF\0\0\0\0\u15C6\u15DB\u15EB\u165F\u166D\0\u1695\u169B\u16B2\u16B9\0\u16BEcute\u803B\xE1\u40E1reve;\u4103\u0300;Ediuy\u159C\u159D\u15A1\u15A3\u15A8\u15AD\u623E;\uC000\u223E\u0333;\u623Frc\u803B\xE2\u40E2te\u80BB\xB4\u0306;\u4430lig\u803B\xE6\u40E6\u0100;r\xB2\u15BA;\uC000\u{1D51E}rave\u803B\xE0\u40E0\u0100ep\u15CA\u15D6\u0100fp\u15CF\u15D4sym;\u6135\xE8\u15D3ha;\u43B1\u0100ap\u15DFc\u0100cl\u15E4\u15E7r;\u4101g;\u6A3F\u0264\u15F0\0\0\u160A\u0280;adsv\u15FA\u15FB\u15FF\u1601\u1607\u6227nd;\u6A55;\u6A5Clope;\u6A58;\u6A5A\u0380;elmrsz\u1618\u1619\u161B\u161E\u163F\u164F\u1659\u6220;\u69A4e\xBB\u1619sd\u0100;a\u1625\u1626\u6221\u0461\u1630\u1632\u1634\u1636\u1638\u163A\u163C\u163E;\u69A8;\u69A9;\u69AA;\u69AB;\u69AC;\u69AD;\u69AE;\u69AFt\u0100;v\u1645\u1646\u621Fb\u0100;d\u164C\u164D\u62BE;\u699D\u0100pt\u1654\u1657h;\u6222\xBB\xB9arr;\u637C\u0100gp\u1663\u1667on;\u4105f;\uC000\u{1D552}\u0380;Eaeiop\u12C1\u167B\u167D\u1682\u1684\u1687\u168A;\u6A70cir;\u6A6F;\u624Ad;\u624Bs;\u4027rox\u0100;e\u12C1\u1692\xF1\u1683ing\u803B\xE5\u40E5\u0180cty\u16A1\u16A6\u16A8r;\uC000\u{1D4B6};\u402Amp\u0100;e\u12C1\u16AF\xF1\u0288ilde\u803B\xE3\u40E3ml\u803B\xE4\u40E4\u0100ci\u16C2\u16C8onin\xF4\u0272nt;\u6A11\u0800Nabcdefiklnoprsu\u16ED\u16F1\u1730\u173C\u1743\u1748\u1778\u177D\u17E0\u17E6\u1839\u1850\u170D\u193D\u1948\u1970ot;\u6AED\u0100cr\u16F6\u171Ek\u0200ceps\u1700\u1705\u170D\u1713ong;\u624Cpsilon;\u43F6rime;\u6035im\u0100;e\u171A\u171B\u623Dq;\u62CD\u0176\u1722\u1726ee;\u62BDed\u0100;g\u172C\u172D\u6305e\xBB\u172Drk\u0100;t\u135C\u1737brk;\u63B6\u0100oy\u1701\u1741;\u4431quo;\u601E\u0280cmprt\u1753\u175B\u1761\u1764\u1768aus\u0100;e\u010A\u0109ptyv;\u69B0s\xE9\u170Cno\xF5\u0113\u0180ahw\u176F\u1771\u1773;\u43B2;\u6136een;\u626Cr;\uC000\u{1D51F}g\u0380costuvw\u178D\u179D\u17B3\u17C1\u17D5\u17DB\u17DE\u0180aiu\u1794\u1796\u179A\xF0\u0760rc;\u65EFp\xBB\u1371\u0180dpt\u17A4\u17A8\u17ADot;\u6A00lus;\u6A01imes;\u6A02\u0271\u17B9\0\0\u17BEcup;\u6A06ar;\u6605riangle\u0100du\u17CD\u17D2own;\u65BDp;\u65B3plus;\u6A04e\xE5\u1444\xE5\u14ADarow;\u690D\u0180ako\u17ED\u1826\u1835\u0100cn\u17F2\u1823k\u0180lst\u17FA\u05AB\u1802ozenge;\u69EBriangle\u0200;dlr\u1812\u1813\u1818\u181D\u65B4own;\u65BEeft;\u65C2ight;\u65B8k;\u6423\u01B1\u182B\0\u1833\u01B2\u182F\0\u1831;\u6592;\u65914;\u6593ck;\u6588\u0100eo\u183E\u184D\u0100;q\u1843\u1846\uC000=\u20E5uiv;\uC000\u2261\u20E5t;\u6310\u0200ptwx\u1859\u185E\u1867\u186Cf;\uC000\u{1D553}\u0100;t\u13CB\u1863om\xBB\u13CCtie;\u62C8\u0600DHUVbdhmptuv\u1885\u1896\u18AA\u18BB\u18D7\u18DB\u18EC\u18FF\u1905\u190A\u1910\u1921\u0200LRlr\u188E\u1890\u1892\u1894;\u6557;\u6554;\u6556;\u6553\u0280;DUdu\u18A1\u18A2\u18A4\u18A6\u18A8\u6550;\u6566;\u6569;\u6564;\u6567\u0200LRlr\u18B3\u18B5\u18B7\u18B9;\u655D;\u655A;\u655C;\u6559\u0380;HLRhlr\u18CA\u18CB\u18CD\u18CF\u18D1\u18D3\u18D5\u6551;\u656C;\u6563;\u6560;\u656B;\u6562;\u655Fox;\u69C9\u0200LRlr\u18E4\u18E6\u18E8\u18EA;\u6555;\u6552;\u6510;\u650C\u0280;DUdu\u06BD\u18F7\u18F9\u18FB\u18FD;\u6565;\u6568;\u652C;\u6534inus;\u629Flus;\u629Eimes;\u62A0\u0200LRlr\u1919\u191B\u191D\u191F;\u655B;\u6558;\u6518;\u6514\u0380;HLRhlr\u1930\u1931\u1933\u1935\u1937\u1939\u193B\u6502;\u656A;\u6561;\u655E;\u653C;\u6524;\u651C\u0100ev\u0123\u1942bar\u803B\xA6\u40A6\u0200ceio\u1951\u1956\u195A\u1960r;\uC000\u{1D4B7}mi;\u604Fm\u0100;e\u171A\u171Cl\u0180;bh\u1968\u1969\u196B\u405C;\u69C5sub;\u67C8\u016C\u1974\u197El\u0100;e\u1979\u197A\u6022t\xBB\u197Ap\u0180;Ee\u012F\u1985\u1987;\u6AAE\u0100;q\u06DC\u06DB\u0CE1\u19A7\0\u19E8\u1A11\u1A15\u1A32\0\u1A37\u1A50\0\0\u1AB4\0\0\u1AC1\0\0\u1B21\u1B2E\u1B4D\u1B52\0\u1BFD\0\u1C0C\u0180cpr\u19AD\u19B2\u19DDute;\u4107\u0300;abcds\u19BF\u19C0\u19C4\u19CA\u19D5\u19D9\u6229nd;\u6A44rcup;\u6A49\u0100au\u19CF\u19D2p;\u6A4Bp;\u6A47ot;\u6A40;\uC000\u2229\uFE00\u0100eo\u19E2\u19E5t;\u6041\xEE\u0693\u0200aeiu\u19F0\u19FB\u1A01\u1A05\u01F0\u19F5\0\u19F8s;\u6A4Don;\u410Ddil\u803B\xE7\u40E7rc;\u4109ps\u0100;s\u1A0C\u1A0D\u6A4Cm;\u6A50ot;\u410B\u0180dmn\u1A1B\u1A20\u1A26il\u80BB\xB8\u01ADptyv;\u69B2t\u8100\xA2;e\u1A2D\u1A2E\u40A2r\xE4\u01B2r;\uC000\u{1D520}\u0180cei\u1A3D\u1A40\u1A4Dy;\u4447ck\u0100;m\u1A47\u1A48\u6713ark\xBB\u1A48;\u43C7r\u0380;Ecefms\u1A5F\u1A60\u1A62\u1A6B\u1AA4\u1AAA\u1AAE\u65CB;\u69C3\u0180;el\u1A69\u1A6A\u1A6D\u42C6q;\u6257e\u0261\u1A74\0\0\u1A88rrow\u0100lr\u1A7C\u1A81eft;\u61BAight;\u61BB\u0280RSacd\u1A92\u1A94\u1A96\u1A9A\u1A9F\xBB\u0F47;\u64C8st;\u629Birc;\u629Aash;\u629Dnint;\u6A10id;\u6AEFcir;\u69C2ubs\u0100;u\u1ABB\u1ABC\u6663it\xBB\u1ABC\u02EC\u1AC7\u1AD4\u1AFA\0\u1B0Aon\u0100;e\u1ACD\u1ACE\u403A\u0100;q\xC7\xC6\u026D\u1AD9\0\0\u1AE2a\u0100;t\u1ADE\u1ADF\u402C;\u4040\u0180;fl\u1AE8\u1AE9\u1AEB\u6201\xEE\u1160e\u0100mx\u1AF1\u1AF6ent\xBB\u1AE9e\xF3\u024D\u01E7\u1AFE\0\u1B07\u0100;d\u12BB\u1B02ot;\u6A6Dn\xF4\u0246\u0180fry\u1B10\u1B14\u1B17;\uC000\u{1D554}o\xE4\u0254\u8100\xA9;s\u0155\u1B1Dr;\u6117\u0100ao\u1B25\u1B29rr;\u61B5ss;\u6717\u0100cu\u1B32\u1B37r;\uC000\u{1D4B8}\u0100bp\u1B3C\u1B44\u0100;e\u1B41\u1B42\u6ACF;\u6AD1\u0100;e\u1B49\u1B4A\u6AD0;\u6AD2dot;\u62EF\u0380delprvw\u1B60\u1B6C\u1B77\u1B82\u1BAC\u1BD4\u1BF9arr\u0100lr\u1B68\u1B6A;\u6938;\u6935\u0270\u1B72\0\0\u1B75r;\u62DEc;\u62DFarr\u0100;p\u1B7F\u1B80\u61B6;\u693D\u0300;bcdos\u1B8F\u1B90\u1B96\u1BA1\u1BA5\u1BA8\u622Arcap;\u6A48\u0100au\u1B9B\u1B9Ep;\u6A46p;\u6A4Aot;\u628Dr;\u6A45;\uC000\u222A\uFE00\u0200alrv\u1BB5\u1BBF\u1BDE\u1BE3rr\u0100;m\u1BBC\u1BBD\u61B7;\u693Cy\u0180evw\u1BC7\u1BD4\u1BD8q\u0270\u1BCE\0\0\u1BD2re\xE3\u1B73u\xE3\u1B75ee;\u62CEedge;\u62CFen\u803B\xA4\u40A4earrow\u0100lr\u1BEE\u1BF3eft\xBB\u1B80ight\xBB\u1BBDe\xE4\u1BDD\u0100ci\u1C01\u1C07onin\xF4\u01F7nt;\u6231lcty;\u632D\u0980AHabcdefhijlorstuwz\u1C38\u1C3B\u1C3F\u1C5D\u1C69\u1C75\u1C8A\u1C9E\u1CAC\u1CB7\u1CFB\u1CFF\u1D0D\u1D7B\u1D91\u1DAB\u1DBB\u1DC6\u1DCDr\xF2\u0381ar;\u6965\u0200glrs\u1C48\u1C4D\u1C52\u1C54ger;\u6020eth;\u6138\xF2\u1133h\u0100;v\u1C5A\u1C5B\u6010\xBB\u090A\u016B\u1C61\u1C67arow;\u690Fa\xE3\u0315\u0100ay\u1C6E\u1C73ron;\u410F;\u4434\u0180;ao\u0332\u1C7C\u1C84\u0100gr\u02BF\u1C81r;\u61CAtseq;\u6A77\u0180glm\u1C91\u1C94\u1C98\u803B\xB0\u40B0ta;\u43B4ptyv;\u69B1\u0100ir\u1CA3\u1CA8sht;\u697F;\uC000\u{1D521}ar\u0100lr\u1CB3\u1CB5\xBB\u08DC\xBB\u101E\u0280aegsv\u1CC2\u0378\u1CD6\u1CDC\u1CE0m\u0180;os\u0326\u1CCA\u1CD4nd\u0100;s\u0326\u1CD1uit;\u6666amma;\u43DDin;\u62F2\u0180;io\u1CE7\u1CE8\u1CF8\u40F7de\u8100\xF7;o\u1CE7\u1CF0ntimes;\u62C7n\xF8\u1CF7cy;\u4452c\u026F\u1D06\0\0\u1D0Arn;\u631Eop;\u630D\u0280lptuw\u1D18\u1D1D\u1D22\u1D49\u1D55lar;\u4024f;\uC000\u{1D555}\u0280;emps\u030B\u1D2D\u1D37\u1D3D\u1D42q\u0100;d\u0352\u1D33ot;\u6251inus;\u6238lus;\u6214quare;\u62A1blebarwedg\xE5\xFAn\u0180adh\u112E\u1D5D\u1D67ownarrow\xF3\u1C83arpoon\u0100lr\u1D72\u1D76ef\xF4\u1CB4igh\xF4\u1CB6\u0162\u1D7F\u1D85karo\xF7\u0F42\u026F\u1D8A\0\0\u1D8Ern;\u631Fop;\u630C\u0180cot\u1D98\u1DA3\u1DA6\u0100ry\u1D9D\u1DA1;\uC000\u{1D4B9};\u4455l;\u69F6rok;\u4111\u0100dr\u1DB0\u1DB4ot;\u62F1i\u0100;f\u1DBA\u1816\u65BF\u0100ah\u1DC0\u1DC3r\xF2\u0429a\xF2\u0FA6angle;\u69A6\u0100ci\u1DD2\u1DD5y;\u445Fgrarr;\u67FF\u0900Dacdefglmnopqrstux\u1E01\u1E09\u1E19\u1E38\u0578\u1E3C\u1E49\u1E61\u1E7E\u1EA5\u1EAF\u1EBD\u1EE1\u1F2A\u1F37\u1F44\u1F4E\u1F5A\u0100Do\u1E06\u1D34o\xF4\u1C89\u0100cs\u1E0E\u1E14ute\u803B\xE9\u40E9ter;\u6A6E\u0200aioy\u1E22\u1E27\u1E31\u1E36ron;\u411Br\u0100;c\u1E2D\u1E2E\u6256\u803B\xEA\u40EAlon;\u6255;\u444Dot;\u4117\u0100Dr\u1E41\u1E45ot;\u6252;\uC000\u{1D522}\u0180;rs\u1E50\u1E51\u1E57\u6A9Aave\u803B\xE8\u40E8\u0100;d\u1E5C\u1E5D\u6A96ot;\u6A98\u0200;ils\u1E6A\u1E6B\u1E72\u1E74\u6A99nters;\u63E7;\u6113\u0100;d\u1E79\u1E7A\u6A95ot;\u6A97\u0180aps\u1E85\u1E89\u1E97cr;\u4113ty\u0180;sv\u1E92\u1E93\u1E95\u6205et\xBB\u1E93p\u01001;\u1E9D\u1EA4\u0133\u1EA1\u1EA3;\u6004;\u6005\u6003\u0100gs\u1EAA\u1EAC;\u414Bp;\u6002\u0100gp\u1EB4\u1EB8on;\u4119f;\uC000\u{1D556}\u0180als\u1EC4\u1ECE\u1ED2r\u0100;s\u1ECA\u1ECB\u62D5l;\u69E3us;\u6A71i\u0180;lv\u1EDA\u1EDB\u1EDF\u43B5on\xBB\u1EDB;\u43F5\u0200csuv\u1EEA\u1EF3\u1F0B\u1F23\u0100io\u1EEF\u1E31rc\xBB\u1E2E\u0269\u1EF9\0\0\u1EFB\xED\u0548ant\u0100gl\u1F02\u1F06tr\xBB\u1E5Dess\xBB\u1E7A\u0180aei\u1F12\u1F16\u1F1Als;\u403Dst;\u625Fv\u0100;D\u0235\u1F20D;\u6A78parsl;\u69E5\u0100Da\u1F2F\u1F33ot;\u6253rr;\u6971\u0180cdi\u1F3E\u1F41\u1EF8r;\u612Fo\xF4\u0352\u0100ah\u1F49\u1F4B;\u43B7\u803B\xF0\u40F0\u0100mr\u1F53\u1F57l\u803B\xEB\u40EBo;\u60AC\u0180cip\u1F61\u1F64\u1F67l;\u4021s\xF4\u056E\u0100eo\u1F6C\u1F74ctatio\xEE\u0559nential\xE5\u0579\u09E1\u1F92\0\u1F9E\0\u1FA1\u1FA7\0\0\u1FC6\u1FCC\0\u1FD3\0\u1FE6\u1FEA\u2000\0\u2008\u205Allingdotse\xF1\u1E44y;\u4444male;\u6640\u0180ilr\u1FAD\u1FB3\u1FC1lig;\u8000\uFB03\u0269\u1FB9\0\0\u1FBDg;\u8000\uFB00ig;\u8000\uFB04;\uC000\u{1D523}lig;\u8000\uFB01lig;\uC000fj\u0180alt\u1FD9\u1FDC\u1FE1t;\u666Dig;\u8000\uFB02ns;\u65B1of;\u4192\u01F0\u1FEE\0\u1FF3f;\uC000\u{1D557}\u0100ak\u05BF\u1FF7\u0100;v\u1FFC\u1FFD\u62D4;\u6AD9artint;\u6A0D\u0100ao\u200C\u2055\u0100cs\u2011\u2052\u03B1\u201A\u2030\u2038\u2045\u2048\0\u2050\u03B2\u2022\u2025\u2027\u202A\u202C\0\u202E\u803B\xBD\u40BD;\u6153\u803B\xBC\u40BC;\u6155;\u6159;\u615B\u01B3\u2034\0\u2036;\u6154;\u6156\u02B4\u203E\u2041\0\0\u2043\u803B\xBE\u40BE;\u6157;\u615C5;\u6158\u01B6\u204C\0\u204E;\u615A;\u615D8;\u615El;\u6044wn;\u6322cr;\uC000\u{1D4BB}\u0880Eabcdefgijlnorstv\u2082\u2089\u209F\u20A5\u20B0\u20B4\u20F0\u20F5\u20FA\u20FF\u2103\u2112\u2138\u0317\u213E\u2152\u219E\u0100;l\u064D\u2087;\u6A8C\u0180cmp\u2090\u2095\u209Dute;\u41F5ma\u0100;d\u209C\u1CDA\u43B3;\u6A86reve;\u411F\u0100iy\u20AA\u20AErc;\u411D;\u4433ot;\u4121\u0200;lqs\u063E\u0642\u20BD\u20C9\u0180;qs\u063E\u064C\u20C4lan\xF4\u0665\u0200;cdl\u0665\u20D2\u20D5\u20E5c;\u6AA9ot\u0100;o\u20DC\u20DD\u6A80\u0100;l\u20E2\u20E3\u6A82;\u6A84\u0100;e\u20EA\u20ED\uC000\u22DB\uFE00s;\u6A94r;\uC000\u{1D524}\u0100;g\u0673\u061Bmel;\u6137cy;\u4453\u0200;Eaj\u065A\u210C\u210E\u2110;\u6A92;\u6AA5;\u6AA4\u0200Eaes\u211B\u211D\u2129\u2134;\u6269p\u0100;p\u2123\u2124\u6A8Arox\xBB\u2124\u0100;q\u212E\u212F\u6A88\u0100;q\u212E\u211Bim;\u62E7pf;\uC000\u{1D558}\u0100ci\u2143\u2146r;\u610Am\u0180;el\u066B\u214E\u2150;\u6A8E;\u6A90\u8300>;cdlqr\u05EE\u2160\u216A\u216E\u2173\u2179\u0100ci\u2165\u2167;\u6AA7r;\u6A7Aot;\u62D7Par;\u6995uest;\u6A7C\u0280adels\u2184\u216A\u2190\u0656\u219B\u01F0\u2189\0\u218Epro\xF8\u209Er;\u6978q\u0100lq\u063F\u2196les\xF3\u2088i\xED\u066B\u0100en\u21A3\u21ADrtneqq;\uC000\u2269\uFE00\xC5\u21AA\u0500Aabcefkosy\u21C4\u21C7\u21F1\u21F5\u21FA\u2218\u221D\u222F\u2268\u227Dr\xF2\u03A0\u0200ilmr\u21D0\u21D4\u21D7\u21DBrs\xF0\u1484f\xBB\u2024il\xF4\u06A9\u0100dr\u21E0\u21E4cy;\u444A\u0180;cw\u08F4\u21EB\u21EFir;\u6948;\u61ADar;\u610Firc;\u4125\u0180alr\u2201\u220E\u2213rts\u0100;u\u2209\u220A\u6665it\xBB\u220Alip;\u6026con;\u62B9r;\uC000\u{1D525}s\u0100ew\u2223\u2229arow;\u6925arow;\u6926\u0280amopr\u223A\u223E\u2243\u225E\u2263rr;\u61FFtht;\u623Bk\u0100lr\u2249\u2253eftarrow;\u61A9ightarrow;\u61AAf;\uC000\u{1D559}bar;\u6015\u0180clt\u226F\u2274\u2278r;\uC000\u{1D4BD}as\xE8\u21F4rok;\u4127\u0100bp\u2282\u2287ull;\u6043hen\xBB\u1C5B\u0AE1\u22A3\0\u22AA\0\u22B8\u22C5\u22CE\0\u22D5\u22F3\0\0\u22F8\u2322\u2367\u2362\u237F\0\u2386\u23AA\u23B4cute\u803B\xED\u40ED\u0180;iy\u0771\u22B0\u22B5rc\u803B\xEE\u40EE;\u4438\u0100cx\u22BC\u22BFy;\u4435cl\u803B\xA1\u40A1\u0100fr\u039F\u22C9;\uC000\u{1D526}rave\u803B\xEC\u40EC\u0200;ino\u073E\u22DD\u22E9\u22EE\u0100in\u22E2\u22E6nt;\u6A0Ct;\u622Dfin;\u69DCta;\u6129lig;\u4133\u0180aop\u22FE\u231A\u231D\u0180cgt\u2305\u2308\u2317r;\u412B\u0180elp\u071F\u230F\u2313in\xE5\u078Ear\xF4\u0720h;\u4131f;\u62B7ed;\u41B5\u0280;cfot\u04F4\u232C\u2331\u233D\u2341are;\u6105in\u0100;t\u2338\u2339\u621Eie;\u69DDdo\xF4\u2319\u0280;celp\u0757\u234C\u2350\u235B\u2361al;\u62BA\u0100gr\u2355\u2359er\xF3\u1563\xE3\u234Darhk;\u6A17rod;\u6A3C\u0200cgpt\u236F\u2372\u2376\u237By;\u4451on;\u412Ff;\uC000\u{1D55A}a;\u43B9uest\u803B\xBF\u40BF\u0100ci\u238A\u238Fr;\uC000\u{1D4BE}n\u0280;Edsv\u04F4\u239B\u239D\u23A1\u04F3;\u62F9ot;\u62F5\u0100;v\u23A6\u23A7\u62F4;\u62F3\u0100;i\u0777\u23AElde;\u4129\u01EB\u23B8\0\u23BCcy;\u4456l\u803B\xEF\u40EF\u0300cfmosu\u23CC\u23D7\u23DC\u23E1\u23E7\u23F5\u0100iy\u23D1\u23D5rc;\u4135;\u4439r;\uC000\u{1D527}ath;\u4237pf;\uC000\u{1D55B}\u01E3\u23EC\0\u23F1r;\uC000\u{1D4BF}rcy;\u4458kcy;\u4454\u0400acfghjos\u240B\u2416\u2422\u2427\u242D\u2431\u2435\u243Bppa\u0100;v\u2413\u2414\u43BA;\u43F0\u0100ey\u241B\u2420dil;\u4137;\u443Ar;\uC000\u{1D528}reen;\u4138cy;\u4445cy;\u445Cpf;\uC000\u{1D55C}cr;\uC000\u{1D4C0}\u0B80ABEHabcdefghjlmnoprstuv\u2470\u2481\u2486\u248D\u2491\u250E\u253D\u255A\u2580\u264E\u265E\u2665\u2679\u267D\u269A\u26B2\u26D8\u275D\u2768\u278B\u27C0\u2801\u2812\u0180art\u2477\u247A\u247Cr\xF2\u09C6\xF2\u0395ail;\u691Barr;\u690E\u0100;g\u0994\u248B;\u6A8Bar;\u6962\u0963\u24A5\0\u24AA\0\u24B1\0\0\0\0\0\u24B5\u24BA\0\u24C6\u24C8\u24CD\0\u24F9ute;\u413Amptyv;\u69B4ra\xEE\u084Cbda;\u43BBg\u0180;dl\u088E\u24C1\u24C3;\u6991\xE5\u088E;\u6A85uo\u803B\xAB\u40ABr\u0400;bfhlpst\u0899\u24DE\u24E6\u24E9\u24EB\u24EE\u24F1\u24F5\u0100;f\u089D\u24E3s;\u691Fs;\u691D\xEB\u2252p;\u61ABl;\u6939im;\u6973l;\u61A2\u0180;ae\u24FF\u2500\u2504\u6AABil;\u6919\u0100;s\u2509\u250A\u6AAD;\uC000\u2AAD\uFE00\u0180abr\u2515\u2519\u251Drr;\u690Crk;\u6772\u0100ak\u2522\u252Cc\u0100ek\u2528\u252A;\u407B;\u405B\u0100es\u2531\u2533;\u698Bl\u0100du\u2539\u253B;\u698F;\u698D\u0200aeuy\u2546\u254B\u2556\u2558ron;\u413E\u0100di\u2550\u2554il;\u413C\xEC\u08B0\xE2\u2529;\u443B\u0200cqrs\u2563\u2566\u256D\u257Da;\u6936uo\u0100;r\u0E19\u1746\u0100du\u2572\u2577har;\u6967shar;\u694Bh;\u61B2\u0280;fgqs\u258B\u258C\u0989\u25F3\u25FF\u6264t\u0280ahlrt\u2598\u25A4\u25B7\u25C2\u25E8rrow\u0100;t\u0899\u25A1a\xE9\u24F6arpoon\u0100du\u25AF\u25B4own\xBB\u045Ap\xBB\u0966eftarrows;\u61C7ight\u0180ahs\u25CD\u25D6\u25DErrow\u0100;s\u08F4\u08A7arpoon\xF3\u0F98quigarro\xF7\u21F0hreetimes;\u62CB\u0180;qs\u258B\u0993\u25FAlan\xF4\u09AC\u0280;cdgs\u09AC\u260A\u260D\u261D\u2628c;\u6AA8ot\u0100;o\u2614\u2615\u6A7F\u0100;r\u261A\u261B\u6A81;\u6A83\u0100;e\u2622\u2625\uC000\u22DA\uFE00s;\u6A93\u0280adegs\u2633\u2639\u263D\u2649\u264Bppro\xF8\u24C6ot;\u62D6q\u0100gq\u2643\u2645\xF4\u0989gt\xF2\u248C\xF4\u099Bi\xED\u09B2\u0180ilr\u2655\u08E1\u265Asht;\u697C;\uC000\u{1D529}\u0100;E\u099C\u2663;\u6A91\u0161\u2669\u2676r\u0100du\u25B2\u266E\u0100;l\u0965\u2673;\u696Alk;\u6584cy;\u4459\u0280;acht\u0A48\u2688\u268B\u2691\u2696r\xF2\u25C1orne\xF2\u1D08ard;\u696Bri;\u65FA\u0100io\u269F\u26A4dot;\u4140ust\u0100;a\u26AC\u26AD\u63B0che\xBB\u26AD\u0200Eaes\u26BB\u26BD\u26C9\u26D4;\u6268p\u0100;p\u26C3\u26C4\u6A89rox\xBB\u26C4\u0100;q\u26CE\u26CF\u6A87\u0100;q\u26CE\u26BBim;\u62E6\u0400abnoptwz\u26E9\u26F4\u26F7\u271A\u272F\u2741\u2747\u2750\u0100nr\u26EE\u26F1g;\u67ECr;\u61FDr\xEB\u08C1g\u0180lmr\u26FF\u270D\u2714eft\u0100ar\u09E6\u2707ight\xE1\u09F2apsto;\u67FCight\xE1\u09FDparrow\u0100lr\u2725\u2729ef\xF4\u24EDight;\u61AC\u0180afl\u2736\u2739\u273Dr;\u6985;\uC000\u{1D55D}us;\u6A2Dimes;\u6A34\u0161\u274B\u274Fst;\u6217\xE1\u134E\u0180;ef\u2757\u2758\u1800\u65CAnge\xBB\u2758ar\u0100;l\u2764\u2765\u4028t;\u6993\u0280achmt\u2773\u2776\u277C\u2785\u2787r\xF2\u08A8orne\xF2\u1D8Car\u0100;d\u0F98\u2783;\u696D;\u600Eri;\u62BF\u0300achiqt\u2798\u279D\u0A40\u27A2\u27AE\u27BBquo;\u6039r;\uC000\u{1D4C1}m\u0180;eg\u09B2\u27AA\u27AC;\u6A8D;\u6A8F\u0100bu\u252A\u27B3o\u0100;r\u0E1F\u27B9;\u601Arok;\u4142\u8400<;cdhilqr\u082B\u27D2\u2639\u27DC\u27E0\u27E5\u27EA\u27F0\u0100ci\u27D7\u27D9;\u6AA6r;\u6A79re\xE5\u25F2mes;\u62C9arr;\u6976uest;\u6A7B\u0100Pi\u27F5\u27F9ar;\u6996\u0180;ef\u2800\u092D\u181B\u65C3r\u0100du\u2807\u280Dshar;\u694Ahar;\u6966\u0100en\u2817\u2821rtneqq;\uC000\u2268\uFE00\xC5\u281E\u0700Dacdefhilnopsu\u2840\u2845\u2882\u288E\u2893\u28A0\u28A5\u28A8\u28DA\u28E2\u28E4\u0A83\u28F3\u2902Dot;\u623A\u0200clpr\u284E\u2852\u2863\u287Dr\u803B\xAF\u40AF\u0100et\u2857\u2859;\u6642\u0100;e\u285E\u285F\u6720se\xBB\u285F\u0100;s\u103B\u2868to\u0200;dlu\u103B\u2873\u2877\u287Bow\xEE\u048Cef\xF4\u090F\xF0\u13D1ker;\u65AE\u0100oy\u2887\u288Cmma;\u6A29;\u443Cash;\u6014asuredangle\xBB\u1626r;\uC000\u{1D52A}o;\u6127\u0180cdn\u28AF\u28B4\u28C9ro\u803B\xB5\u40B5\u0200;acd\u1464\u28BD\u28C0\u28C4s\xF4\u16A7ir;\u6AF0ot\u80BB\xB7\u01B5us\u0180;bd\u28D2\u1903\u28D3\u6212\u0100;u\u1D3C\u28D8;\u6A2A\u0163\u28DE\u28E1p;\u6ADB\xF2\u2212\xF0\u0A81\u0100dp\u28E9\u28EEels;\u62A7f;\uC000\u{1D55E}\u0100ct\u28F8\u28FDr;\uC000\u{1D4C2}pos\xBB\u159D\u0180;lm\u2909\u290A\u290D\u43BCtimap;\u62B8\u0C00GLRVabcdefghijlmoprstuvw\u2942\u2953\u297E\u2989\u2998\u29DA\u29E9\u2A15\u2A1A\u2A58\u2A5D\u2A83\u2A95\u2AA4\u2AA8\u2B04\u2B07\u2B44\u2B7F\u2BAE\u2C34\u2C67\u2C7C\u2CE9\u0100gt\u2947\u294B;\uC000\u22D9\u0338\u0100;v\u2950\u0BCF\uC000\u226B\u20D2\u0180elt\u295A\u2972\u2976ft\u0100ar\u2961\u2967rrow;\u61CDightarrow;\u61CE;\uC000\u22D8\u0338\u0100;v\u297B\u0C47\uC000\u226A\u20D2ightarrow;\u61CF\u0100Dd\u298E\u2993ash;\u62AFash;\u62AE\u0280bcnpt\u29A3\u29A7\u29AC\u29B1\u29CCla\xBB\u02DEute;\u4144g;\uC000\u2220\u20D2\u0280;Eiop\u0D84\u29BC\u29C0\u29C5\u29C8;\uC000\u2A70\u0338d;\uC000\u224B\u0338s;\u4149ro\xF8\u0D84ur\u0100;a\u29D3\u29D4\u666El\u0100;s\u29D3\u0B38\u01F3\u29DF\0\u29E3p\u80BB\xA0\u0B37mp\u0100;e\u0BF9\u0C00\u0280aeouy\u29F4\u29FE\u2A03\u2A10\u2A13\u01F0\u29F9\0\u29FB;\u6A43on;\u4148dil;\u4146ng\u0100;d\u0D7E\u2A0Aot;\uC000\u2A6D\u0338p;\u6A42;\u443Dash;\u6013\u0380;Aadqsx\u0B92\u2A29\u2A2D\u2A3B\u2A41\u2A45\u2A50rr;\u61D7r\u0100hr\u2A33\u2A36k;\u6924\u0100;o\u13F2\u13F0ot;\uC000\u2250\u0338ui\xF6\u0B63\u0100ei\u2A4A\u2A4Ear;\u6928\xED\u0B98ist\u0100;s\u0BA0\u0B9Fr;\uC000\u{1D52B}\u0200Eest\u0BC5\u2A66\u2A79\u2A7C\u0180;qs\u0BBC\u2A6D\u0BE1\u0180;qs\u0BBC\u0BC5\u2A74lan\xF4\u0BE2i\xED\u0BEA\u0100;r\u0BB6\u2A81\xBB\u0BB7\u0180Aap\u2A8A\u2A8D\u2A91r\xF2\u2971rr;\u61AEar;\u6AF2\u0180;sv\u0F8D\u2A9C\u0F8C\u0100;d\u2AA1\u2AA2\u62FC;\u62FAcy;\u445A\u0380AEadest\u2AB7\u2ABA\u2ABE\u2AC2\u2AC5\u2AF6\u2AF9r\xF2\u2966;\uC000\u2266\u0338rr;\u619Ar;\u6025\u0200;fqs\u0C3B\u2ACE\u2AE3\u2AEFt\u0100ar\u2AD4\u2AD9rro\xF7\u2AC1ightarro\xF7\u2A90\u0180;qs\u0C3B\u2ABA\u2AEAlan\xF4\u0C55\u0100;s\u0C55\u2AF4\xBB\u0C36i\xED\u0C5D\u0100;r\u0C35\u2AFEi\u0100;e\u0C1A\u0C25i\xE4\u0D90\u0100pt\u2B0C\u2B11f;\uC000\u{1D55F}\u8180\xAC;in\u2B19\u2B1A\u2B36\u40ACn\u0200;Edv\u0B89\u2B24\u2B28\u2B2E;\uC000\u22F9\u0338ot;\uC000\u22F5\u0338\u01E1\u0B89\u2B33\u2B35;\u62F7;\u62F6i\u0100;v\u0CB8\u2B3C\u01E1\u0CB8\u2B41\u2B43;\u62FE;\u62FD\u0180aor\u2B4B\u2B63\u2B69r\u0200;ast\u0B7B\u2B55\u2B5A\u2B5Flle\xEC\u0B7Bl;\uC000\u2AFD\u20E5;\uC000\u2202\u0338lint;\u6A14\u0180;ce\u0C92\u2B70\u2B73u\xE5\u0CA5\u0100;c\u0C98\u2B78\u0100;e\u0C92\u2B7D\xF1\u0C98\u0200Aait\u2B88\u2B8B\u2B9D\u2BA7r\xF2\u2988rr\u0180;cw\u2B94\u2B95\u2B99\u619B;\uC000\u2933\u0338;\uC000\u219D\u0338ghtarrow\xBB\u2B95ri\u0100;e\u0CCB\u0CD6\u0380chimpqu\u2BBD\u2BCD\u2BD9\u2B04\u0B78\u2BE4\u2BEF\u0200;cer\u0D32\u2BC6\u0D37\u2BC9u\xE5\u0D45;\uC000\u{1D4C3}ort\u026D\u2B05\0\0\u2BD6ar\xE1\u2B56m\u0100;e\u0D6E\u2BDF\u0100;q\u0D74\u0D73su\u0100bp\u2BEB\u2BED\xE5\u0CF8\xE5\u0D0B\u0180bcp\u2BF6\u2C11\u2C19\u0200;Ees\u2BFF\u2C00\u0D22\u2C04\u6284;\uC000\u2AC5\u0338et\u0100;e\u0D1B\u2C0Bq\u0100;q\u0D23\u2C00c\u0100;e\u0D32\u2C17\xF1\u0D38\u0200;Ees\u2C22\u2C23\u0D5F\u2C27\u6285;\uC000\u2AC6\u0338et\u0100;e\u0D58\u2C2Eq\u0100;q\u0D60\u2C23\u0200gilr\u2C3D\u2C3F\u2C45\u2C47\xEC\u0BD7lde\u803B\xF1\u40F1\xE7\u0C43iangle\u0100lr\u2C52\u2C5Ceft\u0100;e\u0C1A\u2C5A\xF1\u0C26ight\u0100;e\u0CCB\u2C65\xF1\u0CD7\u0100;m\u2C6C\u2C6D\u43BD\u0180;es\u2C74\u2C75\u2C79\u4023ro;\u6116p;\u6007\u0480DHadgilrs\u2C8F\u2C94\u2C99\u2C9E\u2CA3\u2CB0\u2CB6\u2CD3\u2CE3ash;\u62ADarr;\u6904p;\uC000\u224D\u20D2ash;\u62AC\u0100et\u2CA8\u2CAC;\uC000\u2265\u20D2;\uC000>\u20D2nfin;\u69DE\u0180Aet\u2CBD\u2CC1\u2CC5rr;\u6902;\uC000\u2264\u20D2\u0100;r\u2CCA\u2CCD\uC000<\u20D2ie;\uC000\u22B4\u20D2\u0100At\u2CD8\u2CDCrr;\u6903rie;\uC000\u22B5\u20D2im;\uC000\u223C\u20D2\u0180Aan\u2CF0\u2CF4\u2D02rr;\u61D6r\u0100hr\u2CFA\u2CFDk;\u6923\u0100;o\u13E7\u13E5ear;\u6927\u1253\u1A95\0\0\0\0\0\0\0\0\0\0\0\0\0\u2D2D\0\u2D38\u2D48\u2D60\u2D65\u2D72\u2D84\u1B07\0\0\u2D8D\u2DAB\0\u2DC8\u2DCE\0\u2DDC\u2E19\u2E2B\u2E3E\u2E43\u0100cs\u2D31\u1A97ute\u803B\xF3\u40F3\u0100iy\u2D3C\u2D45r\u0100;c\u1A9E\u2D42\u803B\xF4\u40F4;\u443E\u0280abios\u1AA0\u2D52\u2D57\u01C8\u2D5Alac;\u4151v;\u6A38old;\u69BClig;\u4153\u0100cr\u2D69\u2D6Dir;\u69BF;\uC000\u{1D52C}\u036F\u2D79\0\0\u2D7C\0\u2D82n;\u42DBave\u803B\xF2\u40F2;\u69C1\u0100bm\u2D88\u0DF4ar;\u69B5\u0200acit\u2D95\u2D98\u2DA5\u2DA8r\xF2\u1A80\u0100ir\u2D9D\u2DA0r;\u69BEoss;\u69BBn\xE5\u0E52;\u69C0\u0180aei\u2DB1\u2DB5\u2DB9cr;\u414Dga;\u43C9\u0180cdn\u2DC0\u2DC5\u01CDron;\u43BF;\u69B6pf;\uC000\u{1D560}\u0180ael\u2DD4\u2DD7\u01D2r;\u69B7rp;\u69B9\u0380;adiosv\u2DEA\u2DEB\u2DEE\u2E08\u2E0D\u2E10\u2E16\u6228r\xF2\u1A86\u0200;efm\u2DF7\u2DF8\u2E02\u2E05\u6A5Dr\u0100;o\u2DFE\u2DFF\u6134f\xBB\u2DFF\u803B\xAA\u40AA\u803B\xBA\u40BAgof;\u62B6r;\u6A56lope;\u6A57;\u6A5B\u0180clo\u2E1F\u2E21\u2E27\xF2\u2E01ash\u803B\xF8\u40F8l;\u6298i\u016C\u2E2F\u2E34de\u803B\xF5\u40F5es\u0100;a\u01DB\u2E3As;\u6A36ml\u803B\xF6\u40F6bar;\u633D\u0AE1\u2E5E\0\u2E7D\0\u2E80\u2E9D\0\u2EA2\u2EB9\0\0\u2ECB\u0E9C\0\u2F13\0\0\u2F2B\u2FBC\0\u2FC8r\u0200;ast\u0403\u2E67\u2E72\u0E85\u8100\xB6;l\u2E6D\u2E6E\u40B6le\xEC\u0403\u0269\u2E78\0\0\u2E7Bm;\u6AF3;\u6AFDy;\u443Fr\u0280cimpt\u2E8B\u2E8F\u2E93\u1865\u2E97nt;\u4025od;\u402Eil;\u6030enk;\u6031r;\uC000\u{1D52D}\u0180imo\u2EA8\u2EB0\u2EB4\u0100;v\u2EAD\u2EAE\u43C6;\u43D5ma\xF4\u0A76ne;\u660E\u0180;tv\u2EBF\u2EC0\u2EC8\u43C0chfork\xBB\u1FFD;\u43D6\u0100au\u2ECF\u2EDFn\u0100ck\u2ED5\u2EDDk\u0100;h\u21F4\u2EDB;\u610E\xF6\u21F4s\u0480;abcdemst\u2EF3\u2EF4\u1908\u2EF9\u2EFD\u2F04\u2F06\u2F0A\u2F0E\u402Bcir;\u6A23ir;\u6A22\u0100ou\u1D40\u2F02;\u6A25;\u6A72n\u80BB\xB1\u0E9Dim;\u6A26wo;\u6A27\u0180ipu\u2F19\u2F20\u2F25ntint;\u6A15f;\uC000\u{1D561}nd\u803B\xA3\u40A3\u0500;Eaceinosu\u0EC8\u2F3F\u2F41\u2F44\u2F47\u2F81\u2F89\u2F92\u2F7E\u2FB6;\u6AB3p;\u6AB7u\xE5\u0ED9\u0100;c\u0ECE\u2F4C\u0300;acens\u0EC8\u2F59\u2F5F\u2F66\u2F68\u2F7Eppro\xF8\u2F43urlye\xF1\u0ED9\xF1\u0ECE\u0180aes\u2F6F\u2F76\u2F7Approx;\u6AB9qq;\u6AB5im;\u62E8i\xED\u0EDFme\u0100;s\u2F88\u0EAE\u6032\u0180Eas\u2F78\u2F90\u2F7A\xF0\u2F75\u0180dfp\u0EEC\u2F99\u2FAF\u0180als\u2FA0\u2FA5\u2FAAlar;\u632Eine;\u6312urf;\u6313\u0100;t\u0EFB\u2FB4\xEF\u0EFBrel;\u62B0\u0100ci\u2FC0\u2FC5r;\uC000\u{1D4C5};\u43C8ncsp;\u6008\u0300fiopsu\u2FDA\u22E2\u2FDF\u2FE5\u2FEB\u2FF1r;\uC000\u{1D52E}pf;\uC000\u{1D562}rime;\u6057cr;\uC000\u{1D4C6}\u0180aeo\u2FF8\u3009\u3013t\u0100ei\u2FFE\u3005rnion\xF3\u06B0nt;\u6A16st\u0100;e\u3010\u3011\u403F\xF1\u1F19\xF4\u0F14\u0A80ABHabcdefhilmnoprstux\u3040\u3051\u3055\u3059\u30E0\u310E\u312B\u3147\u3162\u3172\u318E\u3206\u3215\u3224\u3229\u3258\u326E\u3272\u3290\u32B0\u32B7\u0180art\u3047\u304A\u304Cr\xF2\u10B3\xF2\u03DDail;\u691Car\xF2\u1C65ar;\u6964\u0380cdenqrt\u3068\u3075\u3078\u307F\u308F\u3094\u30CC\u0100eu\u306D\u3071;\uC000\u223D\u0331te;\u4155i\xE3\u116Emptyv;\u69B3g\u0200;del\u0FD1\u3089\u308B\u308D;\u6992;\u69A5\xE5\u0FD1uo\u803B\xBB\u40BBr\u0580;abcfhlpstw\u0FDC\u30AC\u30AF\u30B7\u30B9\u30BC\u30BE\u30C0\u30C3\u30C7\u30CAp;\u6975\u0100;f\u0FE0\u30B4s;\u6920;\u6933s;\u691E\xEB\u225D\xF0\u272El;\u6945im;\u6974l;\u61A3;\u619D\u0100ai\u30D1\u30D5il;\u691Ao\u0100;n\u30DB\u30DC\u6236al\xF3\u0F1E\u0180abr\u30E7\u30EA\u30EEr\xF2\u17E5rk;\u6773\u0100ak\u30F3\u30FDc\u0100ek\u30F9\u30FB;\u407D;\u405D\u0100es\u3102\u3104;\u698Cl\u0100du\u310A\u310C;\u698E;\u6990\u0200aeuy\u3117\u311C\u3127\u3129ron;\u4159\u0100di\u3121\u3125il;\u4157\xEC\u0FF2\xE2\u30FA;\u4440\u0200clqs\u3134\u3137\u313D\u3144a;\u6937dhar;\u6969uo\u0100;r\u020E\u020Dh;\u61B3\u0180acg\u314E\u315F\u0F44l\u0200;ips\u0F78\u3158\u315B\u109Cn\xE5\u10BBar\xF4\u0FA9t;\u65AD\u0180ilr\u3169\u1023\u316Esht;\u697D;\uC000\u{1D52F}\u0100ao\u3177\u3186r\u0100du\u317D\u317F\xBB\u047B\u0100;l\u1091\u3184;\u696C\u0100;v\u318B\u318C\u43C1;\u43F1\u0180gns\u3195\u31F9\u31FCht\u0300ahlrst\u31A4\u31B0\u31C2\u31D8\u31E4\u31EErrow\u0100;t\u0FDC\u31ADa\xE9\u30C8arpoon\u0100du\u31BB\u31BFow\xEE\u317Ep\xBB\u1092eft\u0100ah\u31CA\u31D0rrow\xF3\u0FEAarpoon\xF3\u0551ightarrows;\u61C9quigarro\xF7\u30CBhreetimes;\u62CCg;\u42DAingdotse\xF1\u1F32\u0180ahm\u320D\u3210\u3213r\xF2\u0FEAa\xF2\u0551;\u600Foust\u0100;a\u321E\u321F\u63B1che\xBB\u321Fmid;\u6AEE\u0200abpt\u3232\u323D\u3240\u3252\u0100nr\u3237\u323Ag;\u67EDr;\u61FEr\xEB\u1003\u0180afl\u3247\u324A\u324Er;\u6986;\uC000\u{1D563}us;\u6A2Eimes;\u6A35\u0100ap\u325D\u3267r\u0100;g\u3263\u3264\u4029t;\u6994olint;\u6A12ar\xF2\u31E3\u0200achq\u327B\u3280\u10BC\u3285quo;\u603Ar;\uC000\u{1D4C7}\u0100bu\u30FB\u328Ao\u0100;r\u0214\u0213\u0180hir\u3297\u329B\u32A0re\xE5\u31F8mes;\u62CAi\u0200;efl\u32AA\u1059\u1821\u32AB\u65B9tri;\u69CEluhar;\u6968;\u611E\u0D61\u32D5\u32DB\u32DF\u332C\u3338\u3371\0\u337A\u33A4\0\0\u33EC\u33F0\0\u3428\u3448\u345A\u34AD\u34B1\u34CA\u34F1\0\u3616\0\0\u3633cute;\u415Bqu\xEF\u27BA\u0500;Eaceinpsy\u11ED\u32F3\u32F5\u32FF\u3302\u330B\u330F\u331F\u3326\u3329;\u6AB4\u01F0\u32FA\0\u32FC;\u6AB8on;\u4161u\xE5\u11FE\u0100;d\u11F3\u3307il;\u415Frc;\u415D\u0180Eas\u3316\u3318\u331B;\u6AB6p;\u6ABAim;\u62E9olint;\u6A13i\xED\u1204;\u4441ot\u0180;be\u3334\u1D47\u3335\u62C5;\u6A66\u0380Aacmstx\u3346\u334A\u3357\u335B\u335E\u3363\u336Drr;\u61D8r\u0100hr\u3350\u3352\xEB\u2228\u0100;o\u0A36\u0A34t\u803B\xA7\u40A7i;\u403Bwar;\u6929m\u0100in\u3369\xF0nu\xF3\xF1t;\u6736r\u0100;o\u3376\u2055\uC000\u{1D530}\u0200acoy\u3382\u3386\u3391\u33A0rp;\u666F\u0100hy\u338B\u338Fcy;\u4449;\u4448rt\u026D\u3399\0\0\u339Ci\xE4\u1464ara\xEC\u2E6F\u803B\xAD\u40AD\u0100gm\u33A8\u33B4ma\u0180;fv\u33B1\u33B2\u33B2\u43C3;\u43C2\u0400;deglnpr\u12AB\u33C5\u33C9\u33CE\u33D6\u33DE\u33E1\u33E6ot;\u6A6A\u0100;q\u12B1\u12B0\u0100;E\u33D3\u33D4\u6A9E;\u6AA0\u0100;E\u33DB\u33DC\u6A9D;\u6A9Fe;\u6246lus;\u6A24arr;\u6972ar\xF2\u113D\u0200aeit\u33F8\u3408\u340F\u3417\u0100ls\u33FD\u3404lsetm\xE9\u336Ahp;\u6A33parsl;\u69E4\u0100dl\u1463\u3414e;\u6323\u0100;e\u341C\u341D\u6AAA\u0100;s\u3422\u3423\u6AAC;\uC000\u2AAC\uFE00\u0180flp\u342E\u3433\u3442tcy;\u444C\u0100;b\u3438\u3439\u402F\u0100;a\u343E\u343F\u69C4r;\u633Ff;\uC000\u{1D564}a\u0100dr\u344D\u0402es\u0100;u\u3454\u3455\u6660it\xBB\u3455\u0180csu\u3460\u3479\u349F\u0100au\u3465\u346Fp\u0100;s\u1188\u346B;\uC000\u2293\uFE00p\u0100;s\u11B4\u3475;\uC000\u2294\uFE00u\u0100bp\u347F\u348F\u0180;es\u1197\u119C\u3486et\u0100;e\u1197\u348D\xF1\u119D\u0180;es\u11A8\u11AD\u3496et\u0100;e\u11A8\u349D\xF1\u11AE\u0180;af\u117B\u34A6\u05B0r\u0165\u34AB\u05B1\xBB\u117Car\xF2\u1148\u0200cemt\u34B9\u34BE\u34C2\u34C5r;\uC000\u{1D4C8}tm\xEE\xF1i\xEC\u3415ar\xE6\u11BE\u0100ar\u34CE\u34D5r\u0100;f\u34D4\u17BF\u6606\u0100an\u34DA\u34EDight\u0100ep\u34E3\u34EApsilo\xEE\u1EE0h\xE9\u2EAFs\xBB\u2852\u0280bcmnp\u34FB\u355E\u1209\u358B\u358E\u0480;Edemnprs\u350E\u350F\u3511\u3515\u351E\u3523\u352C\u3531\u3536\u6282;\u6AC5ot;\u6ABD\u0100;d\u11DA\u351Aot;\u6AC3ult;\u6AC1\u0100Ee\u3528\u352A;\u6ACB;\u628Alus;\u6ABFarr;\u6979\u0180eiu\u353D\u3552\u3555t\u0180;en\u350E\u3545\u354Bq\u0100;q\u11DA\u350Feq\u0100;q\u352B\u3528m;\u6AC7\u0100bp\u355A\u355C;\u6AD5;\u6AD3c\u0300;acens\u11ED\u356C\u3572\u3579\u357B\u3326ppro\xF8\u32FAurlye\xF1\u11FE\xF1\u11F3\u0180aes\u3582\u3588\u331Bppro\xF8\u331Aq\xF1\u3317g;\u666A\u0680123;Edehlmnps\u35A9\u35AC\u35AF\u121C\u35B2\u35B4\u35C0\u35C9\u35D5\u35DA\u35DF\u35E8\u35ED\u803B\xB9\u40B9\u803B\xB2\u40B2\u803B\xB3\u40B3;\u6AC6\u0100os\u35B9\u35BCt;\u6ABEub;\u6AD8\u0100;d\u1222\u35C5ot;\u6AC4s\u0100ou\u35CF\u35D2l;\u67C9b;\u6AD7arr;\u697Bult;\u6AC2\u0100Ee\u35E4\u35E6;\u6ACC;\u628Blus;\u6AC0\u0180eiu\u35F4\u3609\u360Ct\u0180;en\u121C\u35FC\u3602q\u0100;q\u1222\u35B2eq\u0100;q\u35E7\u35E4m;\u6AC8\u0100bp\u3611\u3613;\u6AD4;\u6AD6\u0180Aan\u361C\u3620\u362Drr;\u61D9r\u0100hr\u3626\u3628\xEB\u222E\u0100;o\u0A2B\u0A29war;\u692Alig\u803B\xDF\u40DF\u0BE1\u3651\u365D\u3660\u12CE\u3673\u3679\0\u367E\u36C2\0\0\0\0\0\u36DB\u3703\0\u3709\u376C\0\0\0\u3787\u0272\u3656\0\0\u365Bget;\u6316;\u43C4r\xEB\u0E5F\u0180aey\u3666\u366B\u3670ron;\u4165dil;\u4163;\u4442lrec;\u6315r;\uC000\u{1D531}\u0200eiko\u3686\u369D\u36B5\u36BC\u01F2\u368B\0\u3691e\u01004f\u1284\u1281a\u0180;sv\u3698\u3699\u369B\u43B8ym;\u43D1\u0100cn\u36A2\u36B2k\u0100as\u36A8\u36AEppro\xF8\u12C1im\xBB\u12ACs\xF0\u129E\u0100as\u36BA\u36AE\xF0\u12C1rn\u803B\xFE\u40FE\u01EC\u031F\u36C6\u22E7es\u8180\xD7;bd\u36CF\u36D0\u36D8\u40D7\u0100;a\u190F\u36D5r;\u6A31;\u6A30\u0180eps\u36E1\u36E3\u3700\xE1\u2A4D\u0200;bcf\u0486\u36EC\u36F0\u36F4ot;\u6336ir;\u6AF1\u0100;o\u36F9\u36FC\uC000\u{1D565}rk;\u6ADA\xE1\u3362rime;\u6034\u0180aip\u370F\u3712\u3764d\xE5\u1248\u0380adempst\u3721\u374D\u3740\u3751\u3757\u375C\u375Fngle\u0280;dlqr\u3730\u3731\u3736\u3740\u3742\u65B5own\xBB\u1DBBeft\u0100;e\u2800\u373E\xF1\u092E;\u625Cight\u0100;e\u32AA\u374B\xF1\u105Aot;\u65ECinus;\u6A3Alus;\u6A39b;\u69CDime;\u6A3Bezium;\u63E2\u0180cht\u3772\u377D\u3781\u0100ry\u3777\u377B;\uC000\u{1D4C9};\u4446cy;\u445Brok;\u4167\u0100io\u378B\u378Ex\xF4\u1777head\u0100lr\u3797\u37A0eftarro\xF7\u084Fightarrow\xBB\u0F5D\u0900AHabcdfghlmoprstuw\u37D0\u37D3\u37D7\u37E4\u37F0\u37FC\u380E\u381C\u3823\u3834\u3851\u385D\u386B\u38A9\u38CC\u38D2\u38EA\u38F6r\xF2\u03EDar;\u6963\u0100cr\u37DC\u37E2ute\u803B\xFA\u40FA\xF2\u1150r\u01E3\u37EA\0\u37EDy;\u445Eve;\u416D\u0100iy\u37F5\u37FArc\u803B\xFB\u40FB;\u4443\u0180abh\u3803\u3806\u380Br\xF2\u13ADlac;\u4171a\xF2\u13C3\u0100ir\u3813\u3818sht;\u697E;\uC000\u{1D532}rave\u803B\xF9\u40F9\u0161\u3827\u3831r\u0100lr\u382C\u382E\xBB\u0957\xBB\u1083lk;\u6580\u0100ct\u3839\u384D\u026F\u383F\0\0\u384Arn\u0100;e\u3845\u3846\u631Cr\xBB\u3846op;\u630Fri;\u65F8\u0100al\u3856\u385Acr;\u416B\u80BB\xA8\u0349\u0100gp\u3862\u3866on;\u4173f;\uC000\u{1D566}\u0300adhlsu\u114B\u3878\u387D\u1372\u3891\u38A0own\xE1\u13B3arpoon\u0100lr\u3888\u388Cef\xF4\u382Digh\xF4\u382Fi\u0180;hl\u3899\u389A\u389C\u43C5\xBB\u13FAon\xBB\u389Aparrows;\u61C8\u0180cit\u38B0\u38C4\u38C8\u026F\u38B6\0\0\u38C1rn\u0100;e\u38BC\u38BD\u631Dr\xBB\u38BDop;\u630Eng;\u416Fri;\u65F9cr;\uC000\u{1D4CA}\u0180dir\u38D9\u38DD\u38E2ot;\u62F0lde;\u4169i\u0100;f\u3730\u38E8\xBB\u1813\u0100am\u38EF\u38F2r\xF2\u38A8l\u803B\xFC\u40FCangle;\u69A7\u0780ABDacdeflnoprsz\u391C\u391F\u3929\u392D\u39B5\u39B8\u39BD\u39DF\u39E4\u39E8\u39F3\u39F9\u39FD\u3A01\u3A20r\xF2\u03F7ar\u0100;v\u3926\u3927\u6AE8;\u6AE9as\xE8\u03E1\u0100nr\u3932\u3937grt;\u699C\u0380eknprst\u34E3\u3946\u394B\u3952\u395D\u3964\u3996app\xE1\u2415othin\xE7\u1E96\u0180hir\u34EB\u2EC8\u3959op\xF4\u2FB5\u0100;h\u13B7\u3962\xEF\u318D\u0100iu\u3969\u396Dgm\xE1\u33B3\u0100bp\u3972\u3984setneq\u0100;q\u397D\u3980\uC000\u228A\uFE00;\uC000\u2ACB\uFE00setneq\u0100;q\u398F\u3992\uC000\u228B\uFE00;\uC000\u2ACC\uFE00\u0100hr\u399B\u399Fet\xE1\u369Ciangle\u0100lr\u39AA\u39AFeft\xBB\u0925ight\xBB\u1051y;\u4432ash\xBB\u1036\u0180elr\u39C4\u39D2\u39D7\u0180;be\u2DEA\u39CB\u39CFar;\u62BBq;\u625Alip;\u62EE\u0100bt\u39DC\u1468a\xF2\u1469r;\uC000\u{1D533}tr\xE9\u39AEsu\u0100bp\u39EF\u39F1\xBB\u0D1C\xBB\u0D59pf;\uC000\u{1D567}ro\xF0\u0EFBtr\xE9\u39B4\u0100cu\u3A06\u3A0Br;\uC000\u{1D4CB}\u0100bp\u3A10\u3A18n\u0100Ee\u3980\u3A16\xBB\u397En\u0100Ee\u3992\u3A1E\xBB\u3990igzag;\u699A\u0380cefoprs\u3A36\u3A3B\u3A56\u3A5B\u3A54\u3A61\u3A6Airc;\u4175\u0100di\u3A40\u3A51\u0100bg\u3A45\u3A49ar;\u6A5Fe\u0100;q\u15FA\u3A4F;\u6259erp;\u6118r;\uC000\u{1D534}pf;\uC000\u{1D568}\u0100;e\u1479\u3A66at\xE8\u1479cr;\uC000\u{1D4CC}\u0AE3\u178E\u3A87\0\u3A8B\0\u3A90\u3A9B\0\0\u3A9D\u3AA8\u3AAB\u3AAF\0\0\u3AC3\u3ACE\0\u3AD8\u17DC\u17DFtr\xE9\u17D1r;\uC000\u{1D535}\u0100Aa\u3A94\u3A97r\xF2\u03C3r\xF2\u09F6;\u43BE\u0100Aa\u3AA1\u3AA4r\xF2\u03B8r\xF2\u09EBa\xF0\u2713is;\u62FB\u0180dpt\u17A4\u3AB5\u3ABE\u0100fl\u3ABA\u17A9;\uC000\u{1D569}im\xE5\u17B2\u0100Aa\u3AC7\u3ACAr\xF2\u03CEr\xF2\u0A01\u0100cq\u3AD2\u17B8r;\uC000\u{1D4CD}\u0100pt\u17D6\u3ADCr\xE9\u17D4\u0400acefiosu\u3AF0\u3AFD\u3B08\u3B0C\u3B11\u3B15\u3B1B\u3B21c\u0100uy\u3AF6\u3AFBte\u803B\xFD\u40FD;\u444F\u0100iy\u3B02\u3B06rc;\u4177;\u444Bn\u803B\xA5\u40A5r;\uC000\u{1D536}cy;\u4457pf;\uC000\u{1D56A}cr;\uC000\u{1D4CE}\u0100cm\u3B26\u3B29y;\u444El\u803B\xFF\u40FF\u0500acdefhiosw\u3B42\u3B48\u3B54\u3B58\u3B64\u3B69\u3B6D\u3B74\u3B7A\u3B80cute;\u417A\u0100ay\u3B4D\u3B52ron;\u417E;\u4437ot;\u417C\u0100et\u3B5D\u3B61tr\xE6\u155Fa;\u43B6r;\uC000\u{1D537}cy;\u4436grarr;\u61DDpf;\uC000\u{1D56B}cr;\uC000\u{1D4CF}\u0100jn\u3B85\u3B87;\u600Dj;\u600C'.split("").map(e=>e.charCodeAt(0)));var Tn=new Uint16Array("\u0200aglq	\x1B\u026D\0\0p;\u4026os;\u4027t;\u403Et;\u403Cuot;\u4022".split("").map(e=>e.charCodeAt(0)));var Du,Oo=new Map([[0,65533],[128,8364],[130,8218],[131,402],[132,8222],[133,8230],[134,8224],[135,8225],[136,710],[137,8240],[138,352],[139,8249],[140,338],[142,381],[145,8216],[146,8217],[147,8220],[148,8221],[149,8226],[150,8211],[151,8212],[152,732],[153,8482],[154,353],[155,8250],[156,339],[158,382],[159,376]]),Tu=(Du=String.fromCodePoint)!==null&&Du!==void 0?Du:function(e){let t="";return e>65535&&(e-=65536,t+=String.fromCharCode(e>>>10&1023|55296),e=56320|e&1023),t+=String.fromCharCode(e),t};function Su(e){var t;return e>=55296&&e<=57343||e>1114111?65533:(t=Oo.get(e))!==null&&t!==void 0?t:e}var ge;(function(e){e[e.NUM=35]="NUM",e[e.SEMI=59]="SEMI",e[e.EQUALS=61]="EQUALS",e[e.ZERO=48]="ZERO",e[e.NINE=57]="NINE",e[e.LOWER_A=97]="LOWER_A",e[e.LOWER_F=102]="LOWER_F",e[e.LOWER_X=120]="LOWER_X",e[e.LOWER_Z=122]="LOWER_Z",e[e.UPPER_A=65]="UPPER_A",e[e.UPPER_F=70]="UPPER_F",e[e.UPPER_Z=90]="UPPER_Z"})(ge||(ge={}));var No=32,Ve;(function(e){e[e.VALUE_LENGTH=49152]="VALUE_LENGTH",e[e.BRANCH_LENGTH=16256]="BRANCH_LENGTH",e[e.JUMP_TABLE=127]="JUMP_TABLE"})(Ve||(Ve={}));function Fu(e){return e>=ge.ZERO&&e<=ge.NINE}function Lo(e){return e>=ge.UPPER_A&&e<=ge.UPPER_F||e>=ge.LOWER_A&&e<=ge.LOWER_F}function Po(e){return e>=ge.UPPER_A&&e<=ge.UPPER_Z||e>=ge.LOWER_A&&e<=ge.LOWER_Z||Fu(e)}function Bo(e){return e===ge.EQUALS||Po(e)}var me;(function(e){e[e.EntityStart=0]="EntityStart",e[e.NumericStart=1]="NumericStart",e[e.NumericDecimal=2]="NumericDecimal",e[e.NumericHex=3]="NumericHex",e[e.NamedEntity=4]="NamedEntity"})(me||(me={}));var Re;(function(e){e[e.Legacy=0]="Legacy",e[e.Strict=1]="Strict",e[e.Attribute=2]="Attribute"})(Re||(Re={}));var Kt=class{constructor(t,u,r){this.decodeTree=t,this.emitCodePoint=u,this.errors=r,this.state=me.EntityStart,this.consumed=1,this.result=0,this.treeIndex=0,this.excess=1,this.decodeMode=Re.Strict}startEntity(t){this.decodeMode=t,this.state=me.EntityStart,this.result=0,this.treeIndex=0,this.excess=1,this.consumed=1}write(t,u){switch(this.state){case me.EntityStart:return t.charCodeAt(u)===ge.NUM?(this.state=me.NumericStart,this.consumed+=1,this.stateNumericStart(t,u+1)):(this.state=me.NamedEntity,this.stateNamedEntity(t,u));case me.NumericStart:return this.stateNumericStart(t,u);case me.NumericDecimal:return this.stateNumericDecimal(t,u);case me.NumericHex:return this.stateNumericHex(t,u);case me.NamedEntity:return this.stateNamedEntity(t,u)}}stateNumericStart(t,u){return u>=t.length?-1:(t.charCodeAt(u)|No)===ge.LOWER_X?(this.state=me.NumericHex,this.consumed+=1,this.stateNumericHex(t,u+1)):(this.state=me.NumericDecimal,this.stateNumericDecimal(t,u))}addToNumericResult(t,u,r,i){if(u!==r){let n=r-u;this.result=this.result*Math.pow(i,n)+parseInt(t.substr(u,n),i),this.consumed+=n}}stateNumericHex(t,u){let r=u;for(;u<t.length;){let i=t.charCodeAt(u);if(Fu(i)||Lo(i))u+=1;else return this.addToNumericResult(t,r,u,16),this.emitNumericEntity(i,3)}return this.addToNumericResult(t,r,u,16),-1}stateNumericDecimal(t,u){let r=u;for(;u<t.length;){let i=t.charCodeAt(u);if(Fu(i))u+=1;else return this.addToNumericResult(t,r,u,10),this.emitNumericEntity(i,2)}return this.addToNumericResult(t,r,u,10),-1}emitNumericEntity(t,u){var r;if(this.consumed<=u)return(r=this.errors)===null||r===void 0||r.absenceOfDigitsInNumericCharacterReference(this.consumed),0;if(t===ge.SEMI)this.consumed+=1;else if(this.decodeMode===Re.Strict)return 0;return this.emitCodePoint(Su(this.result),this.consumed),this.errors&&(t!==ge.SEMI&&this.errors.missingSemicolonAfterCharacterReference(),this.errors.validateNumericCharacterReference(this.result)),this.consumed}stateNamedEntity(t,u){let{decodeTree:r}=this,i=r[this.treeIndex],n=(i&Ve.VALUE_LENGTH)>>14;for(;u<t.length;u++,this.excess++){let o=t.charCodeAt(u);if(this.treeIndex=$o(r,i,this.treeIndex+Math.max(1,n),o),this.treeIndex<0)return this.result===0||this.decodeMode===Re.Attribute&&(n===0||Bo(o))?0:this.emitNotTerminatedNamedEntity();if(i=r[this.treeIndex],n=(i&Ve.VALUE_LENGTH)>>14,n!==0){if(o===ge.SEMI)return this.emitNamedEntityData(this.treeIndex,n,this.consumed+this.excess);this.decodeMode!==Re.Strict&&(this.result=this.treeIndex,this.consumed+=this.excess,this.excess=0)}}return-1}emitNotTerminatedNamedEntity(){var t;let{result:u,decodeTree:r}=this,i=(r[u]&Ve.VALUE_LENGTH)>>14;return this.emitNamedEntityData(u,i,this.consumed),(t=this.errors)===null||t===void 0||t.missingSemicolonAfterCharacterReference(),this.consumed}emitNamedEntityData(t,u,r){let{decodeTree:i}=this;return this.emitCodePoint(u===1?i[t]&~Ve.VALUE_LENGTH:i[t+1],r),u===3&&this.emitCodePoint(i[t+2],r),r}end(){var t;switch(this.state){case me.NamedEntity:return this.result!==0&&(this.decodeMode!==Re.Attribute||this.result===this.treeIndex)?this.emitNotTerminatedNamedEntity():0;case me.NumericDecimal:return this.emitNumericEntity(0,2);case me.NumericHex:return this.emitNumericEntity(0,3);case me.NumericStart:return(t=this.errors)===null||t===void 0||t.absenceOfDigitsInNumericCharacterReference(this.consumed),0;case me.EntityStart:return 0}}};function Sn(e){let t="",u=new Kt(e,r=>t+=Tu(r));return function(i,n){let o=0,s=0;for(;(s=i.indexOf("&",s))>=0;){t+=i.slice(o,s),u.startEntity(n);let c=u.write(i,s+1);if(c<0){o=s+u.end();break}o=s+c,s=c===0?o+1:o}let a=t+i.slice(o);return t="",a}}function $o(e,t,u,r){let i=(t&Ve.BRANCH_LENGTH)>>7,n=t&Ve.JUMP_TABLE;if(i===0)return n!==0&&r===n?u:-1;if(n){let a=r-n;return a<0||a>=i?-1:e[u+a]-1}let o=u,s=o+i-1;for(;o<=s;){let a=o+s>>>1,c=e[a];if(c<r)o=a+1;else if(c>r)s=a-1;else return e[a+i]}return-1}var qo=Sn(Dn),Aa=Sn(Tn);function Ge(e,t=Re.Legacy){return qo(e,t)}function Yt(e){for(let t=1;t<e.length;t++)e[t][0]+=e[t-1][0]+1;return e}var jo=new Map(Yt([[9,"&Tab;"],[0,"&NewLine;"],[22,"&excl;"],[0,"&quot;"],[0,"&num;"],[0,"&dollar;"],[0,"&percnt;"],[0,"&amp;"],[0,"&apos;"],[0,"&lpar;"],[0,"&rpar;"],[0,"&ast;"],[0,"&plus;"],[0,"&comma;"],[1,"&period;"],[0,"&sol;"],[10,"&colon;"],[0,"&semi;"],[0,{v:"&lt;",n:8402,o:"&nvlt;"}],[0,{v:"&equals;",n:8421,o:"&bne;"}],[0,{v:"&gt;",n:8402,o:"&nvgt;"}],[0,"&quest;"],[0,"&commat;"],[26,"&lbrack;"],[0,"&bsol;"],[0,"&rbrack;"],[0,"&Hat;"],[0,"&lowbar;"],[0,"&DiacriticalGrave;"],[5,{n:106,o:"&fjlig;"}],[20,"&lbrace;"],[0,"&verbar;"],[0,"&rbrace;"],[34,"&nbsp;"],[0,"&iexcl;"],[0,"&cent;"],[0,"&pound;"],[0,"&curren;"],[0,"&yen;"],[0,"&brvbar;"],[0,"&sect;"],[0,"&die;"],[0,"&copy;"],[0,"&ordf;"],[0,"&laquo;"],[0,"&not;"],[0,"&shy;"],[0,"&circledR;"],[0,"&macr;"],[0,"&deg;"],[0,"&PlusMinus;"],[0,"&sup2;"],[0,"&sup3;"],[0,"&acute;"],[0,"&micro;"],[0,"&para;"],[0,"&centerdot;"],[0,"&cedil;"],[0,"&sup1;"],[0,"&ordm;"],[0,"&raquo;"],[0,"&frac14;"],[0,"&frac12;"],[0,"&frac34;"],[0,"&iquest;"],[0,"&Agrave;"],[0,"&Aacute;"],[0,"&Acirc;"],[0,"&Atilde;"],[0,"&Auml;"],[0,"&angst;"],[0,"&AElig;"],[0,"&Ccedil;"],[0,"&Egrave;"],[0,"&Eacute;"],[0,"&Ecirc;"],[0,"&Euml;"],[0,"&Igrave;"],[0,"&Iacute;"],[0,"&Icirc;"],[0,"&Iuml;"],[0,"&ETH;"],[0,"&Ntilde;"],[0,"&Ograve;"],[0,"&Oacute;"],[0,"&Ocirc;"],[0,"&Otilde;"],[0,"&Ouml;"],[0,"&times;"],[0,"&Oslash;"],[0,"&Ugrave;"],[0,"&Uacute;"],[0,"&Ucirc;"],[0,"&Uuml;"],[0,"&Yacute;"],[0,"&THORN;"],[0,"&szlig;"],[0,"&agrave;"],[0,"&aacute;"],[0,"&acirc;"],[0,"&atilde;"],[0,"&auml;"],[0,"&aring;"],[0,"&aelig;"],[0,"&ccedil;"],[0,"&egrave;"],[0,"&eacute;"],[0,"&ecirc;"],[0,"&euml;"],[0,"&igrave;"],[0,"&iacute;"],[0,"&icirc;"],[0,"&iuml;"],[0,"&eth;"],[0,"&ntilde;"],[0,"&ograve;"],[0,"&oacute;"],[0,"&ocirc;"],[0,"&otilde;"],[0,"&ouml;"],[0,"&div;"],[0,"&oslash;"],[0,"&ugrave;"],[0,"&uacute;"],[0,"&ucirc;"],[0,"&uuml;"],[0,"&yacute;"],[0,"&thorn;"],[0,"&yuml;"],[0,"&Amacr;"],[0,"&amacr;"],[0,"&Abreve;"],[0,"&abreve;"],[0,"&Aogon;"],[0,"&aogon;"],[0,"&Cacute;"],[0,"&cacute;"],[0,"&Ccirc;"],[0,"&ccirc;"],[0,"&Cdot;"],[0,"&cdot;"],[0,"&Ccaron;"],[0,"&ccaron;"],[0,"&Dcaron;"],[0,"&dcaron;"],[0,"&Dstrok;"],[0,"&dstrok;"],[0,"&Emacr;"],[0,"&emacr;"],[2,"&Edot;"],[0,"&edot;"],[0,"&Eogon;"],[0,"&eogon;"],[0,"&Ecaron;"],[0,"&ecaron;"],[0,"&Gcirc;"],[0,"&gcirc;"],[0,"&Gbreve;"],[0,"&gbreve;"],[0,"&Gdot;"],[0,"&gdot;"],[0,"&Gcedil;"],[1,"&Hcirc;"],[0,"&hcirc;"],[0,"&Hstrok;"],[0,"&hstrok;"],[0,"&Itilde;"],[0,"&itilde;"],[0,"&Imacr;"],[0,"&imacr;"],[2,"&Iogon;"],[0,"&iogon;"],[0,"&Idot;"],[0,"&imath;"],[0,"&IJlig;"],[0,"&ijlig;"],[0,"&Jcirc;"],[0,"&jcirc;"],[0,"&Kcedil;"],[0,"&kcedil;"],[0,"&kgreen;"],[0,"&Lacute;"],[0,"&lacute;"],[0,"&Lcedil;"],[0,"&lcedil;"],[0,"&Lcaron;"],[0,"&lcaron;"],[0,"&Lmidot;"],[0,"&lmidot;"],[0,"&Lstrok;"],[0,"&lstrok;"],[0,"&Nacute;"],[0,"&nacute;"],[0,"&Ncedil;"],[0,"&ncedil;"],[0,"&Ncaron;"],[0,"&ncaron;"],[0,"&napos;"],[0,"&ENG;"],[0,"&eng;"],[0,"&Omacr;"],[0,"&omacr;"],[2,"&Odblac;"],[0,"&odblac;"],[0,"&OElig;"],[0,"&oelig;"],[0,"&Racute;"],[0,"&racute;"],[0,"&Rcedil;"],[0,"&rcedil;"],[0,"&Rcaron;"],[0,"&rcaron;"],[0,"&Sacute;"],[0,"&sacute;"],[0,"&Scirc;"],[0,"&scirc;"],[0,"&Scedil;"],[0,"&scedil;"],[0,"&Scaron;"],[0,"&scaron;"],[0,"&Tcedil;"],[0,"&tcedil;"],[0,"&Tcaron;"],[0,"&tcaron;"],[0,"&Tstrok;"],[0,"&tstrok;"],[0,"&Utilde;"],[0,"&utilde;"],[0,"&Umacr;"],[0,"&umacr;"],[0,"&Ubreve;"],[0,"&ubreve;"],[0,"&Uring;"],[0,"&uring;"],[0,"&Udblac;"],[0,"&udblac;"],[0,"&Uogon;"],[0,"&uogon;"],[0,"&Wcirc;"],[0,"&wcirc;"],[0,"&Ycirc;"],[0,"&ycirc;"],[0,"&Yuml;"],[0,"&Zacute;"],[0,"&zacute;"],[0,"&Zdot;"],[0,"&zdot;"],[0,"&Zcaron;"],[0,"&zcaron;"],[19,"&fnof;"],[34,"&imped;"],[63,"&gacute;"],[65,"&jmath;"],[142,"&circ;"],[0,"&caron;"],[16,"&breve;"],[0,"&DiacriticalDot;"],[0,"&ring;"],[0,"&ogon;"],[0,"&DiacriticalTilde;"],[0,"&dblac;"],[51,"&DownBreve;"],[127,"&Alpha;"],[0,"&Beta;"],[0,"&Gamma;"],[0,"&Delta;"],[0,"&Epsilon;"],[0,"&Zeta;"],[0,"&Eta;"],[0,"&Theta;"],[0,"&Iota;"],[0,"&Kappa;"],[0,"&Lambda;"],[0,"&Mu;"],[0,"&Nu;"],[0,"&Xi;"],[0,"&Omicron;"],[0,"&Pi;"],[0,"&Rho;"],[1,"&Sigma;"],[0,"&Tau;"],[0,"&Upsilon;"],[0,"&Phi;"],[0,"&Chi;"],[0,"&Psi;"],[0,"&ohm;"],[7,"&alpha;"],[0,"&beta;"],[0,"&gamma;"],[0,"&delta;"],[0,"&epsi;"],[0,"&zeta;"],[0,"&eta;"],[0,"&theta;"],[0,"&iota;"],[0,"&kappa;"],[0,"&lambda;"],[0,"&mu;"],[0,"&nu;"],[0,"&xi;"],[0,"&omicron;"],[0,"&pi;"],[0,"&rho;"],[0,"&sigmaf;"],[0,"&sigma;"],[0,"&tau;"],[0,"&upsi;"],[0,"&phi;"],[0,"&chi;"],[0,"&psi;"],[0,"&omega;"],[7,"&thetasym;"],[0,"&Upsi;"],[2,"&phiv;"],[0,"&piv;"],[5,"&Gammad;"],[0,"&digamma;"],[18,"&kappav;"],[0,"&rhov;"],[3,"&epsiv;"],[0,"&backepsilon;"],[10,"&IOcy;"],[0,"&DJcy;"],[0,"&GJcy;"],[0,"&Jukcy;"],[0,"&DScy;"],[0,"&Iukcy;"],[0,"&YIcy;"],[0,"&Jsercy;"],[0,"&LJcy;"],[0,"&NJcy;"],[0,"&TSHcy;"],[0,"&KJcy;"],[1,"&Ubrcy;"],[0,"&DZcy;"],[0,"&Acy;"],[0,"&Bcy;"],[0,"&Vcy;"],[0,"&Gcy;"],[0,"&Dcy;"],[0,"&IEcy;"],[0,"&ZHcy;"],[0,"&Zcy;"],[0,"&Icy;"],[0,"&Jcy;"],[0,"&Kcy;"],[0,"&Lcy;"],[0,"&Mcy;"],[0,"&Ncy;"],[0,"&Ocy;"],[0,"&Pcy;"],[0,"&Rcy;"],[0,"&Scy;"],[0,"&Tcy;"],[0,"&Ucy;"],[0,"&Fcy;"],[0,"&KHcy;"],[0,"&TScy;"],[0,"&CHcy;"],[0,"&SHcy;"],[0,"&SHCHcy;"],[0,"&HARDcy;"],[0,"&Ycy;"],[0,"&SOFTcy;"],[0,"&Ecy;"],[0,"&YUcy;"],[0,"&YAcy;"],[0,"&acy;"],[0,"&bcy;"],[0,"&vcy;"],[0,"&gcy;"],[0,"&dcy;"],[0,"&iecy;"],[0,"&zhcy;"],[0,"&zcy;"],[0,"&icy;"],[0,"&jcy;"],[0,"&kcy;"],[0,"&lcy;"],[0,"&mcy;"],[0,"&ncy;"],[0,"&ocy;"],[0,"&pcy;"],[0,"&rcy;"],[0,"&scy;"],[0,"&tcy;"],[0,"&ucy;"],[0,"&fcy;"],[0,"&khcy;"],[0,"&tscy;"],[0,"&chcy;"],[0,"&shcy;"],[0,"&shchcy;"],[0,"&hardcy;"],[0,"&ycy;"],[0,"&softcy;"],[0,"&ecy;"],[0,"&yucy;"],[0,"&yacy;"],[1,"&iocy;"],[0,"&djcy;"],[0,"&gjcy;"],[0,"&jukcy;"],[0,"&dscy;"],[0,"&iukcy;"],[0,"&yicy;"],[0,"&jsercy;"],[0,"&ljcy;"],[0,"&njcy;"],[0,"&tshcy;"],[0,"&kjcy;"],[1,"&ubrcy;"],[0,"&dzcy;"],[7074,"&ensp;"],[0,"&emsp;"],[0,"&emsp13;"],[0,"&emsp14;"],[1,"&numsp;"],[0,"&puncsp;"],[0,"&ThinSpace;"],[0,"&hairsp;"],[0,"&NegativeMediumSpace;"],[0,"&zwnj;"],[0,"&zwj;"],[0,"&lrm;"],[0,"&rlm;"],[0,"&dash;"],[2,"&ndash;"],[0,"&mdash;"],[0,"&horbar;"],[0,"&Verbar;"],[1,"&lsquo;"],[0,"&CloseCurlyQuote;"],[0,"&lsquor;"],[1,"&ldquo;"],[0,"&CloseCurlyDoubleQuote;"],[0,"&bdquo;"],[1,"&dagger;"],[0,"&Dagger;"],[0,"&bull;"],[2,"&nldr;"],[0,"&hellip;"],[9,"&permil;"],[0,"&pertenk;"],[0,"&prime;"],[0,"&Prime;"],[0,"&tprime;"],[0,"&backprime;"],[3,"&lsaquo;"],[0,"&rsaquo;"],[3,"&oline;"],[2,"&caret;"],[1,"&hybull;"],[0,"&frasl;"],[10,"&bsemi;"],[7,"&qprime;"],[7,{v:"&MediumSpace;",n:8202,o:"&ThickSpace;"}],[0,"&NoBreak;"],[0,"&af;"],[0,"&InvisibleTimes;"],[0,"&ic;"],[72,"&euro;"],[46,"&tdot;"],[0,"&DotDot;"],[37,"&complexes;"],[2,"&incare;"],[4,"&gscr;"],[0,"&hamilt;"],[0,"&Hfr;"],[0,"&Hopf;"],[0,"&planckh;"],[0,"&hbar;"],[0,"&imagline;"],[0,"&Ifr;"],[0,"&lagran;"],[0,"&ell;"],[1,"&naturals;"],[0,"&numero;"],[0,"&copysr;"],[0,"&weierp;"],[0,"&Popf;"],[0,"&Qopf;"],[0,"&realine;"],[0,"&real;"],[0,"&reals;"],[0,"&rx;"],[3,"&trade;"],[1,"&integers;"],[2,"&mho;"],[0,"&zeetrf;"],[0,"&iiota;"],[2,"&bernou;"],[0,"&Cayleys;"],[1,"&escr;"],[0,"&Escr;"],[0,"&Fouriertrf;"],[1,"&Mellintrf;"],[0,"&order;"],[0,"&alefsym;"],[0,"&beth;"],[0,"&gimel;"],[0,"&daleth;"],[12,"&CapitalDifferentialD;"],[0,"&dd;"],[0,"&ee;"],[0,"&ii;"],[10,"&frac13;"],[0,"&frac23;"],[0,"&frac15;"],[0,"&frac25;"],[0,"&frac35;"],[0,"&frac45;"],[0,"&frac16;"],[0,"&frac56;"],[0,"&frac18;"],[0,"&frac38;"],[0,"&frac58;"],[0,"&frac78;"],[49,"&larr;"],[0,"&ShortUpArrow;"],[0,"&rarr;"],[0,"&darr;"],[0,"&harr;"],[0,"&updownarrow;"],[0,"&nwarr;"],[0,"&nearr;"],[0,"&LowerRightArrow;"],[0,"&LowerLeftArrow;"],[0,"&nlarr;"],[0,"&nrarr;"],[1,{v:"&rarrw;",n:824,o:"&nrarrw;"}],[0,"&Larr;"],[0,"&Uarr;"],[0,"&Rarr;"],[0,"&Darr;"],[0,"&larrtl;"],[0,"&rarrtl;"],[0,"&LeftTeeArrow;"],[0,"&mapstoup;"],[0,"&map;"],[0,"&DownTeeArrow;"],[1,"&hookleftarrow;"],[0,"&hookrightarrow;"],[0,"&larrlp;"],[0,"&looparrowright;"],[0,"&harrw;"],[0,"&nharr;"],[1,"&lsh;"],[0,"&rsh;"],[0,"&ldsh;"],[0,"&rdsh;"],[1,"&crarr;"],[0,"&cularr;"],[0,"&curarr;"],[2,"&circlearrowleft;"],[0,"&circlearrowright;"],[0,"&leftharpoonup;"],[0,"&DownLeftVector;"],[0,"&RightUpVector;"],[0,"&LeftUpVector;"],[0,"&rharu;"],[0,"&DownRightVector;"],[0,"&dharr;"],[0,"&dharl;"],[0,"&RightArrowLeftArrow;"],[0,"&udarr;"],[0,"&LeftArrowRightArrow;"],[0,"&leftleftarrows;"],[0,"&upuparrows;"],[0,"&rightrightarrows;"],[0,"&ddarr;"],[0,"&leftrightharpoons;"],[0,"&Equilibrium;"],[0,"&nlArr;"],[0,"&nhArr;"],[0,"&nrArr;"],[0,"&DoubleLeftArrow;"],[0,"&DoubleUpArrow;"],[0,"&DoubleRightArrow;"],[0,"&dArr;"],[0,"&DoubleLeftRightArrow;"],[0,"&DoubleUpDownArrow;"],[0,"&nwArr;"],[0,"&neArr;"],[0,"&seArr;"],[0,"&swArr;"],[0,"&lAarr;"],[0,"&rAarr;"],[1,"&zigrarr;"],[6,"&larrb;"],[0,"&rarrb;"],[15,"&DownArrowUpArrow;"],[7,"&loarr;"],[0,"&roarr;"],[0,"&hoarr;"],[0,"&forall;"],[0,"&comp;"],[0,{v:"&part;",n:824,o:"&npart;"}],[0,"&exist;"],[0,"&nexist;"],[0,"&empty;"],[1,"&Del;"],[0,"&Element;"],[0,"&NotElement;"],[1,"&ni;"],[0,"&notni;"],[2,"&prod;"],[0,"&coprod;"],[0,"&sum;"],[0,"&minus;"],[0,"&MinusPlus;"],[0,"&dotplus;"],[1,"&Backslash;"],[0,"&lowast;"],[0,"&compfn;"],[1,"&radic;"],[2,"&prop;"],[0,"&infin;"],[0,"&angrt;"],[0,{v:"&ang;",n:8402,o:"&nang;"}],[0,"&angmsd;"],[0,"&angsph;"],[0,"&mid;"],[0,"&nmid;"],[0,"&DoubleVerticalBar;"],[0,"&NotDoubleVerticalBar;"],[0,"&and;"],[0,"&or;"],[0,{v:"&cap;",n:65024,o:"&caps;"}],[0,{v:"&cup;",n:65024,o:"&cups;"}],[0,"&int;"],[0,"&Int;"],[0,"&iiint;"],[0,"&conint;"],[0,"&Conint;"],[0,"&Cconint;"],[0,"&cwint;"],[0,"&ClockwiseContourIntegral;"],[0,"&awconint;"],[0,"&there4;"],[0,"&becaus;"],[0,"&ratio;"],[0,"&Colon;"],[0,"&dotminus;"],[1,"&mDDot;"],[0,"&homtht;"],[0,{v:"&sim;",n:8402,o:"&nvsim;"}],[0,{v:"&backsim;",n:817,o:"&race;"}],[0,{v:"&ac;",n:819,o:"&acE;"}],[0,"&acd;"],[0,"&VerticalTilde;"],[0,"&NotTilde;"],[0,{v:"&eqsim;",n:824,o:"&nesim;"}],[0,"&sime;"],[0,"&NotTildeEqual;"],[0,"&cong;"],[0,"&simne;"],[0,"&ncong;"],[0,"&ap;"],[0,"&nap;"],[0,"&ape;"],[0,{v:"&apid;",n:824,o:"&napid;"}],[0,"&backcong;"],[0,{v:"&asympeq;",n:8402,o:"&nvap;"}],[0,{v:"&bump;",n:824,o:"&nbump;"}],[0,{v:"&bumpe;",n:824,o:"&nbumpe;"}],[0,{v:"&doteq;",n:824,o:"&nedot;"}],[0,"&doteqdot;"],[0,"&efDot;"],[0,"&erDot;"],[0,"&Assign;"],[0,"&ecolon;"],[0,"&ecir;"],[0,"&circeq;"],[1,"&wedgeq;"],[0,"&veeeq;"],[1,"&triangleq;"],[2,"&equest;"],[0,"&ne;"],[0,{v:"&Congruent;",n:8421,o:"&bnequiv;"}],[0,"&nequiv;"],[1,{v:"&le;",n:8402,o:"&nvle;"}],[0,{v:"&ge;",n:8402,o:"&nvge;"}],[0,{v:"&lE;",n:824,o:"&nlE;"}],[0,{v:"&gE;",n:824,o:"&ngE;"}],[0,{v:"&lnE;",n:65024,o:"&lvertneqq;"}],[0,{v:"&gnE;",n:65024,o:"&gvertneqq;"}],[0,{v:"&ll;",n:new Map(Yt([[824,"&nLtv;"],[7577,"&nLt;"]]))}],[0,{v:"&gg;",n:new Map(Yt([[824,"&nGtv;"],[7577,"&nGt;"]]))}],[0,"&between;"],[0,"&NotCupCap;"],[0,"&nless;"],[0,"&ngt;"],[0,"&nle;"],[0,"&nge;"],[0,"&lesssim;"],[0,"&GreaterTilde;"],[0,"&nlsim;"],[0,"&ngsim;"],[0,"&LessGreater;"],[0,"&gl;"],[0,"&NotLessGreater;"],[0,"&NotGreaterLess;"],[0,"&pr;"],[0,"&sc;"],[0,"&prcue;"],[0,"&sccue;"],[0,"&PrecedesTilde;"],[0,{v:"&scsim;",n:824,o:"&NotSucceedsTilde;"}],[0,"&NotPrecedes;"],[0,"&NotSucceeds;"],[0,{v:"&sub;",n:8402,o:"&NotSubset;"}],[0,{v:"&sup;",n:8402,o:"&NotSuperset;"}],[0,"&nsub;"],[0,"&nsup;"],[0,"&sube;"],[0,"&supe;"],[0,"&NotSubsetEqual;"],[0,"&NotSupersetEqual;"],[0,{v:"&subne;",n:65024,o:"&varsubsetneq;"}],[0,{v:"&supne;",n:65024,o:"&varsupsetneq;"}],[1,"&cupdot;"],[0,"&UnionPlus;"],[0,{v:"&sqsub;",n:824,o:"&NotSquareSubset;"}],[0,{v:"&sqsup;",n:824,o:"&NotSquareSuperset;"}],[0,"&sqsube;"],[0,"&sqsupe;"],[0,{v:"&sqcap;",n:65024,o:"&sqcaps;"}],[0,{v:"&sqcup;",n:65024,o:"&sqcups;"}],[0,"&CirclePlus;"],[0,"&CircleMinus;"],[0,"&CircleTimes;"],[0,"&osol;"],[0,"&CircleDot;"],[0,"&circledcirc;"],[0,"&circledast;"],[1,"&circleddash;"],[0,"&boxplus;"],[0,"&boxminus;"],[0,"&boxtimes;"],[0,"&dotsquare;"],[0,"&RightTee;"],[0,"&dashv;"],[0,"&DownTee;"],[0,"&bot;"],[1,"&models;"],[0,"&DoubleRightTee;"],[0,"&Vdash;"],[0,"&Vvdash;"],[0,"&VDash;"],[0,"&nvdash;"],[0,"&nvDash;"],[0,"&nVdash;"],[0,"&nVDash;"],[0,"&prurel;"],[1,"&LeftTriangle;"],[0,"&RightTriangle;"],[0,{v:"&LeftTriangleEqual;",n:8402,o:"&nvltrie;"}],[0,{v:"&RightTriangleEqual;",n:8402,o:"&nvrtrie;"}],[0,"&origof;"],[0,"&imof;"],[0,"&multimap;"],[0,"&hercon;"],[0,"&intcal;"],[0,"&veebar;"],[1,"&barvee;"],[0,"&angrtvb;"],[0,"&lrtri;"],[0,"&bigwedge;"],[0,"&bigvee;"],[0,"&bigcap;"],[0,"&bigcup;"],[0,"&diam;"],[0,"&sdot;"],[0,"&sstarf;"],[0,"&divideontimes;"],[0,"&bowtie;"],[0,"&ltimes;"],[0,"&rtimes;"],[0,"&leftthreetimes;"],[0,"&rightthreetimes;"],[0,"&backsimeq;"],[0,"&curlyvee;"],[0,"&curlywedge;"],[0,"&Sub;"],[0,"&Sup;"],[0,"&Cap;"],[0,"&Cup;"],[0,"&fork;"],[0,"&epar;"],[0,"&lessdot;"],[0,"&gtdot;"],[0,{v:"&Ll;",n:824,o:"&nLl;"}],[0,{v:"&Gg;",n:824,o:"&nGg;"}],[0,{v:"&leg;",n:65024,o:"&lesg;"}],[0,{v:"&gel;",n:65024,o:"&gesl;"}],[2,"&cuepr;"],[0,"&cuesc;"],[0,"&NotPrecedesSlantEqual;"],[0,"&NotSucceedsSlantEqual;"],[0,"&NotSquareSubsetEqual;"],[0,"&NotSquareSupersetEqual;"],[2,"&lnsim;"],[0,"&gnsim;"],[0,"&precnsim;"],[0,"&scnsim;"],[0,"&nltri;"],[0,"&NotRightTriangle;"],[0,"&nltrie;"],[0,"&NotRightTriangleEqual;"],[0,"&vellip;"],[0,"&ctdot;"],[0,"&utdot;"],[0,"&dtdot;"],[0,"&disin;"],[0,"&isinsv;"],[0,"&isins;"],[0,{v:"&isindot;",n:824,o:"&notindot;"}],[0,"&notinvc;"],[0,"&notinvb;"],[1,{v:"&isinE;",n:824,o:"&notinE;"}],[0,"&nisd;"],[0,"&xnis;"],[0,"&nis;"],[0,"&notnivc;"],[0,"&notnivb;"],[6,"&barwed;"],[0,"&Barwed;"],[1,"&lceil;"],[0,"&rceil;"],[0,"&LeftFloor;"],[0,"&rfloor;"],[0,"&drcrop;"],[0,"&dlcrop;"],[0,"&urcrop;"],[0,"&ulcrop;"],[0,"&bnot;"],[1,"&profline;"],[0,"&profsurf;"],[1,"&telrec;"],[0,"&target;"],[5,"&ulcorn;"],[0,"&urcorn;"],[0,"&dlcorn;"],[0,"&drcorn;"],[2,"&frown;"],[0,"&smile;"],[9,"&cylcty;"],[0,"&profalar;"],[7,"&topbot;"],[6,"&ovbar;"],[1,"&solbar;"],[60,"&angzarr;"],[51,"&lmoustache;"],[0,"&rmoustache;"],[2,"&OverBracket;"],[0,"&bbrk;"],[0,"&bbrktbrk;"],[37,"&OverParenthesis;"],[0,"&UnderParenthesis;"],[0,"&OverBrace;"],[0,"&UnderBrace;"],[2,"&trpezium;"],[4,"&elinters;"],[59,"&blank;"],[164,"&circledS;"],[55,"&boxh;"],[1,"&boxv;"],[9,"&boxdr;"],[3,"&boxdl;"],[3,"&boxur;"],[3,"&boxul;"],[3,"&boxvr;"],[7,"&boxvl;"],[7,"&boxhd;"],[7,"&boxhu;"],[7,"&boxvh;"],[19,"&boxH;"],[0,"&boxV;"],[0,"&boxdR;"],[0,"&boxDr;"],[0,"&boxDR;"],[0,"&boxdL;"],[0,"&boxDl;"],[0,"&boxDL;"],[0,"&boxuR;"],[0,"&boxUr;"],[0,"&boxUR;"],[0,"&boxuL;"],[0,"&boxUl;"],[0,"&boxUL;"],[0,"&boxvR;"],[0,"&boxVr;"],[0,"&boxVR;"],[0,"&boxvL;"],[0,"&boxVl;"],[0,"&boxVL;"],[0,"&boxHd;"],[0,"&boxhD;"],[0,"&boxHD;"],[0,"&boxHu;"],[0,"&boxhU;"],[0,"&boxHU;"],[0,"&boxvH;"],[0,"&boxVh;"],[0,"&boxVH;"],[19,"&uhblk;"],[3,"&lhblk;"],[3,"&block;"],[8,"&blk14;"],[0,"&blk12;"],[0,"&blk34;"],[13,"&square;"],[8,"&blacksquare;"],[0,"&EmptyVerySmallSquare;"],[1,"&rect;"],[0,"&marker;"],[2,"&fltns;"],[1,"&bigtriangleup;"],[0,"&blacktriangle;"],[0,"&triangle;"],[2,"&blacktriangleright;"],[0,"&rtri;"],[3,"&bigtriangledown;"],[0,"&blacktriangledown;"],[0,"&dtri;"],[2,"&blacktriangleleft;"],[0,"&ltri;"],[6,"&loz;"],[0,"&cir;"],[32,"&tridot;"],[2,"&bigcirc;"],[8,"&ultri;"],[0,"&urtri;"],[0,"&lltri;"],[0,"&EmptySmallSquare;"],[0,"&FilledSmallSquare;"],[8,"&bigstar;"],[0,"&star;"],[7,"&phone;"],[49,"&female;"],[1,"&male;"],[29,"&spades;"],[2,"&clubs;"],[1,"&hearts;"],[0,"&diamondsuit;"],[3,"&sung;"],[2,"&flat;"],[0,"&natural;"],[0,"&sharp;"],[163,"&check;"],[3,"&cross;"],[8,"&malt;"],[21,"&sext;"],[33,"&VerticalSeparator;"],[25,"&lbbrk;"],[0,"&rbbrk;"],[84,"&bsolhsub;"],[0,"&suphsol;"],[28,"&LeftDoubleBracket;"],[0,"&RightDoubleBracket;"],[0,"&lang;"],[0,"&rang;"],[0,"&Lang;"],[0,"&Rang;"],[0,"&loang;"],[0,"&roang;"],[7,"&longleftarrow;"],[0,"&longrightarrow;"],[0,"&longleftrightarrow;"],[0,"&DoubleLongLeftArrow;"],[0,"&DoubleLongRightArrow;"],[0,"&DoubleLongLeftRightArrow;"],[1,"&longmapsto;"],[2,"&dzigrarr;"],[258,"&nvlArr;"],[0,"&nvrArr;"],[0,"&nvHarr;"],[0,"&Map;"],[6,"&lbarr;"],[0,"&bkarow;"],[0,"&lBarr;"],[0,"&dbkarow;"],[0,"&drbkarow;"],[0,"&DDotrahd;"],[0,"&UpArrowBar;"],[0,"&DownArrowBar;"],[2,"&Rarrtl;"],[2,"&latail;"],[0,"&ratail;"],[0,"&lAtail;"],[0,"&rAtail;"],[0,"&larrfs;"],[0,"&rarrfs;"],[0,"&larrbfs;"],[0,"&rarrbfs;"],[2,"&nwarhk;"],[0,"&nearhk;"],[0,"&hksearow;"],[0,"&hkswarow;"],[0,"&nwnear;"],[0,"&nesear;"],[0,"&seswar;"],[0,"&swnwar;"],[8,{v:"&rarrc;",n:824,o:"&nrarrc;"}],[1,"&cudarrr;"],[0,"&ldca;"],[0,"&rdca;"],[0,"&cudarrl;"],[0,"&larrpl;"],[2,"&curarrm;"],[0,"&cularrp;"],[7,"&rarrpl;"],[2,"&harrcir;"],[0,"&Uarrocir;"],[0,"&lurdshar;"],[0,"&ldrushar;"],[2,"&LeftRightVector;"],[0,"&RightUpDownVector;"],[0,"&DownLeftRightVector;"],[0,"&LeftUpDownVector;"],[0,"&LeftVectorBar;"],[0,"&RightVectorBar;"],[0,"&RightUpVectorBar;"],[0,"&RightDownVectorBar;"],[0,"&DownLeftVectorBar;"],[0,"&DownRightVectorBar;"],[0,"&LeftUpVectorBar;"],[0,"&LeftDownVectorBar;"],[0,"&LeftTeeVector;"],[0,"&RightTeeVector;"],[0,"&RightUpTeeVector;"],[0,"&RightDownTeeVector;"],[0,"&DownLeftTeeVector;"],[0,"&DownRightTeeVector;"],[0,"&LeftUpTeeVector;"],[0,"&LeftDownTeeVector;"],[0,"&lHar;"],[0,"&uHar;"],[0,"&rHar;"],[0,"&dHar;"],[0,"&luruhar;"],[0,"&ldrdhar;"],[0,"&ruluhar;"],[0,"&rdldhar;"],[0,"&lharul;"],[0,"&llhard;"],[0,"&rharul;"],[0,"&lrhard;"],[0,"&udhar;"],[0,"&duhar;"],[0,"&RoundImplies;"],[0,"&erarr;"],[0,"&simrarr;"],[0,"&larrsim;"],[0,"&rarrsim;"],[0,"&rarrap;"],[0,"&ltlarr;"],[1,"&gtrarr;"],[0,"&subrarr;"],[1,"&suplarr;"],[0,"&lfisht;"],[0,"&rfisht;"],[0,"&ufisht;"],[0,"&dfisht;"],[5,"&lopar;"],[0,"&ropar;"],[4,"&lbrke;"],[0,"&rbrke;"],[0,"&lbrkslu;"],[0,"&rbrksld;"],[0,"&lbrksld;"],[0,"&rbrkslu;"],[0,"&langd;"],[0,"&rangd;"],[0,"&lparlt;"],[0,"&rpargt;"],[0,"&gtlPar;"],[0,"&ltrPar;"],[3,"&vzigzag;"],[1,"&vangrt;"],[0,"&angrtvbd;"],[6,"&ange;"],[0,"&range;"],[0,"&dwangle;"],[0,"&uwangle;"],[0,"&angmsdaa;"],[0,"&angmsdab;"],[0,"&angmsdac;"],[0,"&angmsdad;"],[0,"&angmsdae;"],[0,"&angmsdaf;"],[0,"&angmsdag;"],[0,"&angmsdah;"],[0,"&bemptyv;"],[0,"&demptyv;"],[0,"&cemptyv;"],[0,"&raemptyv;"],[0,"&laemptyv;"],[0,"&ohbar;"],[0,"&omid;"],[0,"&opar;"],[1,"&operp;"],[1,"&olcross;"],[0,"&odsold;"],[1,"&olcir;"],[0,"&ofcir;"],[0,"&olt;"],[0,"&ogt;"],[0,"&cirscir;"],[0,"&cirE;"],[0,"&solb;"],[0,"&bsolb;"],[3,"&boxbox;"],[3,"&trisb;"],[0,"&rtriltri;"],[0,{v:"&LeftTriangleBar;",n:824,o:"&NotLeftTriangleBar;"}],[0,{v:"&RightTriangleBar;",n:824,o:"&NotRightTriangleBar;"}],[11,"&iinfin;"],[0,"&infintie;"],[0,"&nvinfin;"],[4,"&eparsl;"],[0,"&smeparsl;"],[0,"&eqvparsl;"],[5,"&blacklozenge;"],[8,"&RuleDelayed;"],[1,"&dsol;"],[9,"&bigodot;"],[0,"&bigoplus;"],[0,"&bigotimes;"],[1,"&biguplus;"],[1,"&bigsqcup;"],[5,"&iiiint;"],[0,"&fpartint;"],[2,"&cirfnint;"],[0,"&awint;"],[0,"&rppolint;"],[0,"&scpolint;"],[0,"&npolint;"],[0,"&pointint;"],[0,"&quatint;"],[0,"&intlarhk;"],[10,"&pluscir;"],[0,"&plusacir;"],[0,"&simplus;"],[0,"&plusdu;"],[0,"&plussim;"],[0,"&plustwo;"],[1,"&mcomma;"],[0,"&minusdu;"],[2,"&loplus;"],[0,"&roplus;"],[0,"&Cross;"],[0,"&timesd;"],[0,"&timesbar;"],[1,"&smashp;"],[0,"&lotimes;"],[0,"&rotimes;"],[0,"&otimesas;"],[0,"&Otimes;"],[0,"&odiv;"],[0,"&triplus;"],[0,"&triminus;"],[0,"&tritime;"],[0,"&intprod;"],[2,"&amalg;"],[0,"&capdot;"],[1,"&ncup;"],[0,"&ncap;"],[0,"&capand;"],[0,"&cupor;"],[0,"&cupcap;"],[0,"&capcup;"],[0,"&cupbrcap;"],[0,"&capbrcup;"],[0,"&cupcup;"],[0,"&capcap;"],[0,"&ccups;"],[0,"&ccaps;"],[2,"&ccupssm;"],[2,"&And;"],[0,"&Or;"],[0,"&andand;"],[0,"&oror;"],[0,"&orslope;"],[0,"&andslope;"],[1,"&andv;"],[0,"&orv;"],[0,"&andd;"],[0,"&ord;"],[1,"&wedbar;"],[6,"&sdote;"],[3,"&simdot;"],[2,{v:"&congdot;",n:824,o:"&ncongdot;"}],[0,"&easter;"],[0,"&apacir;"],[0,{v:"&apE;",n:824,o:"&napE;"}],[0,"&eplus;"],[0,"&pluse;"],[0,"&Esim;"],[0,"&Colone;"],[0,"&Equal;"],[1,"&ddotseq;"],[0,"&equivDD;"],[0,"&ltcir;"],[0,"&gtcir;"],[0,"&ltquest;"],[0,"&gtquest;"],[0,{v:"&leqslant;",n:824,o:"&nleqslant;"}],[0,{v:"&geqslant;",n:824,o:"&ngeqslant;"}],[0,"&lesdot;"],[0,"&gesdot;"],[0,"&lesdoto;"],[0,"&gesdoto;"],[0,"&lesdotor;"],[0,"&gesdotol;"],[0,"&lap;"],[0,"&gap;"],[0,"&lne;"],[0,"&gne;"],[0,"&lnap;"],[0,"&gnap;"],[0,"&lEg;"],[0,"&gEl;"],[0,"&lsime;"],[0,"&gsime;"],[0,"&lsimg;"],[0,"&gsiml;"],[0,"&lgE;"],[0,"&glE;"],[0,"&lesges;"],[0,"&gesles;"],[0,"&els;"],[0,"&egs;"],[0,"&elsdot;"],[0,"&egsdot;"],[0,"&el;"],[0,"&eg;"],[2,"&siml;"],[0,"&simg;"],[0,"&simlE;"],[0,"&simgE;"],[0,{v:"&LessLess;",n:824,o:"&NotNestedLessLess;"}],[0,{v:"&GreaterGreater;",n:824,o:"&NotNestedGreaterGreater;"}],[1,"&glj;"],[0,"&gla;"],[0,"&ltcc;"],[0,"&gtcc;"],[0,"&lescc;"],[0,"&gescc;"],[0,"&smt;"],[0,"&lat;"],[0,{v:"&smte;",n:65024,o:"&smtes;"}],[0,{v:"&late;",n:65024,o:"&lates;"}],[0,"&bumpE;"],[0,{v:"&PrecedesEqual;",n:824,o:"&NotPrecedesEqual;"}],[0,{v:"&sce;",n:824,o:"&NotSucceedsEqual;"}],[2,"&prE;"],[0,"&scE;"],[0,"&precneqq;"],[0,"&scnE;"],[0,"&prap;"],[0,"&scap;"],[0,"&precnapprox;"],[0,"&scnap;"],[0,"&Pr;"],[0,"&Sc;"],[0,"&subdot;"],[0,"&supdot;"],[0,"&subplus;"],[0,"&supplus;"],[0,"&submult;"],[0,"&supmult;"],[0,"&subedot;"],[0,"&supedot;"],[0,{v:"&subE;",n:824,o:"&nsubE;"}],[0,{v:"&supE;",n:824,o:"&nsupE;"}],[0,"&subsim;"],[0,"&supsim;"],[2,{v:"&subnE;",n:65024,o:"&varsubsetneqq;"}],[0,{v:"&supnE;",n:65024,o:"&varsupsetneqq;"}],[2,"&csub;"],[0,"&csup;"],[0,"&csube;"],[0,"&csupe;"],[0,"&subsup;"],[0,"&supsub;"],[0,"&subsub;"],[0,"&supsup;"],[0,"&suphsub;"],[0,"&supdsub;"],[0,"&forkv;"],[0,"&topfork;"],[0,"&mlcp;"],[8,"&Dashv;"],[1,"&Vdashl;"],[0,"&Barv;"],[0,"&vBar;"],[0,"&vBarv;"],[1,"&Vbar;"],[0,"&Not;"],[0,"&bNot;"],[0,"&rnmid;"],[0,"&cirmid;"],[0,"&midcir;"],[0,"&topcir;"],[0,"&nhpar;"],[0,"&parsim;"],[9,{v:"&parsl;",n:8421,o:"&nparsl;"}],[44343,{n:new Map(Yt([[56476,"&Ascr;"],[1,"&Cscr;"],[0,"&Dscr;"],[2,"&Gscr;"],[2,"&Jscr;"],[0,"&Kscr;"],[2,"&Nscr;"],[0,"&Oscr;"],[0,"&Pscr;"],[0,"&Qscr;"],[1,"&Sscr;"],[0,"&Tscr;"],[0,"&Uscr;"],[0,"&Vscr;"],[0,"&Wscr;"],[0,"&Xscr;"],[0,"&Yscr;"],[0,"&Zscr;"],[0,"&ascr;"],[0,"&bscr;"],[0,"&cscr;"],[0,"&dscr;"],[1,"&fscr;"],[1,"&hscr;"],[0,"&iscr;"],[0,"&jscr;"],[0,"&kscr;"],[0,"&lscr;"],[0,"&mscr;"],[0,"&nscr;"],[1,"&pscr;"],[0,"&qscr;"],[0,"&rscr;"],[0,"&sscr;"],[0,"&tscr;"],[0,"&uscr;"],[0,"&vscr;"],[0,"&wscr;"],[0,"&xscr;"],[0,"&yscr;"],[0,"&zscr;"],[52,"&Afr;"],[0,"&Bfr;"],[1,"&Dfr;"],[0,"&Efr;"],[0,"&Ffr;"],[0,"&Gfr;"],[2,"&Jfr;"],[0,"&Kfr;"],[0,"&Lfr;"],[0,"&Mfr;"],[0,"&Nfr;"],[0,"&Ofr;"],[0,"&Pfr;"],[0,"&Qfr;"],[1,"&Sfr;"],[0,"&Tfr;"],[0,"&Ufr;"],[0,"&Vfr;"],[0,"&Wfr;"],[0,"&Xfr;"],[0,"&Yfr;"],[1,"&afr;"],[0,"&bfr;"],[0,"&cfr;"],[0,"&dfr;"],[0,"&efr;"],[0,"&ffr;"],[0,"&gfr;"],[0,"&hfr;"],[0,"&ifr;"],[0,"&jfr;"],[0,"&kfr;"],[0,"&lfr;"],[0,"&mfr;"],[0,"&nfr;"],[0,"&ofr;"],[0,"&pfr;"],[0,"&qfr;"],[0,"&rfr;"],[0,"&sfr;"],[0,"&tfr;"],[0,"&ufr;"],[0,"&vfr;"],[0,"&wfr;"],[0,"&xfr;"],[0,"&yfr;"],[0,"&zfr;"],[0,"&Aopf;"],[0,"&Bopf;"],[1,"&Dopf;"],[0,"&Eopf;"],[0,"&Fopf;"],[0,"&Gopf;"],[1,"&Iopf;"],[0,"&Jopf;"],[0,"&Kopf;"],[0,"&Lopf;"],[0,"&Mopf;"],[1,"&Oopf;"],[3,"&Sopf;"],[0,"&Topf;"],[0,"&Uopf;"],[0,"&Vopf;"],[0,"&Wopf;"],[0,"&Xopf;"],[0,"&Yopf;"],[1,"&aopf;"],[0,"&bopf;"],[0,"&copf;"],[0,"&dopf;"],[0,"&eopf;"],[0,"&fopf;"],[0,"&gopf;"],[0,"&hopf;"],[0,"&iopf;"],[0,"&jopf;"],[0,"&kopf;"],[0,"&lopf;"],[0,"&mopf;"],[0,"&nopf;"],[0,"&oopf;"],[0,"&popf;"],[0,"&qopf;"],[0,"&ropf;"],[0,"&sopf;"],[0,"&topf;"],[0,"&uopf;"],[0,"&vopf;"],[0,"&wopf;"],[0,"&xopf;"],[0,"&yopf;"],[0,"&zopf;"]]))}],[8906,"&fflig;"],[0,"&filig;"],[0,"&fllig;"],[0,"&ffilig;"],[0,"&ffllig;"]]));var zo=new Map([[34,"&quot;"],[38,"&amp;"],[39,"&apos;"],[60,"&lt;"],[62,"&gt;"]]),Uo=String.prototype.codePointAt!=null?(e,t)=>e.codePointAt(t):(e,t)=>(e.charCodeAt(t)&64512)===55296?(e.charCodeAt(t)-55296)*1024+e.charCodeAt(t+1)-56320+65536:e.charCodeAt(t);function Iu(e,t){return function(r){let i,n=0,o="";for(;i=e.exec(r);)n!==i.index&&(o+=r.substring(n,i.index)),o+=t.get(i[0].charCodeAt(0)),n=i.index+1;return o+r.substring(n)}}var Fn=Iu(/[&<>'"]/g,zo),In=Iu(/["&\u00A0]/g,new Map([[34,"&quot;"],[38,"&amp;"],[160,"&nbsp;"]])),Rn=Iu(/[&<>\u00A0]/g,new Map([[38,"&amp;"],[60,"&lt;"],[62,"&gt;"],[160,"&nbsp;"]]));var Mn;(function(e){e[e.XML=0]="XML",e[e.HTML=1]="HTML"})(Mn||(Mn={}));var On;(function(e){e[e.UTF8=0]="UTF8",e[e.ASCII=1]="ASCII",e[e.Extensive=2]="Extensive",e[e.Attribute=3]="Attribute",e[e.Text=4]="Text"})(On||(On={}));function Go(e){return Object.prototype.toString.call(e)}function Qt(e){return Go(e)==="[object String]"}var Wo=Object.prototype.hasOwnProperty;function Zo(e,t){return Wo.call(e,t)}function st(e){return Array.prototype.slice.call(arguments,1).forEach(function(u){if(u){if(typeof u!="object")throw new TypeError(u+"must be object");Object.keys(u).forEach(function(r){e[r]=u[r]})}}),e}function Mu(e,t,u){return[].concat(e.slice(0,t),u,e.slice(t+1))}function eu(e){return!(e>=55296&&e<=57343||e>=64976&&e<=65007||(e&65535)===65535||(e&65535)===65534||e>=0&&e<=8||e===11||e>=14&&e<=31||e>=127&&e<=159||e>1114111)}function kt(e){if(e>65535){e-=65536;let t=55296+(e>>10),u=56320+(e&1023);return String.fromCharCode(t,u)}return String.fromCharCode(e)}var Pn=/\\([!"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~])/g,Jo=/&([a-z#][a-z0-9]{1,31});/gi,Xo=new RegExp(Pn.source+"|"+Jo.source,"gi"),Ko=/^#((?:x[a-f0-9]{1,8}|[0-9]{1,8}))$/i;function Yo(e,t){if(t.charCodeAt(0)===35&&Ko.test(t)){let r=t[1].toLowerCase()==="x"?parseInt(t.slice(2),16):parseInt(t.slice(1),10);return eu(r)?kt(r):e}let u=Ge(e);return u!==e?u:e}function Qo(e){return e.indexOf("\\")<0?e:e.replace(Pn,"$1")}function $e(e){return e.indexOf("\\")<0&&e.indexOf("&")<0?e:e.replace(Xo,function(t,u,r){return u||Yo(t,r)})}var e0=/[&<>"]/,t0=/[&<>"]/g,u0={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"};function r0(e){return u0[e]}function qe(e){return e0.test(e)?e.replace(t0,r0):e}var n0=/[.?*+^$[\]\\(){}|-]/g;function i0(e){return e.replace(n0,"\\$&")}function K(e){switch(e){case 9:case 32:return!0}return!1}function Xe(e){if(e>=8192&&e<=8202)return!0;switch(e){case 9:case 10:case 11:case 12:case 13:case 32:case 160:case 5760:case 8239:case 8287:case 12288:return!0}return!1}function Ke(e){return ot.test(e)||Jt.test(e)}function Ye(e){switch(e){case 33:case 34:case 35:case 36:case 37:case 38:case 39:case 40:case 41:case 42:case 43:case 44:case 45:case 46:case 47:case 58:case 59:case 60:case 61:case 62:case 63:case 64:case 91:case 92:case 93:case 94:case 95:case 96:case 123:case 124:case 125:case 126:return!0;default:return!1}}function Qe(e){return e=e.trim().replace(/\s+/g," "),"\u1E9E".toLowerCase()==="\u1E7E"&&(e=e.replace(/ẞ/g,"\xDF")),e.toLowerCase().toUpperCase()}var o0={mdurl:Gt,ucmicro:Cu};var Bu={};gt(Bu,{parseLinkDestination:()=>Lu,parseLinkLabel:()=>Nu,parseLinkTitle:()=>Pu});function Nu(e,t,u){let r,i,n,o,s=e.posMax,a=e.pos;for(e.pos=t+1,r=1;e.pos<s;){if(n=e.src.charCodeAt(e.pos),n===93&&(r--,r===0)){i=!0;break}if(o=e.pos,e.md.inline.skipToken(e),n===91){if(o===e.pos-1)r++;else if(u)return e.pos=a,-1}}let c=-1;return i&&(c=e.pos),e.pos=a,c}function Lu(e,t,u){let r,i=t,n={ok:!1,pos:0,str:""};if(e.charCodeAt(i)===60){for(i++;i<u;){if(r=e.charCodeAt(i),r===10||r===60)return n;if(r===62)return n.pos=i+1,n.str=$e(e.slice(t+1,i)),n.ok=!0,n;if(r===92&&i+1<u){i+=2;continue}i++}return n}let o=0;for(;i<u&&(r=e.charCodeAt(i),!(r===32||r<32||r===127));){if(r===92&&i+1<u){if(e.charCodeAt(i+1)===32)break;i+=2;continue}if(r===40&&(o++,o>32))return n;if(r===41){if(o===0)break;o--}i++}return t===i||o!==0||(n.str=$e(e.slice(t,i)),n.pos=i,n.ok=!0),n}function Pu(e,t,u,r){let i,n=t,o={ok:!1,can_continue:!1,pos:0,str:"",marker:0};if(r)o.str=r.str,o.marker=r.marker;else{if(n>=u)return o;let s=e.charCodeAt(n);if(s!==34&&s!==39&&s!==40)return o;t++,n++,s===40&&(s=41),o.marker=s}for(;n<u;){if(i=e.charCodeAt(n),i===o.marker)return o.pos=n+1,o.str+=$e(e.slice(t,n)),o.ok=!0,o;if(i===40&&o.marker===41)return o;i===92&&n+1<u&&n++,n++}return o.can_continue=!0,o.str+=$e(e.slice(t,n)),o}var Me={};Me.code_inline=function(e,t,u,r,i){let n=e[t];return"<code"+i.renderAttrs(n)+">"+qe(n.content)+"</code>"};Me.code_block=function(e,t,u,r,i){let n=e[t];return"<pre"+i.renderAttrs(n)+"><code>"+qe(e[t].content)+`</code></pre>
-`};Me.fence=function(e,t,u,r,i){let n=e[t],o=n.info?$e(n.info).trim():"",s="",a="";if(o){let p=o.split(/(\s+)/g);s=p[0],a=p.slice(2).join("")}let c;if(u.highlight?c=u.highlight(n.content,s,a)||qe(n.content):c=qe(n.content),c.indexOf("<pre")===0)return c+`
-`;if(o){let p=n.attrIndex("class"),f=n.attrs?n.attrs.slice():[];p<0?f.push(["class",u.langPrefix+s]):(f[p]=f[p].slice(),f[p][1]+=" "+u.langPrefix+s);let m={attrs:f};return`<pre><code${i.renderAttrs(m)}>${c}</code></pre>
-`}return`<pre><code${i.renderAttrs(n)}>${c}</code></pre>
-`};Me.image=function(e,t,u,r,i){let n=e[t];return n.attrs[n.attrIndex("alt")][1]=i.renderInlineAsText(n.children,u,r),i.renderToken(e,t,u)};Me.hardbreak=function(e,t,u){return u.xhtmlOut?`<br />
-`:`<br>
-`};Me.softbreak=function(e,t,u){return u.breaks?u.xhtmlOut?`<br />
-`:`<br>
-`:`
-`};Me.text=function(e,t){return qe(e[t].content)};Me.html_block=function(e,t){return e[t].content};Me.html_inline=function(e,t){return e[t].content};function at(){this.rules=st({},Me)}at.prototype.renderAttrs=function(t){let u,r,i;if(!t.attrs)return"";for(i="",u=0,r=t.attrs.length;u<r;u++)i+=" "+qe(t.attrs[u][0])+'="'+qe(t.attrs[u][1])+'"';return i};at.prototype.renderToken=function(t,u,r){let i=t[u],n="";if(i.hidden)return"";i.block&&i.nesting!==-1&&u&&t[u-1].hidden&&(n+=`
-`),n+=(i.nesting===-1?"</":"<")+i.tag,n+=this.renderAttrs(i),i.nesting===0&&r.xhtmlOut&&(n+=" /");let o=!1;if(i.block&&(o=!0,i.nesting===1&&u+1<t.length)){let s=t[u+1];(s.type==="inline"||s.hidden||s.nesting===-1&&s.tag===i.tag)&&(o=!1)}return n+=o?`>
-`:">",n};at.prototype.renderInline=function(e,t,u){let r="",i=this.rules;for(let n=0,o=e.length;n<o;n++){let s=e[n].type;typeof i[s]<"u"?r+=i[s](e,n,t,u,this):r+=this.renderToken(e,n,t)}return r};at.prototype.renderInlineAsText=function(e,t,u){let r="";for(let i=0,n=e.length;i<n;i++)switch(e[i].type){case"text":r+=e[i].content;break;case"image":r+=this.renderInlineAsText(e[i].children,t,u);break;case"html_inline":case"html_block":r+=e[i].content;break;case"softbreak":case"hardbreak":r+=`
-`;break;default:}return r};at.prototype.render=function(e,t,u){let r="",i=this.rules;for(let n=0,o=e.length;n<o;n++){let s=e[n].type;s==="inline"?r+=this.renderInline(e[n].children,t,u):typeof i[s]<"u"?r+=i[s](e,n,t,u,this):r+=this.renderToken(e,n,t,u)}return r};var Bn=at;function Se(){this.__rules__=[],this.__cache__=null}Se.prototype.__find__=function(e){for(let t=0;t<this.__rules__.length;t++)if(this.__rules__[t].name===e)return t;return-1};Se.prototype.__compile__=function(){let e=this,t=[""];e.__rules__.forEach(function(u){u.enabled&&u.alt.forEach(function(r){t.indexOf(r)<0&&t.push(r)})}),e.__cache__={},t.forEach(function(u){e.__cache__[u]=[],e.__rules__.forEach(function(r){r.enabled&&(u&&r.alt.indexOf(u)<0||e.__cache__[u].push(r.fn))})})};Se.prototype.at=function(e,t,u){let r=this.__find__(e),i=u||{};if(r===-1)throw new Error("Parser rule not found: "+e);this.__rules__[r].fn=t,this.__rules__[r].alt=i.alt||[],this.__cache__=null};Se.prototype.before=function(e,t,u,r){let i=this.__find__(e),n=r||{};if(i===-1)throw new Error("Parser rule not found: "+e);this.__rules__.splice(i,0,{name:t,enabled:!0,fn:u,alt:n.alt||[]}),this.__cache__=null};Se.prototype.after=function(e,t,u,r){let i=this.__find__(e),n=r||{};if(i===-1)throw new Error("Parser rule not found: "+e);this.__rules__.splice(i+1,0,{name:t,enabled:!0,fn:u,alt:n.alt||[]}),this.__cache__=null};Se.prototype.push=function(e,t,u){let r=u||{};this.__rules__.push({name:e,enabled:!0,fn:t,alt:r.alt||[]}),this.__cache__=null};Se.prototype.enable=function(e,t){Array.isArray(e)||(e=[e]);let u=[];return e.forEach(function(r){let i=this.__find__(r);if(i<0){if(t)return;throw new Error("Rules manager: invalid rule name "+r)}this.__rules__[i].enabled=!0,u.push(r)},this),this.__cache__=null,u};Se.prototype.enableOnly=function(e,t){Array.isArray(e)||(e=[e]),this.__rules__.forEach(function(u){u.enabled=!1}),this.enable(e,t)};Se.prototype.disable=function(e,t){Array.isArray(e)||(e=[e]);let u=[];return e.forEach(function(r){let i=this.__find__(r);if(i<0){if(t)return;throw new Error("Rules manager: invalid rule name "+r)}this.__rules__[i].enabled=!1,u.push(r)},this),this.__cache__=null,u};Se.prototype.getRules=function(e){return this.__cache__===null&&this.__compile__(),this.__cache__[e]||[]};var et=Se;function ct(e,t,u){this.type=e,this.tag=t,this.attrs=null,this.map=null,this.nesting=u,this.level=0,this.children=null,this.content="",this.markup="",this.info="",this.meta=null,this.block=!1,this.hidden=!1}ct.prototype.attrIndex=function(t){if(!this.attrs)return-1;let u=this.attrs;for(let r=0,i=u.length;r<i;r++)if(u[r][0]===t)return r;return-1};ct.prototype.attrPush=function(t){this.attrs?this.attrs.push(t):this.attrs=[t]};ct.prototype.attrSet=function(t,u){let r=this.attrIndex(t),i=[t,u];r<0?this.attrPush(i):this.attrs[r]=i};ct.prototype.attrGet=function(t){let u=this.attrIndex(t),r=null;return u>=0&&(r=this.attrs[u][1]),r};ct.prototype.attrJoin=function(t,u){let r=this.attrIndex(t);r<0?this.attrPush([t,u]):this.attrs[r][1]=this.attrs[r][1]+" "+u};var je=ct;function $n(e,t,u){this.src=e,this.env=u,this.tokens=[],this.inlineMode=!1,this.md=t}$n.prototype.Token=je;var qn=$n;var s0=/\r\n?|\n/g,a0=/\0/g;function $u(e){let t;t=e.src.replace(s0,`
-`),t=t.replace(a0,"\uFFFD"),e.src=t}function qu(e){let t;e.inlineMode?(t=new e.Token("inline","",0),t.content=e.src,t.map=[0,1],t.children=[],e.tokens.push(t)):e.md.block.parse(e.src,e.md,e.env,e.tokens)}function ju(e){let t=e.tokens;for(let u=0,r=t.length;u<r;u++){let i=t[u];i.type==="inline"&&e.md.inline.parse(i.content,e.md,e.env,i.children)}}function c0(e){return/^<a[>\s]/i.test(e)}function l0(e){return/^<\/a\s*>/i.test(e)}function zu(e){let t=e.tokens;if(e.md.options.linkify)for(let u=0,r=t.length;u<r;u++){if(t[u].type!=="inline"||!e.md.linkify.pretest(t[u].content))continue;let i=t[u].children,n=0;for(let o=i.length-1;o>=0;o--){let s=i[o];if(s.type==="link_close"){for(o--;i[o].level!==s.level&&i[o].type!=="link_open";)o--;continue}if(s.type==="html_inline"&&(c0(s.content)&&n>0&&n--,l0(s.content)&&n++),!(n>0)&&s.type==="text"&&e.md.linkify.test(s.content)){let a=s.content,c=e.md.linkify.match(a),p=[],f=s.level,m=0;c.length>0&&c[0].index===0&&o>0&&i[o-1].type==="text_special"&&(c=c.slice(1));for(let k=0;k<c.length;k++){let g=c[k].url,S=e.md.normalizeLink(g);if(!e.md.validateLink(S))continue;let O=c[k].text;c[k].schema?c[k].schema==="mailto:"&&!/^mailto:/i.test(O)?O=e.md.normalizeLinkText("mailto:"+O).replace(/^mailto:/,""):O=e.md.normalizeLinkText(O):O=e.md.normalizeLinkText("http://"+O).replace(/^http:\/\//,"");let R=c[k].index;if(R>m){let A=new e.Token("text","",0);A.content=a.slice(m,R),A.level=f,p.push(A)}let B=new e.Token("link_open","a",1);B.attrs=[["href",S]],B.level=f++,B.markup="linkify",B.info="auto",p.push(B);let q=new e.Token("text","",0);q.content=O,q.level=f,p.push(q);let N=new e.Token("link_close","a",-1);N.level=--f,N.markup="linkify",N.info="auto",p.push(N),m=c[k].lastIndex}if(m<a.length){let k=new e.Token("text","",0);k.content=a.slice(m),k.level=f,p.push(k)}t[u].children=i=Mu(i,o,p)}}}}var jn=/\+-|\.\.|\?\?\?\?|!!!!|,,|--/,f0=/\((c|tm|r)\)/i,d0=/\((c|tm|r)\)/ig,p0={c:"\xA9",r:"\xAE",tm:"\u2122"};function h0(e,t){return p0[t.toLowerCase()]}function m0(e){let t=0;for(let u=e.length-1;u>=0;u--){let r=e[u];r.type==="text"&&!t&&(r.content=r.content.replace(d0,h0)),r.type==="link_open"&&r.info==="auto"&&t--,r.type==="link_close"&&r.info==="auto"&&t++}}function g0(e){let t=0;for(let u=e.length-1;u>=0;u--){let r=e[u];r.type==="text"&&!t&&jn.test(r.content)&&(r.content=r.content.replace(/\+-/g,"\xB1").replace(/\.{2,}/g,"\u2026").replace(/([?!])…/g,"$1..").replace(/([?!]){4,}/g,"$1$1$1").replace(/,{2,}/g,",").replace(/(^|[^-])---(?=[^-]|$)/mg,"$1\u2014").replace(/(^|\s)--(?=\s|$)/mg,"$1\u2013").replace(/(^|[^-\s])--(?=[^-\s]|$)/mg,"$1\u2013")),r.type==="link_open"&&r.info==="auto"&&t--,r.type==="link_close"&&r.info==="auto"&&t++}}function Uu(e){let t;if(e.md.options.typographer)for(t=e.tokens.length-1;t>=0;t--)e.tokens[t].type==="inline"&&(f0.test(e.tokens[t].content)&&m0(e.tokens[t].children),jn.test(e.tokens[t].content)&&g0(e.tokens[t].children))}var b0=/['"]/,zn=/['"]/g,Un="\u2019";function tu(e,t,u){return e.slice(0,t)+u+e.slice(t+1)}function x0(e,t){let u,r=[];for(let i=0;i<e.length;i++){let n=e[i],o=e[i].level;for(u=r.length-1;u>=0&&!(r[u].level<=o);u--);if(r.length=u+1,n.type!=="text")continue;let s=n.content,a=0,c=s.length;e:for(;a<c;){zn.lastIndex=a;let p=zn.exec(s);if(!p)break;let f=!0,m=!0;a=p.index+1;let k=p[0]==="'",g=32;if(p.index-1>=0)g=s.charCodeAt(p.index-1);else for(u=i-1;u>=0&&!(e[u].type==="softbreak"||e[u].type==="hardbreak");u--)if(e[u].content){g=e[u].content.charCodeAt(e[u].content.length-1);break}let S=32;if(a<c)S=s.charCodeAt(a);else for(u=i+1;u<e.length&&!(e[u].type==="softbreak"||e[u].type==="hardbreak");u++)if(e[u].content){S=e[u].content.charCodeAt(0);break}let O=Ye(g)||Ke(String.fromCharCode(g)),R=Ye(S)||Ke(String.fromCharCode(S)),B=Xe(g),q=Xe(S);if(q?f=!1:R&&(B||O||(f=!1)),B?m=!1:O&&(q||R||(m=!1)),S===34&&p[0]==='"'&&g>=48&&g<=57&&(m=f=!1),f&&m&&(f=O,m=R),!f&&!m){k&&(n.content=tu(n.content,p.index,Un));continue}if(m)for(u=r.length-1;u>=0;u--){let N=r[u];if(r[u].level<o)break;if(N.single===k&&r[u].level===o){N=r[u];let A,T;k?(A=t.md.options.quotes[2],T=t.md.options.quotes[3]):(A=t.md.options.quotes[0],T=t.md.options.quotes[1]),n.content=tu(n.content,p.index,T),e[N.token].content=tu(e[N.token].content,N.pos,A),a+=T.length-1,N.token===i&&(a+=A.length-1),s=n.content,c=s.length,r.length=u;continue e}}f?r.push({token:i,pos:p.index,single:k,level:o}):m&&k&&(n.content=tu(n.content,p.index,Un))}}}function Hu(e){if(e.md.options.typographer)for(let t=e.tokens.length-1;t>=0;t--)e.tokens[t].type!=="inline"||!b0.test(e.tokens[t].content)||x0(e.tokens[t].children,e)}function Vu(e){let t,u,r=e.tokens,i=r.length;for(let n=0;n<i;n++){if(r[n].type!=="inline")continue;let o=r[n].children,s=o.length;for(t=0;t<s;t++)o[t].type==="text_special"&&(o[t].type="text");for(t=u=0;t<s;t++)o[t].type==="text"&&t+1<s&&o[t+1].type==="text"?o[t+1].content=o[t].content+o[t+1].content:(t!==u&&(o[u]=o[t]),u++);t!==u&&(o.length=u)}}var Gu=[["normalize",$u],["block",qu],["inline",ju],["linkify",zu],["replacements",Uu],["smartquotes",Hu],["text_join",Vu]];function Wu(){this.ruler=new et;for(let e=0;e<Gu.length;e++)this.ruler.push(Gu[e][0],Gu[e][1])}Wu.prototype.process=function(e){let t=this.ruler.getRules("");for(let u=0,r=t.length;u<r;u++)t[u](e)};Wu.prototype.State=qn;var Hn=Wu;function Oe(e,t,u,r){this.src=e,this.md=t,this.env=u,this.tokens=r,this.bMarks=[],this.eMarks=[],this.tShift=[],this.sCount=[],this.bsCount=[],this.blkIndent=0,this.line=0,this.lineMax=0,this.tight=!1,this.ddIndent=-1,this.listIndent=-1,this.parentType="root",this.level=0;let i=this.src;for(let n=0,o=0,s=0,a=0,c=i.length,p=!1;o<c;o++){let f=i.charCodeAt(o);if(!p)if(K(f)){s++,f===9?a+=4-a%4:a++;continue}else p=!0;(f===10||o===c-1)&&(f!==10&&o++,this.bMarks.push(n),this.eMarks.push(o),this.tShift.push(s),this.sCount.push(a),this.bsCount.push(0),p=!1,s=0,a=0,n=o+1)}this.bMarks.push(i.length),this.eMarks.push(i.length),this.tShift.push(0),this.sCount.push(0),this.bsCount.push(0),this.lineMax=this.bMarks.length-1}Oe.prototype.push=function(e,t,u){let r=new je(e,t,u);return r.block=!0,u<0&&this.level--,r.level=this.level,u>0&&this.level++,this.tokens.push(r),r};Oe.prototype.isEmpty=function(t){return this.bMarks[t]+this.tShift[t]>=this.eMarks[t]};Oe.prototype.skipEmptyLines=function(t){for(let u=this.lineMax;t<u&&!(this.bMarks[t]+this.tShift[t]<this.eMarks[t]);t++);return t};Oe.prototype.skipSpaces=function(t){for(let u=this.src.length;t<u;t++){let r=this.src.charCodeAt(t);if(!K(r))break}return t};Oe.prototype.skipSpacesBack=function(t,u){if(t<=u)return t;for(;t>u;)if(!K(this.src.charCodeAt(--t)))return t+1;return t};Oe.prototype.skipChars=function(t,u){for(let r=this.src.length;t<r&&this.src.charCodeAt(t)===u;t++);return t};Oe.prototype.skipCharsBack=function(t,u,r){if(t<=r)return t;for(;t>r;)if(u!==this.src.charCodeAt(--t))return t+1;return t};Oe.prototype.getLines=function(t,u,r,i){if(t>=u)return"";let n=new Array(u-t);for(let o=0,s=t;s<u;s++,o++){let a=0,c=this.bMarks[s],p=c,f;for(s+1<u||i?f=this.eMarks[s]+1:f=this.eMarks[s];p<f&&a<r;){let m=this.src.charCodeAt(p);if(K(m))m===9?a+=4-(a+this.bsCount[s])%4:a++;else if(p-c<this.tShift[s])a++;else break;p++}a>r?n[o]=new Array(a-r+1).join(" ")+this.src.slice(p,f):n[o]=this.src.slice(p,f)}return n.join("")};Oe.prototype.Token=je;var Vn=Oe;var w0=65536;function Zu(e,t){let u=e.bMarks[t]+e.tShift[t],r=e.eMarks[t];return e.src.slice(u,r)}function Gn(e){let t=[],u=e.length,r=0,i=e.charCodeAt(r),n=!1,o=0,s="";for(;r<u;)i===124&&(n?(s+=e.substring(o,r-1),o=r):(t.push(s+e.substring(o,r)),s="",o=r+1)),n=i===92,r++,i=e.charCodeAt(r);return t.push(s+e.substring(o)),t}function Ju(e,t,u,r){if(t+2>u)return!1;let i=t+1;if(e.sCount[i]<e.blkIndent||e.sCount[i]-e.blkIndent>=4)return!1;let n=e.bMarks[i]+e.tShift[i];if(n>=e.eMarks[i])return!1;let o=e.src.charCodeAt(n++);if(o!==124&&o!==45&&o!==58||n>=e.eMarks[i])return!1;let s=e.src.charCodeAt(n++);if(s!==124&&s!==45&&s!==58&&!K(s)||o===45&&K(s))return!1;for(;n<e.eMarks[i];){let N=e.src.charCodeAt(n);if(N!==124&&N!==45&&N!==58&&!K(N))return!1;n++}let a=Zu(e,t+1),c=a.split("|"),p=[];for(let N=0;N<c.length;N++){let A=c[N].trim();if(!A){if(N===0||N===c.length-1)continue;return!1}if(!/^:?-+:?$/.test(A))return!1;A.charCodeAt(A.length-1)===58?p.push(A.charCodeAt(0)===58?"center":"right"):A.charCodeAt(0)===58?p.push("left"):p.push("")}if(a=Zu(e,t).trim(),a.indexOf("|")===-1||e.sCount[t]-e.blkIndent>=4)return!1;c=Gn(a),c.length&&c[0]===""&&c.shift(),c.length&&c[c.length-1]===""&&c.pop();let f=c.length;if(f===0||f!==p.length)return!1;if(r)return!0;let m=e.parentType;e.parentType="table";let k=e.md.block.ruler.getRules("blockquote"),g=e.push("table_open","table",1),S=[t,0];g.map=S;let O=e.push("thead_open","thead",1);O.map=[t,t+1];let R=e.push("tr_open","tr",1);R.map=[t,t+1];for(let N=0;N<c.length;N++){let A=e.push("th_open","th",1);p[N]&&(A.attrs=[["style","text-align:"+p[N]]]);let T=e.push("inline","",0);T.content=c[N].trim(),T.children=[],e.push("th_close","th",-1)}e.push("tr_close","tr",-1),e.push("thead_close","thead",-1);let B,q=0;for(i=t+2;i<u&&!(e.sCount[i]<e.blkIndent);i++){let N=!1;for(let T=0,P=k.length;T<P;T++)if(k[T](e,i,u,!0)){N=!0;break}if(N||(a=Zu(e,i).trim(),!a)||e.sCount[i]-e.blkIndent>=4||(c=Gn(a),c.length&&c[0]===""&&c.shift(),c.length&&c[c.length-1]===""&&c.pop(),q+=f-c.length,q>w0))break;if(i===t+2){let T=e.push("tbody_open","tbody",1);T.map=B=[t+2,0]}let A=e.push("tr_open","tr",1);A.map=[i,i+1];for(let T=0;T<f;T++){let P=e.push("td_open","td",1);p[T]&&(P.attrs=[["style","text-align:"+p[T]]]);let L=e.push("inline","",0);L.content=c[T]?c[T].trim():"",L.children=[],e.push("td_close","td",-1)}e.push("tr_close","tr",-1)}return B&&(e.push("tbody_close","tbody",-1),B[1]=i),e.push("table_close","table",-1),S[1]=i,e.parentType=m,e.line=i,!0}function Xu(e,t,u){if(e.sCount[t]-e.blkIndent<4)return!1;let r=t+1,i=r;for(;r<u;){if(e.isEmpty(r)){r++;continue}if(e.sCount[r]-e.blkIndent>=4){r++,i=r;continue}break}e.line=i;let n=e.push("code_block","code",0);return n.content=e.getLines(t,i,4+e.blkIndent,!1)+`
-`,n.map=[t,e.line],!0}function Ku(e,t,u,r){let i=e.bMarks[t]+e.tShift[t],n=e.eMarks[t];if(e.sCount[t]-e.blkIndent>=4||i+3>n)return!1;let o=e.src.charCodeAt(i);if(o!==126&&o!==96)return!1;let s=i;i=e.skipChars(i,o);let a=i-s;if(a<3)return!1;let c=e.src.slice(s,i),p=e.src.slice(i,n);if(o===96&&p.indexOf(String.fromCharCode(o))>=0)return!1;if(r)return!0;let f=t,m=!1;for(;f++,!(f>=u||(i=s=e.bMarks[f]+e.tShift[f],n=e.eMarks[f],i<n&&e.sCount[f]<e.blkIndent));)if(e.src.charCodeAt(i)===o&&!(e.sCount[f]-e.blkIndent>=4)&&(i=e.skipChars(i,o),!(i-s<a)&&(i=e.skipSpaces(i),!(i<n)))){m=!0;break}a=e.sCount[t],e.line=f+(m?1:0);let k=e.push("fence","code",0);return k.info=p,k.content=e.getLines(t+1,f,a,!0),k.markup=c,k.map=[t,e.line],!0}function Yu(e,t,u,r){let i=e.bMarks[t]+e.tShift[t],n=e.eMarks[t],o=e.lineMax;if(e.sCount[t]-e.blkIndent>=4||e.src.charCodeAt(i)!==62)return!1;if(r)return!0;let s=[],a=[],c=[],p=[],f=e.md.block.ruler.getRules("blockquote"),m=e.parentType;e.parentType="blockquote";let k=!1,g;for(g=t;g<u;g++){let q=e.sCount[g]<e.blkIndent;if(i=e.bMarks[g]+e.tShift[g],n=e.eMarks[g],i>=n)break;if(e.src.charCodeAt(i++)===62&&!q){let A=e.sCount[g]+1,T,P;e.src.charCodeAt(i)===32?(i++,A++,P=!1,T=!0):e.src.charCodeAt(i)===9?(T=!0,(e.bsCount[g]+A)%4===3?(i++,A++,P=!1):P=!0):T=!1;let L=A;for(s.push(e.bMarks[g]),e.bMarks[g]=i;i<n;){let F=e.src.charCodeAt(i);if(K(F))F===9?L+=4-(L+e.bsCount[g]+(P?1:0))%4:L++;else break;i++}k=i>=n,a.push(e.bsCount[g]),e.bsCount[g]=e.sCount[g]+1+(T?1:0),c.push(e.sCount[g]),e.sCount[g]=L-A,p.push(e.tShift[g]),e.tShift[g]=i-e.bMarks[g];continue}if(k)break;let N=!1;for(let A=0,T=f.length;A<T;A++)if(f[A](e,g,u,!0)){N=!0;break}if(N){e.lineMax=g,e.blkIndent!==0&&(s.push(e.bMarks[g]),a.push(e.bsCount[g]),p.push(e.tShift[g]),c.push(e.sCount[g]),e.sCount[g]-=e.blkIndent);break}s.push(e.bMarks[g]),a.push(e.bsCount[g]),p.push(e.tShift[g]),c.push(e.sCount[g]),e.sCount[g]=-1}let S=e.blkIndent;e.blkIndent=0;let O=e.push("blockquote_open","blockquote",1);O.markup=">";let R=[t,0];O.map=R,e.md.block.tokenize(e,t,g);let B=e.push("blockquote_close","blockquote",-1);B.markup=">",e.lineMax=o,e.parentType=m,R[1]=e.line;for(let q=0;q<p.length;q++)e.bMarks[q+t]=s[q],e.tShift[q+t]=p[q],e.sCount[q+t]=c[q],e.bsCount[q+t]=a[q];return e.blkIndent=S,!0}function Qu(e,t,u,r){let i=e.eMarks[t];if(e.sCount[t]-e.blkIndent>=4)return!1;let n=e.bMarks[t]+e.tShift[t],o=e.src.charCodeAt(n++);if(o!==42&&o!==45&&o!==95)return!1;let s=1;for(;n<i;){let c=e.src.charCodeAt(n++);if(c!==o&&!K(c))return!1;c===o&&s++}if(s<3)return!1;if(r)return!0;e.line=t+1;let a=e.push("hr","hr",0);return a.map=[t,e.line],a.markup=Array(s+1).join(String.fromCharCode(o)),!0}function Wn(e,t){let u=e.eMarks[t],r=e.bMarks[t]+e.tShift[t],i=e.src.charCodeAt(r++);if(i!==42&&i!==45&&i!==43)return-1;if(r<u){let n=e.src.charCodeAt(r);if(!K(n))return-1}return r}function Zn(e,t){let u=e.bMarks[t]+e.tShift[t],r=e.eMarks[t],i=u;if(i+1>=r)return-1;let n=e.src.charCodeAt(i++);if(n<48||n>57)return-1;for(;;){if(i>=r)return-1;if(n=e.src.charCodeAt(i++),n>=48&&n<=57){if(i-u>=10)return-1;continue}if(n===41||n===46)break;return-1}return i<r&&(n=e.src.charCodeAt(i),!K(n))?-1:i}function y0(e,t){let u=e.level+2;for(let r=t+2,i=e.tokens.length-2;r<i;r++)e.tokens[r].level===u&&e.tokens[r].type==="paragraph_open"&&(e.tokens[r+2].hidden=!0,e.tokens[r].hidden=!0,r+=2)}function er(e,t,u,r){let i,n,o,s,a=t,c=!0;if(e.sCount[a]-e.blkIndent>=4||e.listIndent>=0&&e.sCount[a]-e.listIndent>=4&&e.sCount[a]<e.blkIndent)return!1;let p=!1;r&&e.parentType==="paragraph"&&e.sCount[a]>=e.blkIndent&&(p=!0);let f,m,k;if((k=Zn(e,a))>=0){if(f=!0,o=e.bMarks[a]+e.tShift[a],m=Number(e.src.slice(o,k-1)),p&&m!==1)return!1}else if((k=Wn(e,a))>=0)f=!1;else return!1;if(p&&e.skipSpaces(k)>=e.eMarks[a])return!1;if(r)return!0;let g=e.src.charCodeAt(k-1),S=e.tokens.length;f?(s=e.push("ordered_list_open","ol",1),m!==1&&(s.attrs=[["start",m]])):s=e.push("bullet_list_open","ul",1);let O=[a,0];s.map=O,s.markup=String.fromCharCode(g);let R=!1,B=e.md.block.ruler.getRules("list"),q=e.parentType;for(e.parentType="list";a<u;){n=k,i=e.eMarks[a];let N=e.sCount[a]+k-(e.bMarks[a]+e.tShift[a]),A=N;for(;n<i;){let oe=e.src.charCodeAt(n);if(oe===9)A+=4-(A+e.bsCount[a])%4;else if(oe===32)A++;else break;n++}let T=n,P;T>=i?P=1:P=A-N,P>4&&(P=1);let L=N+P;s=e.push("list_item_open","li",1),s.markup=String.fromCharCode(g);let F=[a,0];s.map=F,f&&(s.info=e.src.slice(o,k-1));let Z=e.tight,W=e.tShift[a],J=e.sCount[a],ne=e.listIndent;if(e.listIndent=e.blkIndent,e.blkIndent=L,e.tight=!0,e.tShift[a]=T-e.bMarks[a],e.sCount[a]=A,T>=i&&e.isEmpty(a+1)?e.line=Math.min(e.line+2,u):e.md.block.tokenize(e,a,u,!0),(!e.tight||R)&&(c=!1),R=e.line-a>1&&e.isEmpty(e.line-1),e.blkIndent=e.listIndent,e.listIndent=ne,e.tShift[a]=W,e.sCount[a]=J,e.tight=Z,s=e.push("list_item_close","li",-1),s.markup=String.fromCharCode(g),a=e.line,F[1]=a,a>=u||e.sCount[a]<e.blkIndent||e.sCount[a]-e.blkIndent>=4)break;let Y=!1;for(let oe=0,ae=B.length;oe<ae;oe++)if(B[oe](e,a,u,!0)){Y=!0;break}if(Y)break;if(f){if(k=Zn(e,a),k<0)break;o=e.bMarks[a]+e.tShift[a]}else if(k=Wn(e,a),k<0)break;if(g!==e.src.charCodeAt(k-1))break}return f?s=e.push("ordered_list_close","ol",-1):s=e.push("bullet_list_close","ul",-1),s.markup=String.fromCharCode(g),O[1]=a,e.line=a,e.parentType=q,c&&y0(e,S),!0}function tr(e,t,u,r){let i=e.bMarks[t]+e.tShift[t],n=e.eMarks[t],o=t+1;if(e.sCount[t]-e.blkIndent>=4||e.src.charCodeAt(i)!==91)return!1;function s(B){let q=e.lineMax;if(B>=q||e.isEmpty(B))return null;let N=!1;if(e.sCount[B]-e.blkIndent>3&&(N=!0),e.sCount[B]<0&&(N=!0),!N){let P=e.md.block.ruler.getRules("reference"),L=e.parentType;e.parentType="reference";let F=!1;for(let Z=0,W=P.length;Z<W;Z++)if(P[Z](e,B,q,!0)){F=!0;break}if(e.parentType=L,F)return null}let A=e.bMarks[B]+e.tShift[B],T=e.eMarks[B];return e.src.slice(A,T+1)}let a=e.src.slice(i,n+1);n=a.length;let c=-1;for(i=1;i<n;i++){let B=a.charCodeAt(i);if(B===91)return!1;if(B===93){c=i;break}else if(B===10){let q=s(o);q!==null&&(a+=q,n=a.length,o++)}else if(B===92&&(i++,i<n&&a.charCodeAt(i)===10)){let q=s(o);q!==null&&(a+=q,n=a.length,o++)}}if(c<0||a.charCodeAt(c+1)!==58)return!1;for(i=c+2;i<n;i++){let B=a.charCodeAt(i);if(B===10){let q=s(o);q!==null&&(a+=q,n=a.length,o++)}else if(!K(B))break}let p=e.md.helpers.parseLinkDestination(a,i,n);if(!p.ok)return!1;let f=e.md.normalizeLink(p.str);if(!e.md.validateLink(f))return!1;i=p.pos;let m=i,k=o,g=i;for(;i<n;i++){let B=a.charCodeAt(i);if(B===10){let q=s(o);q!==null&&(a+=q,n=a.length,o++)}else if(!K(B))break}let S=e.md.helpers.parseLinkTitle(a,i,n);for(;S.can_continue;){let B=s(o);if(B===null)break;a+=B,i=n,n=a.length,o++,S=e.md.helpers.parseLinkTitle(a,i,n,S)}let O;for(i<n&&g!==i&&S.ok?(O=S.str,i=S.pos):(O="",i=m,o=k);i<n;){let B=a.charCodeAt(i);if(!K(B))break;i++}if(i<n&&a.charCodeAt(i)!==10&&O)for(O="",i=m,o=k;i<n;){let B=a.charCodeAt(i);if(!K(B))break;i++}if(i<n&&a.charCodeAt(i)!==10)return!1;let R=Qe(a.slice(1,c));return R?(r||(typeof e.env.references>"u"&&(e.env.references={}),typeof e.env.references[R]>"u"&&(e.env.references[R]={title:O,href:f}),e.line=o),!0):!1}var Jn=["address","article","aside","base","basefont","blockquote","body","caption","center","col","colgroup","dd","details","dialog","dir","div","dl","dt","fieldset","figcaption","figure","footer","form","frame","frameset","h1","h2","h3","h4","h5","h6","head","header","hr","html","iframe","legend","li","link","main","menu","menuitem","nav","noframes","ol","optgroup","option","p","param","search","section","summary","table","tbody","td","tfoot","th","thead","title","tr","track","ul"];var k0="[a-zA-Z_:][a-zA-Z0-9:._-]*",E0="[^\"'=<>`\\x00-\\x20]+",_0="'[^']*'",v0='"[^"]*"',A0="(?:"+E0+"|"+_0+"|"+v0+")",C0="(?:\\s+"+k0+"(?:\\s*=\\s*"+A0+")?)",Xn="<[A-Za-z][A-Za-z0-9\\-]*"+C0+"*\\s*\\/?>",Kn="<\\/[A-Za-z][A-Za-z0-9\\-]*\\s*>",D0="<!---?>|<!--(?:[^-]|-[^-]|--[^>])*-->",T0="<[?][\\s\\S]*?[?]>",S0="<![A-Za-z][^>]*>",F0="<!\\[CDATA\\[[\\s\\S]*?\\]\\]>",Yn=new RegExp("^(?:"+Xn+"|"+Kn+"|"+D0+"|"+T0+"|"+S0+"|"+F0+")"),Qn=new RegExp("^(?:"+Xn+"|"+Kn+")");var lt=[[/^<(script|pre|style|textarea)(?=(\s|>|$))/i,/<\/(script|pre|style|textarea)>/i,!0],[/^<!--/,/-->/,!0],[/^<\?/,/\?>/,!0],[/^<![A-Z]/,/>/,!0],[/^<!\[CDATA\[/,/\]\]>/,!0],[new RegExp("^</?("+Jn.join("|")+")(?=(\\s|/?>|$))","i"),/^$/,!0],[new RegExp(Qn.source+"\\s*$"),/^$/,!1]];function ur(e,t,u,r){let i=e.bMarks[t]+e.tShift[t],n=e.eMarks[t];if(e.sCount[t]-e.blkIndent>=4||!e.md.options.html||e.src.charCodeAt(i)!==60)return!1;let o=e.src.slice(i,n),s=0;for(;s<lt.length&&!lt[s][0].test(o);s++);if(s===lt.length)return!1;if(r)return lt[s][2];let a=t+1;if(!lt[s][1].test(o)){for(;a<u&&!(e.sCount[a]<e.blkIndent);a++)if(i=e.bMarks[a]+e.tShift[a],n=e.eMarks[a],o=e.src.slice(i,n),lt[s][1].test(o)){o.length!==0&&a++;break}}e.line=a;let c=e.push("html_block","",0);return c.map=[t,a],c.content=e.getLines(t,a,e.blkIndent,!0),!0}function rr(e,t,u,r){let i=e.bMarks[t]+e.tShift[t],n=e.eMarks[t];if(e.sCount[t]-e.blkIndent>=4)return!1;let o=e.src.charCodeAt(i);if(o!==35||i>=n)return!1;let s=1;for(o=e.src.charCodeAt(++i);o===35&&i<n&&s<=6;)s++,o=e.src.charCodeAt(++i);if(s>6||i<n&&!K(o))return!1;if(r)return!0;n=e.skipSpacesBack(n,i);let a=e.skipCharsBack(n,35,i);a>i&&K(e.src.charCodeAt(a-1))&&(n=a),e.line=t+1;let c=e.push("heading_open","h"+String(s),1);c.markup="########".slice(0,s),c.map=[t,e.line];let p=e.push("inline","",0);p.content=e.src.slice(i,n).trim(),p.map=[t,e.line],p.children=[];let f=e.push("heading_close","h"+String(s),-1);return f.markup="########".slice(0,s),!0}function nr(e,t,u){let r=e.md.block.ruler.getRules("paragraph");if(e.sCount[t]-e.blkIndent>=4)return!1;let i=e.parentType;e.parentType="paragraph";let n=0,o,s=t+1;for(;s<u&&!e.isEmpty(s);s++){if(e.sCount[s]-e.blkIndent>3)continue;if(e.sCount[s]>=e.blkIndent){let k=e.bMarks[s]+e.tShift[s],g=e.eMarks[s];if(k<g&&(o=e.src.charCodeAt(k),(o===45||o===61)&&(k=e.skipChars(k,o),k=e.skipSpaces(k),k>=g))){n=o===61?1:2;break}}if(e.sCount[s]<0)continue;let m=!1;for(let k=0,g=r.length;k<g;k++)if(r[k](e,s,u,!0)){m=!0;break}if(m)break}if(!n)return!1;let a=e.getLines(t,s,e.blkIndent,!1).trim();e.line=s+1;let c=e.push("heading_open","h"+String(n),1);c.markup=String.fromCharCode(o),c.map=[t,e.line];let p=e.push("inline","",0);p.content=a,p.map=[t,e.line-1],p.children=[];let f=e.push("heading_close","h"+String(n),-1);return f.markup=String.fromCharCode(o),e.parentType=i,!0}function ir(e,t,u){let r=e.md.block.ruler.getRules("paragraph"),i=e.parentType,n=t+1;for(e.parentType="paragraph";n<u&&!e.isEmpty(n);n++){if(e.sCount[n]-e.blkIndent>3||e.sCount[n]<0)continue;let c=!1;for(let p=0,f=r.length;p<f;p++)if(r[p](e,n,u,!0)){c=!0;break}if(c)break}let o=e.getLines(t,n,e.blkIndent,!1).trim();e.line=n;let s=e.push("paragraph_open","p",1);s.map=[t,e.line];let a=e.push("inline","",0);return a.content=o,a.map=[t,e.line],a.children=[],e.push("paragraph_close","p",-1),e.parentType=i,!0}var uu=[["table",Ju,["paragraph","reference"]],["code",Xu],["fence",Ku,["paragraph","reference","blockquote","list"]],["blockquote",Yu,["paragraph","reference","blockquote","list"]],["hr",Qu,["paragraph","reference","blockquote","list"]],["list",er,["paragraph","reference","blockquote"]],["reference",tr],["html_block",ur,["paragraph","reference","blockquote"]],["heading",rr,["paragraph","reference","blockquote"]],["lheading",nr],["paragraph",ir]];function ru(){this.ruler=new et;for(let e=0;e<uu.length;e++)this.ruler.push(uu[e][0],uu[e][1],{alt:(uu[e][2]||[]).slice()})}ru.prototype.tokenize=function(e,t,u){let r=this.ruler.getRules(""),i=r.length,n=e.md.options.maxNesting,o=t,s=!1;for(;o<u&&(e.line=o=e.skipEmptyLines(o),!(o>=u||e.sCount[o]<e.blkIndent));){if(e.level>=n){e.line=u;break}let a=e.line,c=!1;for(let p=0;p<i;p++)if(c=r[p](e,o,u,!1),c){if(a>=e.line)throw new Error("block rule didn't increment state.line");break}if(!c)throw new Error("none of the block rules matched");e.tight=!s,e.isEmpty(e.line-1)&&(s=!0),o=e.line,o<u&&e.isEmpty(o)&&(s=!0,o++,e.line=o)}};ru.prototype.parse=function(e,t,u,r){if(!e)return;let i=new this.State(e,t,u,r);this.tokenize(i,i.line,i.lineMax)};ru.prototype.State=Vn;var ei=ru;function Et(e,t,u,r){this.src=e,this.env=u,this.md=t,this.tokens=r,this.tokens_meta=Array(r.length),this.pos=0,this.posMax=this.src.length,this.level=0,this.pending="",this.pendingLevel=0,this.cache={},this.delimiters=[],this._prev_delimiters=[],this.backticks={},this.backticksScanned=!1,this.linkLevel=0}Et.prototype.pushPending=function(){let e=new je("text","",0);return e.content=this.pending,e.level=this.pendingLevel,this.tokens.push(e),this.pending="",e};Et.prototype.push=function(e,t,u){this.pending&&this.pushPending();let r=new je(e,t,u),i=null;return u<0&&(this.level--,this.delimiters=this._prev_delimiters.pop()),r.level=this.level,u>0&&(this.level++,this._prev_delimiters.push(this.delimiters),this.delimiters=[],i={delimiters:this.delimiters}),this.pendingLevel=this.level,this.tokens.push(r),this.tokens_meta.push(i),r};Et.prototype.scanDelims=function(e,t){let u=this.posMax,r=this.src.charCodeAt(e),i=e>0?this.src.charCodeAt(e-1):32,n=e;for(;n<u&&this.src.charCodeAt(n)===r;)n++;let o=n-e,s=n<u?this.src.charCodeAt(n):32,a=Ye(i)||Ke(String.fromCharCode(i)),c=Ye(s)||Ke(String.fromCharCode(s)),p=Xe(i),f=Xe(s),m=!f&&(!c||p||a),k=!p&&(!a||f||c);return{can_open:m&&(t||!k||a),can_close:k&&(t||!m||c),length:o}};Et.prototype.Token=je;var ti=Et;function I0(e){switch(e){case 10:case 33:case 35:case 36:case 37:case 38:case 42:case 43:case 45:case 58:case 60:case 61:case 62:case 64:case 91:case 92:case 93:case 94:case 95:case 96:case 123:case 125:case 126:return!0;default:return!1}}function or(e,t){let u=e.pos;for(;u<e.posMax&&!I0(e.src.charCodeAt(u));)u++;return u===e.pos?!1:(t||(e.pending+=e.src.slice(e.pos,u)),e.pos=u,!0)}var R0=/(?:^|[^a-z0-9.+-])([a-z][a-z0-9.+-]*)$/i;function sr(e,t){if(!e.md.options.linkify||e.linkLevel>0)return!1;let u=e.pos,r=e.posMax;if(u+3>r||e.src.charCodeAt(u)!==58||e.src.charCodeAt(u+1)!==47||e.src.charCodeAt(u+2)!==47)return!1;let i=e.pending.match(R0);if(!i)return!1;let n=i[1],o=e.md.linkify.matchAtStart(e.src.slice(u-n.length));if(!o)return!1;let s=o.url;if(s.length<=n.length)return!1;s=s.replace(/\*+$/,"");let a=e.md.normalizeLink(s);if(!e.md.validateLink(a))return!1;if(!t){e.pending=e.pending.slice(0,-n.length);let c=e.push("link_open","a",1);c.attrs=[["href",a]],c.markup="linkify",c.info="auto";let p=e.push("text","",0);p.content=e.md.normalizeLinkText(s);let f=e.push("link_close","a",-1);f.markup="linkify",f.info="auto"}return e.pos+=s.length-n.length,!0}function ar(e,t){let u=e.pos;if(e.src.charCodeAt(u)!==10)return!1;let r=e.pending.length-1,i=e.posMax;if(!t)if(r>=0&&e.pending.charCodeAt(r)===32)if(r>=1&&e.pending.charCodeAt(r-1)===32){let n=r-1;for(;n>=1&&e.pending.charCodeAt(n-1)===32;)n--;e.pending=e.pending.slice(0,n),e.push("hardbreak","br",0)}else e.pending=e.pending.slice(0,-1),e.push("softbreak","br",0);else e.push("softbreak","br",0);for(u++;u<i&&K(e.src.charCodeAt(u));)u++;return e.pos=u,!0}var cr=[];for(let e=0;e<256;e++)cr.push(0);"\\!\"#$%&'()*+,./:;<=>?@[]^_`{|}~-".split("").forEach(function(e){cr[e.charCodeAt(0)]=1});function lr(e,t){let u=e.pos,r=e.posMax;if(e.src.charCodeAt(u)!==92||(u++,u>=r))return!1;let i=e.src.charCodeAt(u);if(i===10){for(t||e.push("hardbreak","br",0),u++;u<r&&(i=e.src.charCodeAt(u),!!K(i));)u++;return e.pos=u,!0}let n=e.src[u];if(i>=55296&&i<=56319&&u+1<r){let s=e.src.charCodeAt(u+1);s>=56320&&s<=57343&&(n+=e.src[u+1],u++)}let o="\\"+n;if(!t){let s=e.push("text_special","",0);i<256&&cr[i]!==0?s.content=n:s.content=o,s.markup=o,s.info="escape"}return e.pos=u+1,!0}function fr(e,t){let u=e.pos;if(e.src.charCodeAt(u)!==96)return!1;let i=u;u++;let n=e.posMax;for(;u<n&&e.src.charCodeAt(u)===96;)u++;let o=e.src.slice(i,u),s=o.length;if(e.backticksScanned&&(e.backticks[s]||0)<=i)return t||(e.pending+=o),e.pos+=s,!0;let a=u,c;for(;(c=e.src.indexOf("`",a))!==-1;){for(a=c+1;a<n&&e.src.charCodeAt(a)===96;)a++;let p=a-c;if(p===s){if(!t){let f=e.push("code_inline","code",0);f.markup=o,f.content=e.src.slice(u,c).replace(/\n/g," ").replace(/^ (.+) $/,"$1")}return e.pos=a,!0}e.backticks[p]=c}return e.backticksScanned=!0,t||(e.pending+=o),e.pos+=s,!0}function M0(e,t){let u=e.pos,r=e.src.charCodeAt(u);if(t||r!==126)return!1;let i=e.scanDelims(e.pos,!0),n=i.length,o=String.fromCharCode(r);if(n<2)return!1;let s;n%2&&(s=e.push("text","",0),s.content=o,n--);for(let a=0;a<n;a+=2)s=e.push("text","",0),s.content=o+o,e.delimiters.push({marker:r,length:0,token:e.tokens.length-1,end:-1,open:i.can_open,close:i.can_close});return e.pos+=i.length,!0}function ui(e,t){let u,r=[],i=t.length;for(let n=0;n<i;n++){let o=t[n];if(o.marker!==126||o.end===-1)continue;let s=t[o.end];u=e.tokens[o.token],u.type="s_open",u.tag="s",u.nesting=1,u.markup="~~",u.content="",u=e.tokens[s.token],u.type="s_close",u.tag="s",u.nesting=-1,u.markup="~~",u.content="",e.tokens[s.token-1].type==="text"&&e.tokens[s.token-1].content==="~"&&r.push(s.token-1)}for(;r.length;){let n=r.pop(),o=n+1;for(;o<e.tokens.length&&e.tokens[o].type==="s_close";)o++;o--,n!==o&&(u=e.tokens[o],e.tokens[o]=e.tokens[n],e.tokens[n]=u)}}function O0(e){let t=e.tokens_meta,u=e.tokens_meta.length;ui(e,e.delimiters);for(let r=0;r<u;r++)t[r]&&t[r].delimiters&&ui(e,t[r].delimiters)}var dr={tokenize:M0,postProcess:O0};function N0(e,t){let u=e.pos,r=e.src.charCodeAt(u);if(t||r!==95&&r!==42)return!1;let i=e.scanDelims(e.pos,r===42);for(let n=0;n<i.length;n++){let o=e.push("text","",0);o.content=String.fromCharCode(r),e.delimiters.push({marker:r,length:i.length,token:e.tokens.length-1,end:-1,open:i.can_open,close:i.can_close})}return e.pos+=i.length,!0}function ri(e,t){let u=t.length;for(let r=u-1;r>=0;r--){let i=t[r];if(i.marker!==95&&i.marker!==42||i.end===-1)continue;let n=t[i.end],o=r>0&&t[r-1].end===i.end+1&&t[r-1].marker===i.marker&&t[r-1].token===i.token-1&&t[i.end+1].token===n.token+1,s=String.fromCharCode(i.marker),a=e.tokens[i.token];a.type=o?"strong_open":"em_open",a.tag=o?"strong":"em",a.nesting=1,a.markup=o?s+s:s,a.content="";let c=e.tokens[n.token];c.type=o?"strong_close":"em_close",c.tag=o?"strong":"em",c.nesting=-1,c.markup=o?s+s:s,c.content="",o&&(e.tokens[t[r-1].token].content="",e.tokens[t[i.end+1].token].content="",r--)}}function L0(e){let t=e.tokens_meta,u=e.tokens_meta.length;ri(e,e.delimiters);for(let r=0;r<u;r++)t[r]&&t[r].delimiters&&ri(e,t[r].delimiters)}var pr={tokenize:N0,postProcess:L0};function hr(e,t){let u,r,i,n,o="",s="",a=e.pos,c=!0;if(e.src.charCodeAt(e.pos)!==91)return!1;let p=e.pos,f=e.posMax,m=e.pos+1,k=e.md.helpers.parseLinkLabel(e,e.pos,!0);if(k<0)return!1;let g=k+1;if(g<f&&e.src.charCodeAt(g)===40){for(c=!1,g++;g<f&&(u=e.src.charCodeAt(g),!(!K(u)&&u!==10));g++);if(g>=f)return!1;if(a=g,i=e.md.helpers.parseLinkDestination(e.src,g,e.posMax),i.ok){for(o=e.md.normalizeLink(i.str),e.md.validateLink(o)?g=i.pos:o="",a=g;g<f&&(u=e.src.charCodeAt(g),!(!K(u)&&u!==10));g++);if(i=e.md.helpers.parseLinkTitle(e.src,g,e.posMax),g<f&&a!==g&&i.ok)for(s=i.str,g=i.pos;g<f&&(u=e.src.charCodeAt(g),!(!K(u)&&u!==10));g++);}(g>=f||e.src.charCodeAt(g)!==41)&&(c=!0),g++}if(c){if(typeof e.env.references>"u")return!1;if(g<f&&e.src.charCodeAt(g)===91?(a=g+1,g=e.md.helpers.parseLinkLabel(e,g),g>=0?r=e.src.slice(a,g++):g=k+1):g=k+1,r||(r=e.src.slice(m,k)),n=e.env.references[Qe(r)],!n)return e.pos=p,!1;o=n.href,s=n.title}if(!t){e.pos=m,e.posMax=k;let S=e.push("link_open","a",1),O=[["href",o]];S.attrs=O,s&&O.push(["title",s]),e.linkLevel++,e.md.inline.tokenize(e),e.linkLevel--,e.push("link_close","a",-1)}return e.pos=g,e.posMax=f,!0}function mr(e,t){let u,r,i,n,o,s,a,c,p="",f=e.pos,m=e.posMax;if(e.src.charCodeAt(e.pos)!==33||e.src.charCodeAt(e.pos+1)!==91)return!1;let k=e.pos+2,g=e.md.helpers.parseLinkLabel(e,e.pos+1,!1);if(g<0)return!1;if(n=g+1,n<m&&e.src.charCodeAt(n)===40){for(n++;n<m&&(u=e.src.charCodeAt(n),!(!K(u)&&u!==10));n++);if(n>=m)return!1;for(c=n,s=e.md.helpers.parseLinkDestination(e.src,n,e.posMax),s.ok&&(p=e.md.normalizeLink(s.str),e.md.validateLink(p)?n=s.pos:p=""),c=n;n<m&&(u=e.src.charCodeAt(n),!(!K(u)&&u!==10));n++);if(s=e.md.helpers.parseLinkTitle(e.src,n,e.posMax),n<m&&c!==n&&s.ok)for(a=s.str,n=s.pos;n<m&&(u=e.src.charCodeAt(n),!(!K(u)&&u!==10));n++);else a="";if(n>=m||e.src.charCodeAt(n)!==41)return e.pos=f,!1;n++}else{if(typeof e.env.references>"u")return!1;if(n<m&&e.src.charCodeAt(n)===91?(c=n+1,n=e.md.helpers.parseLinkLabel(e,n),n>=0?i=e.src.slice(c,n++):n=g+1):n=g+1,i||(i=e.src.slice(k,g)),o=e.env.references[Qe(i)],!o)return e.pos=f,!1;p=o.href,a=o.title}if(!t){r=e.src.slice(k,g);let S=[];e.md.inline.parse(r,e.md,e.env,S);let O=e.push("image","img",0),R=[["src",p],["alt",""]];O.attrs=R,O.children=S,O.content=r,a&&R.push(["title",a])}return e.pos=n,e.posMax=m,!0}var P0=/^([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*)$/,B0=/^([a-zA-Z][a-zA-Z0-9+.-]{1,31}):([^<>\x00-\x20]*)$/;function gr(e,t){let u=e.pos;if(e.src.charCodeAt(u)!==60)return!1;let r=e.pos,i=e.posMax;for(;;){if(++u>=i)return!1;let o=e.src.charCodeAt(u);if(o===60)return!1;if(o===62)break}let n=e.src.slice(r+1,u);if(B0.test(n)){let o=e.md.normalizeLink(n);if(!e.md.validateLink(o))return!1;if(!t){let s=e.push("link_open","a",1);s.attrs=[["href",o]],s.markup="autolink",s.info="auto";let a=e.push("text","",0);a.content=e.md.normalizeLinkText(n);let c=e.push("link_close","a",-1);c.markup="autolink",c.info="auto"}return e.pos+=n.length+2,!0}if(P0.test(n)){let o=e.md.normalizeLink("mailto:"+n);if(!e.md.validateLink(o))return!1;if(!t){let s=e.push("link_open","a",1);s.attrs=[["href",o]],s.markup="autolink",s.info="auto";let a=e.push("text","",0);a.content=e.md.normalizeLinkText(n);let c=e.push("link_close","a",-1);c.markup="autolink",c.info="auto"}return e.pos+=n.length+2,!0}return!1}function $0(e){return/^<a[>\s]/i.test(e)}function q0(e){return/^<\/a\s*>/i.test(e)}function j0(e){let t=e|32;return t>=97&&t<=122}function br(e,t){if(!e.md.options.html)return!1;let u=e.posMax,r=e.pos;if(e.src.charCodeAt(r)!==60||r+2>=u)return!1;let i=e.src.charCodeAt(r+1);if(i!==33&&i!==63&&i!==47&&!j0(i))return!1;let n=e.src.slice(r).match(Yn);if(!n)return!1;if(!t){let o=e.push("html_inline","",0);o.content=n[0],$0(o.content)&&e.linkLevel++,q0(o.content)&&e.linkLevel--}return e.pos+=n[0].length,!0}var z0=/^&#((?:x[a-f0-9]{1,6}|[0-9]{1,7}));/i,U0=/^&([a-z][a-z0-9]{1,31});/i;function xr(e,t){let u=e.pos,r=e.posMax;if(e.src.charCodeAt(u)!==38||u+1>=r)return!1;if(e.src.charCodeAt(u+1)===35){let n=e.src.slice(u).match(z0);if(n){if(!t){let o=n[1][0].toLowerCase()==="x"?parseInt(n[1].slice(1),16):parseInt(n[1],10),s=e.push("text_special","",0);s.content=eu(o)?kt(o):kt(65533),s.markup=n[0],s.info="entity"}return e.pos+=n[0].length,!0}}else{let n=e.src.slice(u).match(U0);if(n){let o=Ge(n[0]);if(o!==n[0]){if(!t){let s=e.push("text_special","",0);s.content=o,s.markup=n[0],s.info="entity"}return e.pos+=n[0].length,!0}}}return!1}function ni(e){let t={},u=e.length;if(!u)return;let r=0,i=-2,n=[];for(let o=0;o<u;o++){let s=e[o];if(n.push(0),(e[r].marker!==s.marker||i!==s.token-1)&&(r=o),i=s.token,s.length=s.length||0,!s.close)continue;t.hasOwnProperty(s.marker)||(t[s.marker]=[-1,-1,-1,-1,-1,-1]);let a=t[s.marker][(s.open?3:0)+s.length%3],c=r-n[r]-1,p=c;for(;c>a;c-=n[c]+1){let f=e[c];if(f.marker===s.marker&&f.open&&f.end<0){let m=!1;if((f.close||s.open)&&(f.length+s.length)%3===0&&(f.length%3!==0||s.length%3!==0)&&(m=!0),!m){let k=c>0&&!e[c-1].open?n[c-1]+1:0;n[o]=o-c+k,n[c]=k,s.open=!1,f.end=o,f.close=!1,p=-1,i=-2;break}}}p!==-1&&(t[s.marker][(s.open?3:0)+(s.length||0)%3]=p)}}function wr(e){let t=e.tokens_meta,u=e.tokens_meta.length;ni(e.delimiters);for(let r=0;r<u;r++)t[r]&&t[r].delimiters&&ni(t[r].delimiters)}function yr(e){let t,u,r=0,i=e.tokens,n=e.tokens.length;for(t=u=0;t<n;t++)i[t].nesting<0&&r--,i[t].level=r,i[t].nesting>0&&r++,i[t].type==="text"&&t+1<n&&i[t+1].type==="text"?i[t+1].content=i[t].content+i[t+1].content:(t!==u&&(i[u]=i[t]),u++);t!==u&&(i.length=u)}var kr=[["text",or],["linkify",sr],["newline",ar],["escape",lr],["backticks",fr],["strikethrough",dr.tokenize],["emphasis",pr.tokenize],["link",hr],["image",mr],["autolink",gr],["html_inline",br],["entity",xr]],Er=[["balance_pairs",wr],["strikethrough",dr.postProcess],["emphasis",pr.postProcess],["fragments_join",yr]];function _t(){this.ruler=new et;for(let e=0;e<kr.length;e++)this.ruler.push(kr[e][0],kr[e][1]);this.ruler2=new et;for(let e=0;e<Er.length;e++)this.ruler2.push(Er[e][0],Er[e][1])}_t.prototype.skipToken=function(e){let t=e.pos,u=this.ruler.getRules(""),r=u.length,i=e.md.options.maxNesting,n=e.cache;if(typeof n[t]<"u"){e.pos=n[t];return}let o=!1;if(e.level<i){for(let s=0;s<r;s++)if(e.level++,o=u[s](e,!0),e.level--,o){if(t>=e.pos)throw new Error("inline rule didn't increment state.pos");break}}else e.pos=e.posMax;o||e.pos++,n[t]=e.pos};_t.prototype.tokenize=function(e){let t=this.ruler.getRules(""),u=t.length,r=e.posMax,i=e.md.options.maxNesting;for(;e.pos<r;){let n=e.pos,o=!1;if(e.level<i){for(let s=0;s<u;s++)if(o=t[s](e,!1),o){if(n>=e.pos)throw new Error("inline rule didn't increment state.pos");break}}if(o){if(e.pos>=r)break;continue}e.pending+=e.src[e.pos++]}e.pending&&e.pushPending()};_t.prototype.parse=function(e,t,u,r){let i=new this.State(e,t,u,r);this.tokenize(i);let n=this.ruler2.getRules(""),o=n.length;for(let s=0;s<o;s++)n[s](i)};_t.prototype.State=ti;var ii=_t;function oi(e){let t={};e=e||{},t.src_Any=Wt.source,t.src_Cc=Zt.source,t.src_Z=Xt.source,t.src_P=ot.source,t.src_ZPCc=[t.src_Z,t.src_P,t.src_Cc].join("|"),t.src_ZCc=[t.src_Z,t.src_Cc].join("|");let u="[><\uFF5C]";return t.src_pseudo_letter=`(?:(?!${u}|${t.src_ZPCc})${t.src_Any})`,t.src_ip4="(?:(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)",t.src_auth=`(?:(?:(?!${t.src_ZCc}|[@/\\[\\]()]).){1,50}@)?`,t.src_port="(?::(?:6(?:[0-4]\\d{3}|5(?:[0-4]\\d{2}|5(?:[0-2]\\d|3[0-5])))|[1-5]?\\d{1,4}))?",t.src_host_terminator=`(?=$|${u}|${t.src_ZPCc})(?!${e["---"]?"-(?!--)|":"-|"}_|:\\d|\\.-|\\.(?!$|${t.src_ZPCc}))`,t.src_path=`(?:[/?#](?:(?!${t.src_ZCc}|${u}|[()[\\]{}.,"'?!\\-;]).|\\[(?:(?!${t.src_ZCc}|\\]).)*\\]|\\((?:(?!${t.src_ZCc}|[)]).)*\\)|\\{(?:(?!${t.src_ZCc}|[}]).)*\\}|\\"(?:(?!${t.src_ZCc}|["]).)+\\"|\\'(?:(?!${t.src_ZCc}|[']).)+\\'|\\'(?=${t.src_pseudo_letter}|[-])|\\.{2,}[a-zA-Z0-9%/&]|\\.(?!${t.src_ZCc}|[.]|$)|`+(e["---"]?"\\-(?!--(?:[^-]|$))(?:-*)|":"\\-+|")+`,(?!${t.src_ZCc}|$)|;(?!${t.src_ZCc}|$)|\\!+(?!${t.src_ZCc}|[!]|$)|\\?(?!${t.src_ZCc}|[?]|$))+|\\/)?`,t.src_email_name='[\\-;:&=\\+\\$,\\.a-zA-Z0-9_][\\-;:&=\\+\\$,\\"\\.a-zA-Z0-9_]{0,63}',t.src_xn="xn--[a-z0-9\\-]{1,59}",t.src_domain_root="(?:"+t.src_xn+`|${t.src_pseudo_letter}{1,63})`,t.src_domain="(?:"+t.src_xn+`|(?:${t.src_pseudo_letter})|(?:${t.src_pseudo_letter}(?:-|${t.src_pseudo_letter}){0,61}${t.src_pseudo_letter}))`,t.src_host=`(?:(?:(?:(?:${t.src_domain})\\.)*${t.src_domain}))`,t.tpl_host_fuzzy="(?:"+t.src_ip4+`|(?:(?:(?:${t.src_domain})\\.)+(?:%TLDS%)))`,t.tpl_host_no_ip_fuzzy=`(?:(?:(?:${t.src_domain})\\.)+(?:%TLDS%))`,t.src_host_strict=t.src_host+t.src_host_terminator,t.tpl_host_fuzzy_strict=t.tpl_host_fuzzy+t.src_host_terminator,t.src_host_port_strict=t.src_host+t.src_port+t.src_host_terminator,t.tpl_host_port_fuzzy_strict=t.tpl_host_fuzzy+t.src_port+t.src_host_terminator,t.tpl_host_port_no_ip_fuzzy_strict=t.tpl_host_no_ip_fuzzy+t.src_port+t.src_host_terminator,t.tpl_host_fuzzy_test=`localhost|www\\.|\\.\\d{1,3}\\.|(?:\\.(?:%TLDS%)(?:${t.src_ZPCc}|>|$))`,t.tpl_email_fuzzy=`(^|${u}|"|\\(|${t.src_ZCc})(${t.src_email_name}@${t.tpl_host_fuzzy_strict})`,t.tpl_link_fuzzy=`(^|(?![.:/\\-_@])(?:[$+<=>^\`|\uFF5C]|${t.src_ZPCc}))((?![$+<=>^\`|\uFF5C])${t.tpl_host_port_fuzzy_strict}${t.src_path})`,t.tpl_link_no_ip_fuzzy=`(^|(?![.:/\\-_@])(?:[$+<=>^\`|\uFF5C]|${t.src_ZPCc}))((?![$+<=>^\`|\uFF5C])${t.tpl_host_port_no_ip_fuzzy_strict}${t.src_path})`,t}function _r(e){return Array.prototype.slice.call(arguments,1).forEach(function(u){u&&Object.keys(u).forEach(function(r){e[r]=u[r]})}),e}function iu(e){return Object.prototype.toString.call(e)}function H0(e){return iu(e)==="[object String]"}function V0(e){return iu(e)==="[object Object]"}function G0(e){return iu(e)==="[object RegExp]"}function si(e){return iu(e)==="[object Function]"}function W0(e){return e.replace(/[.?*+^$[\]\\(){}|-]/g,"\\$&")}var ci={fuzzyLink:!0,fuzzyEmail:!0,fuzzyIP:!1};function Z0(e){return Object.keys(e||{}).reduce(function(t,u){return t||ci.hasOwnProperty(u)},!1)}var J0={"http:":{validate:function(e,t,u){let r=e.slice(t);return u.re.http||(u.re.http=new RegExp(`^\\/\\/${u.re.src_auth}${u.re.src_host_port_strict}${u.re.src_path}`,"i")),u.re.http.test(r)?r.match(u.re.http)[0].length:0}},"https:":"http:","ftp:":"http:","//":{validate:function(e,t,u){let r=e.slice(t);return u.re.no_http||(u.re.no_http=new RegExp("^"+u.re.src_auth+`(?:localhost|(?:(?:${u.re.src_domain})\\.)+${u.re.src_domain_root})`+u.re.src_port+u.re.src_host_terminator+u.re.src_path,"i")),u.re.no_http.test(r)?t>=3&&e[t-3]===":"||t>=3&&e[t-3]==="/"?0:r.match(u.re.no_http)[0].length:0}},"mailto:":{validate:function(e,t,u){let r=e.slice(t);return u.re.mailto||(u.re.mailto=new RegExp(`^${u.re.src_email_name}@${u.re.src_host_strict}`,"i")),u.re.mailto.test(r)?r.match(u.re.mailto)[0].length:0}}},X0="a[cdefgilmnoqrstuwxz]|b[abdefghijmnorstvwyz]|c[acdfghiklmnoruvwxyz]|d[ejkmoz]|e[cegrstu]|f[ijkmor]|g[abdefghilmnpqrstuwy]|h[kmnrtu]|i[delmnoqrst]|j[emop]|k[eghimnprwyz]|l[abcikrstuvy]|m[acdeghklmnopqrstuvwxyz]|n[acefgilopruz]|om|p[aefghklmnrstwy]|qa|r[eosuw]|s[abcdeghijklmnortuvxyz]|t[cdfghjklmnortvwz]|u[agksyz]|v[aceginu]|w[fs]|y[et]|z[amw]",K0="biz|com|edu|gov|net|org|pro|web|xxx|aero|asia|coop|info|museum|name|shop|\u0440\u0444".split("|");function Y0(e){return function(t,u){let r=t.slice(u);return e.test(r)?r.match(e)[0].length:0}}function ai(){return function(e,t){t.normalize(e)}}function nu(e){let t=e.re=oi(e.__opts__),u=e.__tlds__.slice();e.onCompile(),e.__tlds_replaced__||u.push(X0),u.push(t.src_xn),t.src_tlds=u.join("|");function r(s){return s.replace("%TLDS%",t.src_tlds)}t.email_fuzzy=RegExp(r(t.tpl_email_fuzzy),"i"),t.email_fuzzy_global=RegExp(r(t.tpl_email_fuzzy),"ig"),t.link_fuzzy=RegExp(r(t.tpl_link_fuzzy),"i"),t.link_fuzzy_global=RegExp(r(t.tpl_link_fuzzy),"ig"),t.link_no_ip_fuzzy=RegExp(r(t.tpl_link_no_ip_fuzzy),"i"),t.link_no_ip_fuzzy_global=RegExp(r(t.tpl_link_no_ip_fuzzy),"ig"),t.host_fuzzy_test=RegExp(r(t.tpl_host_fuzzy_test),"i");let i=[];e.__compiled__={};function n(s,a){throw new Error(`(LinkifyIt) Invalid schema "${s}": ${a}`)}Object.keys(e.__schemas__).forEach(function(s){let a=e.__schemas__[s];if(a===null)return;let c={validate:null,link:null};if(e.__compiled__[s]=c,V0(a)){G0(a.validate)?c.validate=Y0(a.validate):si(a.validate)?c.validate=a.validate:n(s,a),si(a.normalize)?c.normalize=a.normalize:a.normalize?n(s,a):c.normalize=ai();return}if(H0(a)){i.push(s);return}n(s,a)}),i.forEach(function(s){e.__compiled__[e.__schemas__[s]]&&(e.__compiled__[s].validate=e.__compiled__[e.__schemas__[s]].validate,e.__compiled__[s].normalize=e.__compiled__[e.__schemas__[s]].normalize)}),e.__compiled__[""]={validate:null,normalize:ai()};let o=Object.keys(e.__compiled__).filter(function(s){return s.length>0&&e.__compiled__[s]}).map(W0).join("|");e.re.schema_test=RegExp(`(^|(?!_)(?:[><\uFF5C]|${t.src_ZPCc}))(${o})`,"i"),e.re.schema_search=RegExp(`(^|(?!_)(?:[><\uFF5C]|${t.src_ZPCc}))(${o})`,"ig"),e.re.schema_at_start=RegExp(`^${e.re.schema_search.source}`,"i"),e.re.pretest=RegExp(`(${e.re.schema_test.source})|(${e.re.host_fuzzy_test.source})|@`,"i")}function li(e,t,u,r){let i=e.slice(u,r);this.schema=t.toLowerCase(),this.index=u,this.lastIndex=r,this.raw=i,this.text=i,this.url=i}function _e(e,t){if(!(this instanceof _e))return new _e(e,t);t||Z0(e)&&(t=e,e={}),this.__opts__=_r({},ci,t),this.__schemas__=_r({},J0,e),this.__compiled__={},this.__tlds__=K0,this.__tlds_replaced__=!1,this.re={},nu(this)}_e.prototype.add=function(t,u){return this.__schemas__[t]=u,nu(this),this};_e.prototype.set=function(t){return this.__opts__=_r(this.__opts__,t),this};_e.prototype.test=function(t){if(!t.length)return!1;let u,r;if(this.re.schema_test.test(t)){for(r=this.re.schema_search,r.lastIndex=0;(u=r.exec(t))!==null;)if(this.testSchemaAt(t,u[2],r.lastIndex))return!0}return!!(this.__opts__.fuzzyLink&&this.__compiled__["http:"]&&t.search(this.re.host_fuzzy_test)>=0&&t.match(this.__opts__.fuzzyIP?this.re.link_fuzzy:this.re.link_no_ip_fuzzy)!==null||this.__opts__.fuzzyEmail&&this.__compiled__["mailto:"]&&t.indexOf("@")>=0&&t.match(this.re.email_fuzzy)!==null)};_e.prototype.pretest=function(t){return this.re.pretest.test(t)};_e.prototype.testSchemaAt=function(t,u,r){return this.__compiled__[u.toLowerCase()]?this.__compiled__[u.toLowerCase()].validate(t,r,this):0};_e.prototype.match=function(t){let u=[],r=[],i=[],n=[],o,s,a;function c(m,k){return m?k?m.index!==k.index?m.index<k.index?m:k:m.lastIndex>=k.lastIndex?m:k:m:k}if(!t.length)return null;if(this.re.schema_test.test(t))for(a=this.re.schema_search,a.lastIndex=0;(o=a.exec(t))!==null;)s=this.testSchemaAt(t,o[2],a.lastIndex),s&&r.push({schema:o[2],index:o.index+o[1].length,lastIndex:o.index+o[0].length+s});if(this.__opts__.fuzzyLink&&this.__compiled__["http:"])for(a=this.__opts__.fuzzyIP?this.re.link_fuzzy_global:this.re.link_no_ip_fuzzy_global,a.lastIndex=0;(o=a.exec(t))!==null;)i.push({schema:"",index:o.index+o[1].length,lastIndex:o.index+o[0].length});if(this.__opts__.fuzzyEmail&&this.__compiled__["mailto:"])for(a=this.re.email_fuzzy_global,a.lastIndex=0;(o=a.exec(t))!==null;)n.push({schema:"mailto:",index:o.index+o[1].length,lastIndex:o.index+o[0].length});let p=[0,0,0],f=0;for(;;){let m=[r[p[0]],n[p[1]],i[p[2]]],k=c(c(m[0],m[1]),m[2]);if(!k)break;if(k===m[0]?p[0]++:k===m[1]?p[1]++:p[2]++,k.index<f)continue;let g=new li(t,k.schema,k.index,k.lastIndex);this.__compiled__[g.schema].normalize(g,this),u.push(g),f=k.lastIndex}return u.length?u:null};_e.prototype.matchAtStart=function(t){if(!t.length)return null;let u=this.re.schema_at_start.exec(t);if(!u)return null;let r=this.testSchemaAt(t,u[2],u[0].length);if(!r)return null;let i=new li(t,u[2],u.index+u[1].length,u.index+u[0].length+r);return this.__compiled__[i.schema].normalize(i,this),i};_e.prototype.tlds=function(t,u){return t=Array.isArray(t)?t:[t],u?(this.__tlds__=this.__tlds__.concat(t).sort().filter(function(r,i,n){return r!==n[i-1]}).reverse(),nu(this),this):(this.__tlds__=t.slice(),this.__tlds_replaced__=!0,nu(this),this)};_e.prototype.normalize=function(t){t.schema||(t.url=`http://${t.url}`),t.schema==="mailto:"&&!/^mailto:/i.test(t.url)&&(t.url=`mailto:${t.url}`)};_e.prototype.onCompile=function(){};var fi=_e;var Q0=/^xn--/,es=/[^\0-\x7F]/,ts=/[\x2E\u3002\uFF0E\uFF61]/g,us={overflow:"Overflow: input needs wider integers to process","not-basic":"Illegal input >= 0x80 (not a basic code point)","invalid-input":"Invalid input"},vr=35,Ne=Math.floor,Ar=String.fromCharCode;function We(e){throw new RangeError(us[e])}function rs(e,t){let u=[],r=e.length;for(;r--;)u[r]=t(e[r]);return u}function pi(e,t){let u=e.split("@"),r="";u.length>1&&(r=u[0]+"@",e=u[1]),e=e.replace(ts,".");let i=e.split("."),n=rs(i,t).join(".");return r+n}function hi(e){let t=[],u=0,r=e.length;for(;u<r;){let i=e.charCodeAt(u++);if(i>=55296&&i<=56319&&u<r){let n=e.charCodeAt(u++);(n&64512)==56320?t.push(((i&1023)<<10)+(n&1023)+65536):(t.push(i),u--)}else t.push(i)}return t}var ns=e=>String.fromCodePoint(...e),is=function(e){return e>=48&&e<58?26+(e-48):e>=65&&e<91?e-65:e>=97&&e<123?e-97:36},di=function(e,t){return e+22+75*(e<26)-((t!=0)<<5)},mi=function(e,t,u){let r=0;for(e=u?Ne(e/700):e>>1,e+=Ne(e/t);e>vr*26>>1;r+=36)e=Ne(e/vr);return Ne(r+(vr+1)*e/(e+38))},gi=function(e){let t=[],u=e.length,r=0,i=128,n=72,o=e.lastIndexOf("-");o<0&&(o=0);for(let s=0;s<o;++s)e.charCodeAt(s)>=128&&We("not-basic"),t.push(e.charCodeAt(s));for(let s=o>0?o+1:0;s<u;){let a=r;for(let p=1,f=36;;f+=36){s>=u&&We("invalid-input");let m=is(e.charCodeAt(s++));m>=36&&We("invalid-input"),m>Ne((2147483647-r)/p)&&We("overflow"),r+=m*p;let k=f<=n?1:f>=n+26?26:f-n;if(m<k)break;let g=36-k;p>Ne(2147483647/g)&&We("overflow"),p*=g}let c=t.length+1;n=mi(r-a,c,a==0),Ne(r/c)>2147483647-i&&We("overflow"),i+=Ne(r/c),r%=c,t.splice(r++,0,i)}return String.fromCodePoint(...t)},bi=function(e){let t=[];e=hi(e);let u=e.length,r=128,i=0,n=72;for(let a of e)a<128&&t.push(Ar(a));let o=t.length,s=o;for(o&&t.push("-");s<u;){let a=2147483647;for(let p of e)p>=r&&p<a&&(a=p);let c=s+1;a-r>Ne((2147483647-i)/c)&&We("overflow"),i+=(a-r)*c,r=a;for(let p of e)if(p<r&&++i>2147483647&&We("overflow"),p===r){let f=i;for(let m=36;;m+=36){let k=m<=n?1:m>=n+26?26:m-n;if(f<k)break;let g=f-k,S=36-k;t.push(Ar(di(k+g%S,0))),f=Ne(g/S)}t.push(Ar(di(f,0))),n=mi(i,c,s===o),i=0,++s}++i,++r}return t.join("")},os=function(e){return pi(e,function(t){return Q0.test(t)?gi(t.slice(4).toLowerCase()):t})},ss=function(e){return pi(e,function(t){return es.test(t)?"xn--"+bi(t):t})},as={version:"2.3.1",ucs2:{decode:hi,encode:ns},decode:gi,encode:bi,toASCII:ss,toUnicode:os};var Cr=as;var xi={options:{html:!1,xhtmlOut:!1,breaks:!1,langPrefix:"language-",linkify:!1,typographer:!1,quotes:"\u201C\u201D\u2018\u2019",highlight:null,maxNesting:100},components:{core:{},block:{},inline:{}}};var wi={options:{html:!1,xhtmlOut:!1,breaks:!1,langPrefix:"language-",linkify:!1,typographer:!1,quotes:"\u201C\u201D\u2018\u2019",highlight:null,maxNesting:20},components:{core:{rules:["normalize","block","inline","text_join"]},block:{rules:["paragraph"]},inline:{rules:["text"],rules2:["balance_pairs","fragments_join"]}}};var yi={options:{html:!0,xhtmlOut:!0,breaks:!1,langPrefix:"language-",linkify:!1,typographer:!1,quotes:"\u201C\u201D\u2018\u2019",highlight:null,maxNesting:20},components:{core:{rules:["normalize","block","inline","text_join"]},block:{rules:["blockquote","code","fence","heading","hr","html_block","lheading","list","reference","paragraph"]},inline:{rules:["autolink","backticks","emphasis","entity","escape","html_inline","image","link","newline","text"],rules2:["balance_pairs","emphasis","fragments_join"]}}};var cs={default:xi,zero:wi,commonmark:yi},ls=/^(vbscript|javascript|file|data):/,fs=/^data:image\/(gif|png|jpeg|webp);/;function ds(e){let t=e.trim().toLowerCase();return ls.test(t)?fs.test(t):!0}var ki=["http:","https:","mailto:"];function ps(e){let t=yt(e,!0);if(t.hostname&&(!t.protocol||ki.indexOf(t.protocol)>=0))try{t.hostname=Cr.toASCII(t.hostname)}catch{}return Ht(it(t))}function hs(e){let t=yt(e,!0);if(t.hostname&&(!t.protocol||ki.indexOf(t.protocol)>=0))try{t.hostname=Cr.toUnicode(t.hostname)}catch{}return wt(it(t),wt.defaultChars+"%")}function De(e,t){if(!(this instanceof De))return new De(e,t);t||Qt(e)||(t=e||{},e="default"),this.inline=new ii,this.block=new ei,this.core=new Hn,this.renderer=new Bn,this.linkify=new fi,this.validateLink=ds,this.normalizeLink=ps,this.normalizeLinkText=hs,this.utils=Ou,this.helpers=st({},Bu),this.options={},this.configure(e),t&&this.set(t)}De.prototype.set=function(e){return st(this.options,e),this};De.prototype.configure=function(e){let t=this;if(Qt(e)){let u=e;if(e=cs[u],!e)throw new Error('Wrong `markdown-it` preset "'+u+'", check name')}if(!e)throw new Error("Wrong `markdown-it` preset, can't be empty");return e.options&&t.set(e.options),e.components&&Object.keys(e.components).forEach(function(u){e.components[u].rules&&t[u].ruler.enableOnly(e.components[u].rules),e.components[u].rules2&&t[u].ruler2.enableOnly(e.components[u].rules2)}),this};De.prototype.enable=function(e,t){let u=[];Array.isArray(e)||(e=[e]),["core","block","inline"].forEach(function(i){u=u.concat(this[i].ruler.enable(e,!0))},this),u=u.concat(this.inline.ruler2.enable(e,!0));let r=e.filter(function(i){return u.indexOf(i)<0});if(r.length&&!t)throw new Error("MarkdownIt. Failed to enable unknown rule(s): "+r);return this};De.prototype.disable=function(e,t){let u=[];Array.isArray(e)||(e=[e]),["core","block","inline"].forEach(function(i){u=u.concat(this[i].ruler.disable(e,!0))},this),u=u.concat(this.inline.ruler2.disable(e,!0));let r=e.filter(function(i){return u.indexOf(i)<0});if(r.length&&!t)throw new Error("MarkdownIt. Failed to disable unknown rule(s): "+r);return this};De.prototype.use=function(e){let t=[this].concat(Array.prototype.slice.call(arguments,1));return e.apply(e,t),this};De.prototype.parse=function(e,t){if(typeof e!="string")throw new Error("Input data should be a String");let u=new this.core.State(e,this,t);return this.core.process(u),u.tokens};De.prototype.render=function(e,t){return t=t||{},this.renderer.render(this.parse(e,t),this.options,t)};De.prototype.parseInline=function(e,t){let u=new this.core.State(e,this,t);return u.inlineMode=!0,this.core.process(u),u.tokens};De.prototype.renderInline=function(e,t){return t=t||{},this.renderer.render(this.parseInline(e,t),this.options,t)};var vt=De;var Ei=Lr(mu()),ms=(0,Ei.default)({storeAsString:!0,protoAction:"error",constructorAction:"error"}),gs=new Set("center p div span h1 h2 h3 h4 h5 h6 strong b em i u s del strike mark code pre blockquote ul ol li table thead tbody tr th td img video audio source a br hr sub sup details summary".split(" "));function ft(e){let t=[];e={...e,textAlign:e.textAlign??e.align},["center","right","justify","left"].includes(e.textAlign)&&t.push("text-align:"+e.textAlign),e.color&&/^(#[\da-f]{3,8}|rgba?\([\d., %]+\)|[a-z]+)$/i.test(e.color)&&t.push("color:"+e.color),e.backgroundColor&&/^(#[\da-f]{3,8}|rgba?\([\d., %]+\)|[a-z]+)$/i.test(e.backgroundColor)&&t.push("background-color:"+e.backgroundColor);let u=Number(e.indent);return u>0&&u<=12&&t.push("margin-left:"+u*2+"em"),t.length?` style="${re(t.join(";"))}"`:""}function _i(e){let t=e;for(let u=0;u<12;u++){if(typeof t=="string"){let o=t.replace(/^\uFEFF/,"").trim();if(!/^[\[{"]/.test(o))break;try{let s=ms.parse(o);if(s===t)break;t=s;continue}catch{break}}let r=Q(t);if(r.type||Array.isArray(t))break;let i=Object.keys(r),n=["content","html","markdown","document","doc","body","text","value","data"].find(o=>r[o]!=null);if(n&&i.every(o=>[n,"format","contentType","version","schemaVersion","encoding"].includes(o))){t=r[n];continue}break}return t}function vi(e){let t=_i(e),u=Q(t);return u.type==="doc"?u:Array.isArray(t)&&t.length&&t.every(r=>typeof r?.type=="string")?{type:"doc",content:t}:["paragraph","heading","blockquote","bulletList","orderedList","table","text"].includes(u.type)?{type:"doc",content:[u]}:null}var bs={title:"\u540D\u79F0",name:"\u540D\u79F0",description:"\u7B80\u4ECB",content:"\u6B63\u6587",caption:"\u8BF4\u660E",worldId:"\u4E16\u754C ID",definitionId:"\u8BBE\u5B9A ID",calendarId:"\u5386\u6CD5 ID",graphId:"\u56FE\u8C31 ID",workId:"\u4F5C\u54C1 ID",chapterId:"\u7AE0\u8282 ID",mapId:"\u5730\u56FE ID",eventId:"\u4E8B\u4EF6 ID",userId:"\u7528\u6237 ID",nickname:"\u6635\u79F0",createTime:"\u521B\u5EFA\u65F6\u95F4",updateTime:"\u66F4\u65B0\u65F6\u95F4",children:"\u4E0B\u7EA7\u6761\u76EE",nodes:"\u8282\u70B9",edges:"\u5173\u7CFB",relations:"\u5173\u7CFB",bindings:"\u5173\u8054",months:"\u6708\u4EFD",days:"\u65E5\u671F",weeks:"\u661F\u671F",volumes:"\u5206\u5377",chapters:"\u7AE0\u8282",contents:"\u6761\u76EE",items:"\u6761\u76EE",data:"\u8D44\u6599",type:"\u7C7B\u578B",status:"\u72B6\u6001",statistics:"\u7EDF\u8BA1",ownerUser:"\u6240\u5C5E\u4F5C\u8005",createUser:"\u521B\u5EFA\u8005",permissions:"\u6743\u9650",tags:"\u6807\u7B7E",coverUrl:"\u5C01\u9762\u5730\u5740",coverType:"\u5C01\u9762\u7C7B\u578B",guildId:"\u516C\u4F1A ID"};function ou(e,t,u=0){if(u>32)return t.warnings?.push("\u7ED3\u6784\u5316\u6B63\u6587\u8D85\u8FC7 32 \u5C42\uFF1B\u5B8C\u6574\u5185\u5BB9\u4FDD\u5B58\u5728\u539F\u59CB\u6570\u636E\u4E2D\u3002"),"<p>\uFF08\u5185\u5BB9\u5C42\u7EA7\u8FC7\u6DF1\uFF0C\u8BF7\u67E5\u770B\u539F\u59CB\u6570\u636E\uFF09</p>";let r=_i(e),i=vi(r);return i?Ai(i,t):r==null?"":typeof r=="string"?new vt({html:!0}).render(r):typeof r=="boolean"?"<p>"+(r?"\u662F":"\u5426")+"</p>":typeof r!="object"?"<p>"+re(r)+"</p>":Array.isArray(r)?r.map((n,o)=>{let s=Q(n),a=s.title??s.name??s.label;return(typeof n=="object"?`<h${Math.min(6,u+3)}>${re(a??"\u6761\u76EE "+(o+1))}</h${Math.min(6,u+3)}>`:"")+ou(n,t,u+1)}).join(`
-`):Object.entries(Q(r)).filter(([n,o])=>o!=null&&!/token|authorization|password|secret|cookie/i.test(n)).map(([n,o])=>{let s=bs[n]??n;return typeof o!="object"&&typeof o!="string"?"<p><strong>"+re(s)+"\uFF1A</strong>"+re(typeof o=="boolean"?o?"\u662F":"\u5426":o)+"</p>":`<h${Math.min(6,u+3)}>${re(s)}</h${Math.min(6,u+3)}>`+ou(o,t,u+1)}).join(`
-`)}function Ai(e,t){let u=Q(e.attrs),r=se(e.content).map(n=>Ai(n,t)).join(""),i=n=>`<${n}${ft(u)}>${r}</${n}>`;switch(e.type){case"doc":return r;case"text":{let n=re(e.text);for(let o of se(e.marks)){let s=Q(o.attrs);switch(o.type){case"bold":n=`<strong>${n}</strong>`;break;case"italic":n=`<em>${n}</em>`;break;case"strike":n=`<del>${n}</del>`;break;case"underline":n=`<u>${n}</u>`;break;case"code":n=`<code>${n}</code>`;break;case"subscript":n=`<sub>${n}</sub>`;break;case"superscript":n=`<sup>${n}</sup>`;break;case"link":{let a=ze(s.href,t.base);a&&(n=`<a href="${re(a)}">${n}</a>`);break}case"highlight":n=`<mark${ft({backgroundColor:s.color})}>${n}</mark>`;break;case"textStyle":n=`<span${ft(s)}>${n}</span>`;break}}return n}case"paragraph":return i("p");case"heading":return i("h"+Math.min(6,Math.max(1,Number(u.level)||1)));case"hardBreak":return"<br>";case"horizontalRule":return"<hr>";case"blockquote":return i("blockquote");case"bulletList":return i("ul");case"orderedList":return`<ol start="${Number(u.start)||1}">${r}</ol>`;case"listItem":return i("li");case"taskList":return`<ul data-type="taskList">${r}</ul>`;case"taskItem":return`<li data-checked="${u.checked===!0}">${r}</li>`;case"codeBlock":return`<pre><code class="language-${re(u.language??"")}">${re(se(e.content).map(n=>n.text??"").join(""))}</code></pre>`;case"image":case"resizableImage":case"imageBlock":{let n=ze(u.src??u.url,t.base);if(!n)return"";let o=parseFloat(u.width),s=parseFloat(u.height),a=`<img src="${re(n)}" alt="${re(u.alt??u.title??"")}"${o>0?` width="${o}"`:""}${s>0?` height="${s}"`:""}>`;u.caption&&(a+="<p>"+re(u.caption)+"</p>");let c=u.textAlign??u["data-align"];return["center","right"].includes(c)?`<div style="text-align:${c}">${a}</div>`:a}case"video":case"videoBlock":case"audio":{let n=ze(u.src??u.url,t.base),o=e.type==="audio"?"audio":"video";return n?`<${o} src="${re(n)}" controls></${o}>`:""}case"table":return i("table");case"tableRow":return i("tr");case"tableHeader":case"tableCell":{let n=e.type==="tableHeader"?"th":"td";return`<${n} colspan="${Number(u.colspan)||1}" rowspan="${Number(u.rowspan)||1}"${ft(u)}>${r}</${n}>`}case"mathematics":case"inlineMath":case"mathInline":return`<span data-math="inline">${re(u.latex??u.formula??e.text??"")}</span>`;case"blockMath":case"mathBlock":return`<div data-math="block">${re(u.latex??u.formula??e.text??"")}</div>`;case"shareCode":{let n=String(u.code??"").replace(/^(?:mt:|\[\[)/i,"").replace(/\]\]$/,"").replace(/[-\s]/g,"").toUpperCase(),o=u.label??n;return/^[DEWOM][23456789ABCDEFGHJKLMNPQRSTVWXYZ]{10,}$/.test(n)?`<a href="${re(t.base+"/e/"+n)}">${re(o)}</a>`:re(o)}case"mention":case"definitionMention":case"definitionReference":{let n=u.label??u.title??u.name??u.id??u.definitionId??"\u5F15\u7528",o=String(u.definitionId??u.id??"");return`<a href="${re(t.base+"/editor/definition?definitionId="+encodeURIComponent(o))}">${re(n)}</a>`}default:return t.warnings?.push(`\u672A\u5B8C\u6574\u8BC6\u522B\u5BCC\u6587\u672C\u8282\u70B9 ${String(e.type)}\uFF1B\u539F\u59CB\u8282\u70B9\u5DF2\u4FDD\u5B58\u5728\u539F\u59CB\u6570\u636E\u4E2D\u3002`),r||ou(Object.fromEntries(Object.entries(e).filter(([n])=>!["type","marks"].includes(n))),t,1)}}function At(e,t){let u=new DOMParser().parseFromString(e,"text/html");for(let r of Array.from(u.body.querySelectorAll("*")).reverse()){let i=r.tagName.toLowerCase();if(["script","style","iframe","object","embed","form","input","button","svg","link","meta"].includes(i)){r.remove();continue}if(!gs.has(i)){r.replaceWith(...Array.from(r.childNodes));continue}for(let n of Array.from(r.attributes)){let o=n.name.toLowerCase();if(o==="href"||o==="src"||o==="poster"){let s=ze(n.value,t);s?r.setAttribute(o,s):r.removeAttribute(o)}else if(o==="style"){let s=r.style,a={textAlign:s.textAlign,color:s.color,backgroundColor:s.backgroundColor},c=ft(a).match(/style="([^"]*)"/);r.removeAttribute("style"),c&&r.setAttribute("style",c[1])}else["alt","title","align","width","height","colspan","rowspan","start","class","controls","data-type","data-checked","data-math"].includes(o)?o==="align"&&!["left","center","right","justify"].includes(n.value)&&r.removeAttribute(o):r.removeAttribute(o)}}return u.body}function su(e,t){return ou(e,t)}function Dr(e,t){return At(su(e,{base:t}),t).textContent?.replace(/\s+/g," ").trim()??""}function Ct(e,t){let u=At(su(e,t),t.base);return[...new Set(Array.from(u.querySelectorAll("[src],[poster]")).flatMap(r=>[r.getAttribute("src"),r.getAttribute("poster")]).filter(r=>!!r))]}function Fe(e,t){let u=At(su(e,t),t.base);for(let n of Array.from(u.querySelectorAll("th,td"))){let o=n.querySelector('[style*="text-align"]'),s=n.getAttribute("align")||n.style.textAlign||o?.style.textAlign;["left","center","right"].includes(s??"")&&n.setAttribute("align",s)}for(let n of Array.from(u.querySelectorAll("table"))){for(let s of[n,...Array.from(n.querySelectorAll("thead,tbody,tfoot,tr"))])for(let a of Array.from(s.childNodes))a.nodeType===3&&!a.textContent?.trim()&&a.remove();let o=n.querySelector("tr");if(!o){n.remove();continue}if(!o.querySelector("th")&&!n.querySelector('[colspan]:not([colspan="1"]),[rowspan]:not([rowspan="1"])')){let s=n.ownerDocument.createElement("thead"),a=n.ownerDocument.createElement("tr");for(let c of Array.from(o.children)){let p=n.ownerDocument.createElement("th");c.getAttribute("align")&&p.setAttribute("align",c.getAttribute("align")),a.appendChild(p)}s.appendChild(a),n.insertBefore(s,n.firstChild)}}let r=new mn({headingStyle:"atx",codeBlockStyle:"fenced",bulletListMarker:"-",emDelimiter:"*"});r.use(xn),r.addRule("table-cell-markdown",{filter:["th","td"],replacement:(n,o)=>(o.previousElementSibling?" ":"| ")+n.trim().replace(/(?<!\\)\|/g,"\\|").replace(/\n+/g,"<br>")+" |"});function i(n,o){let s=n.trim(),a=o.style.color,c=o.style.backgroundColor;return(a||c)&&(s=`<span${ft({color:a,backgroundColor:c})}>${s}</span>`),/^H[1-6]$/.test(o.tagName)&&(s="#".repeat(Number(o.tagName[1]))+" "+s),s}return r.addRule("preserveFormatting",{filter:n=>{let o=n;return["U","SUB","SUP","MARK"].includes(o.tagName)||!!o.style?.color||!!o.style?.backgroundColor||o.tagName==="TABLE"&&!!o.querySelector('[colspan]:not([colspan="1"]),[rowspan]:not([rowspan="1"])')},replacement:(n,o)=>{let s=o;if(s.tagName==="TABLE"){let c=s.cloneNode(!0);for(let p of Array.from(c.querySelectorAll("[src]"))){let f=p.getAttribute("src")??"";t.assets?.[f]&&(p.setAttribute("data-matrees-src",t.assets[f]),p.removeAttribute("src"))}return`
-
-`+c.outerHTML+`
-
-`}if(["U","SUB","SUP"].includes(s.tagName))return`<${s.tagName.toLowerCase()}>${n}</${s.tagName.toLowerCase()}>`;if(s.tagName==="MARK"&&!s.style.backgroundColor)return"=="+n+"==";let a=i(n,s);return/^(P|DIV|H[1-6])$/.test(s.tagName)?`
-
-`+a+`
-
-`:a}}),r.addRule("alignment",{filter:n=>{let o=n;return!o.closest("td,th")&&(o.tagName==="CENTER"||/^(P|DIV|H[1-6]|BLOCKQUOTE|UL|OL|TABLE)$/.test(o.tagName)&&["center","right","justify"].includes(o.getAttribute("align")||o.style?.textAlign))},replacement:(n,o)=>{let s=o,a=s.tagName==="CENTER"?"center":s.getAttribute("align")||s.style.textAlign,c=i(n,s);return`
-
-> [!matrees-${a}]
-`+c.split(`
-`).map(p=>"> "+p).join(`
-`)+`
-
-<!-- matrees-layout-break -->
-
-`}}),r.addRule("task",{filter:n=>n.tagName==="LI"&&n.hasAttribute("data-checked"),replacement:(n,o)=>`- [${o.getAttribute("data-checked")==="true"?"x":" "}] ${n.trim()}
-`}),r.addRule("math",{filter:n=>n.hasAttribute("data-math"),replacement:(n,o)=>{let s=o;return s.dataset.math==="block"?`
-
-$$
-${s.textContent}
-$$
-
-`:`$${s.textContent}$`}}),r.addRule("assets",{filter:["img","video","audio"],replacement:(n,o)=>{let s=o,a=s.getAttribute("src")??s.querySelector("source")?.getAttribute("src")??"",c=t.assets?.[a],p=Number(s.getAttribute("width")),f=Number(s.getAttribute("height")),m=p>0?"|"+p+(f>0?"x"+f:""):"";return c?`
-
-![[${c}${m}]]
-
-`:s.tagName==="IMG"?`![${(s.getAttribute("alt")??"").replace(/[\[\]|]/g,"")+m}](${a.replace(/ /g,"%20").replace(/\(/g,"%28").replace(/\)/g,"%29")})`:`
-
-<${s.tagName.toLowerCase()} controls src="${re(a)}"></${s.tagName.toLowerCase()}>
-
-`}}),r.addRule("entity-links",{filter:n=>{let o=n;if(o.tagName!=="A")return!1;try{let s=new URL(o.getAttribute("href")??"");return!!t.links?.[s.searchParams.get("definitionId")??""]}catch{return!1}},replacement:(n,o)=>{let s=new URL(o.getAttribute("href"));return`[[${t.links[s.searchParams.get("definitionId")].replace(/\.md$/,"")}|${n.replace(/[\]|]/g," ")}]]`}}),r.turndown(u.innerHTML).replace(/<!--\s*MATREES:/g,"<!-- REMOTE-MATREES:").trim()}function xs(e){let t=At(new vt({html:!0}).render(e),"https://www.matrees.cn");function u(r,i=[]){if(r.nodeType===3)return r.textContent?[{type:"text",text:r.textContent,...i.length?{marks:i}:{}}]:[];if(r.nodeType!==1)return[];let n=r,o=n.tagName.toLowerCase(),s=[...i],a={strong:"bold",b:"bold",em:"italic",i:"italic",del:"strike",s:"strike",u:"underline",code:"code",sub:"subscript",sup:"superscript"};if(a[o]&&s.push({type:a[o]}),o==="a"&&n.getAttribute("href")&&s.push({type:"link",attrs:{href:n.getAttribute("href")}}),o==="blockquote"){let k=n.querySelector(":scope > p"),g=k?.textContent?.trim().match(/^\[!matrees-(center|right|justify)\]$/);if(g){k.remove();for(let S of Array.from(n.children))/^(P|H[1-6])$/.test(S.tagName)&&(S.style.textAlign=g[1]);return Array.from(n.childNodes).flatMap(S=>u(S,s))}}let c=Array.from(n.childNodes).flatMap(k=>u(k,s)),p={},f=n.style.textAlign||n.getAttribute("align");if(f&&(p.textAlign=f),/^h[1-6]$/.test(o))return[{type:"heading",attrs:{...p,level:Number(o[1])},content:c}];let m={p:"paragraph",blockquote:"blockquote",ul:"bulletList",ol:"orderedList",li:"listItem",table:"table",tr:"tableRow",td:"tableCell",th:"tableHeader"};return m[o]?[{type:m[o],attrs:{...p,...o==="ol"?{start:Number(n.getAttribute("start"))||1}:{}},content:c}]:o==="pre"?[{type:"codeBlock",attrs:{language:n.querySelector("code")?.className.replace("language-","")??""},content:[{type:"text",text:n.textContent??""}]}]:o==="br"?[{type:"hardBreak"}]:o==="hr"?[{type:"horizontalRule"}]:o==="img"?[{type:"image",attrs:{src:n.getAttribute("src"),alt:n.getAttribute("alt")}}]:c}return{type:"doc",content:Array.from(t.childNodes).flatMap(r=>u(r)).filter(r=>!(r.type==="text"&&!String(r.text).trim()))}}function Ci(e,t){if(/!\[\[|!\[[^\]]*\]\((?!https:\/\/)/.test(t))throw Error("\u4E0A\u4F20\u533A\u57DF\u5305\u542B\u672C\u5730\u9644\u4EF6\uFF1B\u8BF7\u5148\u4E0A\u4F20\u9644\u4EF6\u5E76\u6539\u6210 HTTPS \u5730\u5740\u3002");let u=vi(e);return u?JSON.stringify({...u,content:[...se(u.content),...se(xs(t).content)]}):su(e,{base:"https://www.matrees.cn"})+`
-`+At(new vt({html:!0}).render(t),"https://www.matrees.cn").innerHTML}var Tr="<!-- MATREES:CLOUD:BEGIN -->",Sr="<!-- MATREES:CLOUD:END -->",Fr="<!-- MATREES:LOCAL:BEGIN -->",Ir="<!-- MATREES:LOCAL:END -->";function au(e,t,u){let r=e.indexOf(t),i=e.indexOf(u);if(r<0||i<r||e.indexOf(t,r+t.length)>=0||e.indexOf(u,i+u.length)>=0)throw Error("\u540C\u6B65\u6807\u8BB0\u7F3A\u5931\u3001\u91CD\u590D\u6216\u987A\u5E8F\u9519\u8BEF\uFF0C\u5DF2\u4FDD\u7559\u539F\u6587\u4EF6\u3002");return[r+t.length,i]}function Di(e){let[t,u]=au(e,Tr,Sr);return e.slice(t,u)}function Ti(e){let[t,u]=au(e,Fr,Ir);return e.slice(t,u).replace(/<!--[\s\S]*?-->/g,"").trim()}function Si(e,t){let[u,r]=au(e,Tr,Sr),[i,n]=au(e,Fr,Ir);if(i<r||n<i)throw Error("\u672C\u5730\u4FEE\u6539\u533A\u4E0E\u4E91\u7AEF\u533A\u57DF\u91CD\u53E0\uFF0C\u5DF2\u4FDD\u7559\u539F\u6587\u4EF6\u3002");return e.slice(0,u)+`
-`+t.trim()+`
-`+e.slice(r)}function Dt(e,t){return`---
-${Object.entries(t).map(([r,i])=>`${r}: ${JSON.stringify(i)}`).join(`
-`)}
----
-
-${Tr}
-${e.trim()}
-${Sr}
-
-## \u672C\u5730\u4FEE\u6539
-
-${Fr}
-
-<!-- \u5728\u8FD9\u91CC\u5199\u672C\u5730\u8865\u5145\u3002\u4E91\u7AEF\u540C\u6B65\u4F1A\u9010\u5B57\u4FDD\u7559\u6B64\u533A\u57DF\u53CA\u5176\u540E\u65B9\u7684\u5185\u5BB9\u3002 -->
-
-${Ir}
-`}async function Fi(e,t,u,r,i,n,o,s){let a=t?structuredClone(t):{root:u,notes:{},assets:{}};u=a.root;let c=$(e.world.worldId),p=[...e.warnings],f=nn(u,e.definitions,e.memberships);p.push(...f.warnings);let m={base:r.baseUrl,assets:a.assets,links:f.paths,warnings:p},k=0,g=0,S=new Date().toISOString().replace(/[:.]/g,"-");async function O(I,y){await i.write(I,JSON.stringify(Pt(y),null,2)+`
-`)}async function R(){await s?.(a)}async function B(I,y,G,X,H,U,ie,l){let d=a.notes[I],h=d?.path??y,_=h;d&&h!==y&&p.push(`\u4E91\u7AEF\u76EE\u5F55\u53D8\u5316\uFF1A${G}\uFF1B\u4FDD\u7559\u6B63\u6587\u539F\u8DEF\u5F84\uFF0C\u5E76\u5728\u65B0\u4F4D\u7F6E\u5EFA\u7ACB\u5BFC\u822A\u3002`);let x=await Be(`
-`+U.trim()+`
-`);if(i.exists(_)){let E=await i.read(_),D;try{D=await Be(Di(E))}catch{D="invalid"}if(!d||D!==d.cloudHash){g++;let w=u+"/_\u540C\u6B65\u51B2\u7A81/"+S+"/"+be(I,90)+".md";await i.write(w,Dt(U,{matrees_world_id:c,matrees_entity_id:H,matrees_kind:X,conflict_original:_})),p.push(`\u4FDD\u7559\u672C\u5730\u539F\u6587\u4EF6\uFF1A${_}\uFF1B\u65B0\u7248\u4F4D\u4E8E ${w}`);return}let b=E;try{await i.process(_,w=>{if(w!==b)throw Error("\u6587\u4EF6\u5728\u540C\u6B65\u671F\u95F4\u88AB\u7F16\u8F91\u3002");return Si(w,U)})}catch{g++;let C=u+"/_\u540C\u6B65\u51B2\u7A81/"+S+"/"+be(I,90)+".md";await i.write(C,Dt(U,{conflict_original:_})),p.push(`${G} \u540C\u6B65\u65F6\u53D1\u751F\u7F16\u8F91\uFF0C\u5DF2\u4FDD\u5B58\u4E91\u7AEF\u5019\u9009\uFF1A${C}`);return}}else await i.write(_,Dt(U,{matrees_world_id:c,matrees_entity_id:H,matrees_kind:X,cssclasses:["matrees-note"]}));o(`\u5DF2\u4FDD\u5B58\u7B2C ${k+1} \u9875\uFF1A${G}`,{phase:"\u4FDD\u5B58\u9875\u9762",completed:k+1}),a.notes[I]={path:_,cloudHash:x,kind:X,entityId:H,title:G,rawPath:ie,remoteHash:l},k++,await R(),_!==y&&!i.exists(y)&&await i.write(y,Dt(`# ${he(G)}
-
-${fe(_,"\u6253\u5F00\u6B63\u6587\u4E0E\u672C\u5730\u4FEE\u6539\u533A")}`,{matrees_kind:"redirect",matrees_world_id:c}))}let q=new Set;function N(I){let y=ze(I,r.baseUrl);y&&q.add(y)}for(let I of[e.world,e.concept,...e.definitions,...e.events,...e.maps,...e.chapters]){N(Ce(I,r.baseUrl));for(let y of Ct(I.content,m))q.add(y);for(let y of Ct(I.description,m))q.add(y);N(I.mapUrl??I.imageUrl)}for(let I of e.illustrations){N(I.mediaUrl);for(let y of Ct(I.caption,m))q.add(y)}for(let I of[...Object.values(e.extra),...e.works])for(let y of Ct(I,m))q.add(y);let A=Ce(e.world,r.baseUrl),T=0;o("\u51C6\u5907\u4E0B\u8F7D\u5A92\u4F53\u2026",{phase:"\u4E0B\u8F7D\u5A92\u4F53",completed:0,total:q.size});for(let I of q)if(o(`\u5904\u7406\u5A92\u4F53 ${++T}/${q.size}\u2026`,{phase:"\u4E0B\u8F7D\u5A92\u4F53",completed:T-1,total:q.size}),!(a.assets[I]&&i.exists(a.assets[I]))&&r.downloadMedia)try{let y=await n(I);if(y.status===403)throw Error("HTTP 403\uFF1A\u5A92\u4F53\u670D\u52A1\u5668\u62D2\u7EDD\u4E0B\u8F7D\uFF0C\u4FDD\u7559\u5728\u7EBF\u5F15\u7528\uFF1B\u4E0D\u4F1A\u5411\u5A92\u4F53\u7AD9\u53D1\u9001\u8D26\u53F7 Token\u3002");if(y.status<200||y.status>=300)throw Error("HTTP "+y.status);if(y.bytes.byteLength>r.maxMediaMB*1024*1024)throw Error(`\u8D85\u8FC7 ${r.maxMediaMB} MB \u9650\u5236`);let G=y.contentType.split(";")[0].trim().toLowerCase();if(!/^(image\/(png|jpe?g|gif|webp|avif|bmp)|video\/(mp4|webm|quicktime)|audio\/)/.test(G))throw Error("\u5A92\u4F53\u7C7B\u578B\u672A\u901A\u8FC7\u6821\u9A8C\uFF1A"+G);let H={"image/jpeg":"jpg","image/png":"png","image/webp":"webp","image/gif":"gif","image/avif":"avif","image/bmp":"bmp","video/mp4":"mp4","video/webm":"webm","video/quicktime":"mov","audio/mpeg":"mp3","audio/ogg":"ogg","audio/wav":"wav","audio/mp4":"m4a"}[G]??"bin",U=(await Be(I)).slice(0,24),ie=u+(I===A?"/\u5C01\u9762/":"/\u63D2\u753B\u96C6/\u9644\u4EF6/")+U+"."+H;await i.binary(ie,y.bytes),a.assets[I]=ie,await R()}catch(y){let G="\u5A92\u4F53\u672A\u79BB\u7EBF\u4FDD\u5B58\uFF1A"+I+"\uFF1B"+Ue(y instanceof Error?y.message:y);p.push(G),o(G,{phase:"\u4E0B\u8F7D\u5A92\u4F53",completed:T,total:q.size,issue:{category:"\u5C01\u9762/\u5A92\u4F53"}})}o(`\u5A92\u4F53\u5904\u7406\u5B8C\u6210\uFF1A${T}/${q.size}`,{phase:"\u4E0B\u8F7D\u5A92\u4F53",completed:T,total:q.size}),o("\u4FDD\u5B58\u63A5\u53E3\u5FEB\u7167\u2026",{phase:"\u4FDD\u5B58\u539F\u59CB\u8D44\u6599"});let P=u+"/_\u539F\u59CB\u6570\u636E/snapshot.json";await O(P,e);let L=e.unavailable??{};for(let[I,y]of Object.entries(L)){let G=`\u8BBE\u5B9A ${I} \u6B63\u6587\u672A\u53D6\u5F97\uFF1A${y}\uFF1B\u5DF2\u6709\u672C\u5730\u6B63\u6587\u4FDD\u6301\u4E0D\u53D8\u3002`;p.some(X=>X.includes(I)&&X.includes(y))||p.push(G)}let F=new Map;for(let I of e.definitions){let y=u+(L[$(I.definitionId)]?"/_\u539F\u59CB\u6570\u636E/\u672A\u53D6\u5F97\u6B63\u6587/":"/_\u539F\u59CB\u6570\u636E/\u8BBE\u5B9A/")+$(I.definitionId)+".json";F.set($(I.definitionId),y),await O(y,I)}function Z(I,y=!1){let G=Ce(I,r.baseUrl);if(!G)return"";let X=a.assets[G],H=y?' width="300" height="444"':"";if(xt(I)){let U=X?`data-matrees-src="${re(X)}"`:`src="${re(G)}"`;return`<video controls${H} ${U}></video>`}return X?`![[${X}${y?"|300x444":""}]]`:y?`<img src="${re(G)}" alt="\u4E16\u754C\u89C2\u5C01\u9762"${H}>`:`![\u5C01\u9762](${G.replace(/[() ]/g,U=>encodeURIComponent(U))})`}let W=[...e.definitions].sort((I,y)=>Number(we(y.isPinned))-Number(we(I.isPinned))||Number(I.sortOrder??0)-Number(y.sortOrder??0)||String(I.title??"").localeCompare(String(y.title??""),"zh-CN"));function J(I){let y=e.galleries[$(I.definitionId)]??{},G=new Set([...se(y.media).map(U=>$(U.mediaId)),...Array.isArray(I.galleryImageIds)?I.galleryImageIds.map($):[]]),X=new Set([...se(y.folders).map(U=>$(U.folderId)),...Array.isArray(I.galleryFolderIds)?I.galleryFolderIds.map($):[]]),H=e.illustrations.filter(U=>G.has($(U.mediaId))||X.has($(U.folderId))||se(U.usages).some(ie=>ie.itemType==="definition"&&$(ie.itemId)===$(I.definitionId)));return H.length?`
-
-## \u5173\u8054\u63D2\u753B
-
-`+H.map(U=>`${Z(U)}
-
-${he(U.title??U.originName??"")}`).join(`
-
-`):""}for(let I of W){let y=$(I.definitionId),G=we(I.definitionSet)?"set":"definition",X=a.notes["definition:"+y]?.path??f.paths[y];m.links[y]=X}for(let I of W){let y=$(I.definitionId),G=L[y],X=a.notes["definition:"+y];if(G&&X&&i.exists(X.path)){o("\u4FDD\u7559\u5DF2\u6709\u6B63\u6587\u4E0E\u672C\u5730\u4FEE\u6539\uFF1A"+String(I.title),{phase:"\u4FDD\u5B58\u9875\u9762"});continue}o("\u4FDD\u5B58\u8BBE\u5B9A\uFF1A"+String(I.title));let H=(f.parents[y]??[]).map(ie=>fe(m.links[ie],e.definitions.find(l=>$(l.definitionId)===ie)?.title)),U=`# ${he(I.title)}
-
-${Z(I)}
-
-\u4F5C\u8005\uFF1A${he(rt(I))}
-
-${I.description?Fe(I.description,m)+`
-
-`:""}${H.length?"\u6240\u5C5E\u8BBE\u5B9A\u96C6\uFF1A"+H.join(" \xB7 ")+`
-
-`:""}`;if(we(I.definitionSet)&&(U+=`> \u672C\u9875\u4E3A\u8BBE\u5B9A\u96C6\u81EA\u8EAB\u6B63\u6587\u3002\u4E0B\u6302\u6761\u76EE\u5217\u5728\u6B63\u6587\u4E4B\u540E\u3002
-
-`),U+=G?`> [!warning] \u672C\u6B21\u672A\u53D6\u5F97\u6B63\u6587
-> ${he(G)}\u3002\u8FD9\u4E0D\u8868\u793A\u4E91\u7AEF\u5185\u5BB9\u4E3A\u7A7A\uFF1B\u4E0B\u6B21\u53D6\u5F97\u6B63\u6587\u540E\u4F1A\u81EA\u52A8\u8865\u5168\u3002
-
-`:Fe(I.content,m)||"\uFF08\u4E91\u7AEF\u6B63\u6587\u4E3A\u7A7A\uFF09",U+=J(I),we(I.definitionSet)){let ie=W.filter(l=>$(l.definitionId)!==y&&(f.parents[$(l.definitionId)]??[]).includes(y));U+=`
-
-## \u4E0B\u6302\u8BBE\u5B9A
-
-`+(ie.map(l=>`- ${we(l.isPinned)?"\u{1F4CC} ":""}${fe(m.links[$(l.definitionId)],l.title)}${we(l.definitionSet)?" \xB7 \u8BBE\u5B9A\u96C6":""}`).join(`
-`)||"\u6682\u65E0\u4E0B\u6302\u8BBE\u5B9A\u3002")}await B("definition:"+y,f.paths[y],String(I.title),we(I.definitionSet)?"set":"definition",y,U,F.get(y),G?void 0:await Be(JSON.stringify(I.content)))}for(let I of f.links){let y=m.links[e.definitions.find(G=>f.paths[$(G.definitionId)]===I.target)?.definitionId]??I.target;await B("link:"+I.from,I.from,I.title,"link",I.target,`# ${he(I.title)}
-
-\u6B64\u8BBE\u5B9A\u6302\u8F7D\u4E8E\u591A\u4E2A\u8BBE\u5B9A\u96C6\u3002
-
-${fe(y,"\u6253\u5F00\u552F\u4E00\u6B63\u6587\u4E0E\u672C\u5730\u4FEE\u6539\u533A")}`)}let ne=u+(e.conceptIssue?"/_\u539F\u59CB\u6570\u636E/\u672A\u53D6\u5F97\u6B63\u6587/\u4E16\u754C\u6982\u5FF5.json":"/_\u539F\u59CB\u6570\u636E/\u4E16\u754C\u6982\u5FF5.json");await O(ne,e.concept),e.conceptIssue&&p.push(e.conceptIssue),e.conceptIssue&&a.notes.concept&&i.exists(a.notes.concept.path)||await B("concept",u+"/\u4E16\u754C\u6982\u5FF5.md","\u4E16\u754C\u6982\u5FF5","concept",$(e.concept.conceptId)||c,`# \u4E16\u754C\u6982\u5FF5
-
-${e.conceptIssue?`> [!warning] \u672C\u6B21\u672A\u53D6\u5F97\u6B63\u6587
-> `+he(e.conceptIssue):Fe(e.concept.content,m)||"\uFF08\u4E91\u7AEF\u6B63\u6587\u4E3A\u7A7A\uFF09"}`,ne,e.conceptIssue?void 0:await Be(JSON.stringify(e.concept.content??"")));let Y=new Map;function oe(I,y){for(let G of I){let X=y+"/"+be(G.title,22)+"--"+$(G.folderId);Y.set($(G.folderId),X),oe(se(G.children),X)}}oe(e.illustrationTree,u+"/\u63D2\u753B\u96C6");let ae=new Map;ae.set(u+"/\u63D2\u753B\u96C6",[]);for(let I of Y.values())ae.set(I,[]);for(let I of e.illustrations){let y=Y.get($(I.folderId))??u+"/\u63D2\u753B\u96C6";ae.has(y)||ae.set(y,[]),ae.get(y).push(I)}for(let[I,y]of ae){let X=`# \u63D2\u753B\u96C6
-
-`+[...Y.entries()].filter(([,H])=>H.slice(0,H.lastIndexOf("/"))===I).map(([,H])=>"- "+fe(H+"/00--\u63D2\u753B\u76EE\u5F55.md",H.split("/").at(-1)?.split("--")[0])).join(`
-`);for(let H of y)X+=`
-
-## ${he(H.title??H.originName??H.mediaId)}
-
-${Z(H)}
-
-${Fe(H.caption,m)}
-
-\u5A92\u4F53 ID\uFF1A${$(H.mediaId)}
-
-${se(H.usages).map(U=>m.links[$(U.itemId)]?fe(m.links[$(U.itemId)],U.title):he(U.title??U.itemId)).join(" \xB7 ")}`;await B("gallery:"+I,I+"/00--\u63D2\u753B\u76EE\u5F55.md","\u63D2\u753B\u76EE\u5F55","gallery",c,X)}for(let[I,y,G,X]of[["event",e.events,"\u4E8B\u4EF6","eventId"],["map",e.maps,"\u5730\u56FE","mapId"],["chapter",e.chapters,"\u4F5C\u54C1\u7AE0\u8282","chapterId"]])for(let H of y){let U=$(H[X]),ie=String(H.title??H.name??U),l=u+"/"+G+(I==="chapter"?"/"+be(H.workId,25)+(H.volumeId?"/"+be(H.volumeId,25):""):"")+"/"+be(ie,26)+"--"+U+".md",d=u+"/_\u539F\u59CB\u6570\u636E/"+I+"/"+U+".json";await O(d,H),await B(I+":"+U,l,ie,I,U,`# ${he(ie)}
-
-${Z(H)}
-
-${Fe(H.content??H.description,m)}
-
-## \u8BE6\u7EC6\u8D44\u6599
-
-${Fe(Object.fromEntries(Object.entries(H).filter(([h])=>!["content","description","title","name"].includes(h))),m)}
-
-${fe(d,"\u539F\u59CB\u63A5\u53E3\u6570\u636E")}`,d)}let ve=[],Ze={calendars:"\u5386\u6CD5",relations:"\u5173\u7CFB\u56FE\u8C31"};for(let[I,y]of Object.entries(e.extra))if(y!==null){let G=Ze[I]??(I.startsWith("chapters-")?"\u7AE0\u8282\u76EE\u5F55 "+I.slice(9):I),X=u+"/_\u539F\u59CB\u6570\u636E/"+be(I,80)+".json",H=u+"/\u6269\u5C55\u8D44\u6599/"+be(G,80)+".md";await O(X,y),await B("extra:"+I,H,G,"extra",I,`# ${he(G)}
-
-${Fe(y,m)||"\u6682\u65E0\u8D44\u6599\u3002"}
-
-${fe(X,"\u539F\u59CB\u63A5\u53E3\u6570\u636E")}`,X),ve.push("- "+fe(a.notes["extra:"+I]?.path??H,G))}for(let I of e.works){let y=$(I.workId),G=String(I.title??y),X=u+"/\u4F5C\u54C1\u7AE0\u8282/"+be(y,25)+"/00--\u4F5C\u54C1\u4FE1\u606F.md";await B("work:"+y,X,G,"work",y,`# ${he(G)}
-
-${Fe(I,m)}
-
-## \u6B63\u6587\u7AE0\u8282
-
-`+e.chapters.filter(H=>$(H.workId)===y).map(H=>"- "+fe(a.notes["chapter:"+$(H.chapterId)]?.path??"",H.title??H.chapterId)).join(`
-`)),ve.push("- "+fe(X,G))}let Te=u+"/\u4E16\u754C\u8BE6\u7EC6\u8D44\u6599.md";await B("world-info",Te,"\u4E16\u754C\u8BE6\u7EC6\u8D44\u6599","world-info",c,`# \u4E16\u754C\u8BE6\u7EC6\u8D44\u6599
-
-`+Fe(e.world,m)),ve.unshift("- "+fe(Te,"\u4E16\u754C\u8BE6\u7EC6\u8D44\u6599"));let ht=`# ${he(e.world.title)}
-
-${Z(e.world,!0)}
-
-${he(e.world.subTitle??"")}
-
-\u4F5C\u8005\uFF1A${he(rt(e.world))}
-
-${Fe(e.world.description,m)}
-
-## \u4E16\u754C\u8D44\u6599
-
-- ${fe(u+"/\u4E16\u754C\u6982\u5FF5.md","\u4E16\u754C\u6982\u5FF5")}
-- ${fe(u+"/\u63D2\u753B\u96C6/00--\u63D2\u753B\u76EE\u5F55.md","\u63D2\u753B\u96C6")}
-- ${fe(P,"\u5B8C\u6574\u63A5\u53E3\u5FEB\u7167")}
-
-## \u8BBE\u5B9A\u76EE\u5F55
-
-${W.filter(I=>!(f.parents[$(I.definitionId)]??[]).length).map(I=>"- "+fe(m.links[$(I.definitionId)],I.title)).join(`
-`)}
-
-## \u5176\u4ED6\u4FE1\u606F
-
-${ve.join(`
-`)}`;await B("world",u+"/00--\u4E16\u754C\u603B\u89C8.md",String(e.world.title),"world",c,ht,P);let Le=`# \u540C\u6B65\u62A5\u544A
-
-\u65F6\u95F4\uFF1A${e.fetchedAt}
-
-\u8BBE\u5B9A\u4E0E\u8BBE\u5B9A\u96C6\uFF1A${e.definitions.length}
-
-\u6B63\u6587\u672A\u53D6\u5F97\uFF1A${Object.keys(L).length}${e.conceptIssue?"\uFF1B\u4E16\u754C\u6982\u5FF5\u6B63\u6587\u4E5F\u672A\u53D6\u5F97":""}\uFF08\u4FDD\u7559\u65E7\u9875\u6216\u521B\u5EFA\u5360\u4F4D\u9875\uFF09
-
-\u63D2\u753B\uFF1A${e.illustrations.length}
-
-\u672C\u6B21\u5199\u5165\u9875\u9762\uFF1A${k}
-
-\u51B2\u7A81\uFF1A${g}
-
-${p.length?`## \u5F85\u5904\u7406\u9879
-
-`+[...new Set(p)].map(I=>"- "+I).join(`
-`):"\u6240\u6709\u5DF2\u914D\u7F6E\u8BFB\u53D6\u6B65\u9AA4\u5B8C\u6210\u3002"}
-
-\u4E91\u7AEF\u6D88\u5931\u7684\u65E7\u9875\u9762\u4FDD\u7559\uFF0C\u4E0D\u81EA\u52A8\u5220\u9664\u3002\u672C\u6B21\u63A5\u53E3\u5FEB\u7167\u4FDD\u5B58\u4E8E _\u539F\u59CB\u6570\u636E\u3002
-`;return await i.write(u+"/_\u540C\u6B65\u62A5\u544A/"+S+".md",Le),a.lastSync=e.fetchedAt,await R(),{record:a,warnings:[...new Set(p)],notes:k,conflicts:g,reportPath:u+"/_\u540C\u6B65\u62A5\u544A/"+S+".md"}}var dt="matrees-world-library",Tt="matrees-world-library-progress",cu=class extends j.Plugin{settings={...gu};index={version:1,accounts:{}};mode="user";api=null;busy=!1;syncProgress={status:"idle",worldId:"",message:"\u5C1A\u672A\u5F00\u59CB\u540C\u6B65\u3002",phase:"\u7B49\u5F85\u540C\u6B65",notes:0,conflicts:0,warnings:0,log:[]};covers;errors=[];errorsDirty=!1;errorsRevision=0;flushingErrors=null;recorded=new WeakSet;apiTransport;sessionVersion=0;credentials={};connecting=null;connectingApi=null;configUnreadable=!1;saveChain=Promise.resolve();status="\u8BF7\u5148\u5728\u8BBE\u7F6E\u4E2D\u586B\u5199 Token\u3002";async onload(){let t;try{t=await this.loadData()}catch{this.configUnreadable=!0,this.status="\u914D\u7F6E\u6587\u4EF6\u65E0\u6CD5\u8BFB\u53D6\uFF1B\u8BF7\u5148\u5907\u4EFD\u5E76\u68C0\u67E5\u63D2\u4EF6 data.json\uFF0C\u5DF2\u7981\u6B62\u8986\u76D6\u4FDD\u5B58\u3002"}this.settings={...gu,...t?.settings},this.settings.readConcurrency=Bt(this.settings.readConcurrency),this.settings.requestIntervalMs=Math.max(0,Math.min(2e3,Number(this.settings.requestIntervalMs)||0)),this.errors=Array.isArray(t?.errors)?t.errors.filter(r=>typeof r?.message=="string"&&typeof r?.category=="string"):[],t?.index?.version===1&&(this.index=t.index);let u=t?.credentials?.version===1?t.credentials.tokens:{};for(let r of["user","admin"])if(Object.hasOwn(u??{},r))try{this.credentials[r]=Pe(String(u[r]??""))}catch{this.status="\u672C\u5730 Token \u683C\u5F0F\u65E0\u6548\uFF0C\u8BF7\u91CD\u65B0\u586B\u5199\u3002"}else if(!this.configUnreadable)try{let i=await this.app.secretStorage?.getSecret(this.secretName(r));i&&await this.writeCredential(r,Pe(i))}catch{this.status="\u65E7\u5BC6\u94A5\u8BFB\u53D6\u6216\u8FC1\u79FB\u5931\u8D25\uFF0C\u8BF7\u91CD\u65B0\u586B\u5199\u5E76\u4FDD\u5B58 Token\u3002"}this.token(this.mode)&&(this.status="\u5DF2\u4ECE\u672C\u5730\u8BFB\u53D6 Token\uFF0C\u8BF7\u8FDE\u63A5\u9A8C\u8BC1\u3002"),this.registerMarkdownPostProcessor(r=>{for(let i of r.querySelectorAll("[data-matrees-src]")){let n=i.getAttribute("data-matrees-src")??"";if(n.includes(".."))continue;let o=this.app.vault.getAbstractFileByPath(n);o instanceof j.TFile&&i.setAttribute("src",this.app.vault.getResourcePath(o))}}),this.registerView(dt,r=>new pt(r,this)),this.registerView(Tt,r=>new lu(r,this)),this.addRibbonIcon("library","Matrees World Library",()=>{this.openLibrary()}),this.addSettingTab(new Or(this.app,this)),this.addCommand({id:"open-world-library",name:"\u6253\u5F00\u4E16\u754C\u89C2\u5361\u7247\u5E93",callback:()=>{this.openLibrary()}}),this.addCommand({id:"open-sync-progress",name:"\u67E5\u770B\u540C\u6B65\u8FDB\u5EA6",callback:()=>{this.openProgress()}}),this.addCommand({id:"refresh-world-library",name:"\u5237\u65B0\u5F53\u524D\u5165\u53E3\u7684\u4E16\u754C\u89C2\u5217\u8868",callback:()=>{this.openLibrary(!0)}}),this.addCommand({id:"sync-current-world",name:"\u540C\u6B65\u5F53\u524D\u9875\u9762\u6240\u5C5E\u4E16\u754C\u89C2",callback:()=>{this.guard(async()=>{let r=this.currentNote();if(!r)throw Error("\u8BF7\u5148\u6253\u5F00\u4E00\u4E2A\u7531\u672C\u63D2\u4EF6\u540C\u6B65\u7684\u9875\u9762\u3002");await this.syncWorld(r.wid)})}}),this.addCommand({id:"upload-local-as-proposal",name:"\u9884\u89C8\u672C\u5730\u4FEE\u6539\u533A\u5E76\u521B\u5EFA\u8FFD\u52A0\u63D0\u6848",callback:()=>{this.guard(()=>this.previewUpload())}})}onunload(){this.resetSession(),this.covers?.dispose()}enqueueSave(t){let u=this.saveChain.catch(()=>{}).then(async()=>{if(this.configUnreadable)throw Error("\u914D\u7F6E\u6587\u4EF6\u8BFB\u53D6\u5931\u8D25\uFF0C\u7981\u6B62\u8986\u76D6 data.json\u3002\u8BF7\u5148\u5907\u4EFD\u5E76\u4FEE\u590D\u6587\u4EF6\u3002");await t()});return this.saveChain=u,u}state(t=this.credentials){return{settings:this.settings,index:this.index,errors:this.errors,credentials:{version:1,tokens:t}}}async persist(){await this.enqueueSave(()=>this.saveData(this.state()))}async writeCredential(t,u,r=()=>!0){await this.enqueueSave(async()=>{if(!r())return;let i={...this.credentials,[t]:u};try{await this.saveData(this.state(i));let n=await this.loadData();if(n?.credentials?.version!==1||n.credentials.tokens?.[t]!==u)throw Error("readback")}catch{throw Error("Token \u672A\u80FD\u5B8C\u6210\u4FDD\u5B58\u6821\u9A8C\u3002\u8BF7\u68C0\u67E5\u4ED3\u5E93\u5199\u5165\u6743\u9650\u3001\u78C1\u76D8\u7A7A\u95F4\u548C data.json\uFF1B\u672A\u62A5\u544A\u4FDD\u5B58\u6210\u529F\u3002")}this.credentials=i})}secretName(t){return t==="admin"?this.settings.adminSecret:this.settings.userSecret}token(t){return this.credentials[t]??""}tokenStatus(t){return this.token(t)?"\u5DF2\u4FDD\u5B58\u5230\u672C\u5730 \xB7 \u91CD\u542F\u540E\u53EF\u8BFB\u53D6":"\u672A\u4FDD\u5B58 Token"}resetSession(){this.sessionVersion++,this.api?.close(),this.connectingApi?.close(),this.api=null,this.connecting=null,this.connectingApi=null}invalidateViews(){for(let t of this.app.workspace.getLeavesOfType(dt))t.view instanceof pt&&t.view.invalidate()}async setToken(t,u){if(this.busy)throw Error("\u540C\u6B65\u671F\u95F4\u4E0D\u80FD\u5207\u6362\u8D26\u53F7\u3002");let r=Pe(u);if(!r)throw Error("Token \u4E0D\u80FD\u4E3A\u7A7A\uFF1B\u5982\u9700\u9000\u51FA\uFF0C\u8BF7\u4F7F\u7528\u201C\u6E05\u9664 Token\u201D\u3002");await this.writeCredential(t,r),this.resetSession(),this.status="Token \u5DF2\u4FDD\u5B58\u5E76\u56DE\u8BFB\u6821\u9A8C\u6210\u529F\uFF0C\u8BF7\u8FDE\u63A5\u9A8C\u8BC1\u3002",this.invalidateViews()}async clearToken(t){if(this.busy)throw Error("\u540C\u6B65\u671F\u95F4\u4E0D\u80FD\u6E05\u9664\u8D26\u53F7\u3002");await this.writeCredential(t,""),this.resetSession(),this.status="\u5F53\u524D\u5165\u53E3\u7684\u672C\u5730 Token \u5DF2\u6E05\u9664\u3002",this.invalidateViews()}async setBase(t){if(this.busy)throw Error("\u64CD\u4F5C\u671F\u95F4\u4E0D\u80FD\u4FEE\u6539 API \u5730\u5740\u3002");let u=bt(t);u!==this.settings.baseUrl&&(this.settings.baseUrl=u,this.resetSession(),this.apiTransport=void 0,await this.persist(),this.status="API \u5730\u5740\u5DF2\u4FDD\u5B58\uFF0C\u8BF7\u91CD\u65B0\u9A8C\u8BC1\u8FDE\u63A5\u3002",this.invalidateViews())}async setNetwork(t){if(this.busy)throw Error("\u64CD\u4F5C\u671F\u95F4\u4E0D\u80FD\u5207\u6362\u8BF7\u6C42\u901A\u9053\u3002");if(!["auto","native","direct"].includes(t))throw Error("\u65E0\u6548\u8BF7\u6C42\u901A\u9053\u3002");this.settings.networkMode=t,this.resetSession(),this.apiTransport=void 0,await this.persist(),this.invalidateViews()}makeTransport(){return this.apiTransport??=$r(async t=>{let u=await(0,j.requestUrl)(t);return{status:u.status,text:u.text,headers:u.headers}},j.Platform?.isDesktopApp?qr:void 0,this.settings.networkMode)}async setRootFolder(t){if(this.busy)throw Error("\u8BF7\u7B49\u5F85\u540C\u6B65\u5B8C\u6210\u518D\u4FEE\u6539\u76EE\u5F55\u3002");this.settings.rootFolder=bu(t),await this.persist(),new j.Notice("\u4FDD\u5B58\u76EE\u5F55\u5DF2\u66F4\u65B0\uFF1B\u5DF2\u540C\u6B65\u4E16\u754C\u7EE7\u7EED\u4F7F\u7528\u539F\u8DEF\u5F84\u3002")}async setReadOptions(t,u){if(this.busy)throw Error("\u8BF7\u7B49\u5F85\u5F53\u524D\u540C\u6B65\u5B8C\u6210\u518D\u4FEE\u6539\u8BFB\u53D6\u914D\u7F6E\u3002");if(!Number.isInteger(t)||t<1||t>8||!Number.isInteger(u)||u<0||u>2e3)throw Error("\u5E76\u53D1\u6570\u5E94\u4E3A 1\u20138\uFF0C\u542F\u52A8\u95F4\u9694\u5E94\u4E3A 0\u20132000 \u6BEB\u79D2\u3002");this.settings.readConcurrency=t,this.settings.requestIntervalMs=u,this.resetSession(),await this.persist(),this.invalidateViews()}async diagnose(){if(this.busy)throw Error("\u8BF7\u7B49\u5F85\u5F53\u524D\u540C\u6B65\u6216\u4E0A\u4F20\u5B8C\u6210\u540E\u518D\u68C0\u6D4B\u8FDE\u63A5\u3002");this.busy=!0;let t=new j.Modal(this.app);t.titleEl.setText("Matrees \u8FDE\u63A5\u68C0\u6D4B"),t.contentEl.createEl("p",{text:"\u63D2\u4EF6\u7248\u672C\uFF1A"+this.manifest.version+" \xB7 \u8BF7\u6C42\u901A\u9053\uFF1A"+this.settings.networkMode}),t.contentEl.createEl("p",{text:this.tokenStatus(this.mode)}),t.open();try{let u=bt(this.settings.baseUrl);if(t.contentEl.createEl("p",{text:"API \u5730\u5740\uFF1A"+u}),this.token(this.mode)){this.resetSession();let r=await this.connect();t.contentEl.createEl("p",{text:"Token \u767B\u5F55\u9A8C\u8BC1\u6210\u529F\uFF1A"+String(r.user?.nickname??r.user?.userId)});let i=await r.worlds();t.contentEl.createEl("p",{text:"\u5F53\u524D\u5165\u53E3\u4E16\u754C\u5217\u8868\u8BFB\u53D6\u6210\u529F\uFF1A"+i.total+" \u4E2A\u3002"})}else{let r=await this.makeTransport()(u+"/mt/user/getUserInfo","GET",{Accept:"application/json"});t.contentEl.createEl("p",{text:"\u65E0\u51ED\u8BC1\u8BF7\u6C42\uFF1AHTTP "+r.status+"\u3002\u8BF7\u5148\u586B\u5199\u5E76\u4FDD\u5B58\u5F53\u524D\u5165\u53E3 Token\u3002"})}}catch(u){t.contentEl.createEl("p",{text:pe(u,[this.token(this.mode)])}),this.reportError(u)}finally{this.busy=!1}}async connect(){if(this.api&&!this.api.invalid&&!this.api.isClosed)return this.api;if(this.connecting)return this.connecting;let t=this.mode,u=this.sessionVersion,r=this.settings.baseUrl,i=this.token(t),n=new $t(r,this.token(t),t,this.makeTransport(),async s=>{u!==this.sessionVersion||r!==this.settings.baseUrl||(await this.writeCredential(t,Pe(s),()=>u===this.sessionVersion&&r===this.settings.baseUrl&&this.token(t)===i),i=Pe(s))},{readConcurrency:this.settings.readConcurrency,requestIntervalMs:this.settings.requestIntervalMs});n.onError=s=>this.recordException(s),this.connectingApi=n;let o=(async()=>{if(await n.login(),t!==this.mode||u!==this.sessionVersion||r!==this.settings.baseUrl)throw n.close(),Error("\u8D26\u53F7\u6216\u8FDE\u63A5\u914D\u7F6E\u5DF2\u53D8\u5316\uFF0C\u8BF7\u91CD\u65B0\u8FDE\u63A5\u3002");return this.api=n,this.status="\u767B\u5F55\u9A8C\u8BC1\u6210\u529F\uFF1A"+String(n.user?.nickname??n.user?.username??"\u5F53\u524D\u7528\u6237"),n})();this.connecting=o;try{return await o}finally{this.connecting===o&&(this.connecting=null,this.connectingApi=null)}}async changeMode(t){if(this.busy)throw Error("\u540C\u6B65\u671F\u95F4\u4E0D\u80FD\u5207\u6362\u5165\u53E3\u3002");t!==this.mode&&(this.mode=t,this.resetSession(),this.status=t==="admin"?"\u7BA1\u7406\u5458\u5165\u53E3\uFF1A\u9A8C\u8BC1\u8D26\u53F7\u540E\u8BFB\u53D6\u670D\u52A1\u7AEF\u5141\u8BB8\u7684\u4E16\u754C\u89C2\u3002":"\u666E\u901A\u5165\u53E3\uFF1A\u663E\u793A\u81EA\u5DF1\u62E5\u6709\u548C\u53C2\u4E0E\u7684\u4E16\u754C\u89C2\u3002",this.invalidateViews())}accountKey(){if(!this.api?.user)throw Error("\u5C1A\u672A\u8FDE\u63A5\u3002");return this.mode+"-"+$(this.api.user.userId)}refreshViews(){for(let t of this.app.workspace.getLeavesOfType(dt)){let u=t.view;u instanceof pt&&u.statusEl?.setText(this.status)}}progress(t,u){if(this.status=Ue(t),u?.issue&&this.recordIssue(t,u.issue.category,u.issue.entityId),this.refreshViews(),this.syncProgress.status==="running"){let r=this.syncProgress;r.message=this.status,u&&(r.phase=u.phase,r.completed=u.completed,r.total=u.total,u.phase==="\u4FDD\u5B58\u9875\u9762"&&u.completed!=null&&(r.notes=u.completed)),r.log.push({at:new Date().toISOString(),message:this.status}),r.log.length>200&&r.log.shift(),this.refreshProgress()}}refreshProgress(){for(let t of this.app.workspace.getLeavesOfType(Tt))t.view instanceof lu&&t.view.render()}async openProgress(){let t=this.app.workspace.getLeavesOfType(Tt)[0];t||(t=this.app.workspace.getLeaf("tab"),await t.setViewState({type:Tt,active:!0})),await this.app.workspace.revealLeaf(t),this.refreshProgress()}async openNote(t){let u=this.app.vault.getAbstractFileByPath(t);u instanceof j.TFile?await this.app.workspace.getLeaf("tab").openFile(u):new j.Notice("\u672A\u627E\u5230\u9875\u9762\uFF1A"+t)}recordIssue(t,u="\u540C\u6B65",r,i){let n=pe(t,[this.token("user"),this.token("admin")]),o=String(i?.params?.worldId??(this.busy?this.syncProgress.worldId:""))||void 0,s=this.busy?this.syncProgress.startedAt:void 0;this.errors.some(a=>a.message===n&&a.category===u&&a.entityId===r&&a.worldId===o&&a.runId===s)||(this.errors.push({at:new Date().toISOString(),category:u,message:n,entityId:r,worldId:o,runId:s,diagnostic:i}),this.errorsDirty=!0,this.errorsRevision++)}recordException(t){if(t&&typeof t=="object"){if(this.recorded.has(t))return;this.recorded.add(t)}let u=t instanceof Ee;this.recordIssue(pe(t,[this.token("user"),this.token("admin")]),u?"\u63A5\u53E3\u8BF7\u6C42":"\u64CD\u4F5C/\u6587\u4EF6",void 0,u?t.diagnostic:void 0)}async flushErrors(){if(this.flushingErrors)return this.flushingErrors;let t=(async()=>{for(;this.errorsDirty;){let u=this.errorsRevision;try{await this.persist(),u===this.errorsRevision&&(this.errorsDirty=!1)}catch{new j.Notice("\u9519\u8BEF\u8BB0\u5F55\u672A\u80FD\u5199\u5165\u914D\u7F6E\u6587\u4EF6\uFF0C\u8BF7\u5148\u590D\u5236\u9519\u8BEF\u8BE6\u60C5\u3002",7e3);break}}})();this.flushingErrors=t;try{await t}finally{this.flushingErrors===t&&(this.flushingErrors=null)}}reportError(t){this.recordException(t);let u=pe(t,[this.token("user"),this.token("admin")]);this.progress(u),new j.Notice(u,9e3),this.showLastError(),this.flushErrors()}showLastError(){let t=new j.Modal(this.app);t.titleEl.setText("Matrees \u5168\u90E8\u9519\u8BEF\u8BE6\u60C5");let u=structuredClone(this.errors);t.contentEl.createEl("p",{text:`\u5171 ${u.length} \u6761\u8BB0\u5F55\u3002\u5305\u542B\u63A5\u53E3\u3001\u6B63\u6587\u7F3A\u5931\u3001\u5C01\u9762\u4E0B\u8F7D\u3001\u683C\u5F0F\u8F6C\u6362\u548C\u6587\u4EF6\u4FDD\u5B58\u95EE\u9898\uFF1B\u8BB0\u5F55\u968F\u914D\u7F6E\u4FDD\u7559\u3002\u4E0B\u65B9\u6587\u672C\u5305\u542B\u5168\u90E8\u8BB0\u5F55\u3002`});let r=t.contentEl.createDiv({cls:"matrees-error-list"});for(let a of u.slice().reverse()){let c=r.createDiv({cls:"matrees-error-row"});c.createEl("strong",{text:new Date(a.at).toLocaleString()+" \xB7 "+a.category}),c.createEl("p",{text:a.message}),(a.worldId||a.entityId)&&c.createEl("small",{text:"\u4E16\u754C\uFF1A"+(a.worldId??"\u2014")+" \xB7 \u6761\u76EE\uFF1A"+(a.entityId??"\u2014")})}let i=JSON.stringify({plugin:"Matrees World Library",version:this.manifest.version,mode:this.mode,networkMode:this.settings.networkMode,readConcurrency:this.settings.readConcurrency,requestIntervalMs:this.settings.requestIntervalMs,tokenSaved:!!this.token(this.mode),errors:u},null,2),n=t.contentEl.createEl("textarea",{attr:{readonly:"",rows:"12","aria-label":"\u5168\u90E8\u9519\u8BEF\u8BB0\u5F55"}});n.value=i,n.style.width="100%";let o=t.contentEl.createEl("button",{text:"\u590D\u5236\u5168\u90E8\u9519\u8BEF"});o.onclick=()=>{(async()=>{try{await navigator.clipboard.writeText(i),new j.Notice("\u5DF2\u590D\u5236\u5168\u90E8\u9519\u8BEF\u3002")}catch{n.focus(),n.select(),new j.Notice("\u8BF7\u590D\u5236\u5DF2\u9009\u4E2D\u7684\u6587\u672C\u3002")}})()};let s=t.contentEl.createEl("button",{text:"\u6E05\u7A7A\u5DF2\u67E5\u770B\u7684\u8BB0\u5F55"});s.onclick=()=>{let a=new Set(u.map(c=>JSON.stringify(c)));this.errors=this.errors.filter(c=>!a.has(JSON.stringify(c))),this.errorsDirty=!0,this.errorsRevision++,this.flushErrors(),t.close()},t.open()}async revealLocal(t){let u=this.app.vault.getAbstractFileByPath(t);if(!u){new j.Notice("\u672C\u5730\u8DEF\u5F84\u6682\u4E0D\u53EF\u89C1\uFF1A"+t);return}try{let r=this.app.workspace.getLeavesOfType("file-explorer")[0];if(r||(r=this.app.workspace.getLeftLeaf(!1),r&&await r.setViewState({type:"file-explorer",active:!0})),r){await this.app.workspace.revealLeaf(r);let i=r.view;typeof i.revealInFolder=="function"&&await i.revealInFolder(u)}}catch{new j.Notice("\u6587\u4EF6\u5DF2\u4FDD\u5B58\uFF1B\u8BF7\u542F\u7528\u6838\u5FC3\u63D2\u4EF6\u201C\u6587\u4EF6\u5217\u8868\u201D\uFF0C\u5E76\u67E5\u627E\uFF1A"+t,7e3)}}async diagnoseWorld(t){if(this.busy)throw Error("\u8BF7\u7B49\u5F85\u5F53\u524D\u64CD\u4F5C\u5B8C\u6210\u540E\u518D\u68C0\u6D4B\u3002");this.busy=!0;let u=new j.Modal(this.app);u.titleEl.setText("\u68C0\u6D4B\u4E16\u754C\u89C2\u8BFB\u53D6"),u.contentEl.createEl("p",{text:"\u63D2\u4EF6\u7248\u672C\uFF1A"+this.manifest.version+"\u3002\u68C0\u6D4B\u4E16\u754C\u8BE6\u60C5\u3001\u6982\u5FF5\u3001\u6839\u76EE\u5F55\u53CA\u8BBE\u5B9A\u5217\u8868\u7B2C\u4E00\u9875\uFF1B\u4E0D\u4FDD\u5B58\u6216\u4E0A\u4F20\u6B63\u6587\u3002"}),u.open();try{let r=await this.connect();await r.assertWorld(t),u.contentEl.createEl("p",{text:"\u4E16\u754C\u5F52\u5C5E/\u53C2\u4E0E\u5173\u7CFB\u4E0E\u8BE6\u60C5\uFF1A\u6210\u529F"});for(let[i,n,o]of[["\u4E16\u754C\u6982\u5FF5","/mt/concept/getInfo",{}],["\u8BBE\u5B9A\u96C6\u6839\u76EE\u5F55","/mt/definition/listRootTree",{}],["\u8BBE\u5B9A\u5217\u8868\u7B2C\u4E00\u9875","/mt/definition/listDefinitionAll",{page:1,size:100}]])await r.read(n,o,t),u.contentEl.createEl("p",{text:i+"\uFF1A\u6210\u529F"});u.contentEl.createEl("p",{text:"\u57FA\u7840\u8BFB\u53D6\u68C0\u6D4B\u5B8C\u6210\u3002\u5B50\u8BBE\u5B9A\u96C6\u7684\u8BFB\u53D6\u6743\u9650\u4ECD\u4EE5\u5B9E\u9645\u540C\u6B65\u7ED3\u679C\u4E3A\u51C6\u3002"})}catch(r){throw u.contentEl.createEl("p",{text:Ue(r instanceof Error?r.message:r)}),r}finally{this.busy=!1}}async guard(t){try{await t()}catch(u){this.reportError(u)}}async openLibrary(t=!1){let u=this.app.workspace.getLeavesOfType(dt)[0];u||(u=this.app.workspace.getLeaf("tab"),await u.setViewState({type:dt,active:!0})),await this.app.workspace.revealLeaf(u),t&&u.view instanceof pt&&await u.view.load()}vaultPort(){let t=this.app.vault,u=async r=>{let i=(0,j.normalizePath)(r).split("/");i.pop();let n="";for(let o of i){n=n?n+"/"+o:o;let s=t.getAbstractFileByPath(n);if(s&&!(s instanceof j.TFolder))throw Error("\u76EE\u5F55\u4F4D\u7F6E\u5DF2\u88AB\u6587\u4EF6\u5360\u7528\uFF1A"+n);if(!s)try{await t.createFolder(n)}catch(a){if(!(t.getAbstractFileByPath(n)instanceof j.TFolder))throw a}}};return{exists:r=>!!t.getAbstractFileByPath((0,j.normalizePath)(r)),read:async r=>{let i=t.getAbstractFileByPath((0,j.normalizePath)(r));if(!(i instanceof j.TFile))throw Error("\u627E\u4E0D\u5230\u6587\u4EF6\uFF1A"+r);return t.read(i)},write:async(r,i)=>{r=(0,j.normalizePath)(r),await u(r);let n=t.getAbstractFileByPath(r);if(n instanceof j.TFile)await t.process(n,()=>i);else{if(n)throw Error("\u6587\u4EF6\u4F4D\u7F6E\u5DF2\u88AB\u76EE\u5F55\u5360\u7528\uFF1A"+r);await t.create(r,i)}},process:async(r,i)=>{let n=t.getAbstractFileByPath((0,j.normalizePath)(r));if(!(n instanceof j.TFile))throw Error("\u6587\u4EF6\u5DF2\u79FB\u52A8\uFF1A"+r);await t.process(n,i)},binary:async(r,i)=>{await u(r),t.getAbstractFileByPath(r)||await t.createBinary(r,i)}}}async syncWorld(t){throw Error("运行时同步未初始化。")}async fetchMedia(t,u=this.settings.maxMediaMB){throw Error("运行时媒体读取未初始化。")}localCover(t,u){if(this.api?.user){let r=this.index.accounts[this.accountKey()]?.[t],i=r?.assets[u];if(i){let n=this.app.vault.getAbstractFileByPath(i);if(n instanceof j.TFile)return this.app.vault.getResourcePath(n)}}return this.covers?.peek(u)}async previewCover(t){return(this.covers??=new Rt(u=>this.fetchMedia(u,Math.min(20,this.settings.maxMediaMB)),(u,r)=>URL.createObjectURL(new Blob([u],{type:r})),u=>URL.revokeObjectURL(u))).load(t)}currentNote(){let t=this.app.workspace.getActiveFile();if(!t)return null;for(let[u,r]of Object.entries(this.index.accounts))for(let[i,n]of Object.entries(r))for(let[o,s]of Object.entries(n.notes))if(s.path===t.path)return{file:t,account:u,wid:i,world:n,note:s,key:o};return null}async previewUpload(){let t=this.currentNote();if(!t||!["set","definition"].includes(t.note.kind))throw Error("\u8BF7\u6253\u5F00\u4E00\u4E2A\u5DF2\u540C\u6B65\u7684\u8BBE\u5B9A\u6216\u8BBE\u5B9A\u96C6\u6B63\u6587\u9875\u3002");let u=await this.connect();if(t.account!==this.accountKey())throw Error("\u6B64\u9875\u9762\u5C5E\u4E8E\u53E6\u4E00\u4E2A\u8D26\u53F7\u6216\u5165\u53E3\uFF0C\u8BF7\u5207\u6362\u5230\u5BF9\u5E94\u5165\u53E3\u3002");let r=await u.assertWorld(t.wid);if(Je(r)!==$(u.user?.userId))throw Error("\u4E0A\u4F20\u53EA\u5141\u8BB8\u7528\u4E8E\u5F53\u524D\u8D26\u53F7\u62E5\u6709\u7684\u4E16\u754C\u89C2\u3002");let i=await this.app.vault.read(t.file),n=Ti(i);if(!n)throw Error("\u672C\u5730\u4FEE\u6539\u533A\u4E3A\u7A7A\u3002");let o=await u.read("/mt/definition/getInfo/"+t.note.entityId,{},t.wid);if(o.hasProposal)throw Error("\u6B64\u8BBE\u5B9A\u5DF2\u6709\u4E91\u7AEF\u63D0\u6848\u3002\u8BF7\u5148\u5728 Matrees \u5904\u7406\u8BE5\u63D0\u6848\uFF0C\u4EE5\u514D\u8986\u76D6\u6B63\u5728\u7F16\u8F91\u7684\u5185\u5BB9\u3002");if(t.note.remoteHash!==await Be(JSON.stringify(o.content)))throw Error("\u4E91\u7AEF\u6B63\u6587\u5728\u4E0A\u6B21\u540C\u6B65\u540E\u5DF2\u53D8\u5316\uFF0C\u8BF7\u5148\u540C\u6B65\u5E76\u6838\u5BF9\u3002");let s={worldId:t.wid,definitionId:t.note.entityId,operateType:"update",title:o.title,alias:o.alias??[],description:o.description??"",content:Ci(o.content,n),definitionSet:o.definitionSet,father:o.father??null,belong:o.belong??[],showInList:o.showInList,category:o.category,cover:o.cover??"",coverUrl:o.coverUrl,coverType:o.coverType};new Mr(this.app,this,n,s,async()=>{if(this.busy)throw Error("\u53E6\u4E00\u4E2A\u64CD\u4F5C\u6B63\u5728\u8FDB\u884C\u3002");this.busy=!0;try{if(this.api!==u||this.accountKey()!==t.account)throw Error("\u8D26\u53F7\u5DF2\u5207\u6362\uFF0C\u8BF7\u91CD\u65B0\u9884\u89C8\u3002");if(await this.app.vault.read(t.file)!==i)throw Error("\u672C\u5730\u6587\u4EF6\u5DF2\u53D8\u5316\uFF0C\u8BF7\u91CD\u65B0\u9884\u89C8\u3002");let a=await u.read("/mt/definition/getInfo/"+t.note.entityId,{},t.wid);if(a.hasProposal||await Be(JSON.stringify(a.content))!==t.note.remoteHash)throw Error("\u4E91\u7AEF\u5DF2\u53D8\u5316\u6216\u5DF2\u6709\u63D0\u6848\uFF0C\u8BF7\u91CD\u65B0\u6838\u5BF9\u3002");let c=await u.createDefinitionProposal(t.wid,s),p=await this.writeReceipt(t.world,c,s.definitionId);new j.Notice("\u63D0\u6848\u8BF7\u6C42\u5DF2\u5B8C\u6210\uFF0C\u7ED3\u679C\u5DF2\u4FDD\u5B58\u3002\u8BF7\u5728 Matrees \u63D0\u6848\u4E2D\u5FC3\u67E5\u770B\uFF1B\u672C\u5730\u4FEE\u6539\u533A\u4FDD\u6301\u539F\u6837\u3002",1e4),this.progress("\u63D0\u6848\u7ED3\u679C\uFF1A"+p)}finally{this.busy=!1}}).open()}async writeReceipt(t,u,r){let i=t.root+"/_\u4E0A\u4F20\u8BB0\u5F55/"+new Date().toISOString().replace(/[:.]/g,"-")+".json",n={at:new Date().toISOString(),definitionId:r,result:u};return await this.vaultPort().write(i,JSON.stringify(n,null,2)),i}},pt=class extends j.ItemView{constructor(u,r){super(u);this.plugin=r}plugin;statusEl=null;cards;pager;page=1;keyword="";seq=0;loading=!1;getViewType(){return dt}getDisplayText(){return"Matrees World Library"}getIcon(){return"library"}async onOpen(){this.render(),this.plugin.token(this.plugin.mode)&&await this.load()}invalidate(){this.seq++,this.loading=!1,this.page=1,this.keyword="",this.render()}async onClose(){this.seq++}render(){let u=this.contentEl;u.empty(),u.addClass("matrees-library");let r=u.createDiv({cls:"matrees-header"});r.createDiv({text:"MATREES WORLD LIBRARY",cls:"matrees-eyebrow"}),r.createEl("h2",{text:"Matrees World Library"}),r.createDiv({text:"v"+(this.plugin.manifest?.version??"1.0.0")+" \xB7 "+this.plugin.tokenStatus(this.plugin.mode),cls:"matrees-description"}),r.createEl("p",{text:"\u6D4F\u89C8\u5C01\u9762\u3001\u540C\u6B65\u8BBE\u5B9A\uFF0C\u5728\u81EA\u5DF1\u7684\u7B14\u8BB0\u91CC\u7EE7\u7EED\u521B\u4F5C\u3002",cls:"matrees-description"});let i=r.createDiv({cls:"matrees-tabs"});for(let[m,k]of[["user","\u6211\u7684\u4E0E\u53C2\u4E0E\u7684\u4E16\u754C"],["admin","\u7BA1\u7406\u5458\u5165\u53E3"]]){let g=i.createEl("button",{text:k,cls:this.plugin.mode===m?"is-active":""});g.onclick=()=>{this.plugin.guard(async()=>{await this.plugin.changeMode(m),this.page=1,this.keyword="",this.render(),await this.load()})}}this.plugin.mode==="user"&&r.createEl("p",{text:"\u5305\u542B\u6211\u62E5\u6709\u3001\u7BA1\u7406\u3001\u5BA1\u6838\u3001\u53C2\u4E0E\u5171\u521B\uFF0C\u4EE5\u53CA\u5DF2\u52A0\u5165\u516C\u4F1A\u4E2D\u5BA1\u6838\u901A\u8FC7\u7684\u4E16\u754C\u89C2\u3002",cls:"matrees-description"}),this.plugin.mode==="admin"&&r.createDiv({text:"\u4F7F\u7528\u5355\u72EC\u914D\u7F6E\u7684\u7BA1\u7406\u5458 Token\u3002\u5F53\u524D\u524D\u7AEF\u63D0\u4F9B\u7684\u662F\u53EF\u8BBF\u95EE\u4E16\u754C\u5217\u8868\uFF1B\u672A\u516C\u5F00\u5185\u5BB9\u4ECD\u7531\u670D\u52A1\u7AEF\u51B3\u5B9A\u662F\u5426\u5F00\u653E\u3002",cls:"matrees-admin-note"});let n=u.createDiv({cls:"matrees-toolbar"}),o=n.createEl("input",{type:"search",placeholder:"\u641C\u7D22\u4E16\u754C\u89C2\u540D\u79F0\u2026"});o.value=this.keyword,o.setAttribute("aria-label","\u4E16\u754C\u89C2\u540D\u79F0"),o.onkeydown=m=>{m.key==="Enter"&&(this.keyword=o.value,this.page=1,this.load())};let s=n.createEl("button",{text:"\u641C\u7D22 / \u5237\u65B0"});s.onclick=()=>{this.keyword=o.value,this.page=1,this.load()};let a=n.createEl("button",{text:"\u68C0\u6D4B\u8FDE\u63A5"});a.onclick=()=>{this.plugin.guard(()=>this.plugin.diagnose())};let c=n.createEl("button",{text:"\u5168\u90E8\u9519\u8BEF\u8BE6\u60C5"});c.onclick=()=>this.plugin.showLastError();let p=n.createEl("button",{text:"\u540C\u6B65\u8FDB\u5EA6"});p.onclick=()=>{this.plugin.openProgress()};let f=n.createEl("button",{text:"\u914D\u7F6E Token"});f.onclick=()=>new fu(this.app,this.plugin,this.plugin.mode,()=>this.load()).open(),this.statusEl=u.createDiv({text:this.plugin.status,cls:"matrees-status",attr:{role:"status","aria-live":"polite"}}),this.cards=u.createDiv({cls:"matrees-cards"}),this.pager=u.createDiv({cls:"matrees-pager"}),this.plugin.token(this.plugin.mode)||this.cards.createDiv({text:"\u586B\u5199\u5F53\u524D\u5165\u53E3\u7684 Token \u540E\uFF0C\u70B9\u51FB\u201C\u641C\u7D22 / \u5237\u65B0\u201D\u3002",cls:"matrees-empty"})}async load(){if(this.loading)return;if(this.plugin.busy){new j.Notice("\u8BF7\u7B49\u5F85\u5F53\u524D\u540C\u6B65\u6216\u68C0\u6D4B\u5B8C\u6210\u540E\u518D\u5237\u65B0\u5217\u8868\u3002");return}this.loading=!0;let u=++this.seq;this.cards.empty(),this.cards.createDiv({text:"\u6B63\u5728\u8BFB\u53D6\u4E16\u754C\u89C2\u2026",cls:"matrees-empty"}),this.pager.empty();try{let r=await this.plugin.connect(),i=await r.worlds(this.page,this.keyword);if(u!==this.seq||r!==this.plugin.api)return;this.cards.empty(),this.plugin.refreshViews(),i.rows.length||this.cards.createDiv({text:"\u5F53\u524D\u8D26\u53F7\u6CA1\u6709\u5339\u914D\u4E14\u53EF\u8BFB\u53D6\u7684\u4E16\u754C\u89C2\u3002",cls:"matrees-empty"});for(let s of i.rows)this.card(s);let n=this.pager.createEl("button",{text:"\u4E0A\u4E00\u9875"});n.disabled=this.page<=1,n.onclick=()=>{this.page--,this.load()},this.pager.createSpan({text:`\u7B2C ${this.page} / ${Math.max(1,i.pages)} \u9875 \xB7 ${i.total} \u4E2A\u4E16\u754C\u89C2`});let o=this.pager.createEl("button",{text:"\u4E0B\u4E00\u9875"});o.disabled=this.page>=i.pages,o.onclick=()=>{this.page++,this.load()}}catch(r){if(u!==this.seq)return;this.cards.empty(),this.cards.createDiv({text:Ue(r instanceof Error?r.message:r),cls:"matrees-empty"}),this.plugin.reportError(r)}finally{u===this.seq&&(this.loading=!1)}}card(u){let r=this.cards.createEl("article",{cls:"matrees-card"}),i=r.createDiv({cls:"matrees-cover"}),n=Ce(u,this.plugin.settings.baseUrl),o=$(u.worldId),s=this.seq,a=this.plugin.api,c=()=>s===this.seq&&a===this.plugin.api,p=n?this.plugin.localCover(o,n):void 0,f=N=>{if(!c())return;let A=i.querySelector(".matrees-cover-placeholder");A&&A.setText("\u5C01\u9762\u6682\u4E0D\u53EF\u7528"),i.querySelector(".matrees-cover-error")?.remove();let T=pe(N,[this.plugin.token(this.plugin.mode)]),P=i.createDiv({cls:"matrees-cover-error"});P.createEl("p",{text:T});let L=P.createEl("button",{text:"\u91CD\u8BD5\u5C01\u9762"});L.onclick=()=>{k()},this.plugin.recordIssue("\u4E16\u754C "+String(u.title??o)+" \u5C01\u9762\uFF1A"+T+" \xB7 "+n,"\u5C01\u9762\u9884\u89C8",o),this.plugin.flushErrors()},m=N=>{if(c())if(i.empty(),xt(u)){let A=i.createEl("video",{attr:{src:N,width:"300",height:"444",preload:"metadata",playsinline:"",controls:"","aria-label":String(u.title)+" \u89C6\u9891\u5C01\u9762"}});A.muted=!0,A.loop=!0,A.onerror=()=>f(Error("\u89C6\u9891\u5C01\u9762\u64AD\u653E\u5931\u8D25\uFF1B\u53EF\u91CD\u8BD5\u901A\u8FC7\u5E94\u7528\u8BFB\u53D6\uFF0C\u6216\u540C\u6B65\u540E\u4F7F\u7528\u672C\u5730\u89C6\u9891\u3002")),i.createSpan({text:"VIDEO",cls:"matrees-media-badge"})}else{let A=i.createEl("img",{attr:{src:N,width:"300",height:"444",alt:String(u.title)+" \u5C01\u9762"}});A.onerror=()=>f(Error("\u5C01\u9762\u6587\u4EF6\u5DF2\u8BFB\u53D6\uFF0C\u4F46\u5F53\u524D\u8BBE\u5907\u65E0\u6CD5\u89E3\u7801\u6B64\u56FE\u7247\u3002"))}},k=async()=>{if(!c())return;let N=this.plugin.localCover(o,n);if(N){m(N);return}i.empty(),i.createDiv({text:"\u6B63\u5728\u8BFB\u53D6\u5C01\u9762\u2026",cls:"matrees-cover-placeholder"});try{m(await this.plugin.previewCover(n))}catch(A){f(A)}};p?m(p):n?k():i.createDiv({text:"\u6682\u65E0\u5C01\u9762",cls:"matrees-cover-placeholder"});let g=r.createDiv({cls:"matrees-card-body"});g.createEl("h3",{text:String(u.title??"\u672A\u547D\u540D\u4E16\u754C\u89C2")}),u.subTitle&&g.createDiv({text:String(u.subTitle),cls:"matrees-subtitle"}),g.createDiv({text:rt(u),cls:"matrees-author"}),this.plugin.mode==="user"&&g.createDiv({text:Kr(u,$(this.plugin.api?.user?.userId)),cls:"matrees-world-relation"}),g.createEl("p",{text:Dr(u.description,this.plugin.settings.baseUrl)||"\u6682\u65E0\u7B80\u4ECB",cls:"matrees-card-description"}),u.matreesCoverWarning&&g.createDiv({text:String(u.matreesCoverWarning),cls:"matrees-cover-warning"});let S=g.createDiv({cls:"matrees-tags"});for(let N of(Array.isArray(u.tags)?u.tags:[]).slice(0,5))S.createSpan({text:String(N.title??N),cls:"matrees-tag"});let O=g.createDiv({cls:"matrees-card-actions"}),R=O.createEl("button",{text:"\u67E5\u770B\u8BE6\u60C5"});R.onclick=()=>new Rr(this.app,this.plugin,u).open();let B=O.createEl("button",{text:"\u68C0\u6D4B\u8BFB\u53D6"});B.onclick=()=>{this.plugin.guard(()=>this.plugin.diagnoseWorld($(u.worldId)))};let q=O.createEl("button",{text:"\u540C\u6B65\u5230\u672C\u5730",cls:"mod-cta"});q.onclick=()=>{this.plugin.guard(()=>this.plugin.syncWorld($(u.worldId)))}}},lu=class extends j.ItemView{constructor(u,r){super(u);this.plugin=r}plugin;getViewType(){return Tt}getDisplayText(){return"Matrees \u540C\u6B65\u8FDB\u5EA6"}getIcon(){return"refresh-cw"}async onOpen(){this.render()}render(){let u=this.contentEl,r=this.plugin.syncProgress;u.empty(),u.addClass("matrees-progress-page"),u.createDiv({text:"MATREES WORLD LIBRARY",cls:"matrees-eyebrow"}),u.createEl("h2",{text:"\u540C\u6B65\u8FDB\u5EA6"}),u.createEl("p",{text:r.worldId?"\u4E16\u754C ID\uFF1A"+r.worldId:"\u4ECE\u4E16\u754C\u89C2\u5361\u7247\u70B9\u51FB\u201C\u540C\u6B65\u5230\u672C\u5730\u201D\u5373\u53EF\u5F00\u59CB\u3002",cls:"matrees-description"}),r.rootPath&&u.createEl("p",{text:"\u672C\u5730\u76EE\u5F55\uFF1A"+r.rootPath,cls:"matrees-local-path"});let i=u.createDiv({cls:"matrees-progress-panel"});if(i.createEl("h3",{text:r.phase}),i.createDiv({text:r.message,attr:{role:"status","aria-live":"polite"},cls:"matrees-progress-message"}),r.status==="running"){let a=i.createEl("progress",{attr:{"aria-label":r.phase+"\u9636\u6BB5\u8FDB\u5EA6"}});r.total!=null&&r.total>0?(a.max=r.total,a.value=r.completed??0,i.createEl("p",{text:`\u672C\u9636\u6BB5 ${r.completed??0} / ${r.total}\uFF08\u76EE\u5F55\u53D1\u73B0\u671F\u95F4\u603B\u6570\u53EF\u80FD\u589E\u52A0\uFF09`})):i.createEl("p",{text:"\u6B63\u5728\u5904\u7406\uFF0C\u5F85\u76EE\u5F55\u8BFB\u53D6\u5B8C\u6210\u540E\u624D\u80FD\u786E\u5B9A\u6570\u91CF\u3002"})}if(r.startedAt){let a=r.finishedAt??new Date().toISOString(),c=Math.max(0,Math.floor((Date.parse(a)-Date.parse(r.startedAt))/1e3));i.createEl("p",{text:"\u5F00\u59CB\uFF1A"+new Date(r.startedAt).toLocaleString()+" \xB7 \u5DF2\u7528\u65F6 "+Math.floor(c/60)+" \u5206 "+c%60+" \u79D2"})}r.status==="complete"&&i.createEl("p",{text:`\u4FDD\u5B58 ${r.notes} \u9875 \xB7 \u51B2\u7A81 ${r.conflicts} \xB7 \u5F85\u5904\u7406 ${r.warnings}`}),r.status==="error"&&i.createEl("p",{text:"\u540C\u6B65\u5DF2\u505C\u6B62\u3002\u5DF2\u4FDD\u5B58\u9875\u9762\u7684\u672C\u5730\u4FEE\u6539\u533A\u4FDD\u7559\uFF1B\u4FEE\u590D\u540E\u53EF\u4EE5\u91CD\u65B0\u540C\u6B65\u3002",cls:"matrees-cover-warning"});let n=u.createDiv({cls:"matrees-toolbar"}),o=n.createEl("button",{text:"\u8FD4\u56DE\u4E16\u754C\u89C2\u5361\u7247\u5E93"});o.onclick=()=>{this.plugin.openLibrary()};for(let[a,c]of[["\u6253\u5F00\u4E16\u754C\u603B\u89C8",r.overviewPath],["\u67E5\u770B\u540C\u6B65\u62A5\u544A",r.reportPath]])if(c){let p=n.createEl("button",{text:a});p.onclick=()=>{this.plugin.openNote(c)}}if(r.rootPath){let a=n.createEl("button",{text:"\u5728\u5DE6\u4FA7\u5B9A\u4F4D\u76EE\u5F55"});a.onclick=()=>{this.plugin.revealLocal(r.rootPath)}}if(this.plugin.errors.length){let a=n.createEl("button",{text:"\u8BF7\u6C42\u9519\u8BEF\u8BE6\u60C5"});a.onclick=()=>this.plugin.showLastError()}u.createEl("h3",{text:"\u6700\u8FD1\u5904\u7406\u8BB0\u5F55"});let s=u.createEl("ol",{cls:"matrees-progress-log"});for(let a of r.log.slice().reverse())s.createEl("li",{text:new Date(a.at).toLocaleTimeString()+" \xB7 "+a.message})}},fu=class extends j.Modal{constructor(u,r,i,n){super(u);this.plugin=r;this.mode=i;this.done=n}plugin;mode;done;onOpen(){this.titleEl.setText(this.mode==="admin"?"\u7BA1\u7406\u5458 Token":"\u7528\u6237 Token"),this.contentEl.createEl("p",{text:"Token \u5C06\u4EE5\u660E\u6587\u4FDD\u5B58\u5230\u672C\u4ED3\u5E93\u7684\u63D2\u4EF6 data.json\uFF0C\u91CD\u542F\u540E\u81EA\u52A8\u8BFB\u53D6\u3002\u8BF7\u52FF\u5206\u4EAB\u542B Token \u7684 data.json\u3002\u8C03\u8BD5\u5305\u9644\u6709\u6B64\u6587\u4EF6\uFF0C\u5206\u53D1\u524D\u8BF7\u79FB\u9664\u3002"});let u=this.contentEl.createEl("p",{text:this.plugin.tokenStatus(this.mode)}),r="";new j.Setting(this.contentEl).setName("Token").addText(i=>{i.inputEl.type="password",i.inputEl.autocomplete="off",i.setPlaceholder(this.plugin.token(this.mode)?"\u5DF2\u4FDD\u5B58\uFF1B\u66F4\u6362\u65F6\u7C98\u8D34\u65B0 Token":"\u7C98\u8D34 Token").onChange(n=>r=n)}),new j.Setting(this.contentEl).addButton(i=>i.setButtonText("\u4FDD\u5B58\u5E76\u9A8C\u8BC1\u767B\u5F55").setCta().onClick(async()=>{i.setDisabled(!0);let n=!1;try{await this.plugin.setToken(this.mode,r),n=!0,u.setText("\u5DF2\u4FDD\u5B58\u5E76\u6821\u9A8C\uFF0C\u6B63\u5728\u9A8C\u8BC1\u767B\u5F55\u2026"),await this.plugin.changeMode(this.mode),await this.plugin.connect(),u.setText("Token \u5DF2\u4FDD\u5B58\uFF0C\u767B\u5F55\u9A8C\u8BC1\u6210\u529F\u3002"),await this.done(),this.close()}catch(o){u.setText((n?"Token \u5DF2\u4FDD\u5B58\uFF1B\u8FDE\u63A5\u9A8C\u8BC1\u5931\u8D25\uFF1A":"\u4FDD\u5B58\u5931\u8D25\uFF1A")+pe(o,[r,this.plugin.token(this.mode)])),this.plugin.reportError(o)}finally{i.setDisabled(!1)}})).addButton(i=>i.setButtonText("\u9A8C\u8BC1\u5DF2\u4FDD\u5B58\u7684 Token").onClick(async()=>{i.setDisabled(!0);try{await this.plugin.changeMode(this.mode),this.plugin.resetSession(),await this.plugin.connect(),u.setText("\u5DF2\u4FDD\u5B58\u7684 Token \u767B\u5F55\u9A8C\u8BC1\u6210\u529F\u3002"),await this.done(),this.close()}catch(n){u.setText(pe(n,[this.plugin.token(this.mode)])),this.plugin.reportError(n)}finally{i.setDisabled(!1)}})),new j.Setting(this.contentEl).addButton(i=>i.setButtonText("\u6E05\u9664 Token").onClick(async()=>{i.setDisabled(!0);try{await this.plugin.clearToken(this.mode),u.setText("Token \u5DF2\u6E05\u9664\u3002")}catch(n){u.setText(pe(n))}finally{i.setDisabled(!1)}}))}onClose(){this.contentEl.empty()}},Rr=class extends j.Modal{constructor(u,r,i){super(u);this.plugin=r;this.world=i}plugin;world;onOpen(){this.titleEl.setText(String(this.world.title));let u=this.contentEl;u.createEl("p",{text:"\u4F5C\u8005\uFF1A"+rt(this.world)}),u.createEl("p",{text:Dr(this.world.description,this.plugin.settings.baseUrl)});let r=this.world.statistics??{};u.createEl("p",{text:`\u8BBE\u5B9A\uFF1A${r.definitionCount??"\u2014"} \xB7 \u4E8B\u4EF6\uFF1A${r.eventCount??"\u2014"} \xB7 \u603B\u5B57\u6570\uFF1A${r.totalWordCount??"\u2014"}`}),u.createEl("p",{text:"\u540C\u6B65\u8FDB\u5EA6\u9875\u5B8C\u6210\u540E\u53EF\u6253\u5F00\u4E16\u754C\u603B\u89C8\uFF0C\u53EF\u7EE7\u7EED\u67E5\u770B\u4E16\u754C\u6982\u5FF5\u3001\u8BBE\u5B9A\u96C6\u6B63\u6587\u3001\u4E0B\u6302\u8BBE\u5B9A\u4E0E\u63D2\u753B\u3002"}),new j.Setting(u).addButton(i=>i.setButtonText("\u540C\u6B65\u5168\u90E8\u8D44\u6599").setCta().onClick(()=>{this.close(),this.plugin.guard(()=>this.plugin.syncWorld($(this.world.worldId)))}))}onClose(){this.contentEl.empty()}},Mr=class extends j.Modal{constructor(u,r,i,n,o){super(u);this.plugin=r;this.local=i;this.payload=n;this.submit=o}plugin;local;payload;submit;component=new j.Component;onOpen(){this.titleEl.setText("\u9884\u89C8\u8FFD\u52A0\u5230\u4E91\u7AEF\u7684\u5185\u5BB9"),this.modalEl.addClass("matrees-upload-modal");let u=this.contentEl;u.createEl("p",{text:`\u76EE\u6807\uFF1A${this.payload.title} \xB7 \u4E16\u754C ${this.payload.worldId}`}),u.createEl("p",{text:"\u5C06\u672C\u5730\u4FEE\u6539\u533A\u8FFD\u52A0\u5230\u5DF2\u540C\u6B65\u7684\u4E91\u7AEF\u6B63\u6587\uFF0C\u521B\u5EFA\u4E00\u4EFD\u66F4\u65B0\u63D0\u6848\u3002\u6B64\u547D\u4EE4\u4E0D\u4F1A\u70B9\u51FB\u63D0\u4EA4\u5BA1\u6838\uFF0C\u4E5F\u4E0D\u4F1A\u6E05\u7A7A\u672C\u5730\u4FEE\u6539\u533A\u3002"});let r=u.createDiv({cls:"matrees-upload-preview"});this.component.load(),j.MarkdownRenderer.render(this.app,this.local,r,"",this.component);let i=u.createEl("details");i.createEl("summary",{text:"\u67E5\u770B\u5B9E\u9645\u8BF7\u6C42 JSON"}),i.createEl("pre").createEl("code",{text:JSON.stringify(this.payload,null,2)}),new j.Setting(u).addButton(n=>n.setButtonText("\u53D6\u6D88").onClick(()=>this.close())).addButton(n=>n.setButtonText("\u521B\u5EFA\u4E91\u7AEF\u63D0\u6848").setCta().onClick(async()=>{n.setDisabled(!0);try{await this.submit(),this.close()}catch(o){this.plugin.reportError(o),this.close()}}))}onClose(){this.component.unload(),this.contentEl.empty()}},Or=class extends j.PluginSettingTab{constructor(u,r){super(u,r);this.plugin=r}plugin;display(){let u=this.containerEl;u.empty(),new j.Setting(u).setName("\u8D26\u53F7\u4E0E\u5165\u53E3").setHeading();for(let s of["user","admin"])new j.Setting(u).setName(s==="user"?"\u7528\u6237 Token":"\u7BA1\u7406\u5458 Token").setDesc(s==="user"?"\u666E\u901A\u5165\u53E3\u8BFB\u53D6\u8D26\u53F7\u62E5\u6709\u548C\u53C2\u4E0E\u7684\u4E16\u754C\u89C2\u3002":"\u7BA1\u7406\u5458 Token \u4E0E\u7528\u6237 Token \u5206\u5F00\u4FDD\u5B58\u3002").addButton(a=>a.setButtonText("\u586B\u5199 / \u66F4\u6362").onClick(()=>new fu(this.app,this.plugin,s,async()=>{this.display(),this.plugin.refreshViews()}).open()));new j.Setting(u).setName("Token \u4FDD\u5B58\u4F4D\u7F6E").setDesc("\u672C\u4ED3\u5E93\u63D2\u4EF6 data.json\uFF08\u660E\u6587\uFF09\uFF1B\u91CD\u542F\u540E\u81EA\u52A8\u8BFB\u53D6\u3002\u4E0D\u8981\u5206\u4EAB\u8BE5\u6587\u4EF6\u3002"),new j.Setting(u).setName("\u8BF7\u6C42\u901A\u9053").setDesc("\u81EA\u52A8\uFF1A\u684C\u9762\u8BFB\u53D6\u4F18\u5148\u76F4\u8FDE HTTPS\uFF0C\u8FDE\u63A5\u5931\u8D25\u624D\u5C1D\u8BD5 Obsidian\uFF1B\u79FB\u52A8\u7AEF\u4F7F\u7528 Obsidian\u3002HTTP \u62D2\u7EDD\u4E0D\u4F1A\u81EA\u52A8\u6362\u901A\u9053\u3002").addDropdown(s=>s.addOptions({auto:"\u81EA\u52A8",native:"Obsidian \u539F\u751F\uFF08\u4F7F\u7528\u5E94\u7528\u7F51\u7EDC\u73AF\u5883\uFF09",direct:"\u684C\u9762 HTTPS \u76F4\u8FDE\uFF08\u4E0D\u7EE7\u627F\u5E94\u7528\u4EE3\u7406\uFF09"}).setValue(this.plugin.settings.networkMode).onChange(a=>{this.plugin.guard(()=>this.plugin.setNetwork(a))}));let r=this.plugin.settings.baseUrl;new j.Setting(u).setName("API \u5730\u5740").setDesc("\u9ED8\u8BA4\u4F7F\u7528 Matrees \u5B98\u65B9 HTTPS \u57DF\u540D\uFF1B\u8F93\u5165\u5B8C\u6210\u540E\u70B9\u51FB\u5E94\u7528\u3002").addText(s=>s.setValue(r).onChange(a=>r=a)).addButton(s=>s.setButtonText("\u5E94\u7528\u5730\u5740").onClick(()=>{this.plugin.guard(()=>this.plugin.setBase(r))}));let i=this.plugin.settings.readConcurrency,n=this.plugin.settings.requestIntervalMs;new j.Setting(u).setName("\u8BFB\u53D6\u5E76\u53D1\u6570").setDesc("1\u20138\uFF0C\u9ED8\u8BA4 3\uFF1B\u5E76\u884C\u8BFB\u53D6\u4E0D\u540C\u8BBE\u5B9A\u96C6\u3001\u8BBE\u5B9A\u8BE6\u60C5\u3001\u4E8B\u4EF6\u548C\u7AE0\u8282\u3002\u6BCF\u4E2A\u5217\u8868\u7684\u5206\u9875\u6309\u987A\u5E8F\u8BFB\u53D6\uFF0C\u4E0A\u4F20\u4FDD\u6301\u72EC\u5360\u3002").addDropdown(s=>s.addOptions(Object.fromEntries(Array.from({length:8},(a,c)=>[String(c+1),String(c+1)]))).setValue(String(i)).onChange(a=>i=Number(a))),new j.Setting(u).setName("\u8BF7\u6C42\u542F\u52A8\u95F4\u9694\uFF08\u6BEB\u79D2\uFF09").setDesc("\u9ED8\u8BA4 150\uFF0C\u8303\u56F4 0\u20132000\uFF1B\u6536\u5230 429 \u65F6\u964D\u4F4E\u5E76\u53D1\u6216\u589E\u52A0\u95F4\u9694\u3002\u4FEE\u6539\u540E\u70B9\u51FB\u5E94\u7528\u3002").addText(s=>s.setValue(String(n)).onChange(a=>n=Number(a))).addButton(s=>s.setButtonText("\u5E94\u7528\u8BFB\u53D6\u914D\u7F6E").onClick(()=>{this.plugin.guard(()=>this.plugin.setReadOptions(i,n))})),new j.Setting(u).setName("\u672C\u5730\u540C\u6B65").setHeading();let o=this.plugin.settings.rootFolder;new j.Setting(u).setName("\u4FDD\u5B58\u76EE\u5F55").setDesc("\u4ED3\u5E93\u5185\u76F8\u5BF9\u8DEF\u5F84\uFF1B\u8F93\u5165\u5B8C\u6210\u540E\u5E94\u7528\u3002\u5DF2\u540C\u6B65\u4E16\u754C\u7684\u76EE\u5F55\u4FDD\u6301\u7A33\u5B9A\uFF0C\u8FDB\u5EA6\u9875\u663E\u793A\u5B9E\u9645\u8DEF\u5F84\u3002").addText(s=>s.setValue(o).onChange(a=>o=a)).addButton(s=>s.setButtonText("\u5E94\u7528\u76EE\u5F55").onClick(()=>{this.plugin.guard(()=>this.plugin.setRootFolder(o))})),new j.Setting(u).setName("\u4E0B\u8F7D\u56FE\u7247\u548C\u89C6\u9891").setDesc("\u4E16\u754C\u5C01\u9762\u4FDD\u5B58\u5230\u4E16\u754C\u76EE\u5F55\u4E0B\u7684\u201C\u5C01\u9762\u201D\uFF0C\u63D2\u753B\u4E0E\u6B63\u6587\u5A92\u4F53\u4FDD\u5B58\u5230\u201C\u63D2\u753B\u96C6/\u9644\u4EF6\u201D\u3002").addToggle(s=>s.setValue(this.plugin.settings.downloadMedia).onChange(async a=>{this.plugin.busy||await this.plugin.guard(async()=>{this.plugin.settings.downloadMedia=a,await this.plugin.persist()})})),new j.Setting(u).setName("\u5355\u4E2A\u5A92\u4F53\u4E0A\u9650\uFF08MB\uFF09").setDesc("\u8D85\u8FC7\u4E0A\u9650\u7684\u5A92\u4F53\u4FDD\u7559\u5728\u7EBF\u5F15\u7528\uFF0C\u5E76\u8BB0\u5165\u540C\u6B65\u62A5\u544A\u3002").addText(s=>s.setValue(String(this.plugin.settings.maxMediaMB)).onChange(async a=>{let c=Number(a);this.plugin.busy||!Number.isFinite(c)||c<1||c>2048||await this.plugin.guard(async()=>{this.plugin.settings.maxMediaMB=c,await this.plugin.persist()})})),new j.Setting(u).setName("\u9644\u5E26\u4E16\u754C\u6269\u5C55\u8D44\u6599").setDesc("\u8BFB\u53D6\u5386\u6CD5\u3001\u4E8B\u4EF6\u3001\u5173\u7CFB\u56FE\u8C31\u3001\u5730\u56FE\u4E0E\u4F5C\u54C1\u7AE0\u8282\u3002\u63A5\u53E3\u62D2\u7EDD\u7684\u9879\u76EE\u5217\u5165\u62A5\u544A\u3002").addToggle(s=>s.setValue(this.plugin.settings.extras).onChange(async a=>{this.plugin.busy||await this.plugin.guard(async()=>{this.plugin.settings.extras=a,await this.plugin.persist()})})),new j.Setting(u).setName("\u672C\u5730\u4FEE\u6539\u4FDD\u62A4").setDesc("\u53EA\u66FF\u6362\u4E91\u7AEF\u6807\u8BB0\u4E4B\u95F4\u7684\u5185\u5BB9\uFF1B\u672C\u5730\u4FEE\u6539\u533A\u53CA\u5176\u5916\u90E8\u5185\u5BB9\u9010\u5B57\u4FDD\u7559\u3002\u6807\u8BB0\u635F\u574F\u6216\u4E91\u7AEF\u533A\u88AB\u624B\u6539\u65F6\uFF0C\u4FDD\u7559\u539F\u9875\u5E76\u4FDD\u5B58\u51B2\u7A81\u5019\u9009\u3002")}};
-
-/* Matrees World Library runtime compatibility layer: title-only paths, rich-text conversion, entity names, streaming sync, covers and credential persistence. */
-(()=>{
-  const PATCH='matrees-release-1-format-links';
-  if(cu.prototype.__matreesRuntimePatch===PATCH)return;
-  cu.prototype.__matreesRuntimePatch=PATCH;
-
-  const id=v=>v==null?'':typeof v==='object'?id(v.definitionId??v.tagId??v.fileId??v.id??v.value??v.key):String(v);
-  const truth=v=>v===true||v===1||v==='1'||v==='true';
-  const ids=v=>[...new Set((Array.isArray(v)?v:typeof v==='string'?v.split(','):v?[v]:[]).map(id).filter(x=>x&&x!=='0'))];
-  const author=w=>String((w?.ownerUser??w?.createUser??{}).nickname??(w?.ownerUser??w?.createUser??{}).username??'未知作者');
-  const text=v=>v==null?'':typeof v==='string'?v:typeof v==='number'||typeof v==='boolean'?String(v):Array.isArray(v)?v.map(text).filter(Boolean).join('\n'):typeof v==='object'?(typeof v.text==='string'?v.text:typeof v.content==='string'?v.content:'```json\n'+JSON.stringify(v,null,2)+'\n```'):String(v);
-  const wiki=(path,label)=>`[[${path.replace(/\.md$/,'')}|${label??path.split('/').pop()?.replace(/\.md$/,'')??'打开'}]]`;
-  const CLOUD_BEGIN='<!-- MATREES:CLOUD:BEGIN -->',CLOUD_END='<!-- MATREES:CLOUD:END -->',LOCAL_BEGIN='<!-- MATREES:LOCAL:BEGIN -->',LOCAL_END='<!-- MATREES:LOCAL:END -->';
-  const region=(s,a,b)=>{const start=s.indexOf(a),end=s.indexOf(b);if(start<0||end<start||s.indexOf(a,start+a.length)>=0||s.indexOf(b,end+b.length)>=0)throw Error('同步标记缺失、重复或顺序错误，已保留原文件。');return[start+a.length,end];};
-  const cloudPart=s=>{const [a,b]=region(s,CLOUD_BEGIN,CLOUD_END);return s.slice(a,b);};
-  const replaceCloud=(s,cloud)=>{const [a,b]=region(s,CLOUD_BEGIN,CLOUD_END),[la,lb]=region(s,LOCAL_BEGIN,LOCAL_END);if(la<b||lb<la)throw Error('本地修改区与云端区域重叠，已保留原文件。');return s.slice(0,a)+'\n'+cloud.trim()+'\n'+s.slice(b);};
-  const newNote=(cloud,meta)=>{const yaml=Object.entries(meta).map(([k,v])=>`${k}: ${JSON.stringify(v)}`).join('\n');return `---\n${yaml}\n---\n\n${CLOUD_BEGIN}\n${cloud.trim()}\n${CLOUD_END}\n\n## 本地修改\n\n${LOCAL_BEGIN}\n\n<!-- 在这里写本地补充。云端同步会逐字保留此区域及其后方的内容。 -->\n\n${LOCAL_END}\n`;};
-  const urlFrom=o=>{for(const v of [o?.coverUrl,o?.cover_url,o?.mediaUrl,o?.url,o?.src,typeof o?.cover==='object'?(o.cover.url??o.cover.src??o.cover.coverUrl):o?.cover]){if(typeof v==='string'&&/^https?:\/\//i.test(v.trim()))return v.trim();}return'';};
-  const coverFileId=o=>{const c=o?.cover;const v=o?.coverFileId??o?.coverId??(c&&typeof c==='object'?(c.fileId??c.id??c.value):c);const out=id(v);return out&&/^[A-Za-z0-9_-]{6,}$/.test(out)&&!/^https?:/i.test(out)?out:'';};
-  const resolveUrl=(v,base)=>{if(typeof v!=='string'||!v.trim())return'';try{const u=new URL(v,base);return /^https?:$/.test(u.protocol)?u.href:'';}catch{return'';}};
-
-  const legacyIdPath=path=>/--\d+(?=\.|\/|$)/.test(String(path??''));
-  const layout=(root,definitions,memberships)=>{
-    const by=new Map(definitions.map(d=>[id(d.definitionId),d])),sets=new Set(definitions.filter(d=>truth(d.definitionSet)).map(d=>id(d.definitionId)));
-    const out={paths:{},folders:{},parents:{},links:[],warnings:[]},visiting=new Set(),folderNames=new Map(),fileNames=new Map();
-    const unique=(parent,title,isFolder)=>{const base=be(title,48),all=isFolder?folderNames:fileNames;let rows=all.get(parent);if(!rows)all.set(parent,rows=new Map());const n=(rows.get(base)??0)+1;rows.set(base,n);return n===1?base:`${base} (${n})`;};
-    const folder=(key,depth=0)=>{if(out.folders[key])return out.folders[key];const d=by.get(key);if(!d)return root+'/设定/_缺失';let parent=id(d.fatherId??d.father??d.fatherSet);if(!parent||parent==='0')parent=(memberships[key]??[]).find(p=>p!==key&&sets.has(p))??'';if(visiting.has(key)||depth>48){out.warnings.push('设定集层级成环或过深：'+String(d.title??key));const base=root+'/设定/_层级异常',result=base+'/'+unique(base,d.title,true);out.folders[key]=result;return result;}visiting.add(key);const prefix=parent&&sets.has(parent)&&parent!==key?folder(parent,depth+1):root+'/设定';const result=prefix+'/'+unique(prefix,d.title,true);out.folders[key]=result;out.parents[key]=parent&&sets.has(parent)?[parent]:[];visiting.delete(key);return result;};
-    for(const key of [...sets].sort()){const d=by.get(key);if(d)out.paths[key]=folder(key)+'/00--'+be(d.title,48)+'.md';}
-    for(const d of definitions.filter(d=>!truth(d.definitionSet))){const key=id(d.definitionId),parents=[...new Set([...ids(d.belongIds??d.belongSets??d.belong),...(memberships[key]??[])])].filter(p=>sets.has(p)).sort();out.parents[key]=parents;const primary=parents[0],dir=primary?folder(primary):root+'/设定/未归档',name=unique(dir,d.title,false);out.paths[key]=dir+'/'+name+'.md';for(const p of parents.slice(1)){const aliasDir=folder(p),alias=unique(aliasDir,String(d.title)+'--关联',false);out.links.push({from:aliasDir+'/'+alias+'.md',target:out.paths[key],title:String(d.title??'未命名')});}}
+/* Matrees World Library — clean source build, no embedded credentials. */
+(function(){
+const __modules={"api":function(module,exports,__require,require){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.MatreesApi = exports.ApiError = void 0;
+exports.parseJson = parseJson;
+exports.decodeResponse = decodeResponse;
+exports.pageRows = pageRows;
+const scheduler_1 = __require("scheduler");
+const network_1 = __require("network");
+const types_1 = __require("types");
+const utils_1 = __require("utils");
+/** JSON.parse rounds Matrees snowflake IDs. Quote only unsafe integer literals before parsing. */
+function preserveUnsafeIntegers(source) {
+    let out = '', i = 0, inString = false, escape = false;
+    while (i < source.length) {
+        const ch = source[i];
+        if (inString) {
+            out += ch;
+            if (escape)
+                escape = false;
+            else if (ch === '\\')
+                escape = true;
+            else if (ch === '"')
+                inString = false;
+            i++;
+            continue;
+        }
+        if (ch === '"') {
+            inString = true;
+            out += ch;
+            i++;
+            continue;
+        }
+        if (ch === '-' || (ch >= '0' && ch <= '9')) {
+            const m = source.slice(i).match(/^-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?/);
+            if (m) {
+                const token = m[0];
+                let replacement = token;
+                if (/^-?\d+$/.test(token)) {
+                    try {
+                        const n = BigInt(token);
+                        if (n > BigInt(Number.MAX_SAFE_INTEGER) || n < BigInt(Number.MIN_SAFE_INTEGER))
+                            replacement = JSON.stringify(token);
+                    }
+                    catch { }
+                }
+                out += replacement;
+                i += token.length;
+                continue;
+            }
+        }
+        out += ch;
+        i++;
+    }
     return out;
-  };
+}
+function parseJson(s) { return JSON.parse(preserveUnsafeIntegers(s)); }
+class ApiError extends Error {
+    code;
+    endpoint;
+    diagnostic;
+    constructor(code, message, endpoint, diagnostic) {
+        super(`${message}（${code}，${endpoint.split('?')[0]}）`);
+        this.code = code;
+        this.endpoint = endpoint;
+        this.diagnostic = diagnostic;
+    }
+}
+exports.ApiError = ApiError;
+async function decodeResponse(s) {
+    let v = parseJson(s);
+    if (v?.encrypted === true && typeof v.data === 'string') {
+        const raw = Uint8Array.from(atob(v.data), c => c.charCodeAt(0));
+        const keyBytes = new TextEncoder().encode('MatreesEncryptionKey2024Secure32'.padEnd(32, '\0').slice(0, 32));
+        const key = await crypto.subtle.importKey('raw', keyBytes, { name: 'AES-GCM' }, false, ['decrypt']);
+        const bytes = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: raw.slice(0, 12), tagLength: 128 }, key, raw.slice(12));
+        v = parseJson(new TextDecoder().decode(bytes));
+    }
+    return (0, types_1.obj)(v);
+}
+function pageRows(data) {
+    if (Array.isArray(data))
+        return { rows: (0, types_1.arr)(data) };
+    const d = (0, types_1.obj)(data), key = ['contents', 'records', 'items', 'list', 'rows', 'data'].find(k => Array.isArray(d[k]));
+    if (!key)
+        throw Error('列表返回结构与已核对接口不符，已停止当前列表读取。');
+    const number = (...v) => { for (const x of v) {
+        const n = Number(x);
+        if (Number.isFinite(n) && n >= 0)
+            return n;
+    } return undefined; };
+    return { rows: (0, types_1.arr)(d[key]), pages: number(d.pages, d.totalPages, d.pageCount), total: number(d.total, d.totalElements, d.totalCount), current: number(d.curPage, d.current, d.currentPage, d.page, d.pageNum) };
+}
+function wait(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
+function retryDelay(error, attempt) {
+    const e = error instanceof ApiError ? error : null, http = e?.diagnostic?.httpStatus ?? 0;
+    if (e?.code === 429 || http === 429) {
+        const value = e?.diagnostic?.retryAfter ?? '', seconds = Number(value);
+        return Number.isFinite(seconds) && seconds > 0 ? Math.min(30000, seconds * 1000) : Math.min(12000, 1200 * 2 ** attempt);
+    }
+    if (e?.code === 0 || http >= 500)
+        return Math.min(6000, 500 * 2 ** attempt);
+    return 0;
+}
+class MatreesApi {
+    token;
+    mode;
+    transport;
+    onToken;
+    onError;
+    onWarning;
+    get isClosed() { return this.closed; }
+    base;
+    user = null;
+    invalid = false;
+    refreshing = null;
+    lastRefreshAt = 0;
+    allowed = new Set();
+    closed = false;
+    scheduler;
+    constructor(base, token, mode, transport, onToken, options = {}) {
+        this.token = token;
+        this.mode = mode;
+        this.transport = transport;
+        this.onToken = onToken;
+        this.scheduler = new scheduler_1.RequestScheduler(options.readConcurrency ?? 1, options.requestIntervalMs ?? 0);
+        this.base = (0, utils_1.baseUrl)(base);
+        this.token = (0, network_1.normalizeToken)(token);
+        if (!this.token)
+            throw Error('请先填写 Token。');
+    }
+    async call(path, params = {}, worldId, method = 'GET', body, contextHeaders = {}) {
+        const read = method === 'GET' || method === 'HEAD';
+        return this.scheduler.run(read, async () => {
+            let last;
+            for (let attempt = 0; attempt < 4; attempt++)
+                try {
+                    return await this.performCall(path, params, worldId, method, body, contextHeaders);
+                }
+                catch (error) {
+                    last = error;
+                    const delay = read ? retryDelay(error, attempt) : 0;
+                    if (!delay || attempt === 3) {
+                        this.onError?.(error);
+                        throw error;
+                    }
+                    this.onWarning?.(`请求暂时失败，${Math.round(delay / 100) / 10} 秒后重试：${path}`);
+                    await wait(delay);
+                }
+            throw last;
+        });
+    }
+    close() { this.closed = true; this.allowed.clear(); this.scheduler.stop(Error('连接已被关闭，请重新连接。')); }
+    async performCall(path, params = {}, worldId, method = 'GET', body, contextHeaders = {}, retry = 0) {
+        if (this.refreshing)
+            await this.refreshing;
+        if (this.closed)
+            throw Error('连接已被切换或关闭，请重新连接。');
+        if (this.invalid)
+            throw Error('登录已失效，请重新填写 Token。');
+        if (!/^\/mt\/[a-zA-Z0-9_/?=&.%+-]+$/.test(path) || path.includes('..'))
+            throw Error('无效 API 路径。');
+        const u = new URL(path, this.base);
+        for (const [k, v] of Object.entries({ ...params, ...(worldId ? { worldId } : {}) }))
+            if (v != null && v !== '')
+                for (const x of Array.isArray(v) ? v : [v])
+                    u.searchParams.append(k, String(x));
+        const sentToken = this.token;
+        const headers = { Authorization: sentToken, Accept: 'application/json', 'X-Matrees-Platform': 'web', ...(body === undefined ? {} : { 'Content-Type': 'application/json' }) };
+        for (const [k, v] of Object.entries(contextHeaders))
+            if (['workId', 'novelId'].includes(k))
+                headers[k] = v;
+        if (worldId)
+            headers.WorldId = worldId;
+        let res;
+        try {
+            res = await this.transport(u.href, method, headers, body === undefined ? undefined : JSON.stringify(body));
+        }
+        catch (error) {
+            const detail = (0, network_1.errorDetail)(error, [this.token, sentToken]);
+            throw new ApiError(0, (0, network_1.networkHint)(detail) + ' 详情：' + detail, path, { at: new Date().toISOString(), method, origin: u.origin, endpoint: u.pathname, params: Object.fromEntries([...u.searchParams].filter(([k]) => ['worldId', 'definitionSetId', 'page', 'size'].includes(k))), httpStatus: 0, contentType: '', responseKind: 'transport-error', message: detail });
+        }
+        if (this.closed)
+            throw Error('连接已被切换或关闭，已忽略旧响应。');
+        const responseHeader = (name) => Object.entries(res.headers).find(([k]) => k.toLowerCase() === name)?.[1] ?? '';
+        const clean = (s) => (0, network_1.errorDetail)(s, [this.token, sentToken]).replace(/[\r\n\t]/g, ' ').slice(0, 240);
+        const diagnostic = { at: new Date().toISOString(), method, origin: u.origin, endpoint: u.pathname, params: Object.fromEntries([...u.searchParams].filter(([k]) => ['worldId', 'definitionSetId', 'page', 'size', 'pageNum', 'pageSize', 'current', 'folderId', 'workId', 'myGuilds', 'guildId'].includes(k)).map(([k, v]) => [k, clean(v)])), httpStatus: res.status, contentType: clean(responseHeader('content-type')), responseKind: !res.text.trim() ? 'empty' : /^\s*</.test(res.text) ? 'html/xml' : 'unknown', requestId: clean(responseHeader('x-request-id') || responseHeader('x-trace-id') || responseHeader('cf-ray')), server: clean(responseHeader('server')), retryAfter: clean(responseHeader('retry-after')) };
+        diagnostic.responseHint = /Invalid CORS request/i.test(res.text) ? '响应包含 Invalid CORS request（跨域请求被拒绝）' : /Too Many Requests/i.test(res.text) ? '响应包含 Too Many Requests' : /captcha|verify you are human|challenge-platform/i.test(res.text) ? '响应包含网页验证提示' : undefined;
+        const denied = (message) => new ApiError(res.status, message, path, diagnostic);
+        const staleRetry = async () => { if (retry || !['GET', 'HEAD'].includes(method) || !(this.refreshing || sentToken !== this.token))
+            return false; if (this.refreshing)
+            await this.refreshing; return sentToken !== this.token; };
+        if (res.status === 401 && await staleRetry())
+            return this.performCall(path, params, worldId, method, body, contextHeaders, 1);
+        if (res.status === 401) {
+            this.invalid = true;
+            this.allowed.clear();
+            throw denied('Token 已失效或未被接受，请重新填写');
+        }
+        let envelope;
+        try {
+            envelope = await decodeResponse(res.text);
+            diagnostic.responseKind = 'json';
+        }
+        catch {
+            if (res.status === 403)
+                throw denied('HTTP 403：当前资料被服务端拒绝读取');
+            if (res.status === 429)
+                throw denied('HTTP 429：请求过于频繁' + (diagnostic.retryAfter ? '；Retry-After：' + diagnostic.retryAfter : ''));
+            throw denied(res.status >= 400 ? 'HTTP ' + res.status + '：服务器返回非 JSON 错误响应' : '响应不是可识别的 Matrees JSON');
+        }
+        const code = Number(envelope.code ?? res.status);
+        diagnostic.businessCode = code;
+        diagnostic.message = clean(String(envelope.msg ?? ''));
+        if (res.status === 403 || res.status === 429)
+            throw denied((res.status === 403 ? 'HTTP 403：服务端拒绝访问。' : 'HTTP 429：请求过于频繁。') + diagnostic.message);
+        if ([401, 402, 415, 416].includes(code) && await staleRetry())
+            return this.performCall(path, params, worldId, method, body, contextHeaders, 1);
+        if ([401, 402, 415, 416].includes(code)) {
+            this.invalid = true;
+            this.allowed.clear();
+            throw new ApiError(code, 'Token 已过期或会话被撤销', path, diagnostic);
+        }
+        if (res.status < 200 || res.status >= 300 || ![0, 200].includes(code))
+            throw new ApiError(code, diagnostic.message || '服务端拒绝请求', path, diagnostic);
+        const flush = Object.entries(res.headers).find(([k]) => k.toLowerCase() === 'flush-token')?.[1];
+        if (flush && sentToken === this.token && !path.includes('/token/flush'))
+            await this.refreshToken(flush, sentToken);
+        else if (this.refreshing)
+            await this.refreshing;
+        return envelope.data;
+    }
+    async refreshToken(flush, expected) {
+        if (this.refreshing)
+            return this.refreshing;
+        if (expected !== this.token || Date.now() - this.lastRefreshAt < 2000)
+            return;
+        this.lastRefreshAt = Date.now();
+        const run = (async () => { try {
+            const r = await this.transport(this.base + '/mt/common/token/flush', 'POST', { Authorization: expected, 'flush-token': flush, Accept: 'application/json', 'X-Matrees-Platform': 'web' });
+            const e = await decodeResponse(r.text);
+            if (this.closed)
+                throw Error('连接已关闭，未保存旧会话的续期结果。');
+            if (r.status < 200 || r.status >= 300 || Number(e.code) !== 200)
+                throw Error('服务端拒绝登录续期（HTTP ' + r.status + '）。');
+            const next = (0, network_1.normalizeToken)(typeof e.data === 'string' ? e.data : e.data?.token ?? '');
+            if (!next)
+                throw Error('登录续期响应缺少有效 Token。');
+            this.token = next;
+            await this.onToken?.(next);
+        }
+        catch (error) {
+            this.invalid = true;
+            this.allowed.clear();
+            throw new ApiError(0, '登录续期或新 Token 保存失败：' + (0, network_1.errorDetail)(error, [this.token, expected, flush]), '/mt/common/token/flush');
+        } })();
+        this.refreshing = run;
+        try {
+            await run;
+        }
+        finally {
+            if (this.refreshing === run)
+                this.refreshing = null;
+        }
+    }
+    async login() { const u = (0, types_1.obj)(await this.call('/mt/user/getUserInfo')); if (!(0, types_1.id)(u.userId))
+        throw Error('无法从服务端确认当前用户。'); this.user = u; return u; }
+    async collectPages(path, base, worldId, dialect) {
+        const result = [];
+        const seen = new Set();
+        let previous = '';
+        for (let page = 1; page <= 10000; page++) {
+            const paging = dialect === 'page' ? { page, size: 100 } : dialect === 'pageNum' ? { pageNum: page, pageSize: 100 } : { current: page, size: 100 };
+            const data = await this.call(path, { ...base, ...paging }, worldId), p = pageRows(data);
+            const stamp = JSON.stringify(p.rows.map(x => x.definitionId ?? x.worldId ?? x.mediaId ?? x.eventId ?? x.workId ?? x.chapterId ?? x.mapId ?? x.id ?? x));
+            if (page > 1 && p.rows.length && stamp === previous)
+                return { result, complete: false, reason: '接口重复返回同一页' };
+            previous = stamp;
+            for (const row of p.rows) {
+                const key = JSON.stringify(row);
+                if (!seen.has(key)) {
+                    seen.add(key);
+                    result.push(row);
+                }
+            }
+            if (p.current != null && p.current !== page)
+                return { result, complete: false, reason: `服务端页码未前进（返回 ${p.current}，请求 ${page}）` };
+            if (p.pages != null && page >= p.pages)
+                return { result, complete: p.total == null || result.length >= p.total, reason: p.total != null && result.length < p.total ? `分页数量不完整（${result.length}/${p.total}）` : undefined };
+            if (!p.rows.length)
+                return { result, complete: p.total == null || result.length >= p.total, reason: p.total != null && result.length < p.total ? '列表提前结束' : undefined };
+            if (p.pages == null && p.total != null && result.length >= p.total)
+                return { result, complete: true };
+            if (p.pages == null && p.total == null && p.rows.length < 100)
+                return { result, complete: true };
+        }
+        return { result, complete: false, reason: '分页超过安全上限' };
+    }
+    async all(path, params = {}, worldId) {
+        let best = [], last = '';
+        for (const dialect of ['page', 'pageNum', 'current']) {
+            try {
+                const run = await this.collectPages(path, params, worldId, dialect);
+                if (run.result.length > best.length)
+                    best = run.result;
+                if (run.complete)
+                    return run.result;
+                last = run.reason ?? last;
+            }
+            catch (e) {
+                last = (0, network_1.errorDetail)(e);
+                this.onWarning?.(`${path} 使用 ${dialect} 分页失败，尝试兼容分页方式。`);
+            }
+        }
+        if (best.length) {
+            this.onWarning?.(`${path}：${last || '分页未完整'}；已保留成功取得的 ${best.length} 条，继续同步其他资料。`);
+            return best;
+        }
+        throw Error(`${path}：${last || '列表读取失败'}。`);
+    }
+    async userWorlds() {
+        this.allowed.clear();
+        const owned = (await this.all('/mt/world/listMyWorlds')).filter(w => (0, types_1.ownerId)(w) === (0, types_1.id)(this.user.userId));
+        const joined = await this.all('/mt/world/manager/list');
+        const participating = new Set(joined.map(w => (0, types_1.id)(w.worldId)).filter(Boolean));
+        const merged = new Map();
+        const merge = (w) => { const wid = (0, types_1.id)(w.worldId); if (!wid)
+            throw Error('世界列表缺少 worldId，已停止读取。'); const prev = merged.get(wid) ?? {}; merged.set(wid, { ...prev, ...w, coverUrl: (0, utils_1.coverSource)(w, this.base) || (0, utils_1.coverSource)(prev, this.base), permissions: [...new Set([...arrStrings(prev.permissions), ...arrStrings(w.permissions)])], matreesGuilds: [...(0, types_1.arr)(prev.matreesGuilds), ...(0, types_1.arr)(w.matreesGuilds)] }); };
+        for (const w of [...owned, ...joined])
+            merge(w);
+        const guilds = await this.all('/mt/guild/list', { myGuilds: true });
+        for (const guild of guilds) {
+            const gid = (0, types_1.id)(guild.guildId);
+            if (!gid)
+                continue;
+            const info = guild.myRole ? guild : (0, types_1.obj)(await this.call('/mt/guild/getInfo/' + encodeURIComponent(gid)));
+            if (!['LEADER', 'VICE_LEADER', 'MEMBER'].includes(String(info.myRole ?? '')))
+                continue;
+            const worlds = await this.all('/mt/guild/world/list/' + encodeURIComponent(gid));
+            for (const row of worlds) {
+                const w = { ...(0, types_1.obj)(row.world), ...row }, membership = (0, types_1.obj)(w.guildWorld);
+                if (membership.guildId && (0, types_1.id)(membership.guildId) !== gid)
+                    continue;
+                if (membership.status !== 'APPROVED')
+                    continue;
+                const wid = (0, types_1.id)(w.worldId ?? membership.worldId);
+                if (!wid)
+                    continue;
+                participating.add(wid);
+                merge({ ...w, worldId: wid, matreesGuilds: [{ guildId: gid, title: info.title ?? guild.title ?? gid, role: info.myRole }] });
+            }
+        }
+        return { rows: [...merged.values()], participating };
+    }
+    async worlds(page = 1, keyword = '') {
+        if (!this.user)
+            await this.login();
+        if (this.mode === 'user') {
+            const { rows } = await this.userWorlds();
+            const found = rows.filter(w => String(w.title ?? '').toLowerCase().includes(keyword.toLowerCase()));
+            this.allowed = new Set(rows.map(w => (0, types_1.id)(w.worldId)));
+            await this.hydrateCovers(found);
+            return { rows: found, pages: 1, total: found.length };
+        }
+        const data = pageRows(await this.call('/mt/world/list', { page, size: 24, ...(keyword ? { title: keyword } : {}) }));
+        for (const w of data.rows)
+            this.allowed.add((0, types_1.id)(w.worldId));
+        await this.hydrateCovers(data.rows);
+        return { rows: data.rows, pages: data.pages ?? 1, total: data.total ?? data.rows.length };
+    }
+    coverFileId(row) { const cover = row.cover, value = row.coverFileId ?? row.coverId ?? (cover && typeof cover === 'object' ? (cover.fileId ?? cover.id ?? cover.value) : cover); const fileId = (0, types_1.id)(value); return fileId && /^[A-Za-z0-9_-]{6,}$/.test(fileId) ? fileId : ''; }
+    async fileUrl(fileId) { const data = await this.call('/mt/file/get/oss/url/' + encodeURIComponent(fileId)); const source = typeof data === 'string' ? data : data?.url ?? data?.ossUrl ?? data?.fileUrl ?? data?.downloadUrl ?? data?.src ?? data?.path; const resolved = (0, utils_1.urlSafe)(source, this.base); if (!resolved)
+        throw Error('文件接口未返回可用 URL。'); return resolved; }
+    async resolveCover(row) { const existing = (0, utils_1.coverSource)(row, this.base); if (existing) {
+        row.coverUrl = existing;
+        return;
+    } const fileId = this.coverFileId(row); if (!fileId)
+        return; row.coverUrl = await this.fileUrl(fileId); row.matreesCoverFileId = fileId; }
+    async hydrateCovers(rows) { for (const row of rows)
+        try {
+            if (!(0, utils_1.coverSource)(row, this.base)) {
+                const detail = (0, types_1.obj)(await this.call('/mt/world/getWorldInfo', {}, (0, types_1.id)(row.worldId)));
+                if ((0, types_1.id)(detail.worldId) === (0, types_1.id)(row.worldId))
+                    for (const [k, v] of Object.entries(detail))
+                        if (v != null)
+                            row[k] = v;
+            }
+            await this.resolveCover(row);
+        }
+        catch (e) {
+            row.matreesCoverWarning = '封面详情读取失败：' + (0, network_1.errorDetail)(e);
+        } }
+    async assertWorld(wid) {
+        if (!this.user)
+            await this.login();
+        this.allowed.delete(wid);
+        let participating = false, listed = {};
+        if (this.mode === 'user') {
+            const scope = await this.userWorlds();
+            listed = scope.rows.find(w => (0, types_1.id)(w.worldId) === wid) ?? {};
+            participating = scope.participating.has(wid);
+            if (!scope.rows.some(w => (0, types_1.id)(w.worldId) === wid))
+                throw Error('普通入口仅允许读取当前账号拥有或参与的世界观；该世界不在最新列表中。');
+        }
+        const w = (0, types_1.obj)(await this.call('/mt/world/getWorldInfo', {}, wid));
+        if ((0, types_1.id)(w.worldId) !== wid)
+            throw Error('世界 ID 与服务端返回不一致。');
+        if (this.mode === 'user' && !participating && (0, types_1.ownerId)(w) !== (0, types_1.id)(this.user.userId))
+            throw Error('世界观归属已变化，且当前账号不在参与列表中。');
+        const merged = { ...listed, ...w, coverUrl: (0, utils_1.coverSource)(w, this.base) || (0, utils_1.coverSource)(listed, this.base), matreesGuilds: listed.matreesGuilds ?? [] };
+        try {
+            await this.resolveCover(merged);
+        }
+        catch (e) {
+            merged.matreesCoverWarning = '封面地址解析失败：' + (0, network_1.errorDetail)(e);
+        }
+        this.allowed.add(wid);
+        return merged;
+    }
+    async read(path, params, wid) { if (!this.allowed.has(wid))
+        await this.assertWorld(wid); return this.call(path, params, wid); }
+    async createDefinitionProposal(wid, body) { const w = await this.assertWorld(wid); if ((0, types_1.ownerId)(w) !== (0, types_1.id)(this.user.userId))
+        throw Error('上传命令只允许修改当前账号自己拥有的世界观。'); if (body.operateType !== 'create' && body.operateType !== 'update')
+        throw Error('仅支持创建或更新提案。'); return (0, types_1.obj)(await this.call('/mt/proposal/definition', {}, wid, 'POST', { ...body, worldId: wid })); }
+}
+exports.MatreesApi = MatreesApi;
+function arrStrings(v) { return Array.isArray(v) ? v.filter((x) => typeof x === 'string') : []; }
 
-  const identityKeys=['definitionId','eventId','mapId','workId','chapterId','mediaId','folderId','userId','guildId','calendarId','graphId','conceptId','volumeId','worldId'];
-  const referenceFields=new Set(['worldId','definitionId','definitionIds','calendarId','graphId','workId','chapterId','mapId','eventId','userId','ownerId','createUserId','mediaId','mediaIds','folderId','folderIds','itemId','father','fatherId','fatherSet','belong','belongIds','belongSets','guildId','galleryImageIds','galleryFolderIds']);
-  const displayName=o=>String(o?.title??o?.name??o?.label??o?.nickname??o?.username??o?.originName??o?.fileName??'').trim();
-  const collectNames=(...values)=>{const names={},seen=new Set();const walk=(v,depth=0)=>{if(depth>20||v==null)return;if(Array.isArray(v)){for(const x of v)walk(x,depth+1);return;}if(typeof v!=='object'||seen.has(v))return;seen.add(v);const name=displayName(v);if(name)for(const key of identityKeys){const value=id(v[key]);if(value){names[value]??=name;break;}}for(const x of Object.values(v))walk(x,depth+1);};for(const value of values)walk(value);return names;};
-  const referenceKey=key=>referenceFields.has(key)||/Id(?:s)?$/.test(key)||/(?:^|_)ids?$/i.test(key);
-  const hrefEntityId=raw=>{try{const u=new URL(String(raw??''),'https://www.matrees.cn');for(const key of ['definitionId','worldId','eventId','mapId','workId','chapterId','userId','guildId','itemId','mediaId','folderId','id']){const value=u.searchParams.get(key);if(value)return value;}const m=u.pathname.match(/\/(?:definition|world|event|map|work|chapter|user|guild|illustration|media|folder)\/([^/?#]+)/i);return m?decodeURIComponent(m[1]):'';}catch{return'';}};
-  const actualLinks=(snapshot,root)=>{const links={...layout(root,snapshot.definitions??[],snapshot.memberships??{}).paths},wid=id(snapshot.world?.worldId);if(wid)links[wid]=root+'/00--世界总览.md';for(const e of snapshot.events??[]){const key=id(e.eventId);if(key)links[key]=root+'/事件/'+be(e.title??e.name??key,26)+'--'+key+'.md';}for(const m of snapshot.maps??[]){const key=id(m.mapId);if(key)links[key]=root+'/地图/'+be(m.title??m.name??key,26)+'--'+key+'.md';}for(const w of snapshot.works??[]){const key=id(w.workId);if(key)links[key]=root+'/作品章节/'+be(key,25)+'/00--作品信息.md';}for(const c of snapshot.chapters??[]){const key=id(c.chapterId);if(!key)continue;links[key]=root+'/作品章节/'+be(c.workId,25)+(c.volumeId?'/'+be(c.volumeId,25):'')+'/'+be(c.title??c.name??key,26)+'--'+key+'.md';}return links;};
-  let activeNames={},activeLinks={};
-  const mergedContext=ctx=>({...ctx,names:{...activeNames,...(ctx?.names??{})},links:{...activeLinks,...(ctx?.links??{})}});
-  const resolvedRef=(value,ctx)=>{const key=id(value);if(!key)return displayName(value)||String(value??'');const name=ctx.names?.[key]??displayName(value);if(name)return name;return /^\d+$/.test(key)?'（名称未解析）':key;};
-  const normalizeHtmlLinks=(html,ctx)=>{if(typeof html!=='string'||!/[<][a-z]/i.test(html))return html;let doc;try{doc=new DOMParser().parseFromString(html,'text/html');}catch{return html;}for(const el of Array.from(doc.body.querySelectorAll('span.inlink,a'))){const ref=el.getAttribute('data-item-id')??el.getAttribute('data-matrees-id')??hrefEntityId(el.getAttribute('href'));if(!ref)continue;const label=ctx.names?.[ref]??el.textContent?.trim()??'引用',path=ctx.links?.[ref];if(path){const a=doc.createElement('a');a.setAttribute('href',ctx.base+'/editor/definition?definitionId='+encodeURIComponent(ref));a.textContent=label;el.replaceWith(a);}else el.replaceWith(doc.createTextNode(label));}return doc.body.innerHTML;};
-  const normalizeStructured=(raw,ctx,depth=0)=>{if(depth>32)return raw;const v=_i(raw);if(vi(v))return v;if(typeof v==='string')return normalizeHtmlLinks(v,ctx);if(Array.isArray(v))return v.map(x=>normalizeStructured(x,ctx,depth+1));if(!v||typeof v!=='object')return v;const out={};for(const [key,value] of Object.entries(v)){if(referenceKey(key)){out[key]=Array.isArray(value)?value.map(x=>resolvedRef(x,ctx)):resolvedRef(value,ctx);}else out[key]=normalizeStructured(value,ctx,depth+1);}return out;};
+},
+"collector":function(module,exports,__require,require){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.collect = collect;
+const api_1 = __require("api");
+const types_1 = __require("types");
+const utils_1 = __require("utils");
+const DETAIL_WRAPPERS = ['definition', 'detail', 'item', 'entity', 'data', 'result', 'info'];
+const CONTENT_FIELDS = ['content', 'body', 'document', 'doc', 'editorData', 'editorContent', 'richText', 'richContent', 'contentJson', 'contentJSON', 'contentData', 'contentValue', 'detailContent', 'definitionContent', 'text'];
+function candidates(raw, depth = 0, out = []) {
+    const o = (0, types_1.obj)(raw);
+    if (!Object.keys(o).length || depth > 3)
+        return out;
+    out.push(o);
+    for (const key of DETAIL_WRAPPERS)
+        if (o[key] && typeof o[key] === 'object' && !Array.isArray(o[key]))
+            candidates(o[key], depth + 1, out);
+    return out;
+}
+function detailCandidate(raw, expected, wid) {
+    const rows = candidates(raw);
+    if (!rows.length)
+        return {};
+    const exact = rows.find(o => (0, types_1.id)(o.definitionId) === expected && (!o.worldId || (0, types_1.id)(o.worldId) === wid));
+    if (exact)
+        return exact;
+    const byId = rows.find(o => (0, types_1.id)(o.definitionId) === expected);
+    if (byId)
+        return byId;
+    const likely = rows.find(o => o.definitionId || o.content != null || o.title != null);
+    return likely ?? rows[0];
+}
+function contentOf(o) { for (const key of CONTENT_FIELDS)
+    if (Object.hasOwn(o, key))
+        return { found: true, value: o[key] }; return { found: false, value: undefined }; }
+function normalizeDetail(raw, listed, expected, wid) {
+    const selected = detailCandidate(raw, expected, wid), returnedId = (0, types_1.id)(selected.definitionId), returnedWorld = (0, types_1.id)(selected.worldId);
+    if (returnedId && returnedId !== expected)
+        return { row: { ...listed, definitionId: expected, worldId: wid }, issue: `设定详情返回了其他条目的 ID（请求 ${expected}，返回 ${returnedId}）` };
+    if (returnedWorld && returnedWorld !== wid)
+        return { row: { ...listed, definitionId: expected, worldId: wid }, issue: `设定详情返回了其他世界的数据（请求 ${wid}，返回 ${returnedWorld}）` };
+    const row = { ...listed, ...selected, definitionId: expected, worldId: wid };
+    let content = contentOf(selected);
+    if (!content.found) {
+        for (const candidate of candidates(raw)) {
+            const cid = (0, types_1.id)(candidate.definitionId), cwid = (0, types_1.id)(candidate.worldId), probe = contentOf(candidate);
+            if (probe.found && (!cid || cid === expected) && (!cwid || cwid === wid)) {
+                content = probe;
+                break;
+            }
+        }
+    }
+    if (content.found)
+        row.content = content.value;
+    return { row };
+}
+async function collect(api, wid, extras, progress, options = {}) {
+    return collectWorld(api, wid, extras, progress, options);
+}
+async function collectWorld(api, wid, extras, progress, options) {
+    const parallel = options.readConcurrency == null ? 1 : (0, utils_1.concurrency)(options.readConcurrency), warnings = [];
+    function warn(message, entityId) { warnings.push(message); progress(message, { phase: '读取资料', issue: { category: '正文/资料', entityId } }); }
+    api.onWarning = message => warn(message);
+    async function optional(name, fn, fallback) { try {
+        return await fn();
+    }
+    catch (e) {
+        if (api.invalid || api.isClosed)
+            throw e;
+        warn(name + '：' + (0, utils_1.redact)(e instanceof Error ? e.message : e));
+        return fallback;
+    } }
+    progress('验证世界观归属与公会关系…', { phase: '授权' });
+    const world = await api.assertWorld(wid);
+    await options.onWorld?.(world);
+    const s = { unavailable: {}, world, concept: {}, definitions: [], tree: [], memberships: {}, illustrationTree: [], illustrations: [], galleries: {}, extra: {}, events: [], maps: [], works: [], chapters: [], warnings, fetchedAt: new Date().toISOString() };
+    progress('读取世界概念和设定集目录…', { phase: '世界资料' });
+    s.concept = (0, types_1.obj)(await optional('世界概念', () => api.read('/mt/concept/getInfo', {}, wid), {}));
+    if (!Object.hasOwn(s.concept, 'content') && world.statistics?.conceptWordCount === 0 && (!s.concept.worldId || (0, types_1.id)(s.concept.worldId) === wid))
+        s.concept.content = '';
+    if (s.concept.worldId && (0, types_1.id)(s.concept.worldId) !== wid) {
+        s.concept = {};
+        s.conceptIssue = '世界概念返回了其他世界的数据，已忽略本次概念正文。';
+        warn(s.conceptIssue);
+    }
+    if (s.concept.content == null && !s.conceptIssue) {
+        s.conceptIssue = '世界概念未返回正文，保留已有页面；首次同步创建占位页。';
+        warn(s.conceptIssue);
+    }
+    await options.onConcept?.(s.concept, s.conceptIssue);
+    s.tree = (0, types_1.arr)(await optional('设定集根目录', () => api.read('/mt/definition/listRootTree', {}, wid), []));
+    const found = new Map(), sets = new Set(), visited = new Set();
+    function add(rows, parent, tree = false) {
+        for (const d of rows) {
+            const key = (0, types_1.id)(d.definitionId);
+            if (!key) {
+                warn('设定列表出现缺少 definitionId 的条目，已跳过。');
+                continue;
+            }
+            if (d.worldId && (0, types_1.id)(d.worldId) !== wid) {
+                warn(`设定 ${key} 返回了其他世界的数据，已跳过。`, key);
+                continue;
+            }
+            const prev = found.get(key) ?? {};
+            found.set(key, { ...prev, ...d, definitionId: key, worldId: wid, ...(tree ? { definitionSet: true, father: d.father ?? parent ?? '0' } : {}) });
+            if (tree || (0, types_1.truth)(d.definitionSet))
+                sets.add(key);
+            if (parent)
+                s.memberships[key] = [...new Set([...(s.memberships[key] ?? []), parent])];
+            if ((0, types_1.arr)(d.children).length)
+                add((0, types_1.arr)(d.children), key, true);
+        }
+    }
+    add(s.tree, undefined, true);
+    add(await optional('设定总列表', () => api.all('/mt/definition/listDefinitionAll', {}, wid), []));
+    for (;;) {
+        const pending = [...sets].filter(x => !visited.has(x));
+        if (!pending.length)
+            break;
+        const result = await (0, utils_1.settledPool)(pending, async (setId) => { visited.add(setId); progress(`逐集读取挂载设定：${found.get(setId)?.title ?? setId}`, { phase: '设定集目录', completed: visited.size - 1, total: sets.size, entity: setId }); const rows = await api.all('/mt/definition/listDefinitionAll', { definitionSetId: setId }, wid); add(rows, setId); }, parallel);
+        for (const failure of result.errors) {
+            const key = String(failure.item);
+            warn(`设定集 ${found.get(key)?.title ?? key} 的下挂目录读取失败：${(0, utils_1.redact)(failure.error instanceof Error ? failure.error.message : failure.error)}；继续读取其他设定集。`, key);
+        }
+    }
+    try {
+        await options.onDefinitionIndex?.([...found.values()], structuredClone(s.memberships));
+    }
+    catch (e) {
+        warn('建立本地设定目录索引时有条目失败：' + (0, utils_1.redact)(e instanceof Error ? e.message : e) + '；继续读取正文。');
+    }
+    const detailed = new Set();
+    for (;;) {
+        const pending = [...found.keys()].filter(x => !detailed.has(x));
+        if (!pending.length)
+            break;
+        const result = await (0, utils_1.settledPool)(pending, async (key) => {
+            detailed.add(key);
+            const listed = found.get(key) ?? { definitionId: key, worldId: wid };
+            progress(`读取设定正文：${listed.title ?? key}`, { phase: '设定正文', completed: detailed.size - 1, total: found.size, entity: key });
+            let normalized;
+            try {
+                const raw = await api.read('/mt/definition/getInfo/' + encodeURIComponent(key), {}, wid);
+                normalized = normalizeDetail(raw, listed, key, wid);
+            }
+            catch (e) {
+                if (api.invalid || api.isClosed)
+                    throw e;
+                const message = e instanceof api_1.ApiError && e.code === 404 ? '设定详情不存在或已删除（404）' : '设定详情读取失败：' + (0, utils_1.redact)(e instanceof Error ? e.message : e);
+                normalized = { row: { ...listed, definitionId: key, worldId: wid }, issue: message };
+            }
+            const d = normalized.row;
+            let issue = normalized.issue ?? '';
+            if (!issue && (0, types_1.truth)(d.isHidden) && !(0, types_1.truth)(d.hideUnlocked))
+                issue = '设定被隐藏且尚未授权读取正文';
+            if (!issue && d.content == null) {
+                const counts = [d.contentWordCount, d.wordCount, d.statistics?.wordCount];
+                if (counts.some(v => (typeof v === 'number' || typeof v === 'string' && /^\d+$/.test(v)) && Number(v) === 0) && !counts.some(v => Number(v) > 0))
+                    d.content = '';
+                else
+                    issue = '设定详情缺少正文（不能确认是空白内容）';
+            }
+            found.set(key, { ...listed, ...d, definitionId: key, worldId: wid });
+            if ((0, types_1.truth)(d.definitionSet))
+                sets.add(key);
+            if (issue) {
+                delete found.get(key).content;
+                s.unavailable[key] = issue;
+                warn(`${String(d.title ?? key)} [${key}]：${issue}；已跳过该正文并继续读取后续设定。`, key);
+            }
+            else
+                delete s.unavailable[key];
+            s.memberships[key] = [...new Set([...(s.memberships[key] ?? []), ...(0, types_1.ids)(d.belongIds ?? d.belongSets ?? d.belong)])];
+            try {
+                await options.onDefinition?.(found.get(key), issue || undefined, [...found.values()], structuredClone(s.memberships));
+            }
+            catch (e) {
+                warn(`${String(d.title ?? key)} [${key}]：本地增量写入失败：${(0, utils_1.redact)(e instanceof Error ? e.message : e)}；继续读取后续设定。`, key);
+            }
+            progress(`设定正文已处理 ${detailed.size}/${Math.max(found.size, detailed.size)}`, { phase: '设定正文', completed: detailed.size, total: Math.max(found.size, detailed.size), entity: key });
+        }, parallel);
+        for (const failure of result.errors) {
+            const key = String(failure.item);
+            if (api.invalid || api.isClosed)
+                throw failure.error;
+            warn(`设定 ${found.get(key)?.title ?? key} 处理异常：${(0, utils_1.redact)(failure.error instanceof Error ? failure.error.message : failure.error)}；继续读取。`, key);
+        }
+        const newSets = [...sets].filter(x => !visited.has(x));
+        if (newSets.length) {
+            const setResult = await (0, utils_1.settledPool)(newSets, async (key) => { visited.add(key); add(await api.all('/mt/definition/listDefinitionAll', { definitionSetId: key }, wid), key); }, parallel);
+            for (const failure of setResult.errors) {
+                const key = String(failure.item);
+                warn(`新发现设定集 ${found.get(key)?.title ?? key} 的目录读取失败：${(0, utils_1.redact)(failure.error instanceof Error ? failure.error.message : failure.error)}。`, key);
+            }
+            try {
+                await options.onDefinitionIndex?.([...found.values()], structuredClone(s.memberships));
+            }
+            catch (e) {
+                warn('更新本地设定目录索引失败：' + (0, utils_1.redact)(e instanceof Error ? e.message : e) + '；继续同步。');
+            }
+        }
+    }
+    s.definitions = [...found.values()];
+    progress(`已处理 ${s.definitions.length} 个设定/设定集，读取插画集…`, { phase: '插画集' });
+    const it = await optional('插画目录', () => api.read('/mt/illustration/tree', {}, wid), {});
+    s.illustrationTree = (0, types_1.arr)((0, types_1.obj)(it).folders ?? it);
+    s.illustrations = await optional('插画列表', () => api.all('/mt/illustration/list', {}, wid), []);
+    const folders = new Set();
+    function walkFolders(rows) { for (const f of rows) {
+        if ((0, types_1.id)(f.folderId))
+            folders.add((0, types_1.id)(f.folderId));
+        walkFolders((0, types_1.arr)(f.children));
+    } }
+    walkFolders(s.illustrationTree);
+    const media = new Map(s.illustrations.map(m => [(0, types_1.id)(m.mediaId), m]));
+    const folderResult = await (0, utils_1.settledPool)([...folders], async (folderId) => { for (const m of await api.all('/mt/illustration/list', { folderId }, wid))
+        media.set((0, types_1.id)(m.mediaId), m); }, parallel);
+    for (const failure of folderResult.errors)
+        warn(`插画目录 ${String(failure.item)} 读取失败：${(0, utils_1.redact)(failure.error instanceof Error ? failure.error.message : failure.error)}。`);
+    s.illustrations = [...media.values()];
+    const galleryResult = await (0, utils_1.settledPool)(s.definitions, async (d) => { if (Number(d.relationCount?.illustrationCount) > 0 || (0, types_1.ids)(d.galleryImageIds).length || (0, types_1.ids)(d.galleryFolderIds).length)
+        s.galleries[(0, types_1.id)(d.definitionId)] = await api.read('/mt/illustration/entityRefs', { itemType: 'definition', itemId: (0, types_1.id)(d.definitionId) }, wid); }, parallel);
+    for (const failure of galleryResult.errors)
+        warn(`设定插画关联读取失败：${(0, utils_1.redact)(failure.error instanceof Error ? failure.error.message : failure.error)}。`, (0, types_1.id)(failure.item.definitionId));
+    if (extras) {
+        progress('读取事件、历法、关系、地图和作品…', { phase: '扩展资料' });
+        s.extra.calendars = await optional('历法', () => api.read('/mt/calendar/list', {}, wid), null);
+        s.extra.relations = await optional('关系图谱', () => api.read('/mt/relation/graph/list', {}, wid), null);
+        const events = await optional('事件列表', () => api.all('/mt/event/list', {}, wid), []), eventResult = await (0, utils_1.settledPool)(events, async (e) => ({ ...e, ...(0, types_1.obj)(await api.read('/mt/event/get/' + (0, types_1.id)(e.eventId), {}, wid)) }), parallel);
+        s.events = eventResult.values.filter((x) => !!x);
+        for (const failure of eventResult.errors) {
+            s.events.push(failure.item);
+            warn('事件 ' + String(failure.item.title ?? (0, types_1.id)(failure.item.eventId)) + ' 详情读取失败，已保留列表信息。');
+        }
+        const visitedMaps = new Set();
+        async function maps(parent = '0') { const data = await optional('地图目录 ' + parent, () => api.read('/mt/map/list/' + wid + '/' + parent, {}, wid), []), rows = (0, types_1.arr)(Array.isArray(data) ? data : (0, types_1.obj)(data).contents ?? (0, types_1.obj)(data).maps); for (const m of rows) {
+            const key = (0, types_1.id)(m.mapId);
+            if (!key || visitedMaps.has(key))
+                continue;
+            visitedMaps.add(key);
+            const full = await optional('地图 ' + key, async () => ({ ...m, ...(0, types_1.obj)(await api.read('/mt/map/getInfo/' + key, {}, wid)), bindings: await api.read('/mt/map/bind/list/' + key, {}, wid) }), m);
+            s.maps.push(full);
+            await maps(key);
+        } }
+        await maps();
+        s.works = await optional('世界作品', () => api.all('/mt/work/worldList', {}, wid), []);
+        for (const w of s.works) {
+            const workId = (0, types_1.id)(w.workId);
+            if (!workId || w.type && w.type !== 'novel') {
+                if (w.type && w.type !== 'novel')
+                    warnings.push(`作品 ${w.title ?? workId} 为 ${w.type}，已保存基础数据；剧本分场/漫画分页未转换。`);
+                continue;
+            }
+            const detail = await optional('作品详情 ' + workId, () => api.call('/mt/work/getWorkInfo', {}, wid, 'GET', undefined, { workId }), {});
+            Object.assign(w, (0, types_1.obj)(detail));
+            if (w.novelType === 'short') {
+                const short = await optional('短篇正文 ' + workId, () => api.call('/mt/novel/short/content', {}, wid, 'GET', undefined, { novelId: workId }), null);
+                if (short != null)
+                    s.chapters.push({ ...(0, types_1.obj)(short), chapterId: workId, workId, title: w.title, content: typeof short === 'string' ? short : (0, types_1.obj)(short).content });
+                continue;
+            }
+            const data = await optional('作品章节 ' + workId, () => api.read('/mt/novel/chapter/list', { workId }, wid), []);
+            s.extra['chapters-' + workId] = data;
+            const chapters = [];
+            function walk(v) { if (Array.isArray(v)) {
+                v.forEach(walk);
+                return;
+            } const o = (0, types_1.obj)(v); if (o.chapterId)
+                chapters.push(o); for (const k of ['chapters', 'volumes', 'children', 'contents'])
+                if (o[k])
+                    walk(o[k]); }
+            walk(data);
+            const chapterResult = await (0, utils_1.settledPool)(chapters, async (c) => ({ ...(0, types_1.obj)(await api.read('/mt/novel/chapter/getInfo/' + (0, types_1.id)(c.chapterId), {}, wid)), ...c, workId, volumeId: c.volumeId }), parallel);
+            for (const x of chapterResult.values)
+                if (x)
+                    s.chapters.push(x);
+            for (const failure of chapterResult.errors) {
+                s.chapters.push({ ...failure.item, workId });
+                warn('章节 ' + String(failure.item.title ?? (0, types_1.id)(failure.item.chapterId)) + ' 详情读取失败，已保留目录信息。');
+            }
+        }
+    }
+    function keepWorld(rows, label) { return rows.filter(entity => { if (!entity.worldId || (0, types_1.id)(entity.worldId) === wid)
+        return true; warn(`${label} ${(0, types_1.id)(entity)} 返回了其他世界的数据，已忽略。`, (0, types_1.id)(entity)); return false; }); }
+    s.definitions = keepWorld(s.definitions, '设定');
+    s.events = keepWorld(s.events, '事件');
+    s.illustrations = keepWorld(s.illustrations, '插画');
+    s.maps = keepWorld(s.maps, '地图');
+    s.works = keepWorld(s.works, '作品');
+    s.chapters = keepWorld(s.chapters, '章节');
+    return s;
+}
 
-  Object.assign(bs,{worldId:'世界',definitionId:'设定',calendarId:'历法',graphId:'图谱',workId:'作品',chapterId:'章节',mapId:'地图',eventId:'事件',userId:'用户',ownerId:'所属用户',ownerUserId:'所属用户',createUserId:'创建者',volumeId:'分卷',guildId:'公会'});
-  const originalAi=Ai;
-  Ai=function(node,ctx){const merged=mergedContext(ctx),attrs=node&&typeof node==='object'?(node.attrs??{}):{};if(['inlink','mention','definitionMention','definitionReference'].includes(node?.type)){const ref=id(attrs.itemId??attrs.definitionId??attrs.id??hrefEntityId(attrs.href)),label=merged.names?.[ref]??attrs.label??attrs.title??attrs.name??'引用';if(ref&&merged.links?.[ref])return `<a href="${re(merged.base+'/editor/definition?definitionId='+encodeURIComponent(ref))}">${re(label)}</a>`;return re(label);}if(node?.type==='text'&&Array.isArray(node.marks)){const clone={...node,marks:node.marks.map(mark=>{if(mark?.type!=='link')return mark;const attrs2={...(mark.attrs??{})},ref=hrefEntityId(attrs2.href);if(ref&&merged.links?.[ref])attrs2.href=merged.base+'/editor/definition?definitionId='+encodeURIComponent(ref);return {...mark,attrs:attrs2};})};return originalAi(clone,merged);}return originalAi(node,merged);};
-  const originalFe=Fe;
-  Fe=function(raw,ctx){const merged=mergedContext(ctx);return originalFe(normalizeStructured(raw,merged),merged);};
-  nn=layout;
-  const originalFi=Fi;
-  Fi=async function(snapshot,old,root,...rest){const priorNames=activeNames,priorLinks=activeLinks;activeNames=collectNames(snapshot);if(id(snapshot.concept?.conceptId))activeNames[id(snapshot.concept.conceptId)]??='世界概念';activeLinks=actualLinks(snapshot,old?.root??root);try{return await originalFi(snapshot,old,root,...rest);}finally{activeNames=priorNames;activeLinks=priorLinks;}};
+},
+"content":function(module,exports,__require,require){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.decodeContent = decodeContent;
+exports.parseDoc = parseDoc;
+exports.tiptapHtml = tiptapHtml;
+exports.sanitize = sanitize;
+exports.contentHtml = contentHtml;
+exports.plainText = plainText;
+exports.mediaReferences = mediaReferences;
+exports.mediaUrls = mediaUrls;
+exports.toMarkdown = toMarkdown;
+exports.markdownToDoc = markdownToDoc;
+exports.appendLocal = appendLocal;
+const types_1 = __require("types");
+const utils_1 = __require("utils");
+const api_1 = __require("api");
+const allowedTags = new Set('center p div span h1 h2 h3 h4 h5 h6 strong b em i u s del strike mark code pre blockquote ul ol li table thead tbody tfoot tr th td img video audio source a br hr sub sup details summary'.split(' '));
+function style(a) { const out = []; a = { ...a, textAlign: a.textAlign ?? a.align }; if (['center', 'right', 'justify', 'left'].includes(a.textAlign))
+    out.push('text-align:' + a.textAlign); if (a.color && /^(#[\da-f]{3,8}|rgba?\([\d., %]+\)|[a-z]+)$/i.test(a.color))
+    out.push('color:' + a.color); if (a.backgroundColor && /^(#[\da-f]{3,8}|rgba?\([\d., %]+\)|[a-z]+)$/i.test(a.backgroundColor))
+    out.push('background-color:' + a.backgroundColor); const indent = Number(a.indent); if (indent > 0 && indent <= 12)
+    out.push('margin-left:' + indent * 2 + 'em'); return out.length ? ` style="${(0, utils_1.esc)(out.join(';'))}"` : ''; }
+function textEscape(s) { return s.replace(/\\/g, '\\\\').replace(/([`*_[\]<>])/g, '\\$1'); }
+/** Decode nested serialized editor payloads while preserving unsafe numeric IDs as strings. */
+function decodeContent(raw) {
+    let v = raw;
+    for (let i = 0; i < 12; i++) {
+        if (typeof v === 'string') {
+            const t = v.replace(/^\uFEFF/, '').trim();
+            if (!/^[\[{\"]/.test(t))
+                break;
+            try {
+                const next = (0, api_1.parseJson)(t);
+                if (next === v)
+                    break;
+                v = next;
+                continue;
+            }
+            catch {
+                break;
+            }
+        }
+        const o = (0, types_1.obj)(v);
+        if (o.type || Array.isArray(v))
+            break;
+        const keys = Object.keys(o), wrapper = ['content', 'html', 'markdown', 'document', 'doc', 'body', 'text', 'value', 'data'].find(k => o[k] != null);
+        if (wrapper && keys.every(k => [wrapper, 'format', 'contentType', 'version', 'schemaVersion', 'encoding'].includes(k))) {
+            v = o[wrapper];
+            continue;
+        }
+        break;
+    }
+    return v;
+}
+function parseDoc(raw) { const v = decodeContent(raw), o = (0, types_1.obj)(v); if (o.type === 'doc')
+    return o; if (Array.isArray(v) && v.length && v.every(n => typeof n?.type === 'string'))
+    return { type: 'doc', content: v }; if (['paragraph', 'heading', 'blockquote', 'bulletList', 'orderedList', 'table', 'text'].includes(o.type))
+    return { type: 'doc', content: [o] }; return null; }
+const fieldNames = { title: '名称', name: '名称', description: '简介', content: '正文', caption: '说明', worldId: '世界', definitionId: '设定', calendarId: '历法', graphId: '图谱', workId: '作品', chapterId: '章节', mapId: '地图', eventId: '事件', userId: '用户', ownerId: '所属用户', ownerUserId: '所属用户', createUserId: '创建者', volumeId: '分卷', mediaId: '媒体', folderId: '目录', itemId: '关联条目', fatherId: '父设定集', guildId: '公会', nickname: '昵称', createTime: '创建时间', updateTime: '更新时间', children: '下级条目', nodes: '节点', edges: '关系', relations: '关系', bindings: '关联', months: '月份', days: '日期', weeks: '星期', volumes: '分卷', chapters: '章节', contents: '条目', items: '条目', data: '资料', type: '类型', status: '状态', statistics: '统计', ownerUser: '所属作者', createUser: '创建者', permissions: '权限', tags: '标签', coverUrl: '封面地址', coverType: '封面类型' };
+const referenceFields = new Set(['worldId', 'definitionId', 'definitionIds', 'calendarId', 'graphId', 'workId', 'chapterId', 'mapId', 'eventId', 'userId', 'ownerId', 'createUserId', 'mediaId', 'mediaIds', 'folderId', 'folderIds', 'itemId', 'father', 'fatherId', 'fatherSet', 'belong', 'belongIds', 'belongSets', 'guildId', 'galleryImageIds', 'galleryFolderIds']);
+function referenceField(key) { return referenceFields.has(key) || /Id(?:s)?$/.test(key) || /(?:^|_)ids?$/i.test(key); }
+function hrefEntityId(raw) { try {
+    const u = new URL(String(raw ?? ''), 'https://www.matrees.cn');
+    for (const k of ['definitionId', 'worldId', 'eventId', 'mapId', 'workId', 'chapterId', 'userId', 'guildId', 'itemId', 'mediaId', 'folderId', 'id']) {
+        const v = u.searchParams.get(k);
+        if (v)
+            return v;
+    }
+    const m = u.pathname.match(/\/(?:definition|world|event|map|work|chapter|user|guild|illustration|media|folder)\/([^/?#]+)/i);
+    return m ? decodeURIComponent(m[1]) : '';
+}
+catch {
+    return '';
+} }
+function entityHtml(value, ctx, fallback) { const key = (0, types_1.id)(value); if (!key)
+    return (0, utils_1.esc)(fallback ?? ''); const name = ctx.names?.[key] ?? (fallback != null && !/^\d{5,}$/.test(String(fallback)) ? String(fallback) : ''); if (!name) {
+    ctx.warnings?.push('存在无法解析名称的关联 ID；数字 ID 仅保留在原始数据中。');
+    return '（名称未解析）';
+} const path = ctx.links?.[key]; return path ? `<a href="${(0, utils_1.esc)(ctx.base + '/__matrees/entity?id=' + encodeURIComponent(key))}" data-matrees-id="${(0, utils_1.esc)(key)}">${(0, utils_1.esc)(name)}</a>` : (0, utils_1.esc)(name); }
+function simpleMarkdownHtml(markdown) {
+    const lines = markdown.replace(/\r\n?/g, '\n').split('\n'), out = [];
+    let inCode = false, code = [];
+    const inline = (s) => (0, utils_1.esc)(s).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>').replace(/~~([^~]+)~~/g, '<del>$1</del>').replace(/\*([^*]+)\*/g, '<em>$1</em>').replace(/`([^`]+)`/g, '<code>$1</code>').replace(/\[([^\]]+)\]\((https:\/\/[^)]+)\)/g, '<a href="$2">$1</a>');
+    for (const line of lines) {
+        if (/^```/.test(line)) {
+            if (inCode) {
+                out.push('<pre><code>' + (0, utils_1.esc)(code.join('\n')) + '</code></pre>');
+                code = [];
+            }
+            inCode = !inCode;
+            continue;
+        }
+        if (inCode) {
+            code.push(line);
+            continue;
+        }
+        const h = line.match(/^(#{1,6})\s+(.*)$/);
+        if (h) {
+            out.push(`<h${h[1].length}>${inline(h[2])}</h${h[1].length}>`);
+            continue;
+        }
+        if (/^>\s?/.test(line)) {
+            out.push('<blockquote><p>' + inline(line.replace(/^>\s?/, '')) + '</p></blockquote>');
+            continue;
+        }
+        if (/^[-*+]\s+/.test(line)) {
+            out.push('<ul><li>' + inline(line.replace(/^[-*+]\s+/, '')) + '</li></ul>');
+            continue;
+        }
+        if (/^\d+\.\s+/.test(line)) {
+            out.push('<ol><li>' + inline(line.replace(/^\d+\.\s+/, '')) + '</li></ol>');
+            continue;
+        }
+        if (line.trim())
+            out.push('<p>' + inline(line) + '</p>');
+    }
+    if (inCode)
+        out.push('<pre><code>' + (0, utils_1.esc)(code.join('\n')) + '</code></pre>');
+    return out.join('\n');
+}
+function structuredHtml(raw, ctx, depth = 0) {
+    if (depth > 32) {
+        ctx.warnings?.push('结构化正文超过 32 层；完整内容保存在原始数据中。');
+        return '<p>（内容层级过深，请查看原始数据）</p>';
+    }
+    const v = decodeContent(raw), d = parseDoc(v);
+    if (d)
+        return tiptapHtml(d, ctx);
+    if (v == null)
+        return '';
+    if (typeof v === 'string') {
+        const t = v.trim();
+        return /<\/?[a-z][\s\S]*>/i.test(t) ? t : simpleMarkdownHtml(v);
+    }
+    if (typeof v === 'boolean')
+        return '<p>' + (v ? '是' : '否') + '</p>';
+    if (typeof v !== 'object')
+        return '<p>' + (0, utils_1.esc)(v) + '</p>';
+    if (Array.isArray(v))
+        return v.map((x, i) => { const o = (0, types_1.obj)(x), label = o.title ?? o.name ?? o.label; return (typeof x === 'object' ? `<h${Math.min(6, depth + 3)}>${(0, utils_1.esc)(label ?? '条目 ' + (i + 1))}</h${Math.min(6, depth + 3)}>` : '') + structuredHtml(x, ctx, depth + 1); }).join('\n');
+    return Object.entries((0, types_1.obj)(v)).filter(([k, x]) => x != null && !/token|authorization|password|secret|cookie/i.test(k)).map(([k, x]) => { const label = fieldNames[k] ?? k; if (referenceField(k)) {
+        const values = Array.isArray(x) ? x : [x], refs = values.map(value => entityHtml(value, ctx)).filter(Boolean);
+        return '<p><strong>' + (0, utils_1.esc)(label) + '：</strong>' + (refs.join('、') || '（名称未解析）') + '</p>';
+    } if (typeof x !== 'object' && typeof x !== 'string')
+        return '<p><strong>' + (0, utils_1.esc)(label) + '：</strong>' + (0, utils_1.esc)(typeof x === 'boolean' ? (x ? '是' : '否') : x) + '</p>'; return `<h${Math.min(6, depth + 3)}>${(0, utils_1.esc)(label)}</h${Math.min(6, depth + 3)}>` + structuredHtml(x, ctx, depth + 1); }).join('\n');
+}
+function tiptapHtml(n, ctx) {
+    const a = (0, types_1.obj)(n.attrs), children = (0, types_1.arr)(n.content).map(x => tiptapHtml(x, ctx)).join(''), block = (tag) => `<${tag}${style(a)}>${children}</${tag}>`;
+    switch (n.type) {
+        case 'doc': return children;
+        case 'text': {
+            let t = (0, utils_1.esc)(n.text);
+            for (const m of (0, types_1.arr)(n.marks)) {
+                const ma = (0, types_1.obj)(m.attrs);
+                switch (m.type) {
+                    case 'bold':
+                        t = `<strong>${t}</strong>`;
+                        break;
+                    case 'italic':
+                        t = `<em>${t}</em>`;
+                        break;
+                    case 'strike':
+                        t = `<del>${t}</del>`;
+                        break;
+                    case 'underline':
+                        t = `<u>${t}</u>`;
+                        break;
+                    case 'code':
+                        t = `<code>${t}</code>`;
+                        break;
+                    case 'subscript':
+                        t = `<sub>${t}</sub>`;
+                        break;
+                    case 'superscript':
+                        t = `<sup>${t}</sup>`;
+                        break;
+                    case 'link': {
+                        const ref = hrefEntityId(ma.href);
+                        if (ref && ctx.links?.[ref])
+                            t = `<a href="${(0, utils_1.esc)(ctx.base + '/__matrees/entity?id=' + encodeURIComponent(ref))}" data-matrees-id="${(0, utils_1.esc)(ref)}">${t}</a>`;
+                        else {
+                            const u = (0, utils_1.urlSafe)(ma.href, ctx.base);
+                            if (u)
+                                t = `<a href="${(0, utils_1.esc)(u)}">${t}</a>`;
+                        }
+                        break;
+                    }
+                    case 'highlight':
+                        t = `<mark${style({ backgroundColor: ma.color })}>${t}</mark>`;
+                        break;
+                    case 'textStyle':
+                        t = `<span${style(ma)}>${t}</span>`;
+                        break;
+                }
+            }
+            return t;
+        }
+        case 'paragraph': return block('p');
+        case 'heading': return block('h' + Math.min(6, Math.max(1, Number(a.level) || 1)));
+        case 'hardBreak': return '<br>';
+        case 'horizontalRule': return '<hr>';
+        case 'blockquote': return block('blockquote');
+        case 'bulletList': return block('ul');
+        case 'orderedList': return `<ol start="${Number(a.start) || 1}">${children}</ol>`;
+        case 'listItem': return block('li');
+        case 'taskList': return `<ul data-type="taskList">${children}</ul>`;
+        case 'taskItem': return `<li data-checked="${a.checked === true}">${children}</li>`;
+        case 'codeBlock': return `<pre><code class="language-${(0, utils_1.esc)(a.language ?? '')}">${(0, utils_1.esc)((0, types_1.arr)(n.content).map(x => x.text ?? '').join(''))}</code></pre>`;
+        case 'image':
+        case 'resizableImage':
+        case 'imageBlock': {
+            const src = (0, utils_1.urlSafe)(a.src ?? a.url, ctx.base);
+            if (!src)
+                return '';
+            const fileId = (0, types_1.id)(a.fileId ?? a.mediaId ?? a['data-file-id']), width = parseFloat(a.width), height = parseFloat(a.height);
+            let image = `<img src="${(0, utils_1.esc)(src)}" alt="${(0, utils_1.esc)(a.alt ?? a.title ?? '')}"${fileId ? ` data-file-id="${(0, utils_1.esc)(fileId)}"` : ''}${width > 0 ? ` width="${width}"` : ''}${height > 0 ? ` height="${height}"` : ''}>`;
+            if (a.caption)
+                image += '<p>' + (0, utils_1.esc)(a.caption) + '</p>';
+            const align = a.textAlign ?? a['data-align'];
+            return ['center', 'right'].includes(align) ? `<div style="text-align:${align}">${image}</div>` : image;
+        }
+        case 'video':
+        case 'videoBlock':
+        case 'audio': {
+            const u = (0, utils_1.urlSafe)(a.src ?? a.url, ctx.base), tag = n.type === 'audio' ? 'audio' : 'video', fileId = (0, types_1.id)(a.fileId ?? a.mediaId ?? a['data-file-id']);
+            return u ? `<${tag} src="${(0, utils_1.esc)(u)}"${fileId ? ` data-file-id="${(0, utils_1.esc)(fileId)}"` : ''} controls></${tag}>` : '';
+        }
+        case 'table': return block('table');
+        case 'tableRow': return block('tr');
+        case 'tableHeader':
+        case 'tableCell': {
+            const tag = n.type === 'tableHeader' ? 'th' : 'td';
+            return `<${tag} colspan="${Number(a.colspan) || 1}" rowspan="${Number(a.rowspan) || 1}"${style(a)}>${children}</${tag}>`;
+        }
+        case 'mathematics':
+        case 'inlineMath':
+        case 'mathInline': return `<span data-math="inline">${(0, utils_1.esc)(a.latex ?? a.formula ?? n.text ?? '')}</span>`;
+        case 'blockMath':
+        case 'mathBlock': return `<div data-math="block">${(0, utils_1.esc)(a.latex ?? a.formula ?? n.text ?? '')}</div>`;
+        case 'shareCode': {
+            const code = String(a.code ?? '').replace(/^(?:mt:|\[\[)/i, '').replace(/\]\]$/, '').replace(/[-\s]/g, '').toUpperCase();
+            const label = a.label ?? code;
+            return /^[DEWOM][23456789ABCDEFGHJKLMNPQRSTVWXYZ]{10,}$/.test(code) ? `<a href="${(0, utils_1.esc)(ctx.base + '/e/' + code)}">${(0, utils_1.esc)(label)}</a>` : (0, utils_1.esc)(label);
+        }
+        case 'inlink':
+        case 'mention':
+        case 'definitionMention':
+        case 'definitionReference': {
+            const ref = (0, types_1.id)(a.itemId ?? a.definitionId ?? a.id ?? hrefEntityId(a.href)), label = ctx.names?.[ref] ?? a.label ?? a.title ?? a.name ?? '引用';
+            return ref && ctx.links?.[ref] ? `<a href="${(0, utils_1.esc)(ctx.base + '/__matrees/entity?id=' + encodeURIComponent(ref))}" data-matrees-id="${(0, utils_1.esc)(ref)}">${(0, utils_1.esc)(label)}</a>` : (0, utils_1.esc)(label);
+        }
+        default:
+            ctx.warnings?.push(`未完整识别富文本节点 ${String(n.type)}；原始节点已保存在原始数据中。`);
+            return children || structuredHtml(Object.fromEntries(Object.entries(n).filter(([k]) => !['type', 'marks'].includes(k))), ctx, 1);
+    }
+}
+function sanitize(html, base) {
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    for (const el of Array.from(doc.body.querySelectorAll('*')).reverse()) {
+        const tag = el.tagName.toLowerCase();
+        if (['script', 'style', 'iframe', 'object', 'embed', 'form', 'input', 'button', 'svg', 'link', 'meta'].includes(tag)) {
+            el.remove();
+            continue;
+        }
+        if (!allowedTags.has(tag)) {
+            el.replaceWith(...Array.from(el.childNodes));
+            continue;
+        }
+        for (const at of Array.from(el.attributes)) {
+            const k = at.name.toLowerCase();
+            if (k === 'href' || k === 'src' || k === 'poster') {
+                const u = (0, utils_1.urlSafe)(at.value, base);
+                if (u)
+                    el.setAttribute(k, u);
+                else
+                    el.removeAttribute(k);
+            }
+            else if (k === 'style') {
+                const st = el.style, safe = { textAlign: st.textAlign, color: st.color, backgroundColor: st.backgroundColor }, out = style(safe).match(/style="([^"]*)"/);
+                el.removeAttribute('style');
+                if (out)
+                    el.setAttribute('style', out[1]);
+            }
+            else if (!['alt', 'title', 'align', 'width', 'height', 'colspan', 'rowspan', 'start', 'class', 'controls', 'data-type', 'data-checked', 'data-math', 'data-matrees-id', 'data-item-id', 'data-item-type', 'data-file-id'].includes(k))
+                el.removeAttribute(k);
+            else if (k === 'align' && !['left', 'center', 'right', 'justify'].includes(at.value))
+                el.removeAttribute(k);
+        }
+    }
+    return doc.body;
+}
+function contentHtml(raw, ctx) { return structuredHtml(raw, ctx); }
+function plainText(raw, base) { return sanitize(contentHtml(raw, { base }), base).textContent?.replace(/\s+/g, ' ').trim() ?? ''; }
+function mediaReferences(raw, ctx) { const doc = sanitize(contentHtml(raw, ctx), ctx.base), refs = []; for (const e of Array.from(doc.querySelectorAll('[src],[poster]'))) {
+    for (const attr of ['src', 'poster']) {
+        const value = e.getAttribute(attr);
+        if (value)
+            refs.push({ url: value, fileId: e.getAttribute('data-file-id') || undefined });
+    }
+} const seen = new Set(); return refs.filter(r => { const key = r.fileId + '|' + r.url; if (seen.has(key))
+    return false; seen.add(key); return true; }); }
+function mediaUrls(raw, ctx) { return mediaReferences(raw, ctx).map(r => r.url); }
+function markdownCell(text) { return text.replace(/\|/g, '\\|').replace(/\n+/g, '<br>').trim(); }
+function renderChildren(el, ctx, depth = 0) { return Array.from(el.childNodes).map(n => nodeMarkdown(n, ctx, depth)).join(''); }
+function aligned(value, align) { return `\n\n> [!matrees-${align}]\n` + value.trim().split('\n').map(line => '> ' + line).join('\n') + '\n\n<!-- matrees-layout-break -->\n\n'; }
+function nodeMarkdown(node, ctx, depth = 0) {
+    if (node.nodeType === 3)
+        return textEscape(node.textContent ?? '');
+    if (node.nodeType !== 1)
+        return '';
+    const e = node, tag = e.tagName.toLowerCase(), children = renderChildren(e, ctx, depth + 1), align = e.getAttribute('align') || e.style.textAlign;
+    if (['center'].includes(tag))
+        return aligned(children, 'center');
+    if (['p', 'div'].includes(tag)) {
+        const value = children.trim();
+        return align && ['center', 'right', 'justify'].includes(align) ? aligned(value, align) : value ? '\n\n' + value + '\n\n' : '';
+    }
+    if (/^h[1-6]$/.test(tag)) {
+        const value = '#'.repeat(Number(tag[1])) + ' ' + children.trim();
+        return align && ['center', 'right', 'justify'].includes(align) ? aligned(value, align) : '\n\n' + value + '\n\n';
+    }
+    if (tag === 'strong' || tag === 'b')
+        return '**' + children + '**';
+    if (tag === 'em' || tag === 'i')
+        return '*' + children + '*';
+    if (tag === 'del' || tag === 's' || tag === 'strike')
+        return '~~' + children + '~~';
+    if (tag === 'u' || tag === 'sub' || tag === 'sup')
+        return `<${tag}>${children}</${tag}>`;
+    if (tag === 'mark') {
+        const bg = e.style.backgroundColor;
+        return bg ? `<span${style({ backgroundColor: bg })}>${children}</span>` : '==' + children + '==';
+    }
+    if (tag === 'span') {
+        const color = e.style.color, bg = e.style.backgroundColor;
+        return color || bg ? `<span${style({ color, backgroundColor: bg })}>${children}</span>` : children;
+    }
+    if (tag === 'code' && e.parentElement?.tagName.toLowerCase() !== 'pre')
+        return '`' + (e.textContent ?? '').replace(/`/g, '\\`') + '`';
+    if (tag === 'pre') {
+        const lang = e.querySelector('code')?.className.replace('language-', '') ?? '';
+        return `\n\n\`\`\`${lang}\n${e.textContent ?? ''}\n\`\`\`\n\n`;
+    }
+    if (tag === 'br')
+        return '\n';
+    if (tag === 'hr')
+        return '\n\n---\n\n';
+    if (tag === 'blockquote')
+        return '\n\n' + children.trim().split('\n').map(x => '> ' + x).join('\n') + '\n\n';
+    if (tag === 'li') {
+        const checked = e.getAttribute('data-checked');
+        const prefix = checked == null ? '- ' : `- [${checked === 'true' ? 'x' : ' '}] `;
+        return prefix + children.trim().replace(/\n/g, '\n  ') + '\n';
+    }
+    if (tag === 'ul')
+        return '\n' + children + '\n';
+    if (tag === 'ol') {
+        let i = Number(e.getAttribute('start')) || 1;
+        const rows = Array.from(e.children).map(c => `${i++}. ${renderChildren(c, ctx, depth + 1).trim().replace(/\n/g, '\n   ')}`).join('\n');
+        return '\n' + rows + '\n';
+    }
+    if (tag === 'a') {
+        const ref = e.getAttribute('data-matrees-id') ?? e.getAttribute('data-item-id') ?? hrefEntityId(e.getAttribute('href')), label = (children || ctx.names?.[ref] || '打开').replace(/[\]|]/g, ' ');
+        if (ref && ctx.links?.[ref])
+            return `[[${ctx.links[ref].replace(/\.md$/, '')}|${label}]]`;
+        const href = (0, utils_1.urlSafe)(e.getAttribute('href'), ctx.base);
+        return href ? `[${label}](${href.replace(/ /g, '%20').replace(/\(/g, '%28').replace(/\)/g, '%29')})` : label;
+    }
+    if (['img', 'video', 'audio'].includes(tag)) {
+        const src = e.getAttribute('src') ?? e.querySelector('source')?.getAttribute('src') ?? '', local = ctx.assets?.[src], width = Number(e.getAttribute('width')), height = Number(e.getAttribute('height')), size = width > 0 ? '|' + width + (height > 0 ? 'x' + height : '') : '';
+        if (local)
+            return `\n\n![[${local}${size}]]\n\n`;
+        if (tag === 'img')
+            return `![${(e.getAttribute('alt') ?? '').replace(/[\[\]|]/g, '') + size}](${src.replace(/ /g, '%20').replace(/\(/g, '%28').replace(/\)/g, '%29')})`;
+        return `\n\n<${tag} controls src="${(0, utils_1.esc)(src)}"></${tag}>\n\n`;
+    }
+    if (tag === 'table') {
+        const rows = Array.from(e.querySelectorAll(':scope > thead > tr, :scope > tbody > tr, :scope > tr')), complex = !!e.querySelector('[colspan]:not([colspan="1"]),[rowspan]:not([rowspan="1"])');
+        if (complex)
+            return '\n\n' + e.outerHTML + '\n\n';
+        if (!rows.length)
+            return '';
+        const matrix = rows.map(r => Array.from(r.children).map(c => markdownCell(renderChildren(c, ctx, depth + 1))));
+        const cols = Math.max(...matrix.map(r => r.length));
+        const line = (r) => '| ' + Array.from({ length: cols }, (_, i) => r[i] ?? '').join(' | ') + ' |';
+        const first = line(matrix[0]), sep = '| ' + Array.from({ length: cols }, () => '---').join(' | ') + ' |';
+        return '\n\n' + [first, sep, ...matrix.slice(1).map(line)].join('\n') + '\n\n';
+    }
+    if (e.hasAttribute('data-math'))
+        return e.dataset.math === 'block' ? `\n\n$$\n${e.textContent ?? ''}\n$$\n\n` : `$${e.textContent ?? ''}$`;
+    return children;
+}
+function toMarkdown(raw, ctx) { const body = sanitize(contentHtml(raw, ctx), ctx.base), text = Array.from(body.childNodes).map(n => nodeMarkdown(n, ctx)).join('').replace(/<!--\s*MATREES:/g, '<!-- REMOTE-MATREES:').replace(/\n{4,}/g, '\n\n\n').trim(); return text; }
+function inlineDoc(text) { const out = []; let rest = text; const re = /(\*\*[^*]+\*\*|\*[^*]+\*|~~[^~]+~~|`[^`]+`|\[[^\]]+\]\(https:\/\/[^)]+\))/; while (rest) {
+    const m = rest.match(re);
+    if (!m) {
+        if (rest)
+            out.push({ type: 'text', text: rest });
+        break;
+    }
+    if (m.index)
+        out.push({ type: 'text', text: rest.slice(0, m.index) });
+    const token = m[0];
+    if (token.startsWith('**'))
+        out.push({ type: 'text', text: token.slice(2, -2), marks: [{ type: 'bold' }] });
+    else if (token.startsWith('~~'))
+        out.push({ type: 'text', text: token.slice(2, -2), marks: [{ type: 'strike' }] });
+    else if (token.startsWith('*'))
+        out.push({ type: 'text', text: token.slice(1, -1), marks: [{ type: 'italic' }] });
+    else if (token.startsWith('`'))
+        out.push({ type: 'text', text: token.slice(1, -1), marks: [{ type: 'code' }] });
+    else {
+        const mm = token.match(/^\[([^\]]+)\]\((https:\/\/[^)]+)\)$/);
+        out.push({ type: 'text', text: mm[1], marks: [{ type: 'link', attrs: { href: mm[2] } }] });
+    }
+    rest = rest.slice((m.index ?? 0) + token.length);
+} return out; }
+function markdownToDoc(markdown) { const lines = markdown.replace(/\r\n?/g, '\n').split('\n'), content = []; let code = null, lang = ''; for (const line of lines) {
+    const fence = line.match(/^```\s*(.*)$/);
+    if (fence) {
+        if (code) {
+            content.push({ type: 'codeBlock', attrs: { language: lang }, content: [{ type: 'text', text: code.join('\n') }] });
+            code = null;
+            lang = '';
+        }
+        else {
+            code = [];
+            lang = fence[1].trim();
+        }
+        continue;
+    }
+    if (code) {
+        code.push(line);
+        continue;
+    }
+    const h = line.match(/^(#{1,6})\s+(.*)$/);
+    if (h) {
+        content.push({ type: 'heading', attrs: { level: h[1].length }, content: inlineDoc(h[2]) });
+        continue;
+    }
+    const task = line.match(/^[-*+]\s+\[([ xX])\]\s+(.*)$/);
+    if (task) {
+        content.push({ type: 'taskList', content: [{ type: 'taskItem', attrs: { checked: task[1].toLowerCase() === 'x' }, content: [{ type: 'paragraph', content: inlineDoc(task[2]) }] }] });
+        continue;
+    }
+    const bullet = line.match(/^[-*+]\s+(.*)$/);
+    if (bullet) {
+        content.push({ type: 'bulletList', content: [{ type: 'listItem', content: [{ type: 'paragraph', content: inlineDoc(bullet[1]) }] }] });
+        continue;
+    }
+    const quote = line.match(/^>\s?(.*)$/);
+    if (quote) {
+        content.push({ type: 'blockquote', content: [{ type: 'paragraph', content: inlineDoc(quote[1]) }] });
+        continue;
+    }
+    if (line.trim())
+        content.push({ type: 'paragraph', content: inlineDoc(line) });
+} if (code)
+    content.push({ type: 'codeBlock', attrs: { language: lang }, content: [{ type: 'text', text: code.join('\n') }] }); return { type: 'doc', content }; }
+function appendLocal(original, markdown) { if (/!\[\[|!\[[^\]]*\]\((?!https:\/\/)/.test(markdown))
+    throw Error('上传区域包含本地附件；请先上传附件并改成 HTTPS 地址。'); const doc = parseDoc(original); if (doc)
+    return JSON.stringify({ ...doc, content: [...(0, types_1.arr)(doc.content), ...(0, types_1.arr)(markdownToDoc(markdown).content)] }); return contentHtml(original, { base: 'https://www.matrees.cn' }) + '\n' + simpleMarkdownHtml(markdown); }
 
-  class RuntimeIncrementalWriter{
-    constructor(world,old,root,settings,vault,progress,checkpoint){this.world=world;this.record=old?structuredClone(old):{root,notes:{},assets:{}};this.root=this.record.root;this.settings=settings;this.vault=vault;this.progress=progress;this.checkpoint=checkpoint;this.wid=id(world.worldId);this.tail=Promise.resolve();this.names=collectNames(world);}
-    run(fn){const task=this.tail.catch(()=>{}).then(fn);this.tail=task;return task;}
-    async persist(){if(this.checkpoint)await this.checkpoint(this.record);}
-    cover(o,world=false){const u=urlFrom(o);if(!u)return'';const dimensions=world?' width="300" height="444"':'';const isVideo=String(o?.coverType??o?.mediaType??'').toLowerCase().includes('video')||/\.(mp4|webm|mov)(?:\?|$)/i.test(u);return isVideo?`<video controls${dimensions} src="${u.replace(/"/g,'&quot;')}"></video>`:world?`<img src="${u.replace(/"/g,'&quot;')}" alt="世界观封面"${dimensions}>`:`![封面](${u.replace(/[() ]/g,c=>encodeURIComponent(c))})`;}
-    markdown(raw,links={},names=this.names){return Fe(raw,{base:this.settings.baseUrl,assets:this.record.assets,links,names,warnings:[]});}
-    async migrate(key,path,title){const rec=this.record.notes[key];if(!rec||rec.path===path||!legacyIdPath(rec.path)||!this.vault.move||!this.vault.exists(rec.path)||this.vault.exists(path))return;await this.vault.move(rec.path,path);rec.path=path;this.progress('已移除文件名中的旧数字 ID：'+title,{phase:'增量更新'});await this.persist();}
-    async upsert(key,path,title,kind,entityId,cloud,rawPath,remoteHash){await this.migrate(key,path,title);const rec=this.record.notes[key],target=rec?.path??path,incomingHash=await Be('\n'+cloud.trim()+'\n');if(this.vault.exists(target)){if(!rec){this.progress('发现未登记的本地文件，流式阶段不覆盖：'+target,{phase:'增量写入'});return;}const existing=await this.vault.read(target);let observed='invalid';try{observed=await Be(cloudPart(existing));}catch{}if(observed!==rec.cloudHash){this.progress('本地页已修改，流式阶段暂不覆盖：'+title,{phase:'增量写入'});return;}if(incomingHash!==rec.cloudHash)await this.vault.process(target,current=>replaceCloud(current,cloud));}else await this.vault.write(target,newNote(cloud,{matrees_world_id:this.wid,matrees_entity_id:entityId,matrees_kind:kind,cssclasses:['matrees-note']}));this.record.notes[key]={path:target,cloudHash:incomingHash,kind,entityId,title,rawPath,remoteHash};await this.persist();}
-    seedWorld(){return this.run(async()=>{const path=this.root+'/00--世界总览.md',cloud=`# ${text(this.world.title)}\n\n${this.cover(this.world,true)}\n\n${text(this.world.subTitle??'')}\n\n作者：${text(author(this.world))}\n\n${this.markdown(this.world.description,{[this.wid]:path},this.names)}\n\n> [!info] 正在增量同步\n> 目录和正文会在拉取过程中持续更新。`;await this.upsert('world',path,String(this.world.title),'world',this.wid,cloud);});}
-    concept(concept,issue){return this.run(async()=>{Object.assign(this.names,collectNames(concept));const rawPath=this.root+(issue?'/_原始数据/未取得正文/世界概念.json':'/_原始数据/世界概念.json');await this.vault.write(rawPath,JSON.stringify(concept,null,2)+'\n');const cloud=`# 世界概念\n\n${issue?'> [!warning] 本次未取得正文\n> '+text(issue):this.markdown(concept.content,{[this.wid]:this.root+'/00--世界总览.md'},this.names)||'（云端正文为空）'}`;await this.upsert('concept',this.root+'/世界概念.md','世界概念','concept',id(concept.conceptId)||this.wid,cloud,rawPath,issue?undefined:await Be(JSON.stringify(concept.content??'')));});}
-    seedDefinitions(definitions,memberships){return this.run(async()=>{Object.assign(this.names,collectNames(definitions));const l=layout(this.root,definitions,memberships);for(const d of definitions){const did=id(d.definitionId);if(!did)continue;const path=l.paths[did];if(!path)continue;await this.migrate('definition:'+did,path,String(d.title));if(this.record.notes['definition:'+did])continue;const parents=(l.parents[did]??[]).map(p=>wiki(this.record.notes['definition:'+p]?.path??l.paths[p],definitions.find(x=>id(x.definitionId)===p)?.title));let cloud=`# ${text(d.title)}\n\n${this.cover(d)}\n\n作者：${text(author(d))}\n\n${d.description?this.markdown(d.description,l.paths,this.names)+'\n\n':''}${parents.length?'所属设定集：'+parents.join(' · ')+'\n\n':''}> [!info] 正在读取正文\n> 此页已先创建，正文取得后会立即补全。`;await this.upsert('definition:'+did,path,String(d.title),truth(d.definitionSet)?'set':'definition',did,cloud);this.progress('已建立设定目录：'+String(d.title),{phase:'增量写入',entity:did});}});}
-    definition(d,issue,definitions,memberships){return this.run(async()=>{Object.assign(this.names,collectNames(definitions,d));const did=id(d.definitionId);if(!did)return;const l=layout(this.root,definitions,memberships),links={...l.paths};for(const [key,n] of Object.entries(this.record.notes))if(key.startsWith('definition:'))links[key.slice(11)]=n.path;const path=l.paths[did];if(!path)return;const rawPath=this.root+(issue?'/_原始数据/未取得正文/':'/_原始数据/设定/')+did+'.json';await this.vault.write(rawPath,JSON.stringify(d,null,2)+'\n');const parents=(l.parents[did]??[]).map(p=>wiki(links[p],definitions.find(x=>id(x.definitionId)===p)?.title));let cloud=`# ${text(d.title)}\n\n${this.cover(d)}\n\n作者：${text(author(d))}\n\n${d.description?this.markdown(d.description,links,this.names)+'\n\n':''}${parents.length?'所属设定集：'+parents.join(' · ')+'\n\n':''}`;if(truth(d.definitionSet))cloud+='> 本页为设定集自身正文。下挂条目将在目录读取完成后补齐。\n\n';cloud+=issue?`> [!warning] 本次未取得正文\n> ${text(issue)}。这不表示云端内容为空；下次取得正文后会自动补全。\n`:this.markdown(d.content,links,this.names)||'（云端正文为空）';await this.upsert('definition:'+did,path,String(d.title),truth(d.definitionSet)?'set':'definition',did,cloud,rawPath,issue?undefined:await Be(JSON.stringify(d.content)));this.progress('已增量写入：'+String(d.title),{phase:'增量写入',entity:did});});}
-    async flush(){await this.tail;}
-  }
+},
+"covers":function(module,exports,__require,require){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CoverCache = void 0;
+const scheduler_1 = __require("scheduler");
+/** Shared preview cache; credentials never accompany media requests. */
+class CoverCache {
+    fetch;
+    create;
+    revoke;
+    limit;
+    queue = new scheduler_1.RequestScheduler(2, 100);
+    pending = new Map();
+    ready = new Map();
+    disposed = false;
+    constructor(fetch, create, revoke, limit = 20 * 1024 * 1024) {
+        this.fetch = fetch;
+        this.create = create;
+        this.revoke = revoke;
+        this.limit = limit;
+    }
+    peek(url) { return this.ready.get(url)?.source; }
+    load(url) {
+        if (this.disposed)
+            return Promise.reject(Error('封面缓存已关闭。'));
+        const cached = this.peek(url);
+        if (cached)
+            return Promise.resolve(cached);
+        const current = this.pending.get(url);
+        if (current)
+            return current;
+        const request = this.queue.run(true, async () => {
+            const r = await this.fetch(url);
+            if (this.disposed)
+                throw Error('封面页面已关闭。');
+            if (r.status === 403)
+                throw Error('HTTP 403：封面媒体服务器拒绝访问。此错误不表示登录 Token 失效。');
+            if (r.status < 200 || r.status >= 300)
+                throw Error('封面请求失败：HTTP ' + r.status);
+            const mime = r.contentType.split(';')[0].trim().toLowerCase();
+            if (!/^(image\/(png|jpe?g|gif|webp|avif|bmp)|video\/(mp4|webm|quicktime))$/.test(mime))
+                throw Error('封面响应不是支持的图片或视频（' + (mime || '未知类型') + '），未将错误页当作封面。');
+            if (!r.bytes.byteLength || r.bytes.byteLength > this.limit)
+                throw Error('封面预览为空或超过 20 MB；较大视频请同步后从本地查看。');
+            while (this.ready.size && (this.ready.size >= 24 || [...this.ready.values()].reduce((n, x) => n + x.bytes, 0) + r.bytes.byteLength > 64 * 1024 * 1024)) {
+                const key = this.ready.keys().next().value;
+                this.revoke(this.ready.get(key).source);
+                this.ready.delete(key);
+            }
+            const source = this.create(r.bytes, mime);
+            this.ready.set(url, { source, bytes: r.bytes.byteLength });
+            return source;
+        });
+        this.pending.set(url, request);
+        void request.then(() => this.pending.delete(url), () => this.pending.delete(url));
+        return request;
+    }
+    dispose() { this.disposed = true; this.queue.stop(Error('封面缓存已关闭。')); for (const r of this.ready.values())
+        this.revoke(r.source); this.ready.clear(); }
+}
+exports.CoverCache = CoverCache;
 
+},
+"hierarchy":function(module,exports,__require,require){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.layoutDefinitions = layoutDefinitions;
+const types_1 = __require("types");
+const utils_1 = __require("utils");
+/** Build Obsidian paths from human-readable titles only. Numeric Matrees IDs stay in metadata/raw data. */
+function layoutDefinitions(root, definitions, memberships) {
+    const by = new Map(definitions.map(d => [(0, types_1.id)(d.definitionId), d]));
+    const sets = new Set(definitions.filter(d => (0, types_1.truth)(d.definitionSet)).map(d => (0, types_1.id)(d.definitionId)));
+    const out = { paths: {}, folders: {}, parents: {}, links: [], warnings: [] };
+    const visiting = new Set();
+    const usedFolders = new Map(), usedFiles = new Map();
+    function unique(parent, title, folder) {
+        const base = (0, utils_1.safePart)(title, 48), bucket = (folder ? usedFolders : usedFiles);
+        let rows = bucket.get(parent);
+        if (!rows)
+            bucket.set(parent, rows = new Map());
+        const n = (rows.get(base) ?? 0) + 1;
+        rows.set(base, n);
+        return n === 1 ? base : `${base} (${n})`;
+    }
+    function folder(key, depth = 0) {
+        if (out.folders[key])
+            return out.folders[key];
+        const d = by.get(key);
+        let parent = (0, types_1.id)(d.fatherId ?? d.father ?? d.fatherSet);
+        if (!parent || parent === '0')
+            parent = (memberships[key] ?? []).find(p => p !== key && sets.has(p)) ?? '';
+        if (visiting.has(key) || depth > 48) {
+            out.warnings.push('设定集层级成环或过深：' + String(d.title));
+            const base = root + '/设定/_层级异常';
+            const result = base + '/' + unique(base, d.title, true);
+            out.folders[key] = result;
+            return result;
+        }
+        visiting.add(key);
+        const prefix = parent && sets.has(parent) && parent !== key ? folder(parent, depth + 1) : root + '/设定';
+        if (parent && parent !== '0' && !sets.has(parent))
+            out.warnings.push('父设定集不可读取：' + String(d.title) + ' → ' + String(by.get(parent)?.title ?? '未知设定集'));
+        const result = prefix + '/' + unique(prefix, d.title, true);
+        out.folders[key] = result;
+        out.parents[key] = parent && sets.has(parent) ? [parent] : [];
+        visiting.delete(key);
+        return result;
+    }
+    for (const key of [...sets].sort()) {
+        const d = by.get(key);
+        out.paths[key] = folder(key) + '/00--' + (0, utils_1.safePart)(d.title, 48) + '.md';
+    }
+    for (const d of definitions.filter(d => !(0, types_1.truth)(d.definitionSet))) {
+        const key = (0, types_1.id)(d.definitionId);
+        const parents = [...new Set([...(0, types_1.ids)(d.belongIds ?? d.belongSets ?? d.belong), ...(memberships[key] ?? [])])].filter(p => sets.has(p)).sort();
+        out.parents[key] = parents;
+        const primary = parents[0], dir = primary ? folder(primary) : root + '/设定/未归档', name = unique(dir, d.title, false);
+        out.paths[key] = dir + '/' + name + '.md';
+        for (const p of parents.slice(1)) {
+            const aliasDir = folder(p), alias = unique(aliasDir, String(d.title) + '--关联', false);
+            out.links.push({ from: aliasDir + '/' + alias + '.md', target: out.paths[key], title: String(d.title ?? '未命名') });
+        }
+    }
+    return out;
+}
 
-  const makeSmartVault=base=>({
-    exists:p=>base.exists(p),read:p=>base.read(p),binary:(p,b)=>base.binary(p,b),move:base.move?(a,b)=>base.move(a,b):undefined,
-    write:async(p,s)=>{if(base.exists(p)){try{if(await base.read(p)===s)return;}catch{}}await base.write(p,s);},
-    process:async(p,fn)=>{const old=await base.read(p),next=fn(old);if(next===old)return;await base.process(p,()=>next);}
-  });
+},
+"main":function(module,exports,__require,require){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const covers_1 = __require("covers");
+const obsidian_1 = require("obsidian");
+const network_1 = __require("network");
+const api_1 = __require("api");
+const types_1 = __require("types");
+const utils_1 = __require("utils");
+const collector_1 = __require("collector");
+const sync_1 = __require("sync");
+const regions_1 = __require("regions");
+const content_1 = __require("content");
+const VIEW = 'matrees-world-library', PROGRESS_VIEW = 'matrees-world-library-progress';
+class MatreesPlugin extends obsidian_1.Plugin {
+    settings = { ...types_1.DEFAULT_SETTINGS };
+    index = { version: 1, accounts: {} };
+    mode = 'user';
+    api = null;
+    busy = false;
+    syncProgress = { status: 'idle', worldId: '', message: '尚未开始同步。', phase: '等待同步', notes: 0, conflicts: 0, warnings: 0, log: [] };
+    covers;
+    errors = [];
+    errorsDirty = false;
+    errorsRevision = 0;
+    flushingErrors = null;
+    recorded = new WeakSet();
+    apiTransport;
+    sessionVersion = 0;
+    credentials = {};
+    connecting = null;
+    connectingApi = null;
+    configUnreadable = false;
+    saveChain = Promise.resolve();
+    status = '请先在设置中填写 Token。';
+    async onload() {
+        let data;
+        try {
+            data = await this.loadData();
+        }
+        catch {
+            this.configUnreadable = true;
+            this.status = '配置文件无法读取；请先备份并检查插件 data.json，已禁止覆盖保存。';
+        }
+        this.settings = { ...types_1.DEFAULT_SETTINGS, ...data?.settings };
+        this.settings.readConcurrency = (0, utils_1.concurrency)(this.settings.readConcurrency);
+        this.settings.requestIntervalMs = Math.max(0, Math.min(2000, Number(this.settings.requestIntervalMs) || 0));
+        this.errors = Array.isArray(data?.errors) ? data.errors.filter((e) => typeof e?.message === 'string' && typeof e?.category === 'string') : [];
+        if (data?.index?.version === 1)
+            this.index = data.index;
+        const stored = data?.credentials?.version === 1 ? data.credentials.tokens : {};
+        for (const mode of ['user', 'admin']) {
+            if (Object.hasOwn(stored ?? {}, mode)) {
+                try {
+                    this.credentials[mode] = (0, network_1.normalizeToken)(String(stored[mode] ?? ''));
+                }
+                catch {
+                    this.status = '本地 Token 格式无效，请重新填写。';
+                }
+            }
+            else if (!this.configUnreadable) {
+                try {
+                    const legacy = await this.app.secretStorage?.getSecret(this.secretName(mode));
+                    if (legacy)
+                        await this.writeCredential(mode, (0, network_1.normalizeToken)(legacy));
+                }
+                catch {
+                    this.status = '旧密钥读取或迁移失败，请重新填写并保存 Token。';
+                }
+            }
+        }
+        if (this.token(this.mode))
+            this.status = '已从本地读取 Token，请连接验证。';
+        this.registerMarkdownPostProcessor(el => { for (const e of el.querySelectorAll('[data-matrees-src]')) {
+            const path = e.getAttribute('data-matrees-src') ?? '';
+            if (path.includes('..'))
+                continue;
+            const f = this.app.vault.getAbstractFileByPath(path);
+            if (f instanceof obsidian_1.TFile)
+                e.setAttribute('src', this.app.vault.getResourcePath(f));
+        } });
+        this.registerView(VIEW, leaf => new WorldLibrary(leaf, this));
+        this.registerView(PROGRESS_VIEW, leaf => new SyncProgressView(leaf, this));
+        this.addRibbonIcon('library', 'Matrees World Library', () => void this.openLibrary());
+        this.addSettingTab(new MatreesSettings(this.app, this));
+        this.addCommand({ id: 'open-world-library', name: '打开世界观卡片库', callback: () => void this.openLibrary() });
+        this.addCommand({ id: 'open-sync-progress', name: '查看同步进度', callback: () => void this.openProgress() });
+        this.addCommand({ id: 'refresh-world-library', name: '刷新当前入口的世界观列表', callback: () => void this.openLibrary(true) });
+        this.addCommand({ id: 'sync-current-world', name: '同步当前页面所属世界观', callback: () => void this.guard(async () => { const r = this.currentNote(); if (!r)
+                throw Error('请先打开一个由本插件同步的页面。'); await this.syncWorld(r.wid); }) });
+        this.addCommand({ id: 'upload-local-as-proposal', name: '预览本地修改区并创建追加提案', callback: () => void this.guard(() => this.previewUpload()) });
+    }
+    onunload() { this.resetSession(); this.covers?.dispose(); }
+    enqueueSave(fn) { const run = this.saveChain.catch(() => { }).then(async () => { if (this.configUnreadable)
+        throw Error('配置文件读取失败，禁止覆盖 data.json。请先备份并修复文件。'); await fn(); }); this.saveChain = run; return run; }
+    state(tokens = this.credentials) { return { settings: this.settings, index: this.index, errors: this.errors, credentials: { version: 1, tokens } }; }
+    async persist() { await this.enqueueSave(() => this.saveData(this.state())); }
+    async writeCredential(mode, token, stillCurrent = () => true) {
+        await this.enqueueSave(async () => {
+            if (!stillCurrent())
+                return;
+            const tokens = { ...this.credentials, [mode]: token };
+            try {
+                await this.saveData(this.state(tokens));
+                const disk = await this.loadData();
+                if (disk?.credentials?.version !== 1 || disk.credentials.tokens?.[mode] !== token)
+                    throw Error('readback');
+            }
+            catch {
+                throw Error('Token 未能完成保存校验。请检查仓库写入权限、磁盘空间和 data.json；未报告保存成功。');
+            }
+            try {
+                const secrets = this.app.secretStorage;
+                if (secrets?.setSecret)
+                    await secrets.setSecret(this.secretName(mode), token);
+            }
+            catch { }
+            this.credentials = tokens;
+        });
+    }
+    secretName(mode) { return mode === 'admin' ? this.settings.adminSecret : this.settings.userSecret; }
+    token(mode) { return this.credentials[mode] ?? ''; }
+    tokenStatus(mode) { return this.token(mode) ? '已保存到本地 · 重启后可读取' : '未保存 Token'; }
+    resetSession() { this.sessionVersion++; this.api?.close(); this.connectingApi?.close(); this.api = null; this.connecting = null; this.connectingApi = null; }
+    invalidateViews() { for (const l of this.app.workspace.getLeavesOfType(VIEW)) {
+        if (l.view instanceof WorldLibrary)
+            l.view.invalidate();
+    } }
+    async setToken(mode, token) {
+        if (this.busy)
+            throw Error('同步期间不能切换账号。');
+        const t = (0, network_1.normalizeToken)(token);
+        if (!t)
+            throw Error('Token 不能为空；如需退出，请使用“清除 Token”。');
+        await this.writeCredential(mode, t);
+        this.resetSession();
+        this.status = 'Token 已保存并回读校验成功，请连接验证。';
+        this.invalidateViews();
+    }
+    async clearToken(mode) { if (this.busy)
+        throw Error('同步期间不能清除账号。'); await this.writeCredential(mode, ''); this.resetSession(); this.status = '当前入口的本地 Token 已清除。'; this.invalidateViews(); }
+    async setBase(value) { if (this.busy)
+        throw Error('操作期间不能修改 API 地址。'); const base = (0, utils_1.baseUrl)(value); if (base === this.settings.baseUrl)
+        return; this.settings.baseUrl = base; this.resetSession(); this.apiTransport = undefined; await this.persist(); this.status = 'API 地址已保存，请重新验证连接。'; this.invalidateViews(); }
+    async setNetwork(mode) { if (this.busy)
+        throw Error('操作期间不能切换请求通道。'); if (!['auto', 'native', 'direct'].includes(mode))
+        throw Error('无效请求通道。'); this.settings.networkMode = mode; this.resetSession(); this.apiTransport = undefined; await this.persist(); this.invalidateViews(); }
+    makeTransport() { return this.apiTransport ??= (0, network_1.selectTransport)(async (options) => { const r = await (0, obsidian_1.requestUrl)(options); return { status: r.status, text: r.text, headers: r.headers }; }, obsidian_1.Platform?.isDesktopApp ? network_1.desktopRead : undefined, this.settings.networkMode); }
+    async setRootFolder(value) { if (this.busy)
+        throw Error('请等待同步完成再修改目录。'); this.settings.rootFolder = (0, utils_1.safeRoot)(value); await this.persist(); new obsidian_1.Notice('保存目录已更新；已同步世界继续使用原路径。'); }
+    async setReadOptions(count, interval) {
+        if (this.busy)
+            throw Error('请等待当前同步完成再修改读取配置。');
+        if (!Number.isInteger(count) || count < 1 || count > 8 || !Number.isInteger(interval) || interval < 0 || interval > 2000)
+            throw Error('并发数应为 1–8，启动间隔应为 0–2000 毫秒。');
+        this.settings.readConcurrency = count;
+        this.settings.requestIntervalMs = interval;
+        this.resetSession();
+        await this.persist();
+        this.invalidateViews();
+    }
+    async diagnose() {
+        if (this.busy)
+            throw Error('请等待当前同步或上传完成后再检测连接。');
+        this.busy = true;
+        const el = new obsidian_1.Modal(this.app);
+        el.titleEl.setText('Matrees 连接检测');
+        el.contentEl.createEl('p', { text: '插件版本：' + this.manifest.version + ' · 请求通道：' + this.settings.networkMode });
+        el.contentEl.createEl('p', { text: this.tokenStatus(this.mode) });
+        el.open();
+        try {
+            const base = (0, utils_1.baseUrl)(this.settings.baseUrl);
+            el.contentEl.createEl('p', { text: 'API 地址：' + base });
+            if (this.token(this.mode)) {
+                this.resetSession();
+                const client = await this.connect();
+                el.contentEl.createEl('p', { text: 'Token 登录验证成功：' + String(client.user?.nickname ?? client.user?.userId) });
+                const list = await client.worlds();
+                el.contentEl.createEl('p', { text: '当前入口世界列表读取成功：' + list.total + ' 个。' });
+            }
+            else {
+                const r = await this.makeTransport()(base + '/mt/user/getUserInfo', 'GET', { Accept: 'application/json' });
+                el.contentEl.createEl('p', { text: '无凭证请求：HTTP ' + r.status + '。请先填写并保存当前入口 Token。' });
+            }
+        }
+        catch (error) {
+            el.contentEl.createEl('p', { text: (0, network_1.errorDetail)(error, [this.token(this.mode)]) });
+            this.reportError(error);
+        }
+        finally {
+            this.busy = false;
+        }
+    }
+    async connect() {
+        if (this.api && !this.api.invalid && !this.api.isClosed)
+            return this.api;
+        if (this.connecting)
+            return this.connecting;
+        const mode = this.mode, epoch = this.sessionVersion, base = this.settings.baseUrl;
+        let expectedToken = this.token(mode);
+        const api = new api_1.MatreesApi(base, this.token(mode), mode, this.makeTransport(), async (token) => {
+            if (epoch !== this.sessionVersion || base !== this.settings.baseUrl)
+                return;
+            await this.writeCredential(mode, (0, network_1.normalizeToken)(token), () => epoch === this.sessionVersion && base === this.settings.baseUrl && this.token(mode) === expectedToken);
+            expectedToken = (0, network_1.normalizeToken)(token);
+        }, { readConcurrency: this.settings.readConcurrency, requestIntervalMs: this.settings.requestIntervalMs });
+        api.onError = e => this.recordException(e);
+        this.connectingApi = api;
+        const run = (async () => { await api.login(); if (mode !== this.mode || epoch !== this.sessionVersion || base !== this.settings.baseUrl) {
+            api.close();
+            throw Error('账号或连接配置已变化，请重新连接。');
+        } this.api = api; this.status = '登录验证成功：' + String(api.user?.nickname ?? api.user?.username ?? '当前用户'); return api; })();
+        this.connecting = run;
+        try {
+            return await run;
+        }
+        finally {
+            if (this.connecting === run) {
+                this.connecting = null;
+                this.connectingApi = null;
+            }
+        }
+    }
+    async changeMode(mode) { if (this.busy)
+        throw Error('同步期间不能切换入口。'); if (mode === this.mode)
+        return; this.mode = mode; this.resetSession(); this.status = mode === 'admin' ? '管理员入口：验证账号后读取服务端允许的世界观。' : '普通入口：显示自己拥有和参与的世界观。'; this.invalidateViews(); }
+    accountKey() { if (!this.api?.user)
+        throw Error('尚未连接。'); return this.mode + '-' + (0, types_1.id)(this.api.user.userId); }
+    refreshViews() { for (const l of this.app.workspace.getLeavesOfType(VIEW)) {
+        const v = l.view;
+        if (v instanceof WorldLibrary)
+            v.statusEl?.setText(this.status);
+    } }
+    progress(s, detail) {
+        this.status = (0, utils_1.redact)(s);
+        if (detail?.issue)
+            this.recordIssue(s, detail.issue.category, detail.issue.entityId);
+        this.refreshViews();
+        if (this.syncProgress.status === 'running') {
+            const state = this.syncProgress;
+            state.message = this.status;
+            if (detail) {
+                state.phase = detail.phase;
+                state.completed = detail.completed;
+                state.total = detail.total;
+                if (detail.phase === '保存页面' && detail.completed != null)
+                    state.notes = detail.completed;
+            }
+            state.log.push({ at: new Date().toISOString(), message: this.status });
+            if (state.log.length > 200)
+                state.log.shift();
+            this.refreshProgress();
+        }
+    }
+    refreshProgress() { for (const leaf of this.app.workspace.getLeavesOfType(PROGRESS_VIEW))
+        if (leaf.view instanceof SyncProgressView)
+            leaf.view.render(); }
+    async openProgress() { let leaf = this.app.workspace.getLeavesOfType(PROGRESS_VIEW)[0]; if (!leaf) {
+        leaf = this.app.workspace.getLeaf('tab');
+        await leaf.setViewState({ type: PROGRESS_VIEW, active: true });
+    } await this.app.workspace.revealLeaf(leaf); this.refreshProgress(); }
+    async openNote(path) { const f = this.app.vault.getAbstractFileByPath(path); if (f instanceof obsidian_1.TFile)
+        await this.app.workspace.getLeaf('tab').openFile(f);
+    else
+        new obsidian_1.Notice('未找到页面：' + path); }
+    recordIssue(message, category = '同步', entityId, diagnostic) {
+        const clean = (0, network_1.errorDetail)(message, [this.token('user'), this.token('admin')]);
+        const worldId = String(diagnostic?.params?.worldId ?? (this.busy ? this.syncProgress.worldId : '')) || undefined;
+        const runId = this.busy ? this.syncProgress.startedAt : undefined;
+        if (this.errors.some(e => e.message === clean && e.category === category && e.entityId === entityId && e.worldId === worldId && e.runId === runId))
+            return;
+        this.errors.push({ at: new Date().toISOString(), category, message: clean, entityId, worldId, runId, diagnostic });
+        this.errorsDirty = true;
+        this.errorsRevision++;
+    }
+    recordException(e) {
+        if (e && typeof e === 'object') {
+            if (this.recorded.has(e))
+                return;
+            this.recorded.add(e);
+        }
+        const api = e instanceof api_1.ApiError;
+        this.recordIssue((0, network_1.errorDetail)(e, [this.token('user'), this.token('admin')]), api ? '接口请求' : '操作/文件', undefined, api ? e.diagnostic : undefined);
+    }
+    async flushErrors() {
+        if (this.flushingErrors)
+            return this.flushingErrors;
+        const run = (async () => { while (this.errorsDirty) {
+            const revision = this.errorsRevision;
+            try {
+                await this.persist();
+                if (revision === this.errorsRevision)
+                    this.errorsDirty = false;
+            }
+            catch {
+                new obsidian_1.Notice('错误记录未能写入配置文件，请先复制错误详情。', 7000);
+                break;
+            }
+        } })();
+        this.flushingErrors = run;
+        try {
+            await run;
+        }
+        finally {
+            if (this.flushingErrors === run)
+                this.flushingErrors = null;
+        }
+    }
+    reportError(e) { this.recordException(e); const m = (0, network_1.errorDetail)(e, [this.token('user'), this.token('admin')]); this.progress(m); new obsidian_1.Notice(m, 9000); this.showLastError(); void this.flushErrors(); }
+    showLastError() {
+        const modal = new obsidian_1.Modal(this.app);
+        modal.titleEl.setText('Matrees 全部错误详情');
+        const records = structuredClone(this.errors);
+        modal.contentEl.createEl('p', { text: `共 ${records.length} 条记录。包含接口、正文缺失、封面下载、格式转换和文件保存问题；记录随配置保留。下方文本包含全部记录。` });
+        const list = modal.contentEl.createDiv({ cls: 'matrees-error-list' });
+        for (const entry of records.slice().reverse()) {
+            const row = list.createDiv({ cls: 'matrees-error-row' });
+            row.createEl('strong', { text: new Date(entry.at).toLocaleString() + ' · ' + entry.category });
+            row.createEl('p', { text: entry.message });
+            if (entry.worldId || entry.entityId)
+                row.createEl('small', { text: '世界：' + (entry.worldId ?? '—') + ' · 条目：' + (entry.entityId ?? '—') });
+        }
+        const text = JSON.stringify({ plugin: 'Matrees World Library', version: this.manifest.version, mode: this.mode, networkMode: this.settings.networkMode, readConcurrency: this.settings.readConcurrency, requestIntervalMs: this.settings.requestIntervalMs, tokenSaved: !!this.token(this.mode), errors: records }, null, 2);
+        const box = modal.contentEl.createEl('textarea', { attr: { readonly: '', rows: '12', 'aria-label': '全部错误记录' } });
+        box.value = text;
+        box.style.width = '100%';
+        const copy = modal.contentEl.createEl('button', { text: '复制全部错误' });
+        copy.onclick = () => { void (async () => { try {
+            await navigator.clipboard.writeText(text);
+            new obsidian_1.Notice('已复制全部错误。');
+        }
+        catch {
+            box.focus();
+            box.select();
+            new obsidian_1.Notice('请复制已选中的文本。');
+        } })(); };
+        const clear = modal.contentEl.createEl('button', { text: '清空已查看的记录' });
+        clear.onclick = () => { const viewed = new Set(records.map(e => JSON.stringify(e))); this.errors = this.errors.filter(e => !viewed.has(JSON.stringify(e))); this.errorsDirty = true; this.errorsRevision++; void this.flushErrors(); modal.close(); };
+        modal.open();
+    }
+    async revealLocal(path) {
+        const file = this.app.vault.getAbstractFileByPath(path);
+        if (!file) {
+            new obsidian_1.Notice('本地路径暂不可见：' + path);
+            return;
+        }
+        try {
+            let leaf = this.app.workspace.getLeavesOfType('file-explorer')[0];
+            if (!leaf) {
+                leaf = this.app.workspace.getLeftLeaf(false);
+                if (leaf)
+                    await leaf.setViewState({ type: 'file-explorer', active: true });
+            }
+            if (leaf) {
+                await this.app.workspace.revealLeaf(leaf);
+                const explorer = leaf.view;
+                if (typeof explorer.revealInFolder === 'function')
+                    await explorer.revealInFolder(file);
+            }
+        }
+        catch {
+            new obsidian_1.Notice('文件已保存；请启用核心插件“文件列表”，并查找：' + path, 7000);
+        }
+    }
+    async diagnoseWorld(wid) {
+        if (this.busy)
+            throw Error('请等待当前操作完成后再检测。');
+        this.busy = true;
+        const modal = new obsidian_1.Modal(this.app);
+        modal.titleEl.setText('检测世界观读取');
+        modal.contentEl.createEl('p', { text: '插件版本：' + this.manifest.version + '。检测世界详情、概念、根目录及设定列表第一页；不保存或上传正文。' });
+        modal.open();
+        try {
+            const api = await this.connect();
+            await api.assertWorld(wid);
+            modal.contentEl.createEl('p', { text: '世界归属/参与关系与详情：成功' });
+            for (const [label, path, params] of [['世界概念', '/mt/concept/getInfo', {}], ['设定集根目录', '/mt/definition/listRootTree', {}], ['设定列表第一页', '/mt/definition/listDefinitionAll', { page: 1, size: 100 }]]) {
+                await api.read(path, params, wid);
+                modal.contentEl.createEl('p', { text: label + '：成功' });
+            }
+            modal.contentEl.createEl('p', { text: '基础读取检测完成。子设定集的读取权限仍以实际同步结果为准。' });
+        }
+        catch (e) {
+            modal.contentEl.createEl('p', { text: (0, utils_1.redact)(e instanceof Error ? e.message : e) });
+            throw e;
+        }
+        finally {
+            this.busy = false;
+        }
+    }
+    async guard(fn) { try {
+        await fn();
+    }
+    catch (e) {
+        this.reportError(e);
+    } }
+    async openLibrary(refresh = false) { let leaf = this.app.workspace.getLeavesOfType(VIEW)[0]; if (!leaf) {
+        leaf = this.app.workspace.getLeaf('tab');
+        await leaf.setViewState({ type: VIEW, active: true });
+    } await this.app.workspace.revealLeaf(leaf); if (refresh && leaf.view instanceof WorldLibrary)
+        await leaf.view.load(); }
+    vaultPort() {
+        const v = this.app.vault;
+        const ensure = async (path) => { const parts = (0, obsidian_1.normalizePath)(path).split('/'); parts.pop(); let p = ''; for (const part of parts) {
+            p = p ? p + '/' + part : part;
+            const a = v.getAbstractFileByPath(p);
+            if (a && !(a instanceof obsidian_1.TFolder))
+                throw Error('目录位置已被文件占用：' + p);
+            if (!a)
+                try {
+                    await v.createFolder(p);
+                }
+                catch (e) {
+                    if (!(v.getAbstractFileByPath(p) instanceof obsidian_1.TFolder))
+                        throw e;
+                }
+        } };
+        return { exists: p => !!v.getAbstractFileByPath((0, obsidian_1.normalizePath)(p)), read: async (p) => { const f = v.getAbstractFileByPath((0, obsidian_1.normalizePath)(p)); if (!(f instanceof obsidian_1.TFile))
+                throw Error('找不到文件：' + p); return v.read(f); },
+            write: async (p, text) => { p = (0, obsidian_1.normalizePath)(p); await ensure(p); const f = v.getAbstractFileByPath(p); if (f instanceof obsidian_1.TFile)
+                await v.process(f, () => text);
+            else if (f)
+                throw Error('文件位置已被目录占用：' + p);
+            else
+                await v.create(p, text); },
+            process: async (p, fn) => { const f = v.getAbstractFileByPath((0, obsidian_1.normalizePath)(p)); if (!(f instanceof obsidian_1.TFile))
+                throw Error('文件已移动：' + p); await v.process(f, fn); },
+            binary: async (p, b) => { await ensure(p); if (!v.getAbstractFileByPath(p))
+                await v.createBinary(p, b); },
+            move: async (from, to) => { from = (0, obsidian_1.normalizePath)(from); to = (0, obsidian_1.normalizePath)(to); await ensure(to); const f = v.getAbstractFileByPath(from); if (!(f instanceof obsidian_1.TFile))
+                throw Error('找不到待迁移文件：' + from); if (v.getAbstractFileByPath(to))
+                throw Error('目标文件已存在：' + to); await v.rename(f, to); }
+        };
+    }
+    async syncWorld(wid) {
+        if (this.busy)
+            throw Error('已有同步或上传正在进行。');
+        this.busy = true;
+        this.syncProgress = { status: 'running', worldId: wid, startedAt: new Date().toISOString(), message: '正在连接 Matrees…', phase: '连接', notes: 0, conflicts: 0, warnings: 0, log: [] };
+        let runPath = '', root = '', incremental;
+        const vault = this.vaultPort();
+        try {
+            await this.openProgress();
+            const api = await this.connect();
+            const key = this.accountKey();
+            const records = this.index.accounts[key] ??= {};
+            const snapshot = await (0, collector_1.collect)(api, wid, this.settings.extras, (s, d) => this.progress(s, d), { readConcurrency: this.settings.readConcurrency, onWorld: async (world) => {
+                    root = records[wid]?.root ?? (0, utils_1.safeRoot)(this.settings.rootFolder) + '/' + key + '/' + (0, utils_1.safePart)(world.title, 26) + '--' + (0, utils_1.safePart)(wid, 24);
+                    runPath = root + '/_同步报告/任务-' + this.syncProgress.startedAt.replace(/[:.]/g, '-') + '.md';
+                    await vault.write(runPath, `# 同步任务\n\n世界：${(0, utils_1.mdText)(world.title)}\n\n保存目录：${root}\n\n状态：正在增量读取并写入本地。\n\n目录和正文会随着云端返回持续出现在左侧文件列表。\n`);
+                    records[wid] ??= { root, notes: {}, assets: {} };
+                    incremental = new sync_1.IncrementalWriter(world, records[wid], root, this.settings, vault, (s, d) => this.progress(s, d), async (record) => { records[wid] = record; await this.persist(); });
+                    records[wid] = incremental.record;
+                    await this.persist();
+                    await incremental.seedWorld();
+                    Object.assign(this.syncProgress, { rootPath: root, overviewPath: root + '/00--世界总览.md', reportPath: runPath });
+                    this.progress('已创建同步目录并开始增量写入：' + root, { phase: '增量写入' });
+                    await this.revealLocal(root + '/00--世界总览.md');
+                }, onConcept: async (concept, issue) => { await incremental?.concept(concept, issue); }, onDefinitionIndex: async (definitions, memberships) => { await incremental?.seedDefinitions(definitions, memberships); }, onDefinition: async (definition, issue, definitions, memberships) => { await incremental?.definition(definition, issue, definitions, memberships); } });
+            await incremental?.flush();
+            const result = await (0, sync_1.saveSnapshot)(snapshot, records[wid], root, this.settings, vault, async (url, fileId) => this.fetchMedia(url, fileId), (s, d) => this.progress(s, d), async (record) => { records[wid] = record; await this.persist(); });
+            records[wid] = result.record;
+            for (const warning of result.warnings)
+                if (!this.errors.some(e => e.runId === this.syncProgress.startedAt && e.message === (0, network_1.errorDetail)(warning)))
+                    this.recordIssue(warning, '同步/格式');
+            await this.persist();
+            await this.flushErrors();
+            const msg = `已保存 ${result.notes} 页，${result.conflicts} 个冲突，${result.warnings.length} 项待处理。`;
+            this.progress(msg);
+            new obsidian_1.Notice(msg, 8000);
+            await vault.write(runPath, `# 同步任务\n\n状态：完成${result.warnings.length ? '（有待处理项）' : ''}\n\n${msg}\n\n${(0, utils_1.wiki)(result.reportPath, '查看本次报告')}\n\n${(0, utils_1.wiki)(root + '/00--世界总览.md', '打开世界总览')}\n`);
+            Object.assign(this.syncProgress, { status: 'complete', finishedAt: new Date().toISOString(), phase: result.warnings.length ? '同步完成（有待处理项）' : '同步完成', notes: result.notes, conflicts: result.conflicts, warnings: result.warnings.length, overviewPath: root + '/00--世界总览.md', reportPath: result.reportPath, completed: undefined, total: undefined });
+            this.refreshProgress();
+            await this.openNote(root + '/00--世界总览.md');
+            await this.revealLocal(root + '/00--世界总览.md');
+        }
+        catch (e) {
+            this.recordException(e);
+            this.progress((0, network_1.errorDetail)(e, [this.token(this.mode)]));
+            this.syncProgress.status = 'error';
+            this.syncProgress.finishedAt = new Date().toISOString();
+            this.refreshProgress();
+            if (runPath)
+                try {
+                    await vault.write(runPath, `# 同步任务\n\n状态：未完成\n\n${this.syncProgress.message}\n\n保存目录：${root}\n\n已保存的本地文件保持原样。请查看插件的“全部错误详情”后重新同步。\n`);
+                }
+                catch (writeError) {
+                    this.recordException(writeError);
+                }
+            await this.flushErrors();
+            throw e;
+        }
+        finally {
+            this.busy = false;
+        }
+    }
+    async fetchMedia(url, fileId, maxMB = this.settings.maxMediaMB) {
+        const origin = (0, utils_1.baseUrl)(this.settings.baseUrl), headers = { Accept: 'image/avif,image/webp,image/apng,image/*,video/*,*/*;q=0.8', Referer: origin + '/' };
+        let resolved = url;
+        const infer = () => { try {
+            const name = new URL(url).pathname.split('/').pop() ?? '', stem = name.replace(/\.[^.]+$/, '');
+            return /^[A-Za-z0-9_-]{12,}$/.test(stem) ? stem : '';
+        }
+        catch {
+            return '';
+        } };
+        const fid = fileId || infer();
+        if (fid && this.api && !this.api.isClosed)
+            try {
+                resolved = await this.api.fileUrl(fid);
+            }
+            catch { }
+        let length = 0;
+        try {
+            const h = await (0, network_1.withTimeout)((0, obsidian_1.requestUrl)({ url: resolved, method: 'HEAD', headers, throw: false }), 10000);
+            length = Number(Object.entries(h.headers).find(([k]) => k.toLowerCase() === 'content-length')?.[1] ?? 0);
+        }
+        catch { }
+        if (length > maxMB * 1024 * 1024)
+            throw Error('媒体超过单文件下载上限');
+        let r = await (0, network_1.withTimeout)((0, obsidian_1.requestUrl)({ url: resolved, method: 'GET', headers, throw: false }), 45000);
+        if ([401, 403].includes(r.status) && fid && this.api && !this.api.isClosed && resolved === url)
+            try {
+                resolved = await this.api.fileUrl(fid);
+                r = await (0, network_1.withTimeout)((0, obsidian_1.requestUrl)({ url: resolved, method: 'GET', headers, throw: false }), 45000);
+            }
+            catch { }
+        if ([401, 403].includes(r.status))
+            r = await (0, network_1.withTimeout)((0, obsidian_1.requestUrl)({ url: resolved, method: 'GET', throw: false }), 45000);
+        return { status: r.status, bytes: r.arrayBuffer, contentType: Object.entries(r.headers).find(([k]) => k.toLowerCase() === 'content-type')?.[1] ?? '' };
+    }
+    localCover(wid, url) {
+        if (this.api?.user) {
+            const world = this.index.accounts[this.accountKey()]?.[wid], path = world?.assets[url];
+            if (path) {
+                const f = this.app.vault.getAbstractFileByPath(path);
+                if (f instanceof obsidian_1.TFile)
+                    return this.app.vault.getResourcePath(f);
+            }
+        }
+        return this.covers?.peek(url);
+    }
+    async previewCover(url) { return (this.covers ??= new covers_1.CoverCache(u => this.fetchMedia(u, undefined, Math.min(20, this.settings.maxMediaMB)), (bytes, type) => URL.createObjectURL(new Blob([bytes], { type })), source => URL.revokeObjectURL(source))).load(url); }
+    currentNote() { const f = this.app.workspace.getActiveFile(); if (!f)
+        return null; for (const [account, worlds] of Object.entries(this.index.accounts))
+        for (const [wid, w] of Object.entries(worlds))
+            for (const [key, n] of Object.entries(w.notes))
+                if (n.path === f.path)
+                    return { file: f, account, wid, world: w, note: n, key }; return null; }
+    async previewUpload() {
+        const current = this.currentNote();
+        if (!current || !['set', 'definition'].includes(current.note.kind))
+            throw Error('请打开一个已同步的设定或设定集正文页。');
+        const api = await this.connect();
+        if (current.account !== this.accountKey())
+            throw Error('此页面属于另一个账号或入口，请切换到对应入口。');
+        const w = await api.assertWorld(current.wid);
+        if ((0, types_1.ownerId)(w) !== (0, types_1.id)(api.user?.userId))
+            throw Error('上传只允许用于当前账号拥有的世界观。');
+        const text = await this.app.vault.read(current.file), local = (0, regions_1.localPart)(text);
+        if (!local)
+            throw Error('本地修改区为空。');
+        const d = await api.read('/mt/definition/getInfo/' + current.note.entityId, {}, current.wid);
+        if (d.hasProposal)
+            throw Error('此设定已有云端提案。请先在 Matrees 处理该提案，以免覆盖正在编辑的内容。');
+        if (current.note.remoteHash !== await (0, utils_1.hash)(JSON.stringify(d.content)))
+            throw Error('云端正文在上次同步后已变化，请先同步并核对。');
+        const payload = { worldId: current.wid, definitionId: current.note.entityId, operateType: 'update', title: d.title, alias: d.alias ?? [], description: d.description ?? '', content: (0, content_1.appendLocal)(d.content, local), definitionSet: d.definitionSet, father: d.father ?? null, belong: d.belong ?? [], showInList: d.showInList, category: d.category, cover: d.cover ?? '', coverUrl: d.coverUrl, coverType: d.coverType };
+        new UploadPreview(this.app, this, local, payload, async () => {
+            if (this.busy)
+                throw Error('另一个操作正在进行。');
+            this.busy = true;
+            try {
+                if (this.api !== api || this.accountKey() !== current.account)
+                    throw Error('账号已切换，请重新预览。');
+                if (await this.app.vault.read(current.file) !== text)
+                    throw Error('本地文件已变化，请重新预览。');
+                const fresh = await api.read('/mt/definition/getInfo/' + current.note.entityId, {}, current.wid);
+                if (fresh.hasProposal || await (0, utils_1.hash)(JSON.stringify(fresh.content)) !== current.note.remoteHash)
+                    throw Error('云端已变化或已有提案，请重新核对。');
+                const result = await api.createDefinitionProposal(current.wid, payload);
+                const out = await this.writeReceipt(current.world, result, payload.definitionId);
+                new obsidian_1.Notice('提案请求已完成，结果已保存。请在 Matrees 提案中心查看；本地修改区保持原样。', 10000);
+                this.progress('提案结果：' + out);
+            }
+            finally {
+                this.busy = false;
+            }
+        }).open();
+    }
+    async writeReceipt(w, r, definitionId) { const path = w.root + '/_上传记录/' + new Date().toISOString().replace(/[:.]/g, '-') + '.json'; const body = { at: new Date().toISOString(), definitionId, result: r }; await this.vaultPort().write(path, JSON.stringify(body, null, 2)); return path; }
+}
+exports.default = MatreesPlugin;
+class WorldLibrary extends obsidian_1.ItemView {
+    plugin;
+    statusEl = null;
+    cards;
+    pager;
+    page = 1;
+    keyword = '';
+    seq = 0;
+    loading = false;
+    rows = [];
+    constructor(leaf, plugin) {
+        super(leaf);
+        this.plugin = plugin;
+    }
+    getViewType() { return VIEW; }
+    getDisplayText() { return 'Matrees World Library'; }
+    getIcon() { return 'library'; }
+    async onOpen() { this.render(); if (this.plugin.token(this.plugin.mode))
+        await this.load(); }
+    invalidate() { this.seq++; this.loading = false; this.page = 1; this.keyword = ''; this.render(); }
+    async onClose() { this.seq++; }
+    render() {
+        const el = this.contentEl;
+        el.empty();
+        el.addClass('matrees-library');
+        const head = el.createDiv({ cls: 'matrees-header' });
+        head.createDiv({ text: 'MATREES WORLD LIBRARY', cls: 'matrees-eyebrow' });
+        head.createEl('h2', { text: 'Matrees World Library' });
+        head.createDiv({ text: 'v' + (this.plugin.manifest?.version ?? '1.1.0') + ' · ' + this.plugin.tokenStatus(this.plugin.mode), cls: 'matrees-description' });
+        head.createEl('p', { text: '浏览封面、同步设定，在自己的笔记里继续创作。', cls: 'matrees-description' });
+        const tabs = head.createDiv({ cls: 'matrees-tabs' });
+        for (const [m, label] of [['user', '我的与参与的世界'], ['admin', '管理员入口']]) {
+            const b = tabs.createEl('button', { text: label, cls: this.plugin.mode === m ? 'is-active' : '' });
+            b.onclick = () => void this.plugin.guard(async () => { await this.plugin.changeMode(m); this.page = 1; this.keyword = ''; this.render(); await this.load(); });
+        }
+        if (this.plugin.mode === 'user')
+            head.createEl('p', { text: '包含我拥有、管理、审核、参与共创，以及已加入公会中审核通过的世界观。', cls: 'matrees-description' });
+        if (this.plugin.mode === 'admin')
+            head.createDiv({ text: '使用单独配置的管理员 Token。当前前端提供的是可访问世界列表；未公开内容仍由服务端决定是否开放。', cls: 'matrees-admin-note' });
+        const bar = el.createDiv({ cls: 'matrees-toolbar' });
+        const input = bar.createEl('input', { type: 'search', placeholder: '搜索世界观名称…' });
+        input.value = this.keyword;
+        input.setAttribute('aria-label', '世界观名称');
+        input.onkeydown = e => { if (e.key === 'Enter') {
+            this.keyword = input.value;
+            this.page = 1;
+            void this.load();
+        } };
+        const b = bar.createEl('button', { text: '搜索 / 刷新' });
+        b.onclick = () => { this.keyword = input.value; this.page = 1; void this.load(); };
+        const check = bar.createEl('button', { text: '检测连接' });
+        check.onclick = () => void this.plugin.guard(() => this.plugin.diagnose());
+        const errors = bar.createEl('button', { text: '全部错误详情' });
+        errors.onclick = () => this.plugin.showLastError();
+        const progress = bar.createEl('button', { text: '同步进度' });
+        progress.onclick = () => void this.plugin.openProgress();
+        const settings = bar.createEl('button', { text: '配置 Token' });
+        settings.onclick = () => new TokenModal(this.app, this.plugin, this.plugin.mode, () => this.load()).open();
+        this.statusEl = el.createDiv({ text: this.plugin.status, cls: 'matrees-status', attr: { role: 'status', 'aria-live': 'polite' } });
+        this.cards = el.createDiv({ cls: 'matrees-cards' });
+        this.pager = el.createDiv({ cls: 'matrees-pager' });
+        if (!this.plugin.token(this.plugin.mode))
+            this.cards.createDiv({ text: '填写当前入口的 Token 后，点击“搜索 / 刷新”。', cls: 'matrees-empty' });
+    }
+    async load() {
+        if (this.loading)
+            return;
+        if (this.plugin.busy) {
+            new obsidian_1.Notice('请等待当前同步或检测完成后再刷新列表。');
+            return;
+        }
+        this.loading = true;
+        const seq = ++this.seq;
+        this.cards.empty();
+        this.cards.createDiv({ text: '正在读取世界观…', cls: 'matrees-empty' });
+        this.pager.empty();
+        try {
+            const api = await this.plugin.connect();
+            const data = await api.worlds(this.page, this.keyword);
+            if (seq !== this.seq || api !== this.plugin.api)
+                return;
+            this.rows = data.rows;
+            this.cards.empty();
+            this.plugin.refreshViews();
+            if (!data.rows.length)
+                this.cards.createDiv({ text: '当前账号没有匹配且可读取的世界观。', cls: 'matrees-empty' });
+            for (const w of data.rows)
+                this.card(w);
+            const prev = this.pager.createEl('button', { text: '上一页' });
+            prev.disabled = this.page <= 1;
+            prev.onclick = () => { this.page--; void this.load(); };
+            this.pager.createSpan({ text: `第 ${this.page} / ${Math.max(1, data.pages)} 页 · ${data.total} 个世界观` });
+            const next = this.pager.createEl('button', { text: '下一页' });
+            next.disabled = this.page >= data.pages;
+            next.onclick = () => { this.page++; void this.load(); };
+        }
+        catch (e) {
+            if (seq !== this.seq)
+                return;
+            this.cards.empty();
+            this.cards.createDiv({ text: (0, utils_1.redact)(e instanceof Error ? e.message : e), cls: 'matrees-empty' });
+            this.plugin.reportError(e);
+        }
+        finally {
+            if (seq === this.seq)
+                this.loading = false;
+        }
+    }
+    card(w) {
+        const card = this.cards.createEl('article', { cls: 'matrees-card' }), media = card.createDiv({ cls: 'matrees-cover' }), u = (0, utils_1.coverSource)(w, this.plugin.settings.baseUrl), wid = (0, types_1.id)(w.worldId), epoch = this.seq, api = this.plugin.api;
+        const alive = () => epoch === this.seq && api === this.plugin.api;
+        const cached = u ? this.plugin.localCover(wid, u) : undefined;
+        const showFailure = (error) => {
+            if (!alive())
+                return;
+            const placeholder = media.querySelector('.matrees-cover-placeholder');
+            if (placeholder)
+                placeholder.setText('封面暂不可用');
+            media.querySelector('.matrees-cover-error')?.remove();
+            const detail = (0, network_1.errorDetail)(error, [this.plugin.token(this.plugin.mode)]);
+            const box = media.createDiv({ cls: 'matrees-cover-error' });
+            box.createEl('p', { text: detail });
+            const retry = box.createEl('button', { text: '重试封面' });
+            retry.onclick = () => void load();
+            this.plugin.recordIssue('世界 ' + String(w.title ?? wid) + ' 封面：' + detail + ' · ' + u, '封面预览', wid);
+            void this.plugin.flushErrors();
+        };
+        const show = (source) => { if (!alive())
+            return; media.empty(); if ((0, utils_1.video)(w)) {
+            const v = media.createEl('video', { attr: { src: source, width: '300', height: '444', preload: 'metadata', playsinline: '', controls: '', 'aria-label': String(w.title) + ' 视频封面' } });
+            v.muted = true;
+            v.loop = true;
+            v.onerror = () => showFailure(Error('视频封面播放失败；可重试通过应用读取，或同步后使用本地视频。'));
+            media.createSpan({ text: 'VIDEO', cls: 'matrees-media-badge' });
+        }
+        else {
+            const img = media.createEl('img', { attr: { src: source, width: '300', height: '444', alt: String(w.title) + ' 封面' } });
+            img.onerror = () => showFailure(Error('封面文件已读取，但当前设备无法解码此图片。'));
+        } };
+        const load = async () => { if (!alive())
+            return; const local = this.plugin.localCover(wid, u); if (local) {
+            show(local);
+            return;
+        } media.empty(); media.createDiv({ text: '正在读取封面…', cls: 'matrees-cover-placeholder' }); try {
+            show(await this.plugin.previewCover(u));
+        }
+        catch (error) {
+            showFailure(error);
+        } };
+        if (cached)
+            show(cached);
+        else if (u)
+            void load();
+        else
+            media.createDiv({ text: '暂无封面', cls: 'matrees-cover-placeholder' });
+        const body = card.createDiv({ cls: 'matrees-card-body' });
+        body.createEl('h3', { text: String(w.title ?? '未命名世界观') });
+        if (w.subTitle)
+            body.createDiv({ text: String(w.subTitle), cls: 'matrees-subtitle' });
+        body.createDiv({ text: (0, types_1.author)(w), cls: 'matrees-author' });
+        if (this.plugin.mode === 'user')
+            body.createDiv({ text: (0, types_1.worldRelation)(w, (0, types_1.id)(this.plugin.api?.user?.userId)), cls: 'matrees-world-relation' });
+        body.createEl('p', { text: (0, content_1.plainText)(w.description, this.plugin.settings.baseUrl) || '暂无简介', cls: 'matrees-card-description' });
+        if (w.matreesCoverWarning)
+            body.createDiv({ text: String(w.matreesCoverWarning), cls: 'matrees-cover-warning' });
+        const tags = body.createDiv({ cls: 'matrees-tags' });
+        for (const tag of (Array.isArray(w.tags) ? w.tags : []).slice(0, 5))
+            tags.createSpan({ text: String(tag.title ?? tag), cls: 'matrees-tag' });
+        const row = body.createDiv({ cls: 'matrees-card-actions' });
+        const preview = row.createEl('button', { text: '查看详情' });
+        preview.onclick = () => new WorldPreview(this.app, this.plugin, w).open();
+        const check = row.createEl('button', { text: '检测读取' });
+        check.onclick = () => void this.plugin.guard(() => this.plugin.diagnoseWorld((0, types_1.id)(w.worldId)));
+        const sync = row.createEl('button', { text: '同步到本地', cls: 'mod-cta' });
+        sync.onclick = () => void this.plugin.guard(() => this.plugin.syncWorld((0, types_1.id)(w.worldId)));
+    }
+}
+class SyncProgressView extends obsidian_1.ItemView {
+    plugin;
+    constructor(leaf, plugin) {
+        super(leaf);
+        this.plugin = plugin;
+    }
+    getViewType() { return PROGRESS_VIEW; }
+    getDisplayText() { return 'Matrees 同步进度'; }
+    getIcon() { return 'refresh-cw'; }
+    async onOpen() { this.render(); }
+    render() {
+        const e = this.contentEl, s = this.plugin.syncProgress;
+        e.empty();
+        e.addClass('matrees-progress-page');
+        e.createDiv({ text: 'MATREES WORLD LIBRARY', cls: 'matrees-eyebrow' });
+        e.createEl('h2', { text: '同步进度' });
+        e.createEl('p', { text: s.worldId ? '世界 ID：' + s.worldId : '从世界观卡片点击“同步到本地”即可开始。', cls: 'matrees-description' });
+        if (s.rootPath)
+            e.createEl('p', { text: '本地目录：' + s.rootPath, cls: 'matrees-local-path' });
+        const panel = e.createDiv({ cls: 'matrees-progress-panel' });
+        panel.createEl('h3', { text: s.phase });
+        panel.createDiv({ text: s.message, attr: { role: 'status', 'aria-live': 'polite' }, cls: 'matrees-progress-message' });
+        if (s.status === 'running') {
+            const meter = panel.createEl('progress', { attr: { 'aria-label': s.phase + '阶段进度' } });
+            if (s.total != null && s.total > 0) {
+                meter.max = s.total;
+                meter.value = s.completed ?? 0;
+                panel.createEl('p', { text: `本阶段 ${s.completed ?? 0} / ${s.total}（目录发现期间总数可能增加）` });
+            }
+            else
+                panel.createEl('p', { text: '正在处理，待目录读取完成后才能确定数量。' });
+        }
+        if (s.startedAt) {
+            const end = s.finishedAt ?? new Date().toISOString(), seconds = Math.max(0, Math.floor((Date.parse(end) - Date.parse(s.startedAt)) / 1000));
+            panel.createEl('p', { text: '开始：' + new Date(s.startedAt).toLocaleString() + ' · 已用时 ' + Math.floor(seconds / 60) + ' 分 ' + seconds % 60 + ' 秒' });
+        }
+        if (s.status === 'complete')
+            panel.createEl('p', { text: `保存 ${s.notes} 页 · 冲突 ${s.conflicts} · 待处理 ${s.warnings}` });
+        if (s.status === 'error')
+            panel.createEl('p', { text: '同步已停止。已保存页面的本地修改区保留；修复后可以重新同步。', cls: 'matrees-cover-warning' });
+        const actions = e.createDiv({ cls: 'matrees-toolbar' });
+        const library = actions.createEl('button', { text: '返回世界观卡片库' });
+        library.onclick = () => void this.plugin.openLibrary();
+        for (const [label, path] of [['打开世界总览', s.overviewPath], ['查看同步报告', s.reportPath]])
+            if (path) {
+                const button = actions.createEl('button', { text: label });
+                button.onclick = () => void this.plugin.openNote(path);
+            }
+        if (s.rootPath) {
+            const reveal = actions.createEl('button', { text: '在左侧定位目录' });
+            reveal.onclick = () => void this.plugin.revealLocal(s.rootPath);
+        }
+        if (this.plugin.errors.length) {
+            const details = actions.createEl('button', { text: '请求错误详情' });
+            details.onclick = () => this.plugin.showLastError();
+        }
+        e.createEl('h3', { text: '最近处理记录' });
+        const log = e.createEl('ol', { cls: 'matrees-progress-log' });
+        for (const row of s.log.slice().reverse())
+            log.createEl('li', { text: new Date(row.at).toLocaleTimeString() + ' · ' + row.message });
+    }
+}
+class TokenModal extends obsidian_1.Modal {
+    plugin;
+    mode;
+    done;
+    constructor(app, plugin, mode, done) {
+        super(app);
+        this.plugin = plugin;
+        this.mode = mode;
+        this.done = done;
+    }
+    onOpen() {
+        this.titleEl.setText(this.mode === 'admin' ? '管理员 Token' : '用户 Token');
+        this.contentEl.createEl('p', { text: 'Token 将以明文保存到本仓库的插件 data.json，重启后自动读取。请勿分享含 Token 的 data.json。调试包附有此文件，分发前请移除。' });
+        const status = this.contentEl.createEl('p', { text: this.plugin.tokenStatus(this.mode) });
+        let value = this.plugin.token(this.mode);
+        new obsidian_1.Setting(this.contentEl).setName('Token').addText(t => { t.inputEl.type = 'password'; t.inputEl.autocomplete = 'off'; t.setValue(value); t.setPlaceholder('粘贴 Token').onChange(v => value = v); });
+        new obsidian_1.Setting(this.contentEl).addButton(b => b.setButtonText('保存并验证登录').setCta().onClick(async () => {
+            b.setDisabled(true);
+            let saved = false;
+            try {
+                await this.plugin.setToken(this.mode, value);
+                saved = true;
+                status.setText('已保存并校验，正在验证登录…');
+                await this.plugin.changeMode(this.mode);
+                await this.plugin.connect();
+                status.setText('Token 已保存，登录验证成功。');
+                await this.done();
+                this.close();
+            }
+            catch (e) {
+                status.setText((saved ? 'Token 已保存；连接验证失败：' : '保存失败：') + (0, network_1.errorDetail)(e, [value, this.plugin.token(this.mode)]));
+                this.plugin.reportError(e);
+            }
+            finally {
+                b.setDisabled(false);
+            }
+        })).addButton(b => b.setButtonText('验证已保存的 Token').onClick(async () => { b.setDisabled(true); try {
+            await this.plugin.changeMode(this.mode);
+            this.plugin.resetSession();
+            await this.plugin.connect();
+            status.setText('已保存的 Token 登录验证成功。');
+            await this.done();
+            this.close();
+        }
+        catch (e) {
+            status.setText((0, network_1.errorDetail)(e, [this.plugin.token(this.mode)]));
+            this.plugin.reportError(e);
+        }
+        finally {
+            b.setDisabled(false);
+        } }));
+        new obsidian_1.Setting(this.contentEl).addButton(b => b.setButtonText('清除 Token').onClick(async () => { b.setDisabled(true); try {
+            await this.plugin.clearToken(this.mode);
+            status.setText('Token 已清除。');
+        }
+        catch (e) {
+            status.setText((0, network_1.errorDetail)(e));
+        }
+        finally {
+            b.setDisabled(false);
+        } }));
+    }
+    onClose() { this.contentEl.empty(); }
+}
+class WorldPreview extends obsidian_1.Modal {
+    plugin;
+    world;
+    constructor(app, plugin, world) {
+        super(app);
+        this.plugin = plugin;
+        this.world = world;
+    }
+    onOpen() { this.titleEl.setText(String(this.world.title)); const e = this.contentEl; e.createEl('p', { text: '作者：' + (0, types_1.author)(this.world) }); e.createEl('p', { text: (0, content_1.plainText)(this.world.description, this.plugin.settings.baseUrl) }); const stats = this.world.statistics ?? {}; e.createEl('p', { text: `设定：${stats.definitionCount ?? '—'} · 事件：${stats.eventCount ?? '—'} · 总字数：${stats.totalWordCount ?? '—'}` }); e.createEl('p', { text: '同步进度页完成后可打开世界总览，可继续查看世界概念、设定集正文、下挂设定与插画。' }); new obsidian_1.Setting(e).addButton(b => b.setButtonText('同步全部资料').setCta().onClick(() => { this.close(); void this.plugin.guard(() => this.plugin.syncWorld((0, types_1.id)(this.world.worldId))); })); }
+    onClose() { this.contentEl.empty(); }
+}
+class UploadPreview extends obsidian_1.Modal {
+    plugin;
+    local;
+    payload;
+    submit;
+    component = new obsidian_1.Component();
+    constructor(app, plugin, local, payload, submit) {
+        super(app);
+        this.plugin = plugin;
+        this.local = local;
+        this.payload = payload;
+        this.submit = submit;
+    }
+    onOpen() {
+        this.titleEl.setText('预览追加到云端的内容');
+        this.modalEl.addClass('matrees-upload-modal');
+        const e = this.contentEl;
+        e.createEl('p', { text: `目标：${this.payload.title} · 世界 ${this.payload.worldId}` });
+        e.createEl('p', { text: '将本地修改区追加到已同步的云端正文，创建一份更新提案。此命令不会点击提交审核，也不会清空本地修改区。' });
+        const preview = e.createDiv({ cls: 'matrees-upload-preview' });
+        this.component.load();
+        void obsidian_1.MarkdownRenderer.render(this.app, this.local, preview, '', this.component);
+        const details = e.createEl('details');
+        details.createEl('summary', { text: '查看实际请求 JSON' });
+        details.createEl('pre').createEl('code', { text: JSON.stringify(this.payload, null, 2) });
+        new obsidian_1.Setting(e).addButton(b => b.setButtonText('取消').onClick(() => this.close())).addButton(b => b.setButtonText('创建云端提案').setCta().onClick(async () => { b.setDisabled(true); try {
+            await this.submit();
+            this.close();
+        }
+        catch (err) {
+            this.plugin.reportError(err);
+            this.close();
+        } }));
+    }
+    onClose() { this.component.unload(); this.contentEl.empty(); }
+}
+class MatreesSettings extends obsidian_1.PluginSettingTab {
+    plugin;
+    constructor(app, plugin) {
+        super(app, plugin);
+        this.plugin = plugin;
+    }
+    display() {
+        const e = this.containerEl;
+        e.empty();
+        new obsidian_1.Setting(e).setName('账号与入口').setHeading();
+        for (const mode of ['user', 'admin'])
+            new obsidian_1.Setting(e).setName(mode === 'user' ? '用户 Token' : '管理员 Token').setDesc(mode === 'user' ? '普通入口读取账号拥有和参与的世界观。' : '管理员 Token 与用户 Token 分开保存。').addButton(b => b.setButtonText('填写 / 更换').onClick(() => new TokenModal(this.app, this.plugin, mode, async () => { this.display(); this.plugin.refreshViews(); }).open()));
+        new obsidian_1.Setting(e).setName('Token 保存位置').setDesc('本仓库插件 data.json（明文）；重启后自动读取。不要分享该文件。');
+        new obsidian_1.Setting(e).setName('请求通道').setDesc('自动：桌面读取优先直连 HTTPS，连接失败才尝试 Obsidian；移动端使用 Obsidian。HTTP 拒绝不会自动换通道。').addDropdown(d => d.addOptions({ auto: '自动', native: 'Obsidian 原生（使用应用网络环境）', direct: '桌面 HTTPS 直连（不继承应用代理）' }).setValue(this.plugin.settings.networkMode).onChange(v => void this.plugin.guard(() => this.plugin.setNetwork(v))));
+        let apiAddress = this.plugin.settings.baseUrl;
+        new obsidian_1.Setting(e).setName('API 地址').setDesc('默认使用 Matrees 官方 HTTPS 域名；输入完成后点击应用。').addText(t => t.setValue(apiAddress).onChange(value => apiAddress = value)).addButton(b => b.setButtonText('应用地址').onClick(() => void this.plugin.guard(() => this.plugin.setBase(apiAddress))));
+        let count = this.plugin.settings.readConcurrency, interval = this.plugin.settings.requestIntervalMs;
+        new obsidian_1.Setting(e).setName('读取并发数').setDesc('1–8，默认 3；并行读取不同设定集、设定详情、事件和章节。每个列表的分页按顺序读取，上传保持独占。').addDropdown(d => d.addOptions(Object.fromEntries(Array.from({ length: 8 }, (_, i) => [String(i + 1), String(i + 1)]))).setValue(String(count)).onChange(v => count = Number(v)));
+        new obsidian_1.Setting(e).setName('请求启动间隔（毫秒）').setDesc('默认 150，范围 0–2000；收到 429 时降低并发或增加间隔。修改后点击应用。').addText(t => t.setValue(String(interval)).onChange(v => interval = Number(v))).addButton(b => b.setButtonText('应用读取配置').onClick(() => void this.plugin.guard(() => this.plugin.setReadOptions(count, interval))));
+        new obsidian_1.Setting(e).setName('本地同步').setHeading();
+        let rootFolder = this.plugin.settings.rootFolder;
+        new obsidian_1.Setting(e).setName('保存目录').setDesc('仓库内相对路径；输入完成后应用。已同步世界的目录保持稳定，进度页显示实际路径。').addText(t => t.setValue(rootFolder).onChange(value => rootFolder = value)).addButton(b => b.setButtonText('应用目录').onClick(() => void this.plugin.guard(() => this.plugin.setRootFolder(rootFolder))));
+        new obsidian_1.Setting(e).setName('下载图片和视频').setDesc('世界封面保存到世界目录下的“封面”，插画与正文媒体保存到“插画集/附件”。').addToggle(t => t.setValue(this.plugin.settings.downloadMedia).onChange(async (v) => { if (this.plugin.busy)
+            return; await this.plugin.guard(async () => { this.plugin.settings.downloadMedia = v; await this.plugin.persist(); }); }));
+        new obsidian_1.Setting(e).setName('单个媒体上限（MB）').setDesc('超过上限的媒体保留在线引用，并记入同步报告。').addText(t => t.setValue(String(this.plugin.settings.maxMediaMB)).onChange(async (v) => { const n = Number(v); if (this.plugin.busy || !Number.isFinite(n) || n < 1 || n > 2048)
+            return; await this.plugin.guard(async () => { this.plugin.settings.maxMediaMB = n; await this.plugin.persist(); }); }));
+        new obsidian_1.Setting(e).setName('附带世界扩展资料').setDesc('读取历法、事件、关系图谱、地图与作品章节。接口拒绝的项目列入报告。').addToggle(t => t.setValue(this.plugin.settings.extras).onChange(async (v) => { if (this.plugin.busy)
+            return; await this.plugin.guard(async () => { this.plugin.settings.extras = v; await this.plugin.persist(); }); }));
+        new obsidian_1.Setting(e).setName('本地修改保护').setDesc('只替换云端标记之间的内容；本地修改区及其外部内容逐字保留。标记损坏或云端区被手改时，保留原页并保存冲突候选。');
+    }
+}
 
-  async function resolveCover(row,api){const existing=Ce(row,api.base);if(existing){row.coverUrl=existing;return existing;}const fid=coverFileId(row);if(!fid)return'';const data=await api.call('/mt/file/get/oss/url/'+encodeURIComponent(fid));const raw=typeof data==='string'?data:data?.url??data?.ossUrl??data?.fileUrl??data?.downloadUrl??data?.src??data?.path;const resolved=resolveUrl(raw,api.base);if(!resolved)throw Error('封面文件接口未返回可用 URL。');row.coverUrl=resolved;row.matreesCoverFileId=fid;row.coverType=row.coverType??data?.coverType??data?.fileType??data?.contentType??data?.mimeType;return resolved;}
+},
+"network":function(module,exports,__require,require){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.desktopRead = void 0;
+exports.normalizeToken = normalizeToken;
+exports.errorDetail = errorDetail;
+exports.networkHint = networkHint;
+exports.requestOptions = requestOptions;
+exports.withTimeout = withTimeout;
+exports.createTransport = createTransport;
+exports.selectTransport = selectTransport;
+function normalizeToken(value) {
+    let token = value.trim();
+    for (let i = 0; i < 3; i++) {
+        if ((token.startsWith('"') && token.endsWith('"')) || (token.startsWith("'") && token.endsWith("'")))
+            token = token.slice(1, -1).trim();
+        token = token.replace(/^(?:Authorization\s*[:：]\s*)/i, '').replace(/^Bearer\s+/i, '').trim();
+    }
+    token = token.replace(/[\s\u200B-\u200D\u2060\uFEFF]/g, '');
+    if (token && /[^\x21-\x7e]/.test(token))
+        throw Error('Token 包含无效字符，请只粘贴 Token 本身。');
+    return token;
+}
+function errorDetail(error, secrets = []) {
+    const e = error;
+    let s = typeof error === 'string' ? error : [e?.name, e?.code, e?.message, e?.cause?.code, e?.cause?.message].filter(Boolean).join(' · ') || '底层网络组件未提供错误详情';
+    for (const secret of secrets.filter(Boolean))
+        s = s.split(secret).join('[凭证已隐藏]');
+    return s.replace(/eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+/g, '[Token 已隐藏]').replace(/mtk_[A-Za-z0-9_-]+/g, '[密钥已隐藏]').replace(/(Authorization|flush-token)\s*[:=]\s*[^\s,;}]+/gi, '$1: [已隐藏]').replace(/https?:\/\/[^\s)]+/g, u => { try {
+        const x = new URL(u);
+        return x.origin + x.pathname;
+    }
+    catch {
+        return '[地址已隐藏]';
+    } }).slice(0, 600);
+}
+function networkHint(detail) {
+    if (/ENOTFOUND|EAI_AGAIN|ERR_NAME_NOT_RESOLVED/i.test(detail))
+        return '域名解析失败，请检查 DNS 或代理。';
+    if (/CERT|SSL|TLS|certificate/i.test(detail))
+        return 'HTTPS 证书校验失败，请检查系统时间、证书或 HTTPS 代理。';
+    if (/TIMEOUT|TIMEDOUT|timed out/i.test(detail))
+        return '连接超时，请检查当前网络或代理。';
+    if (/ECONNREFUSED|ERR_PROXY|ERR_TUNNEL/i.test(detail))
+        return '连接被拒绝或代理不可用，请检查代理设置。';
+    if (/header|character|ByteString/i.test(detail))
+        return '请求头格式错误，请重新粘贴 Token。';
+    return '未完成请求，请检查 Obsidian 的网络权限、代理和连接。';
+}
+function requestOptions(url, method, headers, body) {
+    const read = method === 'GET' || method === 'HEAD';
+    const clean = { ...headers };
+    for (const key of Object.keys(clean))
+        if ((read && key.toLowerCase() === 'content-type') || clean[key] == null)
+            delete clean[key];
+    const options = { url, method, headers: clean, throw: false };
+    if (!read && body !== undefined)
+        options.body = body;
+    return options;
+}
+function statusOf(error) {
+    const e = error;
+    const n = Number(e?.status ?? e?.statusCode ?? e?.response?.status);
+    return n >= 400 && n <= 599 ? n : 0;
+}
+function withTimeout(request, timeoutMs) {
+    return new Promise((resolve, reject) => { const timer = setTimeout(() => reject(Error('ETIMEDOUT：请求超时；如为上传，请先核对云端结果，勿直接重复提交。')), timeoutMs); request.then(v => { clearTimeout(timer); resolve(v); }, e => { clearTimeout(timer); reject(e); }); });
+}
+function createTransport(native, fallback) {
+    return async (url, method, headers, body) => {
+        const options = requestOptions(url, method, headers, body);
+        try {
+            return await withTimeout(native(options), 45000);
+        }
+        catch (first) {
+            const code = statusOf(first);
+            if (code)
+                return { status: code, headers: {}, text: JSON.stringify({ code, msg: 'HTTP 请求被拒绝：' + errorDetail(first, Object.values(headers)) }) };
+            const secrets = Object.entries(headers).filter(([k]) => /authorization|flush-token/i.test(k)).map(([, v]) => v);
+            const detail = errorDetail(first, secrets);
+            // Only retry idempotent reads; never retry certificate errors or a request with an HTTP response.
+            if (fallback && (method === 'GET' || method === 'HEAD') && !/CERT|SSL|TLS|certificate/i.test(detail)) {
+                try {
+                    return await fallback(url, method, options.headers ?? {});
+                }
+                catch (second) {
+                    throw Error('Obsidian 请求：' + detail + '；兼容请求：' + errorDetail(second, secrets));
+                }
+            }
+            throw Error(detail);
+        }
+    };
+}
+function selectTransport(native, direct, mode = 'auto') {
+    const nativeOnly = createTransport(native);
+    if (mode === 'native')
+        return nativeOnly;
+    if (mode === 'direct' && !direct)
+        return async () => { throw Error('此设备没有桌面 HTTPS 通道，请在设置中选择“自动”或“Obsidian 原生”。'); };
+    if (!direct)
+        return nativeOnly;
+    const desktop = direct;
+    const read = mode === 'direct' ? desktop : createTransport(o => desktop(o.url, o.method ?? 'GET', o.headers ?? {}), nativeOnly);
+    return (url, method, headers, body) => method === 'GET' || method === 'HEAD' ? read(url, method, headers, body) : nativeOnly(url, method, headers, body);
+}
+// Loaded only on desktop, after the native transport fails. Uses normal CA validation.
+const desktopRead = async (url, method, headers) => {
+    if (method !== 'GET' && method !== 'HEAD')
+        throw Error('兼容通道仅支持只读请求。');
+    const https = require('node:https');
+    const BufferCtor = require('node:buffer').Buffer;
+    const original = new URL(url);
+    if (original.protocol !== 'https:')
+        throw Error('只允许 HTTPS。');
+    function get(target, depth) {
+        return new Promise((resolve, reject) => {
+            const req = https.request(target, { method, headers: { ...headers, 'Accept-Encoding': 'identity' }, timeout: 30000 }, res => {
+                const status = res.statusCode ?? 0;
+                if ([301, 302, 303, 307, 308].includes(status) && res.headers.location) {
+                    res.resume();
+                    const next = new URL(res.headers.location, target);
+                    if (next.origin !== original.origin || next.protocol !== 'https:' || next.username || next.password || depth >= 3) {
+                        reject(Error('兼容通道拒绝跨站或循环重定向。'));
+                        return;
+                    }
+                    get(next, depth + 1).then(resolve, reject);
+                    return;
+                }
+                const chunks = [];
+                let size = 0;
+                res.on('data', (chunk) => { size += chunk.length; if (size > 64 * 1024 * 1024) {
+                    req.destroy(Error('响应超过 64 MB。'));
+                    return;
+                } chunks.push(chunk); });
+                res.on('error', reject);
+                res.on('end', () => resolve({ status, headers: Object.fromEntries(Object.entries(res.headers).map(([k, v]) => [k, Array.isArray(v) ? v.join(',') : String(v ?? '')])), text: BufferCtor.concat(chunks).toString('utf8') }));
+            });
+            const deadline = setTimeout(() => req.destroy(Error('ETIMEDOUT：HTTPS 请求超过 45 秒')), 45000);
+            req.on('close', () => clearTimeout(deadline));
+            req.on('timeout', () => req.destroy(Error('ETIMEDOUT：兼容连接超时')));
+            req.on('error', reject);
+            req.end();
+        });
+    }
+    return get(original, 0);
+};
+exports.desktopRead = desktopRead;
 
-  const oldHydrate=$t.prototype.hydrateCovers;
-  $t.prototype.hydrateCovers=async function(rows){await oldHydrate.call(this,rows);for(const row of rows){try{await resolveCover(row,this);}catch(e){if(this.invalid||e?.code===429)throw e;row.matreesCoverWarning='封面地址读取失败：'+pe(e);}}};
-  const oldAssert=$t.prototype.assertWorld;
-  $t.prototype.assertWorld=async function(wid){const row=await oldAssert.call(this,wid);try{await resolveCover(row,this);}catch(e){row.matreesCoverWarning='封面地址读取失败：'+pe(e);}return row;};
+},
+"regions":function(module,exports,__require,require){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.LOCAL_END = exports.LOCAL_BEGIN = exports.CLOUD_END = exports.CLOUD_BEGIN = void 0;
+exports.cloudPart = cloudPart;
+exports.localPart = localPart;
+exports.replaceCloud = replaceCloud;
+exports.newNote = newNote;
+exports.CLOUD_BEGIN = '<!-- MATREES:CLOUD:BEGIN -->';
+exports.CLOUD_END = '<!-- MATREES:CLOUD:END -->';
+exports.LOCAL_BEGIN = '<!-- MATREES:LOCAL:BEGIN -->';
+exports.LOCAL_END = '<!-- MATREES:LOCAL:END -->';
+function region(s, a, b) {
+    const start = s.indexOf(a), end = s.indexOf(b);
+    if (start < 0 || end < start || s.indexOf(a, start + a.length) >= 0 || s.indexOf(b, end + b.length) >= 0)
+        throw Error('同步标记缺失、重复或顺序错误，已保留原文件。');
+    return [start + a.length, end];
+}
+function cloudPart(s) { const [a, b] = region(s, exports.CLOUD_BEGIN, exports.CLOUD_END); return s.slice(a, b); }
+function localPart(s) { const [a, b] = region(s, exports.LOCAL_BEGIN, exports.LOCAL_END); return s.slice(a, b).replace(/<!--[\s\S]*?-->/g, '').trim(); }
+function replaceCloud(s, cloud) {
+    const [a, b] = region(s, exports.CLOUD_BEGIN, exports.CLOUD_END);
+    const [la, lb] = region(s, exports.LOCAL_BEGIN, exports.LOCAL_END);
+    if (la < b || lb < la)
+        throw Error('本地修改区与云端区域重叠，已保留原文件。');
+    return s.slice(0, a) + '\n' + cloud.trim() + '\n' + s.slice(b);
+}
+function newNote(cloud, meta) {
+    const yaml = Object.entries(meta).map(([k, v]) => `${k}: ${JSON.stringify(v)}`).join('\n');
+    return `---\n${yaml}\n---\n\n${exports.CLOUD_BEGIN}\n${cloud.trim()}\n${exports.CLOUD_END}\n\n## 本地修改\n\n${exports.LOCAL_BEGIN}\n\n<!-- 在这里写本地补充。云端同步会逐字保留此区域及其后方的内容。 -->\n\n${exports.LOCAL_END}\n`;
+}
 
-  const oldWriteCredential=cu.prototype.writeCredential;
-  cu.prototype.writeCredential=async function(mode,token,guard=()=>true){await oldWriteCredential.call(this,mode,token,guard);if(this.token(mode)!==token)return;try{const store=this.app.secretStorage;if(store?.setSecret)await store.setSecret(this.secretName(mode),token);}catch{}};
-  const oldTokenOpen=fu.prototype.onOpen;
-  fu.prototype.onOpen=function(){oldTokenOpen.call(this);const token=this.plugin.token(this.mode),input=this.contentEl.querySelector('input[type="password"]');if(token&&input){input.value=token;try{input.dispatchEvent(new window.Event('input',{bubbles:true}));}catch{}}};
+},
+"scheduler":function(module,exports,__require,require){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.RequestScheduler = void 0;
+/** FIFO queue: bounded parallel reads, exclusive writes, and a shared start interval. */
+class RequestScheduler {
+    limit;
+    gapMs;
+    waiting = [];
+    active = 0;
+    writer = false;
+    nextStart = 0;
+    timer;
+    stopped;
+    constructor(limit = 1, gapMs = 0) {
+        this.limit = limit;
+        this.gapMs = gapMs;
+        this.limit = Math.max(1, Math.min(8, Math.floor(limit) || 1));
+        this.gapMs = Math.max(0, Math.min(2000, gapMs || 0));
+    }
+    run(read, fn) { if (this.stopped)
+        return Promise.reject(this.stopped); return new Promise((resolve, reject) => { this.waiting.push({ read, run: fn, resolve, reject }); this.pump(); }); }
+    stop(reason) { this.stopped = reason; clearTimeout(this.timer); this.timer = undefined; for (const job of this.waiting.splice(0))
+        job.reject(reason); }
+    pump() {
+        if (this.stopped || this.timer || this.writer)
+            return;
+        while (this.waiting.length && this.active < this.limit) {
+            const job = this.waiting[0];
+            if (!job.read && this.active)
+                return;
+            const delay = this.nextStart - Date.now();
+            if (delay > 0) {
+                this.timer = setTimeout(() => { this.timer = undefined; this.pump(); }, delay);
+                return;
+            }
+            this.waiting.shift();
+            this.active++;
+            this.writer = !job.read;
+            this.nextStart = Date.now() + this.gapMs;
+            Promise.resolve().then(job.run).then(job.resolve, job.reject).finally(() => { this.active--; if (!job.read)
+                this.writer = false; this.pump(); });
+            if (this.writer)
+                return;
+        }
+    }
+}
+exports.RequestScheduler = RequestScheduler;
 
-  const oldVaultPort=cu.prototype.vaultPort;
-  cu.prototype.vaultPort=function(){const port=oldVaultPort.call(this);if(port.move)return port;const v=this.app.vault;port.move=async(from,to)=>{from=j.normalizePath(from);to=j.normalizePath(to);const parts=to.split('/');parts.pop();let parent='';for(const part of parts){parent=parent?parent+'/'+part:part;const current=v.getAbstractFileByPath(parent);if(current&&!(current instanceof j.TFolder))throw Error('目录位置已被文件占用：'+parent);if(!current)try{await v.createFolder(parent);}catch(e){if(!(v.getAbstractFileByPath(parent) instanceof j.TFolder))throw e;}}const file=v.getAbstractFileByPath(from);if(!(file instanceof j.TFile))throw Error('找不到待迁移文件：'+from);if(v.getAbstractFileByPath(to))throw Error('目标文件已存在：'+to);await v.rename(file,to);};return port;};
+},
+"sync":function(module,exports,__require,require){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.IncrementalWriter = void 0;
+exports.collectEntityNames = collectEntityNames;
+exports.saveSnapshot = saveSnapshot;
+const types_1 = __require("types");
+const utils_1 = __require("utils");
+const hierarchy_1 = __require("hierarchy");
+const content_1 = __require("content");
+const regions_1 = __require("regions");
+const identityKeys = ['definitionId', 'eventId', 'mapId', 'workId', 'chapterId', 'mediaId', 'folderId', 'userId', 'guildId', 'calendarId', 'graphId', 'conceptId', 'volumeId', 'worldId'];
+function displayName(o) { return String(o.title ?? o.name ?? o.label ?? o.nickname ?? o.username ?? o.originName ?? o.fileName ?? '').trim(); }
+function collectEntityNames(...values) {
+    const names = {}, seen = new Set();
+    function walk(v, depth = 0) { if (depth > 20 || v == null)
+        return; if (Array.isArray(v)) {
+        for (const x of v)
+            walk(x, depth + 1);
+        return;
+    } if (typeof v !== 'object')
+        return; if (seen.has(v))
+        return; seen.add(v); const o = (0, types_1.obj)(v), name = displayName(o); if (name) {
+        for (const key of identityKeys) {
+            const value = (0, types_1.id)(o[key]);
+            if (value) {
+                names[value] ??= name;
+                break;
+            }
+        }
+    } for (const x of Object.values(o))
+        walk(x, depth + 1); }
+    for (const value of values)
+        walk(value);
+    return names;
+}
+function namedPaths(root, rows, key, folder) {
+    const out = {}, used = new Map();
+    for (const row of rows) {
+        const entityId = (0, types_1.id)(row[key]);
+        if (!entityId)
+            continue;
+        const base = (0, utils_1.safePart)(row.title ?? row.name ?? row.label ?? '未命名', 48), n = (used.get(base) ?? 0) + 1;
+        used.set(base, n);
+        out[entityId] = root + '/' + folder + '/' + (n === 1 ? base : `${base} (${n})`) + '.md';
+    }
+    return out;
+}
+function legacyIdPath(path) { return /--\d+(?=\.|\/|$)/.test(path); }
+class IncrementalWriter {
+    world;
+    settings;
+    vault;
+    progress;
+    checkpoint;
+    record;
+    tail = Promise.resolve();
+    wid;
+    root;
+    constructor(world, old, root, settings, vault, progress, checkpoint) {
+        this.world = world;
+        this.settings = settings;
+        this.vault = vault;
+        this.progress = progress;
+        this.checkpoint = checkpoint;
+        this.record = old ? structuredClone(old) : { root, notes: {}, assets: {} };
+        this.root = this.record.root;
+        this.wid = (0, types_1.id)(world.worldId);
+    }
+    run(fn) { const task = this.tail.catch(() => { }).then(fn); this.tail = task; return task; }
+    async persist() { await this.checkpoint?.(this.record); }
+    cover(o, world = false) { const u = (0, utils_1.coverSource)(o, this.settings.baseUrl); if (!u)
+        return ''; const dimensions = world ? ' width="300" height="444"' : ''; return (0, utils_1.video)(o) ? `<video controls${dimensions} src="${(0, utils_1.esc)(u)}"></video>` : world ? `<img src="${(0, utils_1.esc)(u)}" alt="世界观封面"${dimensions}>` : `![封面](${u.replace(/[() ]/g, c => encodeURIComponent(c))})`; }
+    async upsert(key, path, title, kind, entityId, cloud, rawPath, remoteHash) {
+        const rec = this.record.notes[key];
+        let target = rec?.path ?? path;
+        if (rec && target !== path && legacyIdPath(target) && this.vault.move && this.vault.exists(target) && !this.vault.exists(path)) {
+            await this.vault.move(target, path);
+            target = path;
+            rec.path = path;
+            this.progress('已移除文件名中的旧数字 ID：' + title, { phase: '增量更新' });
+        }
+        const incomingHash = await (0, utils_1.hash)('\n' + cloud.trim() + '\n');
+        if (this.vault.exists(target)) {
+            if (!rec) {
+                this.progress('发现未登记的本地文件，流式阶段不覆盖：' + target, { phase: '增量写入' });
+                return;
+            }
+            const existing = await this.vault.read(target);
+            let observed = 'invalid';
+            try {
+                observed = await (0, utils_1.hash)((0, regions_1.cloudPart)(existing));
+            }
+            catch { }
+            if (observed !== rec.cloudHash) {
+                this.progress('本地页已修改，流式阶段暂不覆盖：' + title, { phase: '增量写入' });
+                return;
+            }
+            if (incomingHash !== rec.cloudHash)
+                await this.vault.process(target, current => (0, regions_1.replaceCloud)(current, cloud));
+        }
+        else
+            await this.vault.write(target, (0, regions_1.newNote)(cloud, { matrees_world_id: this.wid, matrees_entity_id: entityId, matrees_kind: kind, cssclasses: ['matrees-note'] }));
+        this.record.notes[key] = { path: target, cloudHash: incomingHash, kind, entityId, title, rawPath, remoteHash };
+        await this.persist();
+        if (target !== path && !this.vault.exists(path))
+            await this.vault.write(path, (0, regions_1.newNote)(`# ${(0, utils_1.mdText)(title)}\n\n${(0, utils_1.wiki)(target, '打开正文与本地修改区')}`, { matrees_kind: 'redirect', matrees_world_id: this.wid }));
+    }
+    async seedWorld() { return this.run(async () => { const path = this.root + '/00--世界总览.md'; const cloud = `# ${(0, utils_1.mdText)(this.world.title)}\n\n${this.cover(this.world, true)}\n\n${(0, utils_1.mdText)(this.world.subTitle ?? '')}\n\n作者：${(0, utils_1.mdText)((0, types_1.author)(this.world))}\n\n${(0, content_1.toMarkdown)(this.world.description, { base: this.settings.baseUrl, assets: this.record.assets, names: collectEntityNames(this.world), warnings: [] })}\n\n> [!info] 正在增量同步\n> 目录和正文会在拉取过程中持续更新。`; await this.upsert('world', path, String(this.world.title), 'world', this.wid, cloud); }); }
+    async concept(concept, issue) { return this.run(async () => { const rawPath = this.root + (issue ? '/_原始数据/未取得正文/世界概念.json' : '/_原始数据/世界概念.json'); await this.vault.write(rawPath, JSON.stringify((0, utils_1.stripSecrets)(concept), null, 2) + '\n'); const cloud = `# 世界概念\n\n${issue ? '> [!warning] 本次未取得正文\n> ' + (0, utils_1.mdText)(issue) : (0, content_1.toMarkdown)(concept.content, { base: this.settings.baseUrl, assets: this.record.assets, links: { [this.wid]: this.root + '/00--世界总览.md' }, names: collectEntityNames(this.world, concept), warnings: [] }) || '（云端正文为空）'}`; await this.upsert('concept', this.root + '/世界概念.md', '世界概念', 'concept', (0, types_1.id)(concept.conceptId) || this.wid, cloud, rawPath, issue ? undefined : await (0, utils_1.hash)(JSON.stringify(concept.content ?? ''))); }); }
+    async seedDefinitions(definitions, memberships) { return this.run(async () => { const layout = (0, hierarchy_1.layoutDefinitions)(this.root, definitions, memberships); for (const d of definitions) {
+        const did = (0, types_1.id)(d.definitionId);
+        if (!did)
+            continue;
+        const path = layout.paths[did], rec = this.record.notes['definition:' + did];
+        if (!path)
+            continue;
+        if (rec && rec.path !== path && legacyIdPath(rec.path) && this.vault.move && this.vault.exists(rec.path) && !this.vault.exists(path)) {
+            await this.vault.move(rec.path, path);
+            rec.path = path;
+            this.progress('已移除文件名中的旧数字 ID：' + String(d.title), { phase: '增量更新' });
+            await this.persist();
+        }
+        if (rec)
+            continue;
+        const parents = (layout.parents[did] ?? []).map(p => (0, utils_1.wiki)(this.record.notes['definition:' + p]?.path ?? layout.paths[p], definitions.find(x => (0, types_1.id)(x.definitionId) === p)?.title));
+        let cloud = `# ${(0, utils_1.mdText)(d.title)}\n\n${this.cover(d)}\n\n作者：${(0, utils_1.mdText)((0, types_1.author)(d))}\n\n${d.description ? (0, content_1.toMarkdown)(d.description, { base: this.settings.baseUrl, assets: this.record.assets, links: layout.paths, names: collectEntityNames(this.world, definitions), warnings: [] }) + '\n\n' : ''}${parents.length ? '所属设定集：' + parents.join(' · ') + '\n\n' : ''}> [!info] 正在读取正文\n> 此页已先创建，正文取得后会立即补全。`;
+        await this.upsert('definition:' + did, path, String(d.title), (0, types_1.truth)(d.definitionSet) ? 'set' : 'definition', did, cloud);
+        this.progress('已建立设定目录：' + String(d.title), { phase: '增量写入', entity: did });
+    } }); }
+    async definition(d, issue, definitions, memberships) { return this.run(async () => { const did = (0, types_1.id)(d.definitionId); if (!did)
+        return; const layout = (0, hierarchy_1.layoutDefinitions)(this.root, definitions, memberships), links = { ...layout.paths }; for (const [key, n] of Object.entries(this.record.notes))
+        if (key.startsWith('definition:'))
+            links[key.slice(11)] = n.path; const ctx = { base: this.settings.baseUrl, assets: this.record.assets, links, names: collectEntityNames(this.world, definitions), warnings: [] }; const path = layout.paths[did] ?? this.record.notes['definition:' + did]?.path; if (!path)
+        return; const rawPath = this.root + (issue ? '/_原始数据/未取得正文/' : '/_原始数据/设定/') + did + '.json'; await this.vault.write(rawPath, JSON.stringify((0, utils_1.stripSecrets)(d), null, 2) + '\n'); const parents = (layout.parents[did] ?? []).map(p => (0, utils_1.wiki)(links[p], definitions.find(x => (0, types_1.id)(x.definitionId) === p)?.title)); let cloud = `# ${(0, utils_1.mdText)(d.title)}\n\n${this.cover(d)}\n\n作者：${(0, utils_1.mdText)((0, types_1.author)(d))}\n\n${d.description ? (0, content_1.toMarkdown)(d.description, ctx) + '\n\n' : ''}${parents.length ? '所属设定集：' + parents.join(' · ') + '\n\n' : ''}`; if ((0, types_1.truth)(d.definitionSet))
+        cloud += '> 本页为设定集自身正文。下挂条目将在目录读取完成后补齐。\n\n'; cloud += issue ? `> [!warning] 本次未取得正文\n> ${(0, utils_1.mdText)(issue)}。这不表示云端内容为空；下次取得正文后会自动补全。\n` : (0, content_1.toMarkdown)(d.content, ctx) || '（云端正文为空）'; await this.upsert('definition:' + did, path, String(d.title), (0, types_1.truth)(d.definitionSet) ? 'set' : 'definition', did, cloud, rawPath, issue ? undefined : await (0, utils_1.hash)(JSON.stringify(d.content))); this.progress('已增量写入：' + String(d.title), { phase: '增量写入', entity: did }); }); }
+    async flush() { await this.tail; }
+}
+exports.IncrementalWriter = IncrementalWriter;
+async function saveSnapshot(s, old, root, settings, vault, download, progress, checkpoint) {
+    const record = old ? structuredClone(old) : { root, notes: {}, assets: {} };
+    root = record.root;
+    const wid = (0, types_1.id)(s.world.worldId), warnings = [...s.warnings], layout = (0, hierarchy_1.layoutDefinitions)(root, s.definitions, s.memberships);
+    warnings.push(...layout.warnings);
+    const names = collectEntityNames(s), eventPaths = namedPaths(root, s.events, 'eventId', '事件'), mapPaths = namedPaths(root, s.maps, 'mapId', '地图');
+    const workDirs = {}, workPaths = {}, workUsed = new Map();
+    for (const w of s.works) {
+        const workId = (0, types_1.id)(w.workId);
+        if (!workId)
+            continue;
+        const base = (0, utils_1.safePart)(w.title ?? w.name ?? '未命名作品', 48), n = (workUsed.get(base) ?? 0) + 1;
+        workUsed.set(base, n);
+        const dir = root + '/作品章节/' + (n === 1 ? base : `${base} (${n})`);
+        workDirs[workId] = dir;
+        workPaths[workId] = dir + '/00--作品信息.md';
+    }
+    const chapterPaths = {}, chapterUsed = new Map();
+    for (const c of s.chapters) {
+        const chapterId = (0, types_1.id)(c.chapterId);
+        if (!chapterId)
+            continue;
+        const dir = workDirs[(0, types_1.id)(c.workId)] ?? root + '/作品章节/未归档';
+        let used = chapterUsed.get(dir);
+        if (!used)
+            chapterUsed.set(dir, used = new Map());
+        const base = (0, utils_1.safePart)(c.title ?? c.name ?? '未命名章节', 48), n = (used.get(base) ?? 0) + 1;
+        used.set(base, n);
+        chapterPaths[chapterId] = dir + '/' + (n === 1 ? base : `${base} (${n})`) + '.md';
+    }
+    const links = { ...layout.paths, ...eventPaths, ...mapPaths, ...workPaths, ...chapterPaths, [wid]: root + '/00--世界总览.md' };
+    const ctx = { base: settings.baseUrl, assets: record.assets, links, names, warnings };
+    let notes = 0, conflicts = 0;
+    const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+    // Every raw object lives outside plugin settings. No token or user profile is serialized.
+    async function raw(path, value) { await vault.write(path, JSON.stringify((0, utils_1.stripSecrets)(value), null, 2) + '\n'); }
+    async function persist() { await checkpoint?.(record); }
+    async function note(key, path, title, kind, entityId, cloud, rawPath, remoteHash) {
+        const rec = record.notes[key];
+        const oldPath = rec?.path ?? path;
+        let target = oldPath;
+        if (rec && oldPath !== path && legacyIdPath(oldPath) && vault.move && vault.exists(oldPath) && !vault.exists(path)) {
+            await vault.move(oldPath, path);
+            target = path;
+            rec.path = path;
+            warnings.push(`已迁移旧命名：${title}；文件名中的数字 ID 已移除。`);
+        }
+        else if (rec && oldPath !== path) {
+            warnings.push(`云端目录变化：${title}；保留正文原路径，并在新位置建立导航。`);
+        }
+        const incomingHash = await (0, utils_1.hash)('\n' + cloud.trim() + '\n');
+        if (vault.exists(target)) {
+            let existing = await vault.read(target), observed;
+            try {
+                observed = await (0, utils_1.hash)((0, regions_1.cloudPart)(existing));
+            }
+            catch {
+                observed = 'invalid';
+            }
+            if (!rec || observed !== rec.cloudHash) {
+                conflicts++;
+                const cp = root + '/_同步冲突/' + stamp + '/' + (0, utils_1.safePart)(key, 90) + '.md';
+                await vault.write(cp, (0, regions_1.newNote)(cloud, { matrees_world_id: wid, matrees_entity_id: entityId, matrees_kind: kind, conflict_original: target }));
+                warnings.push(`保留本地原文件：${target}；新版位于 ${cp}`);
+                return;
+            }
+            if (incomingHash === rec.cloudHash) {
+                record.notes[key] = { path: target, cloudHash: incomingHash, kind, entityId, title, rawPath, remoteHash };
+                await persist();
+                progress(`未变化，跳过写入：${title}`, { phase: '增量更新' });
+                if (target !== path && !vault.exists(path))
+                    await vault.write(path, (0, regions_1.newNote)(`# ${(0, utils_1.mdText)(title)}\n\n${(0, utils_1.wiki)(target, '打开正文与本地修改区')}`, { matrees_kind: 'redirect', matrees_world_id: wid }));
+                return;
+            }
+            const expected = existing;
+            try {
+                await vault.process(target, current => { if (current !== expected)
+                    throw Error('文件在同步期间被编辑。'); return (0, regions_1.replaceCloud)(current, cloud); });
+            }
+            catch (e) {
+                conflicts++;
+                const cp = root + '/_同步冲突/' + stamp + '/' + (0, utils_1.safePart)(key, 90) + '.md';
+                await vault.write(cp, (0, regions_1.newNote)(cloud, { conflict_original: target }));
+                warnings.push(`${title} 同步时发生编辑，已保存云端候选：${cp}`);
+                return;
+            }
+        }
+        else
+            await vault.write(target, (0, regions_1.newNote)(cloud, { matrees_world_id: wid, matrees_entity_id: entityId, matrees_kind: kind, cssclasses: ['matrees-note'] }));
+        progress(`已保存第 ${notes + 1} 页：${title}`, { phase: '保存页面', completed: notes + 1 });
+        record.notes[key] = { path: target, cloudHash: incomingHash, kind, entityId, title, rawPath, remoteHash };
+        notes++;
+        await persist();
+        if (target !== path && !vault.exists(path))
+            await vault.write(path, (0, regions_1.newNote)(`# ${(0, utils_1.mdText)(title)}\n\n${(0, utils_1.wiki)(target, '打开正文与本地修改区')}`, { matrees_kind: 'redirect', matrees_world_id: wid }));
+    }
+    const resources = new Map();
+    function addUrl(v, fileId) { const u = (0, utils_1.urlSafe)(v, settings.baseUrl); if (u && !resources.has(u))
+        resources.set(u, (0, types_1.id)(fileId) || undefined); }
+    for (const o of [s.world, s.concept, ...s.definitions, ...s.events, ...s.maps, ...s.chapters]) {
+        addUrl((0, utils_1.coverSource)(o, settings.baseUrl), o.matreesCoverFileId ?? o.coverFileId ?? o.coverId);
+        for (const ref of (0, content_1.mediaReferences)(o.content, ctx))
+            addUrl(ref.url, ref.fileId);
+        for (const ref of (0, content_1.mediaReferences)(o.description, ctx))
+            addUrl(ref.url, ref.fileId);
+        addUrl(o.mapUrl ?? o.imageUrl, o.fileId);
+    }
+    for (const m of s.illustrations) {
+        addUrl(m.mediaUrl ?? m.url, m.fileId);
+        for (const ref of (0, content_1.mediaReferences)(m.caption, ctx))
+            addUrl(ref.url, ref.fileId);
+    }
+    for (const v of [...Object.values(s.extra), ...s.works])
+        for (const ref of (0, content_1.mediaReferences)(v, ctx))
+            addUrl(ref.url, ref.fileId);
+    const worldCover = (0, utils_1.coverSource)(s.world, settings.baseUrl);
+    let mediaDone = 0;
+    progress('准备下载媒体…', { phase: '下载媒体', completed: 0, total: resources.size });
+    for (const [u, fileId] of resources) {
+        progress(`处理媒体 ${++mediaDone}/${resources.size}…`, { phase: '下载媒体', completed: mediaDone - 1, total: resources.size });
+        if (record.assets[u] && vault.exists(record.assets[u]))
+            continue;
+        if (!settings.downloadMedia)
+            continue;
+        try {
+            const r = await download(u, fileId);
+            if (r.status === 403)
+                throw Error('HTTP 403：媒体服务器拒绝下载；如果正文提供 fileId，下次会重新换取签名地址。');
+            if (r.status < 200 || r.status >= 300)
+                throw Error('HTTP ' + r.status);
+            if (r.bytes.byteLength > settings.maxMediaMB * 1024 * 1024)
+                throw Error(`超过 ${settings.maxMediaMB} MB 限制`);
+            const mime = r.contentType.split(';')[0].trim().toLowerCase();
+            if (!/^(image\/(png|jpe?g|gif|webp|avif|bmp)|video\/(mp4|webm|quicktime)|audio\/)/.test(mime))
+                throw Error('媒体类型未通过校验：' + mime);
+            const exts = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp', 'image/gif': 'gif', 'image/avif': 'avif', 'image/bmp': 'bmp', 'video/mp4': 'mp4', 'video/webm': 'webm', 'video/quicktime': 'mov', 'audio/mpeg': 'mp3', 'audio/ogg': 'ogg', 'audio/wav': 'wav', 'audio/mp4': 'm4a' };
+            const ext = exts[mime] ?? 'bin', key = (await (0, utils_1.hash)(u)).slice(0, 24);
+            const p = root + (u === worldCover ? '/封面/' : '/插画集/附件/') + key + '.' + ext;
+            await vault.binary(p, r.bytes);
+            record.assets[u] = p;
+            await persist();
+        }
+        catch (e) {
+            let label = u;
+            try {
+                const x = new URL(u);
+                label = x.origin + x.pathname;
+            }
+            catch { }
+            const message = '媒体未离线保存：' + label + '；' + (0, utils_1.redact)(e instanceof Error ? e.message : e);
+            warnings.push(message);
+            progress(message, { phase: '下载媒体', completed: mediaDone, total: resources.size, issue: { category: '封面/媒体' } });
+        }
+    }
+    progress(`媒体处理完成：${mediaDone}/${resources.size}`, { phase: '下载媒体', completed: mediaDone, total: resources.size });
+    progress('保存接口快照…', { phase: '保存原始资料' });
+    const snapshotPath = root + '/_原始数据/snapshot.json';
+    await raw(snapshotPath, s);
+    const unavailable = s.unavailable ?? {};
+    for (const [key, reason] of Object.entries(unavailable)) {
+        const message = `设定 ${names[key] ?? '（名称未解析）'} 正文未取得：${reason}；已有本地正文保持不变。`;
+        if (!warnings.some(w => w.includes(key) && w.includes(reason)))
+            warnings.push(message);
+    }
+    const rawPaths = new Map();
+    for (const d of s.definitions) {
+        const p = root + (unavailable[(0, types_1.id)(d.definitionId)] ? '/_原始数据/未取得正文/' : '/_原始数据/设定/') + (0, types_1.id)(d.definitionId) + '.json';
+        rawPaths.set((0, types_1.id)(d.definitionId), p);
+        await raw(p, d);
+    }
+    function cover(o, world = false) {
+        const u = (0, utils_1.coverSource)(o, settings.baseUrl);
+        if (!u)
+            return '';
+        const p = record.assets[u], dimensions = world ? ' width="300" height="444"' : '';
+        if ((0, utils_1.video)(o)) {
+            const source = p ? `data-matrees-src="${(0, utils_1.esc)(p)}"` : `src="${(0, utils_1.esc)(u)}"`;
+            return `<video controls${dimensions} ${source}></video>`;
+        }
+        if (p)
+            return `![[${p}${world ? '|300x444' : ''}]]`;
+        return world ? `<img src="${(0, utils_1.esc)(u)}" alt="世界观封面"${dimensions}>` : `![封面](${u.replace(/[() ]/g, c => encodeURIComponent(c))})`;
+    }
+    const sorted = [...s.definitions].sort((a, b) => Number((0, types_1.truth)(b.isPinned)) - Number((0, types_1.truth)(a.isPinned)) || Number(a.sortOrder ?? 0) - Number(b.sortOrder ?? 0) || String(a.title ?? '').localeCompare(String(b.title ?? ''), 'zh-CN'));
+    function gallery(d) {
+        const ref = s.galleries[(0, types_1.id)(d.definitionId)] ?? {};
+        const mids = new Set([...(0, types_1.arr)(ref.media).map(m => (0, types_1.id)(m.mediaId)), ...(Array.isArray(d.galleryImageIds) ? d.galleryImageIds.map(types_1.id) : [])]);
+        const fids = new Set([...(0, types_1.arr)(ref.folders).map(f => (0, types_1.id)(f.folderId)), ...(Array.isArray(d.galleryFolderIds) ? d.galleryFolderIds.map(types_1.id) : [])]);
+        const rows = s.illustrations.filter(m => mids.has((0, types_1.id)(m.mediaId)) || fids.has((0, types_1.id)(m.folderId)) || (0, types_1.arr)(m.usages).some(u => u.itemType === 'definition' && (0, types_1.id)(u.itemId) === (0, types_1.id)(d.definitionId)));
+        return rows.length ? '\n\n## 关联插画\n\n' + rows.map(m => `${cover(m)}\n\n${(0, utils_1.mdText)(m.title ?? m.originName ?? '')}`).join('\n\n') : '';
+    }
+    for (const d of sorted) {
+        const did = (0, types_1.id)(d.definitionId), kind = (0, types_1.truth)(d.definitionSet) ? 'set' : 'definition';
+        // Resolve links to any stable canonical paths from earlier synchronizations.
+        const previous = record.notes['definition:' + did]?.path;
+        const canonical = previous && !legacyIdPath(previous) ? previous : layout.paths[did];
+        ctx.links[did] = canonical;
+    }
+    for (const d of sorted) {
+        const did = (0, types_1.id)(d.definitionId), issue = unavailable[did], previous = record.notes['definition:' + did];
+        if (issue && previous && vault.exists(previous.path)) {
+            progress('保留已有正文与本地修改：' + String(d.title), { phase: '保存页面' });
+            continue;
+        }
+        progress('保存设定：' + String(d.title));
+        const parents = (layout.parents[did] ?? []).map(p => (0, utils_1.wiki)(ctx.links[p], s.definitions.find(x => (0, types_1.id)(x.definitionId) === p)?.title));
+        let cloud = `# ${(0, utils_1.mdText)(d.title)}\n\n${cover(d)}\n\n作者：${(0, utils_1.mdText)((0, types_1.author)(d))}\n\n${d.description ? (0, content_1.toMarkdown)(d.description, ctx) + '\n\n' : ''}${parents.length ? '所属设定集：' + parents.join(' · ') + '\n\n' : ''}`;
+        if ((0, types_1.truth)(d.definitionSet))
+            cloud += '> 本页为设定集自身正文。下挂条目列在正文之后。\n\n';
+        cloud += issue ? `> [!warning] 本次未取得正文\n> ${(0, utils_1.mdText)(issue)}。这不表示云端内容为空；下次取得正文后会自动补全。\n\n` : (0, content_1.toMarkdown)(d.content, ctx) || '（云端正文为空）';
+        cloud += gallery(d);
+        if ((0, types_1.truth)(d.definitionSet)) {
+            const children = sorted.filter(x => (0, types_1.id)(x.definitionId) !== did && (layout.parents[(0, types_1.id)(x.definitionId)] ?? []).includes(did));
+            cloud += '\n\n## 下挂设定\n\n' + (children.map(x => `- ${(0, types_1.truth)(x.isPinned) ? '📌 ' : ''}${(0, utils_1.wiki)(ctx.links[(0, types_1.id)(x.definitionId)], x.title)}${(0, types_1.truth)(x.definitionSet) ? ' · 设定集' : ''}`).join('\n') || '暂无下挂设定。');
+        }
+        await note('definition:' + did, layout.paths[did], String(d.title), (0, types_1.truth)(d.definitionSet) ? 'set' : 'definition', did, cloud, rawPaths.get(did), issue ? undefined : await (0, utils_1.hash)(JSON.stringify(d.content)));
+    }
+    for (const link of layout.links) {
+        const target = ctx.links[s.definitions.find(d => layout.paths[(0, types_1.id)(d.definitionId)] === link.target)?.definitionId] ?? link.target;
+        await note('link:' + link.from, link.from, link.title, 'link', link.target, `# ${(0, utils_1.mdText)(link.title)}\n\n此设定挂载于多个设定集。\n\n${(0, utils_1.wiki)(target, '打开唯一正文与本地修改区')}`);
+    }
+    const conceptRaw = root + (s.conceptIssue ? '/_原始数据/未取得正文/世界概念.json' : '/_原始数据/世界概念.json');
+    await raw(conceptRaw, s.concept);
+    if (s.conceptIssue)
+        warnings.push(s.conceptIssue);
+    if (!(s.conceptIssue && record.notes.concept && vault.exists(record.notes.concept.path)))
+        await note('concept', root + '/世界概念.md', '世界概念', 'concept', (0, types_1.id)(s.concept.conceptId) || wid, `# 世界概念\n\n${s.conceptIssue ? '> [!warning] 本次未取得正文\n> ' + (0, utils_1.mdText)(s.conceptIssue) : (0, content_1.toMarkdown)(s.concept.content, ctx) || '（云端正文为空）'}`, conceptRaw, s.conceptIssue ? undefined : await (0, utils_1.hash)(JSON.stringify(s.concept.content ?? '')));
+    // Illustration folders retain their original tree; binary files are deduplicated by source URL.
+    const folderPaths = new Map(), folderNames = new Map();
+    function buildFolders(rows, parent) { let used = folderNames.get(parent); if (!used)
+        folderNames.set(parent, used = new Map()); for (const f of rows) {
+        const base = (0, utils_1.safePart)(f.title ?? f.name ?? '未命名目录', 48), n = (used.get(base) ?? 0) + 1;
+        used.set(base, n);
+        const p = parent + '/' + (n === 1 ? base : `${base} (${n})`);
+        folderPaths.set((0, types_1.id)(f.folderId), p);
+        buildFolders((0, types_1.arr)(f.children), p);
+    } }
+    buildFolders(s.illustrationTree, root + '/插画集');
+    const grouped = new Map();
+    grouped.set(root + '/插画集', []);
+    for (const p of folderPaths.values())
+        grouped.set(p, []);
+    for (const m of s.illustrations) {
+        const p = folderPaths.get((0, types_1.id)(m.folderId)) ?? root + '/插画集';
+        if (!grouped.has(p))
+            grouped.set(p, []);
+        grouped.get(p).push(m);
+    }
+    for (const [p, rows] of grouped) {
+        const children = [...folderPaths.entries()].filter(([, fp]) => fp.slice(0, fp.lastIndexOf('/')) === p);
+        let c = '# 插画集\n\n' + children.map(([, fp]) => '- ' + (0, utils_1.wiki)(fp + '/00--插画目录.md', fp.split('/').at(-1)?.split('--')[0])).join('\n');
+        for (const m of rows)
+            c += `\n\n## ${(0, utils_1.mdText)(m.title ?? m.originName ?? m.mediaId)}\n\n${cover(m)}\n\n${(0, content_1.toMarkdown)(m.caption, ctx)}\n\n${(0, types_1.arr)(m.usages).map(u => ctx.links[(0, types_1.id)(u.itemId)] ? (0, utils_1.wiki)(ctx.links[(0, types_1.id)(u.itemId)], u.title) : (0, utils_1.mdText)(u.title ?? u.itemId)).join(' · ')}`;
+        await note('gallery:' + p, p + '/00--插画目录.md', '插画目录', 'gallery', wid, c);
+    }
+    for (const [kind, rows, key, paths] of [['event', s.events, 'eventId', eventPaths], ['map', s.maps, 'mapId', mapPaths], ['chapter', s.chapters, 'chapterId', chapterPaths]]) {
+        for (const d of rows) {
+            const entityId = (0, types_1.id)(d[key]), title = String(d.title ?? d.name ?? names[entityId] ?? '未命名');
+            const p = paths[entityId];
+            if (!p)
+                continue;
+            const rp = root + '/_原始数据/' + kind + '/' + entityId + '.json';
+            await raw(rp, d);
+            await note(kind + ':' + entityId, p, title, kind, entityId, `# ${(0, utils_1.mdText)(title)}\n\n${cover(d)}\n\n${(0, content_1.toMarkdown)(d.content ?? d.description, ctx)}\n\n## 详细资料\n\n${(0, content_1.toMarkdown)(Object.fromEntries(Object.entries(d).filter(([k]) => !['content', 'description', 'title', 'name'].includes(k))), ctx)}\n\n${(0, utils_1.wiki)(rp, '原始接口数据')}`, rp);
+        }
+    }
+    const dataLinks = [];
+    const labels = { calendars: '历法', relations: '关系图谱' };
+    for (const [k, v] of Object.entries(s.extra))
+        if (v !== null) {
+            const title = labels[k] ?? (k.startsWith('chapters-') ? '章节目录 ' + k.slice(9) : k), rp = root + '/_原始数据/' + (0, utils_1.safePart)(k, 80) + '.json', p = root + '/扩展资料/' + (0, utils_1.safePart)(title, 80) + '.md';
+            await raw(rp, v);
+            await note('extra:' + k, p, title, 'extra', k, `# ${(0, utils_1.mdText)(title)}\n\n${(0, content_1.toMarkdown)(v, ctx) || '暂无资料。'}\n\n${(0, utils_1.wiki)(rp, '原始接口数据')}`, rp);
+            dataLinks.push('- ' + (0, utils_1.wiki)(record.notes['extra:' + k]?.path ?? p, title));
+        }
+    for (const w of s.works) {
+        const workId = (0, types_1.id)(w.workId), title = String(w.title ?? w.name ?? names[workId] ?? '未命名作品'), p = workPaths[workId] ?? root + '/作品章节/未归档/00--作品信息.md';
+        await note('work:' + workId, p, title, 'work', workId, `# ${(0, utils_1.mdText)(title)}\n\n${(0, content_1.toMarkdown)(w, ctx)}\n\n## 正文章节\n\n` + s.chapters.filter(c => (0, types_1.id)(c.workId) === workId).map(c => '- ' + (0, utils_1.wiki)(record.notes['chapter:' + (0, types_1.id)(c.chapterId)]?.path ?? '', c.title ?? c.chapterId)).join('\n'));
+        dataLinks.push('- ' + (0, utils_1.wiki)(p, title));
+    }
+    const infoPath = root + '/世界详细资料.md';
+    await note('world-info', infoPath, '世界详细资料', 'world-info', wid, '# 世界详细资料\n\n' + (0, content_1.toMarkdown)(s.world, ctx));
+    dataLinks.unshift('- ' + (0, utils_1.wiki)(infoPath, '世界详细资料'));
+    const summary = `# ${(0, utils_1.mdText)(s.world.title)}\n\n${cover(s.world, true)}\n\n${(0, utils_1.mdText)(s.world.subTitle ?? '')}\n\n作者：${(0, utils_1.mdText)((0, types_1.author)(s.world))}\n\n${(0, content_1.toMarkdown)(s.world.description, ctx)}\n\n## 世界资料\n\n- ${(0, utils_1.wiki)(root + '/世界概念.md', '世界概念')}\n- ${(0, utils_1.wiki)(root + '/插画集/00--插画目录.md', '插画集')}\n- ${(0, utils_1.wiki)(snapshotPath, '完整接口快照')}\n\n## 设定目录\n\n${sorted.filter(d => !(layout.parents[(0, types_1.id)(d.definitionId)] ?? []).length).map(d => '- ' + (0, utils_1.wiki)(ctx.links[(0, types_1.id)(d.definitionId)], d.title)).join('\n')}\n\n## 其他信息\n\n${dataLinks.join('\n')}`;
+    await note('world', root + '/00--世界总览.md', String(s.world.title), 'world', wid, summary, snapshotPath);
+    const report = `# 同步报告\n\n时间：${s.fetchedAt}\n\n设定与设定集：${s.definitions.length}\n\n正文未取得：${Object.keys(unavailable).length}${s.conceptIssue ? '；世界概念正文也未取得' : ''}（保留旧页或创建占位页）\n\n插画：${s.illustrations.length}\n\n本次写入页面：${notes}\n\n冲突：${conflicts}\n\n${warnings.length ? '## 待处理项\n\n' + [...new Set(warnings)].map(x => '- ' + x).join('\n') : '所有已配置读取步骤完成。'}\n\n云端消失的旧页面保留，不自动删除。本次接口快照保存于 _原始数据。\n`;
+    await vault.write(root + '/_同步报告/' + stamp + '.md', report);
+    record.lastSync = s.fetchedAt;
+    await persist();
+    return { record, warnings: [...new Set(warnings)], notes, conflicts, reportPath: root + '/_同步报告/' + stamp + '.md' };
+}
 
-  cu.prototype.fetchMedia=async function(url,maxMB=this.settings.maxMediaMB){let origin='';try{origin=new URL(this.settings.baseUrl).origin;}catch{origin=this.settings.baseUrl;}const headers={Accept:'image/avif,image/webp,image/apng,image/*,video/*,*/*;q=0.8',Referer:origin.replace(/\/$/,'')+'/'};let length=0;try{const h=await Mt((0,j.requestUrl)({url,method:'HEAD',headers,throw:!1}),1e4);length=Number(Object.entries(h.headers).find(([k])=>k.toLowerCase()==='content-length')?.[1]??0);}catch{}if(length>maxMB*1024*1024)throw Error('媒体超过单文件下载上限');let r=await Mt((0,j.requestUrl)({url,method:'GET',headers,throw:!1}),45e3);if(r.status===401||r.status===403)r=await Mt((0,j.requestUrl)({url,method:'GET',throw:!1}),45e3);return{status:r.status,bytes:r.arrayBuffer,contentType:Object.entries(r.headers).find(([k])=>k.toLowerCase()==='content-type')?.[1]??''};};
+},
+"types":function(module,exports,__require,require){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.truth = exports.id = exports.arr = exports.obj = exports.DEFAULT_SETTINGS = void 0;
+exports.ids = ids;
+exports.ownerId = ownerId;
+exports.author = author;
+exports.worldRelation = worldRelation;
+exports.DEFAULT_SETTINGS = {
+    networkMode: 'auto', baseUrl: 'https://www.matrees.cn', rootFolder: 'Matrees', userSecret: 'matrees-user-token', adminSecret: 'matrees-admin-token',
+    readConcurrency: 3, requestIntervalMs: 150, downloadMedia: true, maxMediaMB: 200, extras: true
+};
+const obj = (v) => v && typeof v === 'object' && !Array.isArray(v) ? v : {};
+exports.obj = obj;
+const arr = (v) => Array.isArray(v) ? v.filter(x => x && typeof x === 'object') : [];
+exports.arr = arr;
+const id = (v) => v == null ? '' : typeof v === 'object' ? (0, exports.id)((0, exports.obj)(v).definitionId ?? (0, exports.obj)(v).tagId ?? (0, exports.obj)(v).id ?? (0, exports.obj)(v).value ?? (0, exports.obj)(v).key) : String(v);
+exports.id = id;
+const truth = (v) => v === true || v === 1 || v === '1' || v === 'true';
+exports.truth = truth;
+function ids(v) { return [...new Set((Array.isArray(v) ? v : typeof v === 'string' ? v.split(',') : v ? [v] : []).map(exports.id).filter(x => x && x !== '0'))]; }
+function ownerId(w) { return (0, exports.id)(w.ownerUser?.userId ?? w.ownerId ?? w.ownerUserId ?? w.createUser?.userId ?? w.createUserId); }
+function author(w) { const u = w.ownerUser ?? w.createUser ?? {}; return String(u.nickname ?? u.username ?? '未知作者'); }
+function worldRelation(w, userId) {
+    if (ownerId(w) === userId)
+        return '我拥有';
+    const labels = { manager: '管理员', auditor: '审核者', co_creator: '共创者', coCreator: '共创者', proposer: '参与者', guild_leader: '公会会长', guild_vice_leader: '公会副会长' };
+    const roles = [...new Set((Array.isArray(w.permissions) ? w.permissions : []).map((p) => labels[p]).filter(Boolean))];
+    const guilds = (0, exports.arr)(w.matreesGuilds).map(g => String(g.title));
+    return (roles.length ? '我参与 · ' + roles.join(' / ') : '我参与') + (guilds.length ? ' · 公会：' + [...new Set(guilds)].join(' / ') : '');
+}
 
-  cu.prototype.syncWorld=async function(wid){if(this.busy)throw Error('已有同步或上传正在进行。');this.busy=!0;this.syncProgress={status:'running',worldId:wid,startedAt:new Date().toISOString(),message:'正在连接 Matrees…',phase:'连接',notes:0,conflicts:0,warnings:0,log:[]};let runPath='',root='',incremental,restore=()=>{};const vault=this.vaultPort();try{await this.openProgress();const api=await this.connect(),key=this.accountKey(),records=this.index.accounts[key]??={};const found=new Map(),memberships={};
-    const mergeRows=(rows,parent,tree=false)=>{for(const d of Array.isArray(rows)?rows:[]){const did=id(d.definitionId);if(!did)continue;const prev=found.get(did)??{};found.set(did,{...prev,...d,...(tree?{definitionSet:true,father:d.father??parent??'0'}:{})});if(parent)memberships[did]=[...new Set([...(memberships[did]??[]),parent])];if(Array.isArray(d.children)&&d.children.length)mergeRows(d.children,did,true);}};
-    const ensure=async world=>{if(incremental)return;root=records[wid]?.root??bu(this.settings.rootFolder)+'/'+key+'/'+be(world.title,26)+'--'+be(wid,24);runPath=root+'/_同步报告/任务-'+this.syncProgress.startedAt.replace(/[:.]/g,'-')+'.md';await vault.write(runPath,`# 同步任务\n\n世界：${text(world.title)}\n\n保存目录：${root}\n\n状态：正在增量读取并写入本地。\n\n目录和正文会随着云端返回持续出现在左侧文件列表。\n`);records[wid]??={root,notes:{},assets:{}};incremental=new RuntimeIncrementalWriter(world,records[wid],root,this.settings,vault,(s,d)=>this.progress(s,d),async record=>{records[wid]=record;await this.persist();});records[wid]=incremental.record;await this.persist();await incremental.seedWorld();Object.assign(this.syncProgress,{rootPath:root,overviewPath:root+'/00--世界总览.md',reportPath:runPath});this.progress('已创建同步目录并开始增量写入：'+root,{phase:'增量写入'});await this.revealLocal(root+'/00--世界总览.md');};
-    const oa=api.assertWorld,or=api.read,ol=api.all;
-    api.assertWorld=async function(...args){const w=await oa.apply(this,args);await ensure(w);return w;};
-    api.read=async function(path,params,...rest){try{const value=await or.call(this,path,params,...rest);if(path==='/mt/concept/getInfo'&&incremental){const c=value&&typeof value==='object'&&!Array.isArray(value)?value:{};await incremental.concept(c,c.content==null?'世界概念未返回正文，保留已有页面；首次同步创建占位页。':undefined);}else if(path==='/mt/definition/listRootTree'&&incremental){mergeRows(Array.isArray(value)?value:[],undefined,true);await incremental.seedDefinitions([...found.values()],structuredClone(memberships));}else if(path.startsWith('/mt/definition/getInfo/')&&incremental){const did=decodeURIComponent(path.slice(path.lastIndexOf('/')+1)),d={...(found.get(did)??{}),...(value&&typeof value==='object'?value:{})};found.set(did,d);memberships[did]=[...new Set([...(memberships[did]??[]),...ids(d.belongIds??d.belongSets??d.belong)])];let issue;if(truth(d.isHidden)&&!truth(d.hideUnlocked))issue='设定被隐藏且尚未授权读取正文';else if(d.content==null){const counts=[d.contentWordCount,d.wordCount,d.statistics?.wordCount];if(!(counts.some(v=>(typeof v==='number'||typeof v==='string'&&/^\d+$/.test(v))&&Number(v)===0)&&!counts.some(v=>Number(v)>0)))issue='设定详情缺少正文（不能确认是空白内容）';}await incremental.definition(d,issue,[...found.values()],structuredClone(memberships));}return value;}catch(e){if(path.startsWith('/mt/definition/getInfo/')&&incremental&&e?.code===404){const did=decodeURIComponent(path.slice(path.lastIndexOf('/')+1)),d={...(found.get(did)??{}),definitionId:did,worldId:wid};found.set(did,d);await incremental.definition(d,'设定详情不存在或已删除（404）',[...found.values()],structuredClone(memberships));}throw e;}};
-    api.all=async function(path,params,...rest){const value=await ol.call(this,path,params,...rest);if(path==='/mt/definition/listDefinitionAll'&&incremental){const parent=id(params?.definitionSetId);mergeRows(value,parent||undefined,false);await incremental.seedDefinitions([...found.values()],structuredClone(memberships));}return value;};
-    restore=()=>{api.assertWorld=oa;api.read=or;api.all=ol;restore=()=>{};};
-    const snapshot=await rn(api,wid,this.settings.extras,(s,d)=>this.progress(s,d),{readConcurrency:this.settings.readConcurrency});restore();await incremental?.flush();const smartVault=makeSmartVault(vault),result=await Fi(snapshot,records[wid],root,this.settings,smartVault,url=>this.fetchMedia(url),(s,d)=>this.progress(s,d),async record=>{records[wid]=record;await this.persist();});records[wid]=result.record;for(const warning of result.warnings)if(!this.errors.some(e=>e.runId===this.syncProgress.startedAt&&e.message===pe(warning)))this.recordIssue(warning,'同步/格式');await this.persist();await this.flushErrors();const msg=`已保存 ${result.notes} 页，${result.conflicts} 个冲突，${result.warnings.length} 项待处理。`;this.progress(msg);new j.Notice(msg,8e3);await vault.write(runPath,`# 同步任务\n\n状态：完成${result.warnings.length?'（有待处理项）':''}\n\n${msg}\n\n${wiki(result.reportPath,'查看本次报告')}\n\n${wiki(root+'/00--世界总览.md','打开世界总览')}\n`);Object.assign(this.syncProgress,{status:'complete',finishedAt:new Date().toISOString(),phase:result.warnings.length?'同步完成（有待处理项）':'同步完成',notes:result.notes,conflicts:result.conflicts,warnings:result.warnings.length,overviewPath:root+'/00--世界总览.md',reportPath:result.reportPath,completed:undefined,total:undefined});this.refreshProgress();await this.openNote(root+'/00--世界总览.md');await this.revealLocal(root+'/00--世界总览.md');
-  }catch(e){restore();this.recordException(e);this.progress(pe(e,[this.token(this.mode)]));this.syncProgress.status='error';this.syncProgress.finishedAt=new Date().toISOString();this.refreshProgress();if(runPath)try{await vault.write(runPath,`# 同步任务\n\n状态：未完成\n\n${this.syncProgress.message}\n\n保存目录：${root}\n\n已保存的本地文件保持原样。请查看插件的“全部错误详情”后重新同步。\n`);}catch(writeError){this.recordException(writeError);}await this.flushErrors();throw e;}finally{this.busy=!1;}};
+},
+"utils":function(module,exports,__require,require){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.wiki = exports.mdText = exports.esc = void 0;
+exports.safePart = safePart;
+exports.safeRoot = safeRoot;
+exports.urlSafe = urlSafe;
+exports.baseUrl = baseUrl;
+exports.video = video;
+exports.hash = hash;
+exports.redact = redact;
+exports.stripSecrets = stripSecrets;
+exports.pool = pool;
+exports.settledPool = settledPool;
+exports.concurrency = concurrency;
+exports.coverSource = coverSource;
+function safePart(s, limit = 36) {
+    let t = String(s ?? '未命名').normalize('NFC').replace(/[\x00-\x1f\x7f/\\:*?"<>|#\[\]^]/g, '_').replace(/[. ]+$/g, '').trim();
+    t = Array.from(t).slice(0, limit).join('');
+    if (!t || t === '.' || t === '..')
+        t = '未命名';
+    if (/^(con|prn|aux|nul|com[0-9]|lpt[0-9])(?:\.|$)/i.test(t))
+        t = '_' + t;
+    return t;
+}
+function safeRoot(s) {
+    const p = s.replace(/\\/g, '/');
+    if (!p || p.startsWith('/') || p.split('/').some(x => !x || x === '.' || x === '..' || x.startsWith('.') || /[:*?"<>|\x00-\x1f]/.test(x)))
+        throw Error('保存目录必须是仓库内的普通相对目录，例如 Matrees。');
+    return p.replace(/\/+$/, '');
+}
+function urlSafe(s, base) {
+    try {
+        if (!String(s ?? '').trim())
+            return '';
+        const u = new URL(String(s), base);
+        return u.protocol === 'https:' && !u.username && !u.password ? u.href : '';
+    }
+    catch {
+        return '';
+    }
+}
+function baseUrl(s) { const u = new URL(s); if (u.protocol !== 'https:' || u.username || u.password || u.search || u.hash || u.pathname !== '/')
+    throw Error('API 地址必须为 HTTPS 根域名。'); return u.origin; }
+const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+exports.esc = esc;
+const mdText = (s) => String(s ?? '').replace(/[\\`*_[\]<>|]/g, '\\$&').replace(/[\r\n]/g, ' ');
+exports.mdText = mdText;
+const wiki = (path, title) => `[[${path.replace(/\.md$/, '')}${title ? '|' + String(title).replace(/[\]|\r\n]/g, ' ') : ''}]]`;
+exports.wiki = wiki;
+function video(o) { return /video/i.test(String(o.coverType ?? o.mediaType ?? '')) || /\.(mp4|webm|mov|m4v)(?:[?#]|$)/i.test(String(o.coverUrl ?? o.mediaUrl ?? '')); }
+async function hash(s) { const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s)); return Array.from(new Uint8Array(b), x => x.toString(16).padStart(2, '0')).join(''); }
+function redact(s) { return String(s ?? '未知错误').replace(/eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+/g, '[Token 已隐藏]').replace(/mtk_[A-Za-z0-9_-]+/g, '[密钥已隐藏]'); }
+function stripSecrets(v) {
+    if (Array.isArray(v))
+        return v.map(stripSecrets);
+    if (v && typeof v === 'object')
+        return Object.fromEntries(Object.entries(v).filter(([k]) => !/^(token|flushToken|authorization|password|phone|email|phoneRegionCode|energyBalance|matterBalance)$/i.test(k)).map(([k, x]) => [k, stripSecrets(x)]));
+    return v;
+}
+async function pool(items, fn, n = 1) {
+    const out = new Array(items.length);
+    let next = 0, failed = false, reason;
+    await Promise.all(Array.from({ length: Math.min(Math.max(1, Math.floor(n) || 1), items.length) }, async () => { while (!failed) {
+        const i = next++;
+        if (i >= items.length)
+            break;
+        try {
+            out[i] = await fn(items[i]);
+        }
+        catch (e) {
+            if (!failed) {
+                failed = true;
+                reason = e;
+            }
+        }
+    } }));
+    if (failed)
+        throw reason;
+    return out;
+}
+async function settledPool(items, fn, n = 1) {
+    const values = new Array(items.length), errors = [];
+    let next = 0;
+    await Promise.all(Array.from({ length: Math.min(Math.max(1, Math.floor(n) || 1), items.length) }, async () => { for (;;) {
+        const i = next++;
+        if (i >= items.length)
+            break;
+        try {
+            values[i] = await fn(items[i], i);
+        }
+        catch (error) {
+            errors.push({ index: i, item: items[i], error });
+        }
+    } }));
+    return { values, errors };
+}
+function concurrency(value) { const n = Number(value); return Number.isFinite(n) ? Math.max(1, Math.min(8, Math.floor(n))) : 3; }
+/** API cover IDs are not URLs. Only use URL fields or explicitly URL-shaped cover values. */
+function coverSource(o, base) {
+    const cover = typeof o.cover === 'object' ? o.cover?.url ?? o.cover?.src : o.cover;
+    for (const value of [o.coverUrl, o.cover_url, o.mediaUrl, cover])
+        if (typeof value === 'string' && /^(https:\/\/|\/)/.test(value)) {
+            const u = urlSafe(value, base);
+            if (u)
+                return u;
+        }
+    return '';
+}
+
+}};
+const __cache=Object.create(null);
+function __require(id){if(__cache[id])return __cache[id].exports;const fn=__modules[id];if(!fn)throw new Error('Unknown internal module: '+id);const module={exports:{}};__cache[id]=module;fn(module,module.exports,__require,require);return module.exports;}
+const entry=__require('main');module.exports=entry&&entry.default?entry.default:entry;
 })();
