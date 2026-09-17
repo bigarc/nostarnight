@@ -1,32 +1,32 @@
-# 无星之夜与救世英雄传说
+# 无星之夜与救世英雄传说  
 **Nostarnight and the Legend of the Savior Hero**
 
-@帝国外务部大主教的公开设定集
+@帝国外务部大主教的公开设定集  
 **@bigarc's Public Worldbuilding Collection**
 
-本作品采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 国际许可协议进行许可。
+本作品采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 国际许可协议进行许可。  
 **This work is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) International License.**
 
 ---
 # 前言
 **Preface**
 
-**欢迎来到无星之夜与救世英雄传说的世界**
+**欢迎来到无星之夜与救世英雄传说的世界**  
 Welcome to the world of Nostarnight.
 
-**这是一个“多元宇宙世界”——每一个独立的“主要阵营”或者说场景都是无数个“泡世界”之一，而我们的”主线故事“将会从“希伦特”开始，这也是世界观的主要的局内人叙事角度——以《于世界之门前》的作者们为视角，以及我们游戏的主线——一场不同寻常的“勇者斗魔王”之旅。**
+**这是一个“多元宇宙世界”——每一个独立的“主要阵营”或者说场景都是无数个“泡世界”之一，而我们的”主线故事“将会从“希伦特”开始，这也是世界观的主要的局内人叙事角度——以《于世界之门前》的作者们为视角，以及我们游戏的主线——一场不同寻常的“勇者斗魔王”之旅。**  
 This is a "multiverse world"—each independent "major faction," or rather setting, is one of countless "Bubble Worlds," and our "main storyline" will begin from "Xilunte." This is also the setting's main in-universe narrative perspective—from the viewpoint of the authors of *Before the Gate of the World*, and the main storyline of our game: an unusual "hero vs. Demon King" journey.
 
-**不过当然，你也不是非要按照这一顺序来阅读，或者说是——加入这场创作——选择一个你喜欢的种族，像是游玩战锤、星际争霸或者类似的ip一样**
+**不过当然，你也不是非要按照这一顺序来阅读，或者说是——加入这场创作——选择一个你喜欢的种族，像是游玩战锤、星际争霸或者类似的ip一样**  
 Of course, you don't have to read in this order—or, rather, to join this creation—you can choose a race you like, just like playing Warhammer, StarCraft, or similar IPs.
 
-**坏消息：缝合怪；好消息：全缝了**
+**坏消息：缝合怪；好消息：全缝了**  
 Bad news: it's a mishmash; good news: everything's been stitched in.
 
-**感官上也许没有那么严肃，这其实是一个更偏向现代化的世界观设定，虽然杂糅了奇幻、玄幻、科幻——也许可以参考诸如明日方舟等等世界观设计。包括了多元素、多文化、多美学风格的“实质科幻”？**
+**感官上也许没有那么严肃，这其实是一个更偏向现代化的世界观设定，虽然杂糅了奇幻、玄幻、科幻——也许可以参考诸如明日方舟等等世界观设计。包括了多元素、多文化、多美学风格的“实质科幻”？**  
 Tonally, it might not be all that serious. This is actually a more modern-leaning worldbuilding setting, though it blends fantasy, xuanhuan, and science fiction—you might reference worldbuilding designs such as Arknights and the like. A "substantive science fiction" that includes multi-element, multicultural, and multi-aesthetic styles?
 
-***接下来交由诸位——***
+***接下来交由诸位——***  
 Now, I leave it to you all—
 
 ---
@@ -51,7 +51,7 @@ The Empire attempts to establish a new order in a broken world, but the games am
 统合、探索、冲突与认同危机，秩序的重建与认知边疆的爆炸性拓展。这是一个充满无限可能，也充满无限危险的全新篇章。  
 Integration, exploration, conflict, and identity crisis—the reconstruction of order and the explosive expansion of the cognitive frontier. This is a new chapter full of infinite possibility and infinite danger.
 
-想感受这个世界的具体质感？可以从这座城市或者从零散设定开始：  
+**想感受这个世界的具体质感？可以从这座城市或者从零散设定开始：**  
 Want to feel the concrete texture of this world? You can start from this city or from scattered fragments:
 
 [[希伦特城|希伦特城/Sirent, the City]]（[GitHub 这里/Here](./无星之夜与救世英雄传说/地理/人文地理/城市/希伦特/希伦特城.md)）
@@ -71,7 +71,7 @@ In present-day Tonile, sky and earth are covered entirely in grey and steel, wit
 多尼雷人把科学称为"窄门"——从小往上越来越狭窄、越来越绝望。但在接触希伦特等世界后，他们也开始发展自己的魔法体系。  
 The people of Tonile call science "the Narrow Gate"—growing narrower and more hopeless as one ascends. But after contact with worlds such as Sirent, they too have begun to develop their own magical systems.
 
-多尼雷的完整设定仍在整理中。可参考零散条目：  
+**多尼雷的完整设定仍在整理中。可参考零散条目：**  
 The complete setting of Tonile is still being organized. Scattered entries for reference:
 
 -多尼雷-（待完善）  
@@ -93,18 +93,18 @@ Souls awaken in the Fields of Guixu, follow the Yellow Springs Stone Road to the
 The Underworld–Old Yin is "a great dynasty that exists illusorily in the shadow of history," while the Underworld–Modern is "the lingering afterimage of a bygone era, now spanning the River of Forgetfulness and leaning upon the Other Shore."
 
 
-想感受这个世界的具体质感？聆听这些诗词：  
+**想感受这个世界的具体质感？聆听这些诗词：**  
 Want to feel the concrete texture of this world? Listen to these poems:
 
 > **《春行》/ Spring Journey**
 >
-> 落花时节一身轻，竹杖芒鞋过溪山。  
-> 不知春色几时停，白驹且慢行。  
-> 水畔无人问，林间有鹿前。
+> **落花时节一身轻，竹杖芒鞋过溪山。**  
+> **不知春色几时停，白驹且慢行。**  
+> **水畔无人问，林间有鹿前。**
 > 
-> 回头灯火千重远，举目桃花一径鲜。  
-> 生路千重锁断，幽途百鸟相迎。  
-> 此身无所住，天地一飞鸢。
+> **回头灯火千重远，举目桃花一径鲜。**  
+> **生路千重锁断，幽途百鸟相迎。**  
+> **此身无所住，天地一飞鸢。**
 > 
 >In falling-blossom season, come light of body and heart,  
 >With bamboo staff and straw sandals, I cross the streams and hills.  
@@ -123,19 +123,19 @@ Want to feel the concrete texture of this world? Listen to these poems:
 
 > **《归去来兮》/ Homeward Bound**
 > 
-> 铁甲成尘，冰河泪、归途千里。
-> 谁记取、沙场秋老，鼓声曾沸。
-> 梦里犹闻旧角号，醒来已成孤魂鬼。
-> 但长风犹送，旧时旗旆。
+> **铁甲成尘，冰河泪、归途千里。**  
+> **谁记取、沙场秋老，鼓声曾沸。**  
+> **梦里犹闻旧角号，醒来已成孤魂鬼。**  
+> **但长风犹送，旧时旗旆。**
 > 
-> 唱还曲：  
-> 风萧萧兮卸甲寒，魂渺渺兮路漫漫。  
-> 望故乡兮云水间，月不照兮旧衣冠。
+> **唱还曲：**  
+> **风萧萧兮卸甲寒，魂渺渺兮路漫漫。**  
+> **望故乡兮云水间，月不照兮旧衣冠。**
 > 
-> 问苍天：  
-> 梦中不觉寒，可许我归家去？  
-> 不问归程远近，但知路在身前。  
-> 行行复行行。
+> **问苍天：**  
+> **梦中不觉寒，可许我归家去？**  
+> **不问归程远近，但知路在身前。**  
+> **行行复行行。**
 >
 Armor has turned to dust; the frozen river weeps—  
 the road home stretches a thousand miles.  
@@ -163,20 +163,21 @@ Walking on, and on.
 
 >**《无题》/  Untitled**
 >
-> 夜未央，夜未央。  
-> 银烛摇飞光，金锡充栋梁。  
-> 酒未凉，酒未凉。  
-> 玉阶生白露，铜驼没草荒。
+> **夜未央，夜未央。**  
+> **银烛摇飞光，金锡充栋梁。**  
+> **酒未凉，酒未凉。**  
+> **玉阶生白露，铜驼没草荒。**
 >
 Night not yet over, night not yet over.  
 Silver candles shake their flying light; gilded beams fill the hall.  
 Wine not yet cold, wine not yet cold.  
 Jade steps grow white dew; bronze camels drown in weeds.
 
-以上诗词作者：帝国外务部大主教（bigarc）  
-Poems by: Archbishop of the Imperial Foreign Ministry (bigarc)
 
-然后是专门对于en读者，抱歉了，我的pool en 。如果有任何大神愿意帮助翻译，感激不尽  
+以上诗词作者：帝国外务部大主教（bigarc）  
+Poems by: bigarc
+
+然后是专门对于en读者，抱歉了，我的poor en 。如果有任何大神愿意帮助翻译，感激不尽  
 A note for English readers: my English is poor. If any kind soul is willing to help with translation, I would be deeply grateful.
 
 ---
