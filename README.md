@@ -15,7 +15,7 @@
 Welcome to the world of Nostarnight.
 
 **这是一个“多元宇宙世界”——每一个独立的“主要阵营”或者说场景都是无数个“泡世界”之一，而我们的”主线故事“将会从“希伦特”开始，这也是世界观的主要的局内人叙事角度——以《于世界之门前》的作者们为视角，以及我们游戏的主线——一场不同寻常的“勇者斗魔王”之旅。**  
-This is a "multiverse world"—each independent "major faction," or rather setting, is one of countless "Bubble Worlds," and our "main storyline" will begin from "Xilunte." This is also the setting's main in-universe narrative perspective—from the viewpoint of the authors of *Before the Gate of the World*, and the main storyline of our game: an unusual "hero vs. Demon King" journey.
+This is a "multiverse world"—each independent "major faction," or rather setting, is one of countless "Bubble Worlds," and our "main storyline" will begin from "Sirent" This is also the setting's main in-universe narrative perspective—from the viewpoint of the authors of *Before the Gate of the World*, and the main storyline of our game: an unusual "hero vs. Demon King" journey.
 
 **不过当然，你也不是非要按照这一顺序来阅读，或者说是——加入这场创作——选择一个你喜欢的种族，像是游玩战锤、星际争霸或者类似的ip一样**  
 Of course, you don't have to read in this order—or, rather, to join this creation—you can choose a race you like, just like playing Warhammer, StarCraft, or similar IPs.
