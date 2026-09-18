@@ -97,29 +97,17 @@ The Underworld–Old Yin is "a great dynasty that exists illusorily in the shado
 **想感受这个世界的具体质感？聆听这些诗词：**  
 Want to feel the concrete texture of this world? Listen to these poems:
 
-> **《春行》/ Spring Journey**
+>**《无题》/  Untitled**
 >
-> **落花时节一身轻，竹杖芒鞋过溪山。**  
-> **不知春色几时停，白驹且慢行。**  
-> **水畔无人问，林间有鹿前。**
-> 
-> **回头灯火千重远，举目桃花一径鲜。**  
-> **生路千重锁断，幽途百鸟相迎。**  
-> **此身无所住，天地一飞鸢。**
-> 
->In falling-blossom season, come light of body and heart,  
->With bamboo staff and straw sandals, I cross the streams and hills.  
->I know not when the spring will cease—  
->White steed of time, slow your pace.  
->By the water, no one asks;  
->In the woods, a deer leads the way.
+> **夜未央，夜未央。**  
+> **银烛摇飞光，金锡充栋梁。**  
+> **酒未凉，酒未凉。**  
+> **玉阶生白露，铜驼没草荒。**
 >
->Turning back, a thousand layers of distant lights;  
->Looking up, peach blossoms bright along the path.  
->The road of life, locked behind a thousand bolts;  
->But the dark road, a hundred birds come to greet.  
->This body has nowhere to dwell—  
->In heaven and earth, I fly with the birds.
+>Night not yet over, night not yet over.  
+>Silver candles shake their flying light; gilded beams fill the hall.  
+>Wine not yet cold, wine not yet cold.  
+>Jade steps grow white dew; bronze camels drown in weeds.
 
 
 > **《归去来兮》/ Homeward Bound**
@@ -138,41 +126,48 @@ Want to feel the concrete texture of this world? Listen to these poems:
 > **不问归程远近，但知路在身前。**  
 > **行行复行行。**
 >
-Armor has turned to dust; the frozen river weeps—  
-the road home stretches a thousand miles.  
-Who remembers, on the old autumn battlefield,  
-how the drums once boiled?  
-In dreams I still hear the old bugle call;  
-waking, I am a solitary ghost.  
-Yet the long wind still carries  
-the banners of old.
+>Armor has turned to dust; the frozen river weeps—  
+>the road home stretches a thousand miles.  
+>Who remembers, on the old autumn battlefield,  
+>how the drums once boiled?  
+>In dreams I still hear the old bugle call;  
+>waking, I am a solitary ghost.  
+>Yet the long wind still carries  
+>the banners of old.
 >
-A song of return:
+>A song of return:
 >
-The wind sighs—armor laid aside, cold.  
-The soul drifts—the road endless.  
-I gaze toward home, between clouds and water.  
-The moon does not shine on these old robes and cap.
+>The wind sighs—armor laid aside, cold.  
+>The soul drifts—the road endless.  
+>I gaze toward home, between clouds and water.  
+>The moon does not shine on these old robes and cap.
 >
-I ask heaven:
+>I ask heaven:
 >
-In dreams I feel no cold—  
-may I go home?  
-I ask not how far the journey;  
-I only know the road lies before me.  
-Walking on, and on.
+>In dreams I feel no cold—  
+>may I go home?  
+>I ask not how far the journey;  
+>I only know the road lies before me.  
+>Walking on, and on.
 
->**《无题》/  Untitled**
+
+> **《鹧鸪天》/ Zhegu Tian**
+> 
+> **生作小民死作差，忘川河畔是吾衙。**  
+> **魂灯照夜巡老街，鬼簿翻年记万家。**  
+> **春水尽，故巷遐。旧殷美人委尘沙。**  
+> **今朝犹奉双王令，不管人间换岁华。**
 >
-> **夜未央，夜未央。**  
-> **银烛摇飞光，金锡充栋梁。**  
-> **酒未凉，酒未凉。**  
-> **玉阶生白露，铜驼没草荒。**
+>In life a common man, in death a runner for the dead;  
+>By the River of Forgetfulness stands my post.  
+>A soul lamp lights the night as I patrol the old streets;  
+>The ghost ledger turns its pages, recording ten thousand homes.
 >
-Night not yet over, night not yet over.  
-Silver candles shake their flying light; gilded beams fill the hall.  
-Wine not yet cold, wine not yet cold.  
-Jade steps grow white dew; bronze camels drown in weeds.
+>Spring waters run dry, the old lanes lie far away.  
+>Once I served my lord of ancient Yin, now dust and sand;  
+>Today I still obey the kings of the underworld—  
+>I care not how the mortal world changes with the years.
+
 
 
 以上诗词作者：帝国外务部大主教（bigarc）  
