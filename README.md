@@ -181,7 +181,7 @@ A note for English readers: my English is poor. If any kind soul is willing to h
 # Others / 其它
 
 如果需要更多内容，请跳转网站：[无星之夜与救世英雄传说 - 背景 - Matrees](https://www.matrees.cn/world/overview?worldId=1961636456795906048)（这里更新更快）  
-if more please [无星之夜与救世英雄传说 - 背景 - Matrees](https://www.matrees.cn/world/overview?worldId=1961636456795906048)（updates more frequently there; no En version yet）
+if more please [无星之夜与救世英雄传说 - 背景 - Matrees](https://www.matrees.cn/world/overview?worldId=1961636456795906048)（updates more frequently there; no En version yet）  
 如果想更快获取更新——直接联系我→[2549801503@qq.com]（待我慢慢搬运我的笔记本）  
 if more more and qk——email me →[2549801503@qq.com]（I'll gradually ctrl+c from my notebook ）
 
