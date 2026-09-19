@@ -1,5 +1,6 @@
 {
   "promptDelete": false,
   "strictLineBreaks": true,
-  "livePreview": true
+  "livePreview": true,
+  "alwaysUpdateLinks": true
 }
