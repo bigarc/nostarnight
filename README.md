@@ -33,7 +33,6 @@ Now, I leave it to you all—
 # 《于世界之门前》  
 **《Before the Gate of the World》**
 
-
 于此选择你感兴趣的部分——  
 Choose the part that interests you—
 
@@ -79,6 +78,9 @@ The complete setting of Tonile is still being organized. Scattered entries for r
 [[原生人|原生人/Originals]]（[GitHub 这里/Here](./无星之夜与救世英雄传说/地理/自然地理/生态/多尼雷/类人生物/人类种/原生人/原生人.md)）  
 [[克隆人|克隆人/Clones]]（[GitHub 这里/Here](./无星之夜与救世英雄传说/地理/自然地理/生态/多尼雷/类人生物/人类种/克隆人/克隆人.md)）  
 [[仿生人|仿生人/Bioroids]]（[GitHub 这里/Here](./无星之夜与救世英雄传说/地理/自然地理/生态/多尼雷/类人生物/人类种/仿生人/仿生人.md)）  
+
+一些‘科学“与”垄断者“
+[[科学|科学/science]]）([github 这里/here](./无星之夜与救世英雄传说/能力/多尼雷/科学/科学.md))
 
 -多尼雷-（待完善）  
 -Tonile-(to be completed)
