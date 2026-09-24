@@ -80,7 +80,8 @@ The complete setting of Tonile is still being organized. Scattered entries for r
 [[仿生人|仿生人/Bioroids]]（[GitHub 这里/Here](./无星之夜与救世英雄传说/地理/自然地理/生态/多尼雷/类人生物/人类种/仿生人/仿生人.md)）  
 
 一些‘科学“与”垄断者“
-[[科学|科学/science]]）([github 这里/here](./无星之夜与救世英雄传说/能力/多尼雷/科学/科学.md))
+[[科学|科学/science]]([github 这里/here](./无星之夜与救世英雄传说/能力/多尼雷/科学/科学.md))
+[[枢机代行||枢机代行/]]（[github 这里/here](./无星之夜与救世英雄传说/组织/多尼雷/枢机代行/枢机代行)）
 
 -多尼雷-（待完善）  
 -Tonile-(to be completed)
